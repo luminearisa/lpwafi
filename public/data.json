@@ -1,0 +1,246 @@
+{
+  "school": {
+    "name": "Al Wafi Islamic Boarding School",
+    "motto": "Holistic, Harmony And Exemplary",
+    "type": "Pesantren Sunnah Internasional",
+    "accreditation": {
+      "smp": "Unggul",
+      "sma": "Unggul",
+      "muadalah": "Universitas Islam Madinah"
+    }
+  },
+  "vision": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah",
+  "mission": [
+    "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Al-Quran dan Sunnah sesuai dengan pemahaman Salafusshalih",
+    "Menyelenggarakan pendidkan berbasis akhlaqul kareemah yang terintegrasi dalam kehidupan sehari-hari",
+    "Mencetak santri dalam bermualamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
+    "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al-Quran dan Sunnah sesuai dengan pemahaman Salaful Ummah"
+  ],
+  "programs": [
+    {
+      "id": "sdtq",
+      "name": "SDTQ Al Wafi Al Islamy",
+      "description": "Pengembangan metode Active Learning & Islamic Character Integrated dengan model pembelajaran Talaqqi, Berkisah, Drama, Diskusi Projek, Bermain Peran, Studi Kasus, Riset, Refleksi / Muhasabah"
+    },
+    {
+      "id": "smp",
+      "name": "SMP Al Wafi",
+      "description": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi & memiliki sikap positif terhadap globalisasi",
+      "variants": ["Putra", "Putri"]
+    },
+    {
+      "id": "sma",
+      "name": "SMA Al Wafi",
+      "description": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi & memiliki sikap positif terhadap globalisasi",
+      "variants": ["Putra", "Putri"]
+    },
+    {
+      "id": "overseas",
+      "name": "Study Overseas UIM + Umrah",
+      "description": "Program Peningkatan Wawasan Global Santri - belajar bersama masyaikh di Universitas Islam Madinah"
+    }
+  ],
+  "features": [
+    {
+      "title": "Pengajar Native",
+      "subtitle": "Mendampingi Program Bahasa Arab, Alquran Dan Diniyah",
+      "description": "Pengajar dari Timur Tengah dengan sanad dalam ilmu Al Quran dan Diniyah, mendampingi program bahasa Arab, Al Quran, dan Diniyah",
+      "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png"
+    },
+    {
+      "title": "Alumni Terbaik",
+      "subtitle": "Alumni Yang Diterima Di PTN Dan Timur Tengah",
+      "description": "Sebaran alumni Pesantren Al Wafi Islamic Boarding School diterima di berbagai perguruan tinggi negeri, baik di dalam negeri maupun luar negeri",
+      "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
+    }
+  ],
+  "universities": [
+    {
+      "name": "Universitas Andalas",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/0.png"
+    },
+    {
+      "name": "Universitas Padjadjaran",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/1.png"
+    },
+    {
+      "name": "Institut Teknologi Sepuluh Nopember",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/2.png"
+    },
+    {
+      "name": "Universitas Malaysia",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/3.png"
+    },
+    {
+      "name": "Universiti Teknologi Malaysia",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/4.png"
+    },
+    {
+      "name": "Multimedia University",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/5.png"
+    },
+    {
+      "name": "International Islamic University Malaysia",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/6.png"
+    },
+    {
+      "name": "Institut Pertanian Bogor",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/14.png"
+    },
+    {
+      "name": "Institut Teknologi Bandung",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/15.png"
+    },
+    {
+      "name": "Binus University",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/11.png"
+    },
+    {
+      "name": "Telkom University",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/21.png"
+    },
+    {
+      "name": "Universitas Trisakti",
+      "logo": "https://al-wafi.sch.id/src/images/logo_sebaran/22.png"
+    }
+  ],
+  "contact": {
+    "campuses": [
+      {
+        "name": "Kampus A",
+        "address": "Jln. Raya Arco, Ragamukti Kelurahan Citayam, Tajurhalang, Bogor, 16320",
+        "mapUrl": "https://maps.app.goo.gl/ETgWiuDYseWUeARN7"
+      },
+      {
+        "name": "Kampus B", 
+        "address": "Jln. Raya Pengasinan Kelurahan Pengasinan, Sawangan, Kota Depok, 16518",
+        "mapUrl": "https://maps.app.goo.gl/YBmMscAx3CgoQJZu6"
+      }
+    ],
+    "registration": {
+      "url": "https://daftar.al-wafi.sch.id",
+      "psbUrl": "https://psb.al-wafi.sch.id"
+    },
+    "socialMedia": {
+      "instagram": ["@alwafiwiibs.official", "@sdtq.alwafi"],
+      "youtube": ["Pesantren Al Wafi", "Al Wafi TV"],
+      "facebook": "alwafiwibs"
+    }
+  },
+  "images": {
+    "logo": "https://al-wafi.sch.id/src/images/logo/wafi-logo-data=normal.svg",
+    "hero": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=gedung_default.png",
+    "uim": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=uim.png",
+    "collage": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=kolase_miring_dikit.png",
+    "masyaikh": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png",
+    "alumni": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png",
+    "carousel": [
+      {
+        "url": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=gedung_default.png",
+        "alt": "Gedung Al Wafi",
+        "delay": "0s"
+      },
+      {
+        "url": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=kolase_miring_dikit.png",
+        "alt": "Kolase Kegiatan",
+        "delay": "8s"
+      },
+      {
+        "url": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=uim.png",
+        "alt": "Program UIM",
+        "delay": "16s"
+      },
+      {
+        "url": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png",
+        "alt": "Pengajar Native",
+        "delay": "24s"
+      }
+    ]
+  },
+  "colorScheme": {
+    "primary": {
+      "blue": "#1e3a8a",
+      "purple": "#7c3aed", 
+      "indigo": "#4338ca"
+    },
+    "secondary": {
+      "emerald": "#059669",
+      "cyan": "#0891b2",
+      "teal": "#0d9488"
+    },
+    "accent": {
+      "lightBlue": "#3b82f6",
+      "lightPurple": "#9333ea",
+      "lightIndigo": "#6366f1"
+    },
+    "gold": {
+      "primary": "#f59e0b",
+      "light": "#fbbf24",
+      "dark": "#d97706"
+    },
+    "gradient": {
+      "hero": "linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #4338ca 100%)",
+      "heroOverlay": "linear-gradient(135deg, #1e3a8aB3 0%, #7c3aedB3 50%, #4338caB3 100%)",
+      "header": "linear-gradient(90deg, #1e3a8a 0%, #7c3aed 50%, #4338ca 100%)",
+      "button": "linear-gradient(90deg, #3b82f6 0%, #9333ea 50%, #6366f1 100%)",
+      "gold": "linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%)",
+      "goldHover": "linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%)",
+      "about": "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)",
+      "aboutCard": "linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)",
+      "aboutFeature": "linear-gradient(90deg, #059669 0%, #0891b2 50%, #0d9488 100%)"
+    },
+    "opacity": {
+      "heroPattern": 40,
+      "heroOverlay": 70,
+      "carouselImage": 25,
+      "floatingElements": {
+        "element1": 20,
+        "element2": 18,
+        "element3": 16,
+        "element4": 14
+      },
+      "aboutPattern": 4,
+      "aboutCard": 95,
+      "aboutIcon": 80,
+      "patternStroke": 0.5,
+      "patternFill": 0.08,
+      "patternDots": 0.2,
+      "animatedDots": 0.15
+    }
+  },
+  "foundation": {
+    "establishment": {
+      "name": "Yayasan Al-Sudais Indonesia",
+      "founded": "21 Desember 2016",
+      "notaryAct": "No.12",
+      "notary": "Eva Junaida, Sarjana Hukum",
+      "legalNumber": "AHU-0051122.AH.01.12. Tahun 2016",
+      "date": "28 Desember 2016"
+    },
+    "landInfo": {
+      "area": "3.405 M²",
+      "plotNumber": "23.D.I Kohir No. 964",
+      "surveyNumber": "Gs. No. 1186/1977",
+      "groundBreaking": {
+        "date": "03 Februari 2017",
+        "officiant": "Ahmad Heryawan (Gubernur Jawa Barat)"
+      },
+      "wakafDonor": {
+        "name": "Lusmiati Loebis",
+        "birthPlace": "Solo",
+        "birthDate": "06 Januari 1939",
+        "wakafActNumber": "KK.10.01/39/BA.03/82/XI/2011"
+      }
+    },
+    "currentPrograms": [
+      "SDTQ Al Wafi Al Islamy",
+      "SMP Al Wafi IBS", 
+      "SMA Al Wafi IBS",
+      "Sekolah Tinggi Ilmu Tarbiah Al Wafi"
+    ]
+  },
+  "yearInfo": {
+    "academicYear": "2025 - 2026",
+    "registrationOpen": true
+  }
+}
