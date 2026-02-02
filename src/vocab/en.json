@@ -1,0 +1,255 @@
+{
+  "header": {
+    "topbar": {
+      "location": "Campus A: Bogor | Campus B: Depok",
+      "follow": "Follow Us:"
+    },
+    "brand": {
+      "title": "Al Wafi International",
+      "subtitle": "Islamic Boarding School"
+    },
+    "menu": {
+      "home": "Home",
+      "about": {
+        "main": "About",
+        "yayasan": "Foundation",
+        "dakwah": "Dawah & Social",
+        "upz": "UPZ",
+        "profil": "School Profile"
+      },
+      "program": {
+        "main": "Programs",
+        "sdtq": "SDTQ Al Wafi",
+        "smp": "JHS Al Wafi",
+        "sma": "SHS Al Wafi",
+        "overseas": "Overseas Program",
+        "lainnya": "Other Programs"
+      },
+      "alumni": "Alumni",
+      "bekal": "BEKAL",
+      "contact": "Contact"
+    },
+    "cta": "Register Now"
+  },
+  "hero": {
+    "badge": "International Sunnah Boarding School",
+    "title": "Al Wafi Islamic Boarding School",
+    "desc": {
+      "part1": "International Sunnah Boarding School with",
+      "highlight": "Excellent Accreditation",
+      "part2": "integrating Al-Quran and Sunnah values with modern technology to form a superior generation."
+    },
+    "cta": {
+      "register": "Register New Student",
+      "learn": "Learn More"
+    },
+    "stats": {
+      "alumni": "Global Alumni",
+      "teachers": "Expert Teachers",
+      "accreditation": "Excellent Accreditation"
+    },
+    "cards": {
+      "uim_title": "UIM Equivalence",
+      "uim_sub": "Islamic University of Madinah",
+      "campus_title": "2 Campuses",
+      "campus_sub": "Bogor & Depok"
+    }
+  },
+  "about": {
+    "header": {
+      "badge": "About Us",
+      "title": "Al Wafi Islamic Boarding School",
+      "desc": "International Sunnah Boarding School understanding that every child is smart and has different potential intelligences"
+    },
+    "vision_title": "Vision",
+    "mission_title": "Mission",
+    "content": {
+      "vision": "Forming a Muslim generation with high religious awareness and a positive attitude towards globalization by following Prophet Muhammad PBUH, his companions, & Ahlusunnah Scholars",
+      "mission": [
+        "Organizing quality education with international standards (world class) based on Al-Quran and Sunnah according to the understanding of Salafusshalih",
+        "Organizing education based on akhlaqul kareemah integrated into daily life",
+        "Producing students with noble interaction with the environment based on leaderpreneurship principles",
+        "Forming excellent student characters in responding to global changes based on Al-Quran and Sunnah according to the understanding of Salaful Ummah"
+      ]
+    },
+    "features_list": [
+      {
+        "title": "Native Teachers",
+        "subtitle": "Accompanying Arabic, Quran and Diniyah Programs",
+        "description": "Teachers from the Middle East with sanad in Quranic and Diniyah sciences, accompanying Arabic, Quran, and Diniyah programs",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png"
+      },
+      {
+        "title": "Best Alumni",
+        "subtitle": "Alumni Accepted in State Universities and Middle East",
+        "description": "Distribution of Al Wafi Islamic Boarding School alumni accepted in various state universities, both domestic and abroad",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
+      }
+    ],
+    "accreditation": {
+      "title": "Accreditation & Recognition",
+      "subtitle": "Best quality education with official recognition from various institutions",
+      "label": "Accreditation",
+      "smp": "JHS IBS",
+      "val_smp": "Excellent",
+      "sma": "SHS IBS",
+      "val_sma": "Excellent",
+      "muadalah": "Muadalah",
+      "val_muadalah": "Islamic University of Madinah"
+    }
+  },
+  "programs": {
+    "header": {
+      "badge": "Education Programs",
+      "title": "Excellent Education Programs",
+      "desc": "Quality education with Active Learning & Islamic Character Integrated methods to form a superior generation"
+    },
+    "list": [
+      {
+        "id": "sdtq",
+        "name": "SDTQ Al Wafi Al Islamy",
+        "description": "Development of Active Learning & Islamic Character Integrated methods with Talaqqi, Storytelling, and Project Discussion learning models."
+      },
+      {
+        "id": "smp",
+        "name": "JHS Al Wafi",
+        "description": "Forming a Muslim generation with high religious awareness & positive attitude towards globalization",
+        "variants": [
+          "Boys",
+          "Girls"
+        ]
+      },
+      {
+        "id": "sma",
+        "name": "SHS Al Wafi",
+        "description": "Forming a Muslim generation with high religious awareness & positive attitude towards globalization",
+        "variants": [
+          "Boys",
+          "Girls"
+        ]
+      },
+      {
+        "id": "overseas",
+        "name": "Study Overseas UIM + Umrah",
+        "description": "Student Global Insight Enhancement Program - studying with shaykhs at the Islamic University of Madinah"
+      }
+    ],
+    "overseas": {
+      "badge": "Featured Program",
+      "title": "Study Overseas UIM + Umrah",
+      "subtitle": "Student Global Insight Enhancement Program",
+      "desc": "Studying with shaykhs at the Islamic University of Madinah combined with spiritual experience through the Umrah program to form excellent and globally characterized students.",
+      "features": {
+        "uim": "Islamic University of Madinah",
+        "umrah": "Umrah Program",
+        "guide": "Shaykh Guidance"
+      }
+    },
+    "methods": {
+      "active": {
+        "title": "Active Learning",
+        "desc": "Active learning method involving students directly in the teaching and learning process"
+      },
+      "islamic": {
+        "title": "Islamic Character",
+        "desc": "Formation of Islamic character integrated into every aspect of learning and daily life"
+      },
+      "global": {
+        "title": "Global Perspective",
+        "desc": "Global insight while holding firmly to Islamic values and salafusshalih traditions"
+      }
+    }
+  },
+  "alumni": {
+    "header": {
+      "badge": "Best Alumni",
+      "title": "Global Alumni Achievements",
+      "desc": "Al Wafi Islamic Boarding School alumni are scattered in various world-renowned universities, proving excellent and characterized education quality"
+    },
+    "stats": {
+      "global": "Global Alumni",
+      "university": "Top Universities",
+      "country": "Destination Countries",
+      "acceptance": "Accepted in State/Private Unis"
+    },
+    "domestic": {
+      "title": "Domestic Universities",
+      "desc": "Alumni accepted in Indonesia's best universities"
+    },
+    "international": {
+      "title": "International Universities",
+      "desc": "Alumni continuing studies at international universities"
+    },
+    "success": {
+      "badge": "Proud Achievements",
+      "title": "Alumni Success Track",
+      "desc": "Al Wafi alumni not only excel academically but also maintain Islamic values in every step of their career and life.",
+      "rate_label": "Success Rate",
+      "list": [
+        "Alumni accepted in top world universities with full scholarships",
+        "Many alumni continue to Master's and Doctoral levels abroad",
+        "Alumni distributed in various professions and successful entrepreneurship",
+        "Maintaining Islamic values in career and daily life"
+      ]
+    }
+  },
+  "news": {
+    "header": {
+      "badge": "Latest News",
+      "title": "6 Latest News from Al Wafi",
+      "desc": "Follow the latest developments in activities and achievements of Al Wafi Islamic Boarding School students"
+    },
+    "status": {
+      "loading": "Loading latest news...",
+      "error_title": "Failed to Load News",
+      "error_desc": "Please try again later or visit our official website"
+    },
+    "card": {
+      "tag": "News",
+      "read_more": "Read More"
+    },
+    "cta": "View All News"
+  },
+  "contact": {
+    "header": {
+      "badge": "Contact Us",
+      "title": "Join Us",
+      "desc": "Ready to join Al Wafi Islamic Boarding School? Contact us for more information and start a quality education journey"
+    },
+    "cta": {
+      "badge": "Registration Open",
+      "title_start": "Registration for Academic Year",
+      "title_end": "is Now Open!",
+      "desc": "Register your beloved sons and daughters now and give them the best education that integrates Islamic values with international standards",
+      "btn_online": "Register Online Now",
+      "btn_info": "Registration Info"
+    },
+    "campuses": [
+      {
+        "name": "Campus A",
+        "address": "Jln. Raya Arco, Ragamukti Kelurahan Citayam, Tajurhalang, Bogor, 16320",
+        "mapUrl": "https://maps.app.goo.gl/ETgWiuDYseWUeARN7"
+      },
+      {
+        "name": "Campus B",
+        "address": "Jln. Raya Pengasinan Kelurahan Pengasinan, Sawangan, Kota Depok, 16518",
+        "mapUrl": "https://maps.app.goo.gl/YBmMscAx3CgoQJZu6"
+      }
+    ],
+    "locations": {
+      "title": "Our Locations",
+      "desc": "Find Al Wafi Islamic Boarding School locations",
+      "view_map": "View on Google Maps",
+      "map_hint": "Click map to navigate"
+    },
+    "methods": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "website": "Website"
+    },
+    "social": {
+      "title": "Follow Our Social Media",
+      "desc": "Get the latest updates and interesting information from Al Wafi"
+    }
+  }
+}
