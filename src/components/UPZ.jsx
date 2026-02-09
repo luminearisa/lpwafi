@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const UPZ = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -15,44 +18,29 @@ const UPZ = ({ data }) => {
     aboutIcon: 80
   };
 
-  const pilarPrograms = [
-    {
-      title: "Al Wafi Ta'awun",
-      description: "(Pembangunan - Wakaf)",
-      icon: "fas fa-hands-helping",
-      color: colors.secondary.emerald
-    },
-    {
-      title: "Al Wafi Tasqif",
-      description: "(Program Pendidikan)",
-      icon: "fas fa-graduation-cap",
-      color: colors.primary.blue
-    },
-    {
-      title: "Al Wafi Tafaquh",
-      description: "(Program Dakwah)",
-      icon: "fas fa-mosque",
-      color: colors.primary.purple
-    },
-    {
-      title: "Al Wafi Tabarru'",
-      description: "(Program Kemanusiaan)",
-      icon: "fas fa-heart",
-      color: colors.accent.lightBlue
-    },
-    {
-      title: "Al Wafi Ta'atuf",
-      description: "(Program Sosial)",
-      icon: "fas fa-users",
-      color: colors.secondary.cyan
-    },
-    {
-      title: "Al Wafi Tadawul",
-      description: "(Program Ekonomi)",
-      icon: "fas fa-chart-line",
-      color: colors.gold.primary
-    }
+  // ngambil data dari "data.json"
+  // ngambil dari JSON, tapi warna nya tetep
+  const rawPrograms = Array.isArray(t('upz.programs.list')) ? t('upz.programs.list') : [];
+  
+  // icon sama warna
+  const staticProgramData = [
+    { icon: "fas fa-hands-helping", color: colors.secondary.emerald },
+    { icon: "fas fa-graduation-cap", color: colors.primary.blue },
+    { icon: "fas fa-mosque", color: colors.primary.purple },
+    { icon: "fas fa-heart", color: colors.accent.lightBlue },
+    { icon: "fas fa-users", color: colors.secondary.cyan },
+    { icon: "fas fa-chart-line", color: colors.gold.primary }
   ];
+
+  // combine data sama icon
+  const pilarPrograms = rawPrograms.map((item, index) => ({
+    ...item,
+    // fallback kalau kepanjangan
+    ...staticProgramData[index % staticProgramData.length] 
+  }));
+
+  // Helper untuk list misi
+  const missionList = Array.isArray(t('upz.mission.list')) ? t('upz.mission.list') : [];
 
   return (
     <section 
@@ -105,7 +93,7 @@ const UPZ = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.gold.primary }}
             >
-              Tentang Kami
+              { t('upz.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -118,10 +106,10 @@ const UPZ = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.gold.primary} 0%, ${colors.secondary.emerald} 50%, ${colors.primary.blue} 100%)`
             }}
           >
-            Unit Pelayanan Zakat
+            { t('upz.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            UPZ Al Wafi - Lembaga filantropi Islam yang mengemban tanggung jawab sebagai pengelola zakat di bawah pengawasan BAZNAS Kota Depok
+            { t('upz.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -163,7 +151,7 @@ const UPZ = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.cyan} 100%)`
                     }}
                   >
-                    Sejarah Singkat
+                    { t('upz.history.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -175,10 +163,11 @@ const UPZ = ({ data }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
-                    <strong>Unit Pelayanan Zakat Al Wafi</strong> adalah lembaga yang mengemban tanggung jawab sebagai pengelola zakat dibawah pengawasan BAZNAS Kota Depok yang dirintis pada bulan Muharram 1446 H / Agustus 2024.
+                    {/* Translate teks bercampur bold */}
+                    <strong>{ t('upz.history.p1_part1') }</strong> { t('upz.history.p1_part2') }
                   </p>
                   <p>
-                    UPZ Al Wafi lahir dari kesadaran akan besarnya potensi ZISWAF yang dimiliki oleh keluarga besar Yayasan Al Wafi beserta mitranya. Melihat potensi itu, K.H. Dr. Ali Saman Hasan, Lc., LL.B., MA., selaku direktur Yayasan memprakarsai berdirinya UPZ Al Wafi sebagai wujud komitmen dalam mengelola dan memberdayakan potensi zakat, infak, sedekah, dan wakaf untuk kemaslahatan umat.
+                    { t('upz.history.p2') }
                   </p>
                 </div>
                 <div className="relative">
@@ -216,10 +205,10 @@ const UPZ = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 100%)`
                   }}
                 >
-                  Pilar Program
+                  { t('upz.programs.title') }
                 </h2>
                 <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-                  UPZ Al Wafi bernaung dibawah Yayasan Al-Sudais Indonesia, berkomitmen serta berfokus pada enam pilar program yang dirancang untuk membangun kemandirian umat. Ke-enam pilar program ini diantaranya:
+                  { t('upz.programs.desc') }
                 </p>
               </div>
               
@@ -289,7 +278,7 @@ const UPZ = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.gold.primary} 0%, ${colors.gold.light} 100%)`
                     }}
                   >
-                    Visi Unit Pelayanan Zakat
+                    { t('upz.vision.title') }
                   </h3>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -305,7 +294,7 @@ const UPZ = ({ data }) => {
                 }}
               >
                 <p className="text-gray-700 leading-relaxed font-medium">
-                  Mewujudkan lembaga filantropi Islam internasional yang profesional dan terpercaya dalam mengelola dana sosial Islam untuk pemberdayaan masyarakat.
+                  { t('upz.vision.desc') }
                 </p>
               </div>
             </div>
@@ -342,7 +331,7 @@ const UPZ = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
                     }}
                   >
-                    Misi Unit Pelayanan Zakat
+                    { t('upz.mission.title') }
                   </h3>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -351,11 +340,7 @@ const UPZ = ({ data }) => {
                 </div>
               </div>
               <ul className="space-y-4">
-                {[
-                  "Mengembangkan potensi manfaat ZIS dan CSR secara maksimal dengan program strategis",
-                  "Berkolaborasi bersama mitra dalam negri maupun luar negri dan berperan aktif dalam peningkatan kualitas lembaga pengelola zakat",
-                  "Melaksanakan kebijakan tata kelola zakat, infak, sedekah, dan CSR sesuai kaidah Syariah dan Regulasi NKRI"
-                ].map((item, index) => (
+                {missionList.map((item, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
                       className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 mr-4 group-hover:scale-110 transition-transform"
@@ -397,11 +382,11 @@ const UPZ = ({ data }) => {
           <div className="relative z-10 text-white">
             <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
               <i className="fas fa-hand-holding-heart mr-2"></i>
-              Unit Pelayanan Zakat
+              { t('upz.cta.badge') }
             </div>
-            <h2 className="text-4xl font-bold mb-4">Bersama Membangun Kemandirian Umat</h2>
+            <h2 className="text-4xl font-bold mb-4">{ t('upz.cta.title') }</h2>
             <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-              UPZ Al Wafi berkomitmen mengelola dan memberdayakan potensi zakat, infak, sedekah, dan wakaf untuk kemaslahatan umat dengan transparansi dan profesionalisme.
+              { t('upz.cta.desc') }
             </p>
           </div>
         </div>

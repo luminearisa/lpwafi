@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const SMA = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -15,63 +18,29 @@ const SMA = ({ data }) => {
     aboutIcon: 80
   };
 
-  const missionPoints = [
-    "Menyelenggarakan pendidikan yang berkualitas dan berstandar Internasional (world class) dengan berdasarkan Alqur'an dan sunnah sesuai dengan pemahaman salafussholih",
-    "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari hari",
-    "Mencetak perserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
-    "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al Quran dan Assunnah sesuai pemahaman salafus sholih",
-    "Memiliki wawasan yang luas, peka terhadap perubahan",
-    "Membangun jiwa kepemimpinan yang bertanggung jawab, amanah serta peduli terhadap alam dan lingkungan",
-    "Kemahiran menyelesaikan masalah, mandiri, kreatif dan mengembangkan tekhnologi dan globalisasi"
+  // ambil data list dari json
+  const missionPoints = Array.isArray(t('sma.mission.list')) ? t('sma.mission.list') : [];
+  
+  // config keunggulan (text nya dari json + ikon/warna statis)
+  const rawExcellenceTitles = Array.isArray(t('sma.excellence.list')) ? t('sma.excellence.list') : [];
+  
+  const excellenceStaticData = [
+    { icon: "fas fa-medal", color: colors.gold.primary },
+    { icon: "fas fa-leaf", color: colors.secondary.emerald },
+    { icon: "fas fa-heart", color: colors.primary.purple },
+    { icon: "fas fa-running", color: colors.accent.lightBlue },
+    { icon: "fas fa-globe", color: colors.secondary.cyan },
+    { icon: "fas fa-chart-line", color: colors.primary.blue },
+    { icon: "fas fa-chalkboard-teacher", color: colors.accent.lightPurple },
+    { icon: "fas fa-language", color: colors.secondary.teal },
+    { icon: "fas fa-university", color: colors.primary.indigo }
   ];
 
-  const excellencePoints = [
-    {
-      title: "Terakreditasi A (unggul) & Muadalah dari UIM",
-      icon: "fas fa-medal",
-      color: colors.gold.primary
-    },
-    {
-      title: "Sekolah Adiwiyata TK Provinsi menuju nasional",
-      icon: "fas fa-leaf",
-      color: colors.secondary.emerald
-    },
-    {
-      title: "Program Peningkatan Mutu Karakter Santri melalui Kelas Adab & Akhlak Santri",
-      icon: "fas fa-heart",
-      color: colors.primary.purple
-    },
-    {
-      title: "Peningkatan Mutu Santri melalui Ekstrakurikuler baik yang Wajib (Pramuka, PMR, Bela Diri, Gardening, Tata Boga & Tata Busana) Maupun ektrakurikuler Pilihan",
-      icon: "fas fa-running",
-      color: colors.accent.lightBlue
-    },
-    {
-      title: "Program Peningkatan wawasan Global Santri yaitu melalui Program Overseas Baik di Universitas Islam Madinah maupun Universitas Luar Negeri Lainnya",
-      icon: "fas fa-globe",
-      color: colors.secondary.cyan
-    },
-    {
-      title: "Program Peningkatan Mutu Kualitas Santri Melalui kegiatan KBM yang berkualitas, Adanya Assesment Diagnostik santri, Adanya Tes Minat bakat Santri, Peningkatan Prestasi akademik maupun non Akademik santri, Program remedial, Pengayaan, dan Program Reaching My Future (untuk Kelas 10), Program Bersama Bimbingan belajar",
-      icon: "fas fa-chart-line",
-      color: colors.primary.blue
-    },
-    {
-      title: "Peningkatan Mutu Guru melalui Program Supervisi Guru dan Pelatihan-Pelatihan Guru baik oleh Balitbang, ILLC, maupun Program pelatihan dari Pemerintah",
-      icon: "fas fa-chalkboard-teacher",
-      color: colors.accent.lightPurple
-    },
-    {
-      title: "Program Peningkatan Bahasa Arab, English melalui Wajib Berbahasa Arab & English, Persiapan TOEFL Bersama Team Bahasa (Lughoh)",
-      icon: "fas fa-language",
-      color: colors.secondary.teal
-    },
-    {
-      title: "Pendampingan Santri masuk Universitas Negeri, Swasta Favorit maupun Universitas Luar Negeri Bersama Biro BEKAL Al Wafi dan Biro Konseling",
-      icon: "fas fa-university",
-      color: colors.primary.indigo
-    }
-  ];
+  const excellencePoints = rawExcellenceTitles.map((title, index) => ({
+    title: title,
+    // fallback index kalo kepanjangan dari array statis
+    ...excellenceStaticData[index % excellenceStaticData.length]
+  }));
 
   return (
     <section 
@@ -127,7 +96,8 @@ const SMA = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.primary.purple }}
             >
-              Program Pendidikan
+              {/* Translate Badge */}
+              { t('sma.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -140,10 +110,12 @@ const SMA = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.primary.purple} 0%, ${colors.accent.lightPurple} 50%, ${colors.primary.indigo} 100%)`
             }}
           >
-            SMA Al Wafi
+            {/* Translate Title */}
+            { t('sma.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Islamic Boarding School - Pesantren sunnah terakreditasi A dengan muadalah dari Universitas Islam Madinah
+            {/* Translate Desc */}
+            { t('sma.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -181,7 +153,8 @@ const SMA = ({ data }) => {
                 <div className="ml-4">
                   <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full text-sm font-semibold mb-2">
                     <i className="fas fa-school mr-2" style={{ color: colors.primary.purple }}></i>
-                    Profile
+                    {/* Translate Profile Badge */}
+                    { t('sma.profile.badge') }
                   </div>
                   <h2 
                     className="text-3xl font-bold bg-clip-text text-transparent"
@@ -189,7 +162,8 @@ const SMA = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.primary.purple} 0%, ${colors.accent.lightPurple} 100%)`
                     }}
                   >
-                    Profil SMA
+                    {/* Translate Profile Title */}
+                    { t('sma.profile.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-2 rounded-full"
@@ -201,10 +175,10 @@ const SMA = ({ data }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
-                    SMA Al Wafi Islamic Boarding School adalah pesantren sunnah dengan akreditasi A dan muadalah dari Universitas Islam Madinah. Dikelola oleh Yayasan Al Sudais Indonesia, sekolah ini telah meluluskan enam angkatan alumni yang berhasil diterima di berbagai perguruan tinggi negeri dalam dan luar negeri.
+                    { t('sma.profile.p1') }
                   </p>
                   <p>
-                    Dengan kurikulum yang mengintegrasikan pendidikan nasional (kurikulum Merdeka) dan diniyah, serta fasilitas yang mendukung dan program pengembangan karakter, SMA Al Wafi Islamic Boarding School mempersiapkan siswa untuk unggul di dunia akademis dan menjalani kehidupan global yang berlandaskan nilai-nilai Islam.
+                    { t('sma.profile.p2') }
                   </p>
                 </div>
                 <div className="relative">
@@ -238,7 +212,8 @@ const SMA = ({ data }) => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full text-sm font-semibold mb-6">
                   <i className="fas fa-eye mr-2" style={{ color: colors.secondary.emerald }}></i>
-                  Vision
+                  {/* Translate Vision Badge */}
+                  { t('sma.vision.badge') }
                 </div>
                 <h2 
                   className="text-3xl font-bold mb-6 bg-clip-text text-transparent"
@@ -246,7 +221,8 @@ const SMA = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.teal} 100%)`
                   }}
                 >
-                  Visi SMA Al Wafi Islamic Boarding School
+                  {/* Translate Vision Title */}
+                  { t('sma.vision.title') }
                 </h2>
               </div>
               
@@ -258,7 +234,7 @@ const SMA = ({ data }) => {
                 }}
               >
                 <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                  "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah"
+                  { t('sma.vision.desc') }
                 </p>
               </div>
             </div>
@@ -279,7 +255,8 @@ const SMA = ({ data }) => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold mb-6">
                   <i className="fas fa-bullseye mr-2" style={{ color: colors.accent.lightBlue }}></i>
-                  Mission
+                  {/* Translate Mission Badge */}
+                  { t('sma.mission.badge') }
                 </div>
                 <h2 
                   className="text-3xl font-bold mb-6 bg-clip-text text-transparent"
@@ -287,7 +264,8 @@ const SMA = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
                   }}
                 >
-                  Misi SMA Al Wafi Islamic Boarding School
+                  {/* Translate Mission Title */}
+                  { t('sma.mission.title') }
                 </h2>
               </div>
 
@@ -339,11 +317,12 @@ const SMA = ({ data }) => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
                 <i className="fas fa-trophy mr-2"></i>
-                Excellence
+                {/* Translate Excellence Badge */}
+                { t('sma.excellence.badge') }
               </div>
-              <h2 className="text-4xl font-bold mb-6">Keunggulan SMA Al Wafi Islamic Boarding School</h2>
+              <h2 className="text-4xl font-bold mb-6">{ t('sma.excellence.title') }</h2>
               <p className="text-xl opacity-90 max-w-4xl mx-auto leading-relaxed mb-8">
-                Program-program unggulan yang menjadikan SMA Al Wafi sebagai pilihan terbaik untuk pendidikan berkualitas tinggi
+                { t('sma.excellence.desc') }
               </p>
             </div>
             
@@ -376,24 +355,24 @@ const SMA = ({ data }) => {
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-medal text-2xl"></i>
                 </div>
-                <h4 className="font-bold mb-2">Akreditasi A</h4>
-                <p className="text-sm opacity-90">Terakreditasi A dan Muadalah UIM</p>
+                <h4 className="font-bold mb-2">{ t('sma.excellence.summary.accreditation.title') }</h4>
+                <p className="text-sm opacity-90">{ t('sma.excellence.summary.accreditation.desc') }</p>
               </div>
               
               <div className="text-center bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-globe text-2xl"></i>
                 </div>
-                <h4 className="font-bold mb-2">Program Overseas</h4>
-                <p className="text-sm opacity-90">Wawasan global dan kesempatan studi luar negeri</p>
+                <h4 className="font-bold mb-2">{ t('sma.excellence.summary.overseas.title') }</h4>
+                <p className="text-sm opacity-90">{ t('sma.excellence.summary.overseas.desc') }</p>
               </div>
               
               <div className="text-center bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                   <i className="fas fa-university text-2xl"></i>
                 </div>
-                <h4 className="font-bold mb-2">Biro BEKAL</h4>
-                <p className="text-sm opacity-90">Pendampingan masuk universitas favorit</p>
+                <h4 className="font-bold mb-2">{ t('sma.excellence.summary.bekal.title') }</h4>
+                <p className="text-sm opacity-90">{ t('sma.excellence.summary.bekal.desc') }</p>
               </div>
             </div>
           </div>

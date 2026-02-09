@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import idPack from './vocab/id.json';
 import enPack from './vocab/en.json';
 
@@ -10,20 +10,25 @@ const dictionaries = {
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('id');
+  // cek localstorage ---
+  // cek bahasa, default nya ID.
+  const [language, setLanguage] = useState(() => {
+    const savedLanguage = localStorage.getItem('siteLang');
+    return savedLanguage || 'id';
+  });
 
-  // read (.) buat deep folder
+  // update localstorage bahasa yang dipilih
+  useEffect(() => {
+    localStorage.setItem('siteLang', language);
+  }, [language]);
+
+  // function LanguageContext
   const t = (path) => {
-    // split code
     const keys = path.split('.');
-
-    // start default buat translator (default nya indo)
     let currentData = dictionaries[language];
 
-    // scan 1 1 bahasa
     for (let key of keys) {
       if (currentData[key] === undefined) {
-        // return error
         return path;
       }
       currentData = currentData[key];
@@ -31,7 +36,6 @@ export const LanguageProvider = ({ children }) => {
 
     return currentData;
   };
-  // ====================
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

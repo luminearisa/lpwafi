@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const BiroBekal = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -21,64 +24,26 @@ const BiroBekal = ({ data }) => {
     aboutIcon: 80
   };
 
-  const globalPrograms = [
-    {
-      icon: "fas fa-compass",
-      title: "Orientasi Karir kepada Para Santri",
-      description: "Dalam program ini ada berbagai agenda yang diberikan kepada santri-santri yang bertujuan untuk memberikan orientasi atau gambaran dan inspirasi tentang suatu profesi yang ada serta memberikan referensi untuk penjurusan mata pelajaran yang akan diambil yang relevan dengan bidang yang akan ditekuni kedepanya. Dalam program-program ini juga melibatkan Parents dan Alumni Al Wafi untuk berpartisipasi dalam kegiatan-kegiatan yang ada dalam program ini"
-    },
-    {
-      icon: "fas fa-book-open",
-      title: "Penguatan Akademik dan Bahasa Para Santri",
-      description: "Dalam hal akademik para santri diberikan penguatan kemampuan akademik dan Bahasa sebagai persiapan untuk masuk perguruan tinggi seperti dalam hal akademik di adakan bimbingan belajar (bimbel) untuk persiapan masuk Perguruan Tinggi Negeri (PTN) dan Perguruan Tinggi di Timur Tengah dan LIPIA. Dari segi Bahasa diadakan program Bahasa Inggris seperti IELTS/TOEFL Preparation dan Penguatan Bahasa Arab Oleh Para Masyayikh yang bergelar Doctor dari Sudan"
-    },
-    {
-      icon: "fas fa-university",
-      title: "Informasi PTN, Luar Negeri, dan Timur Tengah",
-      description: "Dalam program ini santri di fasilitasi dan di berikan informasi yang sangat jelas terkait informasi seputar Universitas-Universitas dalam negeri (PTN dan Swasta Favorit), Universitas Luar Negeri (Asia, Australia, Eropa, Amerika, Afrika), dan Universitas di Timur Tengah dengan di adakannya seminar-seminar kampus dalam negeri dan luar negeri. Selain itu juga para santri di ajak untuk kunjungan ke kampus-kampus sekitar, kampus-kampus di Malaysia dan Arab Saudi (dalam program Study Overseas)."
-    },
-    {
-      icon: "fas fa-file-alt",
-      title: "Persiapan dan Pengurusan Berkas Pendaftaran",
-      description: "Pada program atau agenda ini selain berkas-berkas utama yang dibutuhkan untuk persiapan dan pendaftaran masuk Universitas baik dalam dan luar negeri berkas-berkas pendukung akan dibantu meyiapkan seperti Tazkiah atau juga Recommendation Letter, verifikasi kesesuaian berkas, Translate Dokumen, serta pembuatan Akun dan Pendaftaran Secara Kolektif"
-    },
-    {
-      icon: "fas fa-chart-line",
-      title: "Pemetaan Minat dan Bakat Para Santri",
-      description: "Dalam program-program ini para santri dipetakan baik dari segi minat, bakat atau kemampuan akademik dan Bahasa, serta jurusan dan Universitas pilihan kedepannya. Dalam agenda-agenda pada program ini di support juga oleh divisi Psikologi / Bimbingan Konseling dan Divisi International Affair Al Wafi"
-    },
-    {
-      icon: "fas fa-handshake",
-      title: "Kemitraan dengan Perguruan Tinggi",
-      description: "Pentingnya Kerjasama dengan perguruan tinggi mendorong Al Wafi untuk menjalin Kerjasama banyak perguruan tinggi, diantaranya Universitas Islam Negeri Syarif Hidayatullah Jakarta, Agrianita Institut Pertanian Bogor, Universitas Kebangsaan Malaysia, dll."
-    }
+  // konfig data global dari program (text dari json + ikon)
+  const rawGlobalPrograms = Array.isArray(t('biro_bekal.global_program.list')) ? t('biro_bekal.global_program.list') : [];
+  const globalIcons = [
+    "fas fa-compass",
+    "fas fa-book-open",
+    "fas fa-university",
+    "fas fa-file-alt",
+    "fas fa-chart-line",
+    "fas fa-handshake"
   ];
 
-  const mentoringPoints = [
-    "Mengidentifikasi dan Mendukung Bakat",
-    "Memberikan penguatan akademik",
-    "Mengembangkan Keterampilan Soft Skills dan Strategi Pengembangan Diri",
-    "Memfasilitasi Akses dan Informasi",
-    "Menyediakan Konsultasi Karir dan Penjelasan Jalur Pendidikan",
-    "Membangun Kemitraan dengan Institusi Pendidikan dan Profesional",
-    "Mendorong Pengembangan Mental dan Kesehatan Emosional",
-    "Mengukur dan Mengevaluasi Kinerja Program Secara Berkala"
-  ];
+  const globalPrograms = rawGlobalPrograms.map((item, index) => ({
+    ...item,
+    icon: globalIcons[index % globalIcons.length]
+  }));
 
-  const scholarshipPoints = [
-    "Menjaga transparansi dan Akuntabilitas",
-    "Mengembangkan dan memelihara berbagai program beasiswa",
-    "Mengelola administrasi beasiswa secara efisien",
-    "Memantau perkembangan penerima beasiswa dan melakukan evaluasi",
-    "Memperbarui program beasiswa untuk meningkatkan efektivitas dan jangkauan layanan"
-  ];
-
-  const alumniPoints = [
-    "Membangun dan memperkuat komunitas alumni yang aktif dan terhubung melalui berbagai platform dan kegiatan.",
-    "Membangun dan memelihara jaringan alumni yang solid untuk memberikan dukungan, mentoring, dan peluang karir bagi lulusan.",
-    "Menyelenggarakan kegiatan kealumnian yang memfasilitasi pertukaran pengalaman dan pengetahuan antar lulusan atau para santri dengan profesional di bidangnya.",
-    "Menyelenggarakan acara networking, reuni, dan pertemuan reguler untuk memfasilitasi interaksi dan kolaborasi antar alumni"
-  ];
+  // 4. Ambil list poin dari JSON
+  const mentoringPoints = Array.isArray(t('biro_bekal.pillars.mentoring.list')) ? t('biro_bekal.pillars.mentoring.list') : [];
+  const scholarshipPoints = Array.isArray(t('biro_bekal.pillars.scholarship.list')) ? t('biro_bekal.pillars.scholarship.list') : [];
+  const alumniPoints = Array.isArray(t('biro_bekal.pillars.alumni.list')) ? t('biro_bekal.pillars.alumni.list') : [];
 
   return (
     <section 
@@ -169,7 +134,7 @@ const BiroBekal = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: extendedColors.accent.lightBlue }}
             >
-              Alumni & Career Services
+              { t('biro_bekal.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -182,10 +147,10 @@ const BiroBekal = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${extendedColors.accent.lightBlue} 0%, ${extendedColors.primary.purple} 50%, ${extendedColors.secondary.teal} 100%)`
             }}
           >
-            Biro BEKAL Al Wafi
+            { t('biro_bekal.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Divisi yang mengurusi persiapan dan pendampingan masuk perguruan tinggi, pengelolaan beasiswa, serta kealumnian Al Wafi Islamic Boarding School
+            { t('biro_bekal.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -227,7 +192,7 @@ const BiroBekal = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${extendedColors.accent.lightBlue} 0%, ${extendedColors.primary.purple} 100%)`
                     }}
                   >
-                    Tentang Biro BEKAL
+                    { t('biro_bekal.intro.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -239,10 +204,10 @@ const BiroBekal = ({ data }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
                 <div className="space-y-4 text-gray-700 leading-relaxed">
                   <p>
-                    Biro BEKAL ini merupakan sebuah divisi yang mengurusi hal-hal terkait persiapan dan pendampingan masuk perguruan tinggi dan pengelolaan beasiswa, serta kealumnian <strong>Al Wafi Islamic Boarding School</strong>.
+                    { t('biro_bekal.intro.p1') } <strong>{ t('biro_bekal.intro.school_name') }</strong>.
                   </p>
                   <p>
-                    Secara struktural berada di bawah pimpinan langsung Direktur Pengembangan <strong>Al Wafi Islamic Boarding School</strong> yakni Ustadz Ryan Hidayat, Lc.
+                    { t('biro_bekal.intro.p2') } <strong>{ t('biro_bekal.intro.school_name') }</strong> { t('biro_bekal.intro.p2_end') }
                   </p>
                 </div>
                 <div className="relative">
@@ -261,7 +226,7 @@ const BiroBekal = ({ data }) => {
 
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Dengan adanya divisi ini dapat lebih maksimal dan fokus serta lebih professional lagi dalam mengurusi urusan terkait persiapan dan pendampingan masuk perguruan tinggi santri dan pengurusan beasiswa serta kealumnian, <strong>Al Wafi Islamic Boarding School</strong>, sehingga dapat mensuport Lembaga Pesantren ini dalam mewujudkan visi misinya.
+                  { t('biro_bekal.intro.p3') } <strong>{ t('biro_bekal.intro.school_name') }</strong>{ t('biro_bekal.intro.p3_end') }
                 </p>
               </div>
             </div>
@@ -299,7 +264,7 @@ const BiroBekal = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${extendedColors.gold.primary} 0%, ${extendedColors.gold.light} 100%)`
                   }}
                 >
-                  Visi & Misi Biro BEKAL
+                  { t('biro_bekal.vision.title') }
                 </h2>
               </div>
               
@@ -311,7 +276,7 @@ const BiroBekal = ({ data }) => {
                 }}
               >
                 <p className="text-gray-700 leading-relaxed text-lg font-medium">
-                  Menjadi biro yang dapat memfasilitasi persiapan masuk perguruan tinggi, pengembangan karir, pengelolaan beasiswa yang mendukung santri berprestasi, serta membangun jaringan kealumnian yang kuat, demi mewujudkan Al Wafi IBS sebagai lembaga pendidikan berkualitas internasional.
+                  { t('biro_bekal.vision.desc') }
                 </p>
               </div>
             </div>
@@ -345,7 +310,7 @@ const BiroBekal = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${extendedColors.accent.lightBlue} 0%, ${extendedColors.primary.blue} 100%)`
                     }}
                   >
-                    Mentoring Perguruan Tinggi
+                    { t('biro_bekal.pillars.mentoring.title') }
                   </h3>
                 </div>
               </div>
@@ -390,7 +355,7 @@ const BiroBekal = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${extendedColors.secondary.emerald} 0%, ${extendedColors.secondary.teal} 100%)`
                     }}
                   >
-                    Program Beasiswa
+                    { t('biro_bekal.pillars.scholarship.title') }
                   </h3>
                 </div>
               </div>
@@ -435,7 +400,7 @@ const BiroBekal = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${extendedColors.primary.purple} 0%, ${extendedColors.accent.lightPurple} 100%)`
                     }}
                   >
-                    Program Kealumnian
+                    { t('biro_bekal.pillars.alumni.title') }
                   </h3>
                 </div>
               </div>
@@ -487,11 +452,11 @@ const BiroBekal = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${extendedColors.rose.primary} 0%, ${extendedColors.rose.light} 100%)`
                   }}
                 >
-                  Gambaran Global Program
+                  { t('biro_bekal.global_program.title') }
                 </h2>
               </div>
               <p className="text-gray-600 text-lg">
-                Adapun gambaran program biro bekal secara umum adalah sebagai berikut
+                { t('biro_bekal.global_program.desc') }
               </p>
             </div>
           </div>
@@ -573,16 +538,16 @@ const BiroBekal = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${extendedColors.secondary.emerald} 0%, ${extendedColors.secondary.cyan} 100%)`
                   }}
                 >
-                  Mitra Perguruan Tinggi
+                  { t('biro_bekal.partners.title') }
                 </h2>
               </div>
               <p className="text-gray-600 text-lg">
-                Kemitraan strategis dengan perguruan tinggi terkemuka dalam dan luar negeri
+                { t('biro_bekal.partners.desc') }
               </p>
             </div>
           </div>
 
-          {/* Partnership Universities Logos */}
+          {/* Partnership Universities Logos - Bagian ini tetap statis/hardcoded karena hanya gambar */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* UIN Syarif Hidayatullah Jakarta */}
             <div 
@@ -836,28 +801,28 @@ const BiroBekal = ({ data }) => {
           <div className="relative z-10 text-white">
             <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
               <i className="fas fa-users mr-2"></i>
-              Alumni Success
+              { t('biro_bekal.cta.badge') }
             </div>
-            <h2 className="text-4xl font-bold mb-4">Sebaran Alumni Al Wafi</h2>
+            <h2 className="text-4xl font-bold mb-4">{ t('biro_bekal.cta.title') }</h2>
             <p className="text-xl opacity-90 mb-8">
-              Alumni yang berhasil masuk di Universitas-Universitas ternama dalam dan luar negeri
+              { t('biro_bekal.cta.desc') }
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold">100+</div>
-                <div className="text-sm opacity-80">Total Alumni</div>
+                <div className="text-sm opacity-80">{ t('biro_bekal.cta.stats.total') }</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">25+</div>
-                <div className="text-sm opacity-80">PTN Ternama</div>
+                <div className="text-sm opacity-80">{ t('biro_bekal.cta.stats.ptn') }</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">15+</div>
-                <div className="text-sm opacity-80">Universitas Luar Negeri</div>
+                <div className="text-sm opacity-80">{ t('biro_bekal.cta.stats.overseas') }</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">50+</div>
-                <div className="text-sm opacity-80">Program Beasiswa</div>
+                <div className="text-sm opacity-80">{ t('biro_bekal.cta.stats.scholarship') }</div>
               </div>
             </div>
           </div>

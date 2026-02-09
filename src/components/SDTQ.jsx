@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const SDTQ = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -15,76 +18,36 @@ const SDTQ = ({ data }) => {
     aboutIcon: 80
   };
 
-  const teachingConcepts = [
-    {
-      title: "Kolaborasi dan Komunikasi",
-      approach: "Membangun lingkungan yang mendukung kerja sama antar siswa melalui tugas kelompok, diskusi kelas, dan proyek kolaboratif.",
-      activities: "Mengadakan permainan edukatif yang memerlukan kerja sama, seperti puzzle kelompok, dan lomba cerdas cermat. Selain itu, menggunakan teknologi seperti forum diskusi online",
-      goals: "Mengembangkan keterampilan sosial dan komunikasi yang efektif, serta mengajarkan pentingnya saling membantu dan mendukung",
-      color: colors.secondary.emerald
-    },
-    {
-      title: "Akhlaq dan Kemandirian",
-      approach: "Menanamkan nilai-nilai Islami dan etika melalui teladan dan pembelajaran langsung",
-      activities: "Melaksanakan kegiatan harian seperti salat berjamaah, membaca hadits, dan kisah teladan Nabi Muhammad Shallallahu 'Alaihi Wasallam. Memberikan tanggung jawab kecil kepada siswa, seperti menjaga kebersihan kelas dan tugas piket",
-      goals: "Membentuk karakter siswa yang berakhlak mulia dan mandiri, serta mampu bertanggung jawab atas tindakan mereka",
-      color: colors.primary.blue
-    },
-    {
-      title: "Love of Learning",
-      approach: "Menciptakan lingkungan belajar yang menyenangkan dan menumbuhkan rasa ingin tahu.",
-      activities: "Menggunakan metode pembelajaran berbasis proyek dan eksperimen sains sederhana. Memanfaatkan perpustakaan sekolah dan sumber belajar multimedia",
-      goals: "Menanamkan kecintaan pada belajar dan eksplorasi pengetahuan, serta mendorong siswa untuk terus belajar sepanjang hidup",
-      color: colors.accent.lightBlue
-    },
-    {
-      title: "Setiap Anak Memiliki Kecerdasan Berbeda dan Unik",
-      approach: "Menggunakan pendekatan pembelajaran yang sesuai dengan multiple intelligences (kecerdasan majemuk) Howard Gardner",
-      activities: "Mengidentifikasi jenis kecerdasan dominan setiap siswa dan menyusun kegiatan yang bervariasi, seperti musik, olahraga, seni, dan keterampilan motorik. Menyediakan waktu untuk eksplorasi minat dan bakat individual",
-      goals: "Menghargai dan mengembangkan potensi unik setiap anak, serta memaksimalkan kemampuan mereka dalam berbagai bidang",
-      color: colors.primary.purple
-    },
-    {
-      title: "Pendekatan Metode Belajar ALICI (Active Learning and Islamic Character Integrated)",
-      approach: "Menggabungkan pembelajaran aktif dengan penguatan karakter Islami.",
-      activities: "Mengimplementasikan pembelajaran berbasis aktivitas (active learning) yang melibatkan siswa secara langsung dalam proses belajar, seperti role-playing, simulasi, dan diskusi interaktif. Menerapkan pembiasaan nilai-nilai Islami melalui aktivitas harian, seperti doa bersama sebelum dan sesudah belajar, serta kajian akhlak setiap pekan",
-      goals: "Meningkatkan partisipasi aktif siswa dalam pembelajaran dan membentuk karakter Islami yang kokoh",
-      color: colors.gold.primary
-    }
+  // ngambil data dari "data.json"
+  // ngambil dari JSON, tapi warna nya tetep
+  const rawTeachingConcepts = Array.isArray(t('sdtq.teaching.concepts')) ? t('sdtq.teaching.concepts') : [];
+  const teachingColors = [
+    colors.secondary.emerald,
+    colors.primary.blue,
+    colors.accent.lightBlue,
+    colors.primary.purple,
+    colors.gold.primary
   ];
 
-  const tahfidzPrograms = [
-    {
-      title: "Tasmi'",
-      description: "Tasmi' adalah kegiatan di mana siswa menyetorkan hafalan Al-Qur'an mereka di depan guru atau penguji. Kegiatan ini dilakukan secara rutin untuk memantau kemajuan hafalan siswa dan memastikan kualitas hafalan yang baik",
-      icon: "fas fa-microphone",
-      color: colors.secondary.emerald
-    },
-    {
-      title: "Halaqoh Al-Qur'an",
-      description: "Halaqoh Al-Qur'an adalah sesi belajar kelompok di mana siswa dibimbing oleh ustadz atau ustadzah dalam membaca dan menghafal Al-Qur'an",
-      icon: "fas fa-users",
-      color: colors.primary.blue
-    },
-    {
-      title: "Ujian Bersama Masayikh",
-      description: "Ujian ini merupakan evaluasi tahfidz yang dilakukan bersama para Masayikh (ulama atau guru besar) untuk menilai sejauh mana kemampuan hafalan dan pemahaman siswa terhadap Al-Qur'an",
-      icon: "fas fa-certificate",
-      color: colors.accent.lightBlue
-    },
-    {
-      title: "Murojaah Bulanan",
-      description: "Murojaah bulanan adalah kegiatan revisi hafalan Al-Qur'an yang dilakukan setiap bulan. Tujuannya adalah untuk memastikan hafalan yang sudah dipelajari tetap kuat dan tidak terlupakan",
-      icon: "fas fa-calendar-alt",
-      color: colors.primary.purple
-    },
-    {
-      title: "Tahfidz Camp",
-      description: "Tahfidz Camp adalah program intensif yang diadakan dalam bentuk perkemahan atau kegiatan luar sekolah yang berfokus pada peningkatan hafalan Al-Qur'an",
-      icon: "fas fa-campground",
-      color: colors.gold.primary
-    }
+  const teachingConcepts = rawTeachingConcepts.map((item, index) => ({
+    ...item,
+    color: teachingColors[index % teachingColors.length]
+  }));
+
+  // 4. config Data Tahfidz (Text dari JSON + Ikon/Warna Statis)
+  const rawTahfidzPrograms = Array.isArray(t('sdtq.tahfidz.programs')) ? t('sdtq.tahfidz.programs') : [];
+  const tahfidzStaticData = [
+    { icon: "fas fa-microphone", color: colors.secondary.emerald },
+    { icon: "fas fa-users", color: colors.primary.blue },
+    { icon: "fas fa-certificate", color: colors.accent.lightBlue },
+    { icon: "fas fa-calendar-alt", color: colors.primary.purple },
+    { icon: "fas fa-campground", color: colors.gold.primary }
   ];
+
+  const tahfidzPrograms = rawTahfidzPrograms.map((item, index) => ({
+    ...item,
+    ...tahfidzStaticData[index % tahfidzStaticData.length]
+  }));
 
   return (
     <section 
@@ -139,7 +102,8 @@ const SDTQ = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.secondary.emerald }}
             >
-              Program Pendidikan
+              {/* Translate Badge */}
+              { t('sdtq.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -152,10 +116,12 @@ const SDTQ = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.primary.blue} 50%, ${colors.gold.primary} 100%)`
             }}
           >
-            SDTQ Al Wafi
+            {/* Translate Title */}
+            { t('sdtq.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Sekolah Dasar Tahfidz Qur'an Al Wafi - Sekolah dasar sunnah terakreditasi A dengan kurikulum holistik dan penguatan nilai-nilai Islam
+            {/* Translate Desc */}
+            { t('sdtq.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -179,10 +145,10 @@ const SDTQ = ({ data }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
-                    SDTQ AL Wafi (Sekolah Dasar Tahfidz Qur'an Al Wafi) adalah sekolah dasar sunnah yang berada di bawah naungan Yayasan Bina Wafi Indonesia. Terletak di Depok, sekolah ini telah terakreditasi A oleh Dinas Pendidikan Kota Depok.
+                    { t('sdtq.intro.p1') }
                   </p>
                   <p>
-                    SDTQ AL Wafi menggunakan kurikulum Dinas Pendidikan, Diniyah, dan Al Qur'an, serta memberikan penguatan dalam bahasa Arab dan Inggris. Sekolah ini juga menanamkan nilai-nilai Islam sesuai dengan ajaran Salafus Sholih, menciptakan lingkungan belajar yang holistik dan berorientasi pada nilai-nilai Islami.
+                    { t('sdtq.intro.p2') }
                   </p>
                 </div>
                 <div className="relative">
@@ -207,7 +173,8 @@ const SDTQ = ({ data }) => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-100 to-blue-100 rounded-full text-sm font-semibold mb-6">
               <i className="fas fa-star mr-2" style={{ color: colors.gold.primary }}></i>
-              Excellence Program
+              {/* Translate Excellence Badge */}
+              { t('sdtq.excellence.badge') }
             </div>
             <h2 
               className="text-3xl font-bold bg-clip-text text-transparent"
@@ -215,7 +182,8 @@ const SDTQ = ({ data }) => {
                 backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.primary.blue} 100%)`
               }}
             >
-              Program Unggulan
+              {/* Translate Excellence Title */}
+              { t('sdtq.excellence.title') }
             </h2>
           </div>
         </div>
@@ -234,7 +202,8 @@ const SDTQ = ({ data }) => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold mb-6">
                   <i className="fas fa-lightbulb mr-2" style={{ color: colors.primary.blue }}></i>
-                  Learning Concept
+                  {/* Translate Teaching Badge */}
+                  { t('sdtq.teaching.badge') }
                 </div>
                 <h2 
                   className="text-3xl font-bold mb-6 bg-clip-text text-transparent"
@@ -242,7 +211,8 @@ const SDTQ = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 100%)`
                   }}
                 >
-                  Konsep Pengajaran
+                  {/* Translate Teaching Title */}
+                  { t('sdtq.teaching.title') }
                 </h2>
               </div>
               
@@ -265,17 +235,18 @@ const SDTQ = ({ data }) => {
                       
                       <div className="space-y-3 text-sm">
                         <div>
-                          <span className="font-semibold text-gray-800">Pendekatan:</span>
+                          {/* Translate Labels */}
+                          <span className="font-semibold text-gray-800">{ t('sdtq.teaching.labels.approach') }</span>
                           <p className="text-gray-700 leading-relaxed mt-1">{concept.approach}</p>
                         </div>
                         
                         <div>
-                          <span className="font-semibold text-gray-800">Aktivitas:</span>
+                          <span className="font-semibold text-gray-800">{ t('sdtq.teaching.labels.activities') }</span>
                           <p className="text-gray-700 leading-relaxed mt-1">{concept.activities}</p>
                         </div>
                         
                         <div>
-                          <span className="font-semibold text-gray-800">Tujuan:</span>
+                          <span className="font-semibold text-gray-800">{ t('sdtq.teaching.labels.goals') }</span>
                           <p className="text-gray-700 leading-relaxed mt-1">{concept.goals}</p>
                         </div>
                       </div>
@@ -301,9 +272,9 @@ const SDTQ = ({ data }) => {
                 <pattern id="tahfidzPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
                   <g transform="translate(25, 25)" stroke="white" strokeWidth="0.3" fill="none" opacity="0.4">
                     <rect x="-12" y="-8" width="24" height="16" rx="2" stroke="white" strokeWidth="0.2"/>
-                    <line x1="-8" y1="-4" x2="8" y2="-4" stroke="white" strokeWidth="0.15"/>
-                    <line x1="-8" y1="0" x2="8" y2="0" stroke="white" strokeWidth="0.15"/>
-                    <line x1="-8" y1="4" x2="8" y2="4" stroke="white" strokeWidth="0.15"/>
+                    <line x1="-8" y="-4" x2="8" y2="-4" stroke="white" strokeWidth="0.15"/>
+                    <line x1="-8" y="0" x2="8" y2="0" stroke="white" strokeWidth="0.15"/>
+                    <line x1="-8" y="4" x2="8" y2="4" stroke="white" strokeWidth="0.15"/>
                     <circle cx="0" cy="0" r="2" fill="white" opacity="0.3"/>
                   </g>
                 </pattern>
@@ -316,11 +287,12 @@ const SDTQ = ({ data }) => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
                 <i className="fas fa-book-open mr-2"></i>
-                Tahfidz
+                {/* Translate Tahfidz Badge */}
+                { t('sdtq.tahfidz.badge') }
               </div>
-              <h2 className="text-4xl font-bold mb-6">Tahfidz Quran</h2>
+              <h2 className="text-4xl font-bold mb-6">{ t('sdtq.tahfidz.title') }</h2>
               <p className="text-xl opacity-90 max-w-4xl mx-auto leading-relaxed mb-8">
-                Program ini adalah inti dari pendidikan di SDTQ AL Wafi, yang bertujuan untuk mengembangkan kemampuan siswa dalam membaca, menghafal, dan memahami Al-Qur'an dengan baik dan benar. Program ini mencakup berbagai kegiatan yang terstruktur untuk memastikan perkembangan tahfidz siswa secara optimal. Metode yang digunakan Iqro' Ustmani
+                { t('sdtq.tahfidz.desc') }
               </p>
             </div>
             

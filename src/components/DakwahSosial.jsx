@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const DakwahSosial = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -14,6 +17,10 @@ const DakwahSosial = ({ data }) => {
     aboutCard: 95,
     aboutIcon: 80
   };
+
+  // Helper untuk list
+  const missionList = Array.isArray(t('dakwah.mission.list')) ? t('dakwah.mission.list') : [];
+  const goalsList = Array.isArray(t('dakwah.study.goals_list')) ? t('dakwah.study.goals_list') : [];
 
   return (
     <section 
@@ -66,7 +73,7 @@ const DakwahSosial = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.primary.blue }}
             >
-              Tentang Kami
+              { t('dakwah.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -79,10 +86,10 @@ const DakwahSosial = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
             }}
           >
-            Dakwah & Sosial
+            { t('dakwah.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Lembaga Dakwah Al Wafi - Penyebaran dan pengajaran ajaran Islam untuk meningkatkan pemahaman dan praktik agama di masyarakat
+            { t('dakwah.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -105,7 +112,7 @@ const DakwahSosial = ({ data }) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Lembaga Dakwah Al Wafi adalah organisasi yang berfokus pada penyebaran dan pengajaran ajaran Islam, serta pelaksanaan kegiatan dakwah untuk meningkatkan pemahaman dan praktik agama di kalangan masyarakat. Lembaga ini bertujuan untuk memperkenalkan dan menguatkan ajaran Islam sesuai dengan prinsip-prinsip Al-Qur'an dan Sunnah, serta menjawab berbagai pertanyaan dan tantangan yang dihadapi oleh umat Islam dan masyarakat umum.
+                  { t('dakwah.intro.text') }
                 </p>
               </div>
               <div className="relative">
@@ -156,7 +163,7 @@ const DakwahSosial = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.gold.primary} 0%, ${colors.gold.light} 100%)`
                     }}
                   >
-                    Visi Dakwah Al Wafi IBS
+                    { t('dakwah.vision.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -172,7 +179,7 @@ const DakwahSosial = ({ data }) => {
                 }}
               >
                 <p className="text-gray-700 leading-relaxed font-medium text-lg">
-                  Mewujudkan masyarakat yang berpengetahuan, dan berkomitmen terhadap ajaran Islam yang murni serta berbekal dalam menghadapi globalisasi.
+                  { t('dakwah.vision.desc') }
                 </p>
               </div>
             </div>
@@ -211,7 +218,7 @@ const DakwahSosial = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
                     }}
                   >
-                    Misi Dakwah Al Wafi IBS
+                    { t('dakwah.mission.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -220,13 +227,7 @@ const DakwahSosial = ({ data }) => {
                 </div>
               </div>
               <ul className="space-y-4">
-                {[
-                  "Menyelenggarakan pendalaman ilmu da'i dan keterampilan dakwah melalui pelatihan, studi lanjutan, dan konsultasi dengan ulama",
-                  "Membuat kurikulum dalam dakwah yang mengajak kepada Al Quran dan Sunnah sesuai pemahaman para salafushalih",
-                  "Menjadi wadah berhimpunnya da'i",
-                  "Memanfaatkan teknologi digital, media sosial, dan platform online untuk menyebarluaskan ajaran Islam secara luas dan efektif",
-                  "Mendirikan dan mendukung lembaga-lembaga pendidikan Islam, seperti pesantren, madrasah, dan pusat studi Islam, untuk memastikan akses yang lebih luas terhadap pendidikan agama berkualitas"
-                ].map((item, index) => (
+                {missionList.map((item, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
                       className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 mr-4 group-hover:scale-110 transition-transform"
@@ -274,7 +275,7 @@ const DakwahSosial = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.cyan} 100%)`
                     }}
                   >
-                    Dakwah Internal Al Wafi
+                    { t('dakwah.internal.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -285,30 +286,31 @@ const DakwahSosial = ({ data }) => {
               
               <div className="space-y-6 text-gray-700 leading-relaxed mb-8">
                 <p>
-                  Dalam konteks pesantren Al Wafi, peran dakwah memiliki kontribusi signifikan terhadap pengembangan spiritual dan intelektual para santri serta masyarakat sekitar. Salah satu bentuk kegiatan dakwah internal yang dijalankan adalah <strong>kajian rutin Kamis Bada Maghrib</strong> bersama Ustadz Ali. Berikut adalah penjelasan mengenai peran dan manfaat dari kegiatan ini:
+                  {/* Translate teks bercampur bold */}
+                  { t('dakwah.internal.desc_part1') } <strong>{ t('dakwah.internal.desc_highlight') }</strong> { t('dakwah.internal.desc_part2') }
                 </p>
               </div>
 
               {/* Penguatan Ilmu Agama */}
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">Penguatan Ilmu Agama</h3>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800">{ t('dakwah.internal.knowledge.title') }</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
                     className="p-6 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300"
                     style={{ backgroundColor: `${colors.primary.blue}05` }}
                   >
-                    <h4 className="font-bold text-lg mb-3 text-gray-800">Kajian Rutin</h4>
+                    <h4 className="font-bold text-lg mb-3 text-gray-800">{ t('dakwah.internal.knowledge.card1_title') }</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      Kegiatan kajian rutin Kamis Bada Maghrib merupakan waktu khusus untuk membahas topik-topik agama secara mendalam. Ini membantu santri memperdalam pengetahuan mereka tentang ajaran Islam, baik dari segi aqidah, fiqh, akhlak, maupun tafsir.
+                      { t('dakwah.internal.knowledge.card1_desc') }
                     </p>
                   </div>
                   <div 
                     className="p-6 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300"
                     style={{ backgroundColor: `${colors.primary.purple}05` }}
                   >
-                    <h4 className="font-bold text-lg mb-3 text-gray-800">Pembelajaran Berkelanjutan</h4>
+                    <h4 className="font-bold text-lg mb-3 text-gray-800">{ t('dakwah.internal.knowledge.card2_title') }</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      Dengan adanya kajian rutin, santri dan masyarakat dapat terus belajar dan memperbaharui pemahaman mereka tentang ajaran Islam. Ini juga memperkuat fondasi keagamaan mereka.
+                      { t('dakwah.internal.knowledge.card2_desc') }
                     </p>
                   </div>
                 </div>
@@ -316,24 +318,24 @@ const DakwahSosial = ({ data }) => {
 
               {/* Penanaman Akhlak */}
               <div>
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">Penanaman Akhlak dan Etika</h3>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800">{ t('dakwah.internal.ethics.title') }</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
                     className="p-6 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300"
                     style={{ backgroundColor: `${colors.secondary.emerald}05` }}
                   >
-                    <h4 className="font-bold text-lg mb-3 text-gray-800">Penyampaian Akhlak</h4>
+                    <h4 className="font-bold text-lg mb-3 text-gray-800">{ t('dakwah.internal.ethics.card1_title') }</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      Kajian ini tidak hanya fokus pada aspek ilmiah tetapi juga pada penanaman akhlak dan etika Islam. Ustadz Ali akan memberikan penjelasan tentang bagaimana menerapkan nilai-nilai Islam dalam kehidupan sehari-hari.
+                      { t('dakwah.internal.ethics.card1_desc') }
                     </p>
                   </div>
                   <div 
                     className="p-6 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300"
                     style={{ backgroundColor: `${colors.secondary.cyan}05` }}
                   >
-                    <h4 className="font-bold text-lg mb-3 text-gray-800">Contoh Teladan</h4>
+                    <h4 className="font-bold text-lg mb-3 text-gray-800">{ t('dakwah.internal.ethics.card2_title') }</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      Ustadz Ali berperan sebagai teladan dalam pengamalan akhlak dan etika Islam, sehingga santri dapat mencontoh sikap dan perilaku yang baik.
+                      { t('dakwah.internal.ethics.card2_desc') }
                     </p>
                   </div>
                 </div>
@@ -369,31 +371,26 @@ const DakwahSosial = ({ data }) => {
             <div className="text-center mb-8">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
                 <i className="fas fa-book-open mr-2"></i>
-                Islamic Study
+                { t('dakwah.study.badge') }
               </div>
-              <h2 className="text-4xl font-bold mb-4">Kajian Al Wafi</h2>
+              <h2 className="text-4xl font-bold mb-4">{ t('dakwah.study.title') }</h2>
             </div>
             
             <div className="max-w-4xl mx-auto">
               <div className="bg-white/15 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
                 <p className="text-lg leading-relaxed opacity-95">
-                  Kajian-kajian yang dilaksanakan di pesantren Al Wafi mencakup topik-topik fundamental dalam aqidah, asas beragama, manhaj, dan adab beinteraksi. Pembahasan ini dilakukan dengan menggunakan kitab-kitab yang kredibel dan bermanfaat, seperti <strong>"4 Qaidah Penting dalam Islam"</strong>, <strong>"3 Asas Beragama"</strong>, <strong>"Ushul Sunnah"</strong> oleh Imam Ahmad, dan <strong>"Al-Mandhumah Al-Mimiyyah"</strong>. 
+                  {/* Translate text dengan banyak buku tebal */}
+                  { t('dakwah.study.desc_part1') } <strong>{ t('dakwah.study.book1') }</strong>, <strong>{ t('dakwah.study.book2') }</strong>, <strong>{ t('dakwah.study.book3') }</strong> { t('dakwah.study.book3_author') }, { t('dakwah.study.conjunction') } <strong>{ t('dakwah.study.book4') }</strong>. 
                 </p>
                 <div className="mt-6 space-y-4">
-                  <h4 className="font-bold text-xl mb-4">Tujuan Kajian:</h4>
+                  <h4 className="font-bold text-xl mb-4">{ t('dakwah.study.goals_title') }</h4>
                   <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 rounded-full bg-white mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Memperkuat pemahaman santri tentang ajaran Islam</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 rounded-full bg-white mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Meningkatkan kualitas ibadah dan akhlak santri baik kepada orang tua, guru maupun rekan sebayanya</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 rounded-full bg-white mt-2 mr-3 flex-shrink-0"></div>
-                      <span>Memberikan dasar yang kokoh dalam beragama</span>
-                    </li>
+                    {goalsList.map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="w-2 h-2 rounded-full bg-white mt-2 mr-3 flex-shrink-0"></div>
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
