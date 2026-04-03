@@ -1,0 +1,785 @@
+{
+  "header": {
+    "topbar": {
+      "location": "Campus A: Bogor | Campus B: Depok",
+      "follow": "Follow Us:"
+    },
+    "brand": {
+      "title": "Al Wafi International",
+      "subtitle": "Islamic Boarding School"
+    },
+    "menu": {
+      "home": "Home",
+      "about": {
+        "main": "About",
+        "yayasan": "Foundation",
+        "dakwah": "Dawah & Social",
+        "upz": "UPZ",
+        "profil": "School Profile"
+      },
+      "program": {
+        "main": "Programs",
+        "sdtq": "SDTQ Al Wafi",
+        "smp": "SMP Al Wafi",
+        "sma": "SMA Al Wafi",
+        "overseas": "Overseas Program",
+        "lainnya": "Other Programs"
+      },
+      "alumni": "Alumni",
+      "bekal": "BEKAL",
+      "contact": "Contact"
+    },
+    "cta": "Register Now"
+  },
+  "hero": {
+    "badge": "International Sunnah Boarding School",
+    "title": "Al Wafi Islamic Boarding School",
+    "desc": {
+      "part1": "International Sunnah Boarding School with",
+      "highlight": "Excellent Accreditation",
+      "part2": "integrating Al-Quran and Sunnah values with modern technology to form a superior generation."
+    },
+    "cta": {
+      "register": "Register New Student",
+      "learn": "Learn More"
+    },
+    "stats": {
+      "alumni": "Global Alumni",
+      "teachers": "Expert Teachers",
+      "accreditation": "Excellent Accreditation"
+    },
+    "cards": {
+      "uim_title": "UIM Equivalence",
+      "uim_sub": "Islamic University of Madinah",
+      "campus_title": "2 Campuses",
+      "campus_sub": "Bogor & Depok"
+    }
+  },
+  "about": {
+    "header": {
+      "badge": "About Us",
+      "title": "Al Wafi Islamic Boarding School",
+      "desc": "International Sunnah Boarding School understanding that every child is smart and has different potential intelligences"
+    },
+    "vision_title": "Vision",
+    "mission_title": "Mission",
+    "content": {
+      "vision": "Forming a Muslim generation with high religious awareness and a positive attitude towards globalization by following Prophet Muhammad PBUH, his companions, & Ahlusunnah Scholars",
+      "mission": [
+        "Organizing quality education with international standards (world class) based on Al-Quran and Sunnah according to the understanding of Salafusshalih",
+        "Organizing education based on akhlaqul kareemah integrated into daily life",
+        "Producing students with noble interaction with the environment based on leaderpreneurship principles",
+        "Forming excellent student characters in responding to global changes based on Al-Quran and Sunnah according to the understanding of Salaful Ummah"
+      ]
+    },
+    "features_list": [
+      {
+        "title": "Native Teachers",
+        "subtitle": "Accompanying Arabic, Quran and Diniyah Programs",
+        "description": "Teachers from the Middle East with sanad in Quranic and Diniyah sciences, accompanying Arabic, Quran, and Diniyah programs",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png"
+      },
+      {
+        "title": "Best Alumni",
+        "subtitle": "Alumni Accepted in State Universities and Middle East",
+        "description": "Distribution of Al Wafi Islamic Boarding School alumni accepted in various state universities, both domestic and abroad",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
+      }
+    ],
+    "accreditation": {
+      "title": "Accreditation & Recognition",
+      "subtitle": "Best quality education with official recognition from various institutions",
+      "label": "Accreditation",
+      "smp": "SMP IBS",
+      "val_smp": "Excellent",
+      "sma": "SMA IBS",
+      "val_sma": "Excellent",
+      "muadalah": "Muadalah",
+      "val_muadalah": "Islamic University of Madinah"
+    }
+  },
+  "programs": {
+    "header": {
+      "badge": "Education Programs",
+      "title": "Excellent Education Programs",
+      "desc": "Quality education with Active Learning & Islamic Character Integrated methods to form a superior generation"
+    },
+    "list": [
+      {
+        "id": "sdtq",
+        "name": "SDTQ Al Wafi Al Islamy",
+        "description": "Development of Active Learning & Islamic Character Integrated methods with Talaqqi, Storytelling, and Project Discussion learning models."
+      },
+      {
+        "id": "smp",
+        "name": "SMP Al Wafi",
+        "description": "Forming a Muslim generation with high religious awareness & positive attitude towards globalization",
+        "variants": [
+          "Boys",
+          "Girls"
+        ]
+      },
+      {
+        "id": "sma",
+        "name": "SMA Al Wafi",
+        "description": "Forming a Muslim generation with high religious awareness & positive attitude towards globalization",
+        "variants": [
+          "Boys",
+          "Girls"
+        ]
+      },
+      {
+        "id": "overseas",
+        "name": "Study Overseas UIM + Umrah",
+        "description": "Student Global Insight Enhancement Program - studying with shaykhs at the Islamic University of Madinah"
+      }
+    ],
+    "overseas": {
+      "badge": "Featured Program",
+      "title": "Study Overseas UIM + Umrah",
+      "subtitle": "Student Global Insight Enhancement Program",
+      "desc": "Studying with shaykhs at the Islamic University of Madinah combined with spiritual experience through the Umrah program to form excellent and globally characterized students.",
+      "features": {
+        "uim": "Islamic University of Madinah",
+        "umrah": "Umrah Program",
+        "guide": "Shaykh Guidance"
+      }
+    },
+    "methods": {
+      "active": {
+        "title": "Active Learning",
+        "desc": "Active learning method involving students directly in the teaching and learning process"
+      },
+      "islamic": {
+        "title": "Islamic Character",
+        "desc": "Formation of Islamic character integrated into every aspect of learning and daily life"
+      },
+      "global": {
+        "title": "Global Perspective",
+        "desc": "Global insight while holding firmly to Islamic values and salafusshalih traditions"
+      }
+    }
+  },
+  "alumni": {
+    "header": {
+      "badge": "Best Alumni",
+      "title": "Global Alumni Achievements",
+      "desc": "Al Wafi Islamic Boarding School alumni are scattered in various world-renowned universities, proving excellent and characterized education quality"
+    },
+    "stats": {
+      "global": "Global Alumni",
+      "university": "Top Universities",
+      "country": "Destination Countries",
+      "acceptance": "Accepted in State/Private Unis"
+    },
+    "domestic": {
+      "title": "Domestic Universities",
+      "desc": "Alumni accepted in Indonesia's best universities"
+    },
+    "international": {
+      "title": "International Universities",
+      "desc": "Alumni continuing studies at international universities"
+    },
+    "success": {
+      "badge": "Proud Achievements",
+      "title": "Alumni Success Track",
+      "desc": "Al Wafi alumni not only excel academically but also maintain Islamic values in every step of their career and life.",
+      "rate_label": "Success Rate",
+      "list": [
+        "Alumni accepted in top world universities with full scholarships",
+        "Many alumni continue to Master's and Doctoral levels abroad",
+        "Alumni distributed in various professions and successful entrepreneurship",
+        "Maintaining Islamic values in career and daily life"
+      ]
+    }
+  },
+  "news": {
+    "header": {
+      "badge": "Latest News",
+      "title": "6 Latest News from Al Wafi",
+      "desc": "Follow the latest developments in activities and achievements of Al Wafi Islamic Boarding School students"
+    },
+    "status": {
+      "loading": "Loading latest news...",
+      "error_title": "Failed to Load News",
+      "error_desc": "Please try again later or visit our official website"
+    },
+    "card": {
+      "tag": "News",
+      "read_more": "Read More"
+    },
+    "cta": "View All News"
+  },
+  "contact": {
+    "header": {
+      "badge": "Contact Us",
+      "title": "Join Us",
+      "desc": "Ready to join Al Wafi Islamic Boarding School? Contact us for more information and start a quality education journey"
+    },
+    "cta": {
+      "badge": "Registration Open",
+      "title_start": "Registration for Academic Year",
+      "title_end": "is Now Open!",
+      "desc": "Register your beloved sons and daughters now and give them the best education that integrates Islamic values with international standards",
+      "btn_online": "Register Online Now",
+      "btn_info": "Registration Info"
+    },
+    "campuses": [
+      {
+        "name": "Campus A",
+        "address": "Jln. Raya Arco, Ragamukti Kelurahan Citayam, Tajurhalang, Bogor, 16320",
+        "mapUrl": "https://maps.app.goo.gl/ETgWiuDYseWUeARN7"
+      },
+      {
+        "name": "Campus B",
+        "address": "Jln. Raya Pengasinan Kelurahan Pengasinan, Sawangan, Kota Depok, 16518",
+        "mapUrl": "https://maps.app.goo.gl/YBmMscAx3CgoQJZu6"
+      }
+    ],
+    "locations": {
+      "title": "Our Locations",
+      "desc": "Find Al Wafi Islamic Boarding School locations",
+      "view_map": "View on Google Maps",
+      "map_hint": "Click map to navigate"
+    },
+    "methods": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "website": "Website"
+    },
+    "social": {
+      "title": "Follow Our Social Media",
+      "desc": "Get the latest updates and interesting information from Al Wafi"
+    }
+  },
+  "foundation": {
+    "header": {
+      "badge": "About Foundation",
+      "title": "Al Sudais Indonesia Foundation",
+      "desc": "Al Wafi Islamic Boarding School - International Sunnah Boarding School with Holistic, Harmony, and Exemplary concepts"
+    },
+    "intro": {
+      "title": "Introduction",
+      "p1": "Every child is smart and has different potential intelligence depending on how the educational environment can bring out the intelligence of each child. Al Wafi Islamic Boarding School was established to provide assistance to students according to their interests, talents and intelligence based on the values of Al-Quran and Sunnah.",
+      "p2": "Parents want the best education for their sons and daughters and we at Al Wafi Islamic Boarding School are an international standard sunnah boarding school ready to form a generation that has noble character.",
+      "p3": "Al Wafi Boarding School is here with the hope of providing comprehensive (holistic) and aligned (harmony) education and providing a model or example by integrating various curricula including diniyah curriculum, national curriculum of Al Quran and sunnah, science and technology as well as lifeskill content.",
+      "p4": "With the boarding school system (islamic boarding) and supported by professional teaching staff, high dedication, foreign teachers (native), alumni from the Middle East and teachers from State University graduates will lead students to get education at the desired campus.",
+      "p5": "We at Al Wafi IBS believe that the best education cannot be realized without the support of parents and students' families. Therefore, communication networks and student information services are one of our priorities."
+    },
+    "history": {
+      "title": "History of Al Wafi",
+      "p1": "Al Wafi Boarding School is here to meet the needs of the community who want modern international standard Islamic education. Al Wafi Boarding School was built on a land area of 3,405 M² with parcel number 23.D.I Kohir No. 964, land survey letter Gs. No. 1186/1977.",
+      "highlight_part1": "The groundbreaking for the construction of SMP and SMA Al Wafi Islamic Boarding School was carried out by the Governor of West Java Mr. Ahmad Heryawan on Friday,",
+      "highlight_date": "February 3, 2017",
+      "p2": "The land where Al Wafi was founded is waqf land handed over by Mrs. Lusmiati Loebis who was born in Solo, January 6, 1939 with waqf pledge deed number KK.10.01/39/BA.03/82/XI/2011 before the Head of the Tajurhalang District Religious Affairs Office.",
+      "p3_part1": "SMP Al Wafi is an educational institution under the auspices of",
+      "p3_part2": "which was established on",
+      "p3_date": "December 21, 2016",
+      "p3_part3": "with deed of establishment no.12 before Notary Eva Junaida, Bachelor of Law.",
+      "goals_title": "Purpose of Establishment:",
+      "goals": [
+        "Educating the nation's children, strengthening the nationalist and patriotic spirit, and being able to strengthen the religious foundation of the young generation in accordance with the Qur'an and Sunnah",
+        "Developing international standard education in terms of curriculum, professional educators from home and abroad & modern infrastructure",
+        "Providing and contributing to the surrounding community, both in economic welfare and spiritual improvement"
+      ],
+      "p4_part1": "Good community response with the increasing number of students and community needs for modern boarding school-based education, Al Sudais Indonesia Foundation currently organizes education from"
+    },
+    "vision": {
+      "title": "Al Wafi Vision",
+      "desc": "\"Forming a Muslim generation that has high religious awareness and has a positive attitude towards globalization by following Prophet Muhammad Shallallahu alaihi wasallam, companions, and Ahlusunnah Scholars\""
+    },
+    "mission": {
+      "title": "Al Wafi Mission",
+      "list": [
+        "Organizing quality education with international standards (world class) based on Al-Quran and sunnah according to the understanding of ahlu sunnah scholars.",
+        "Organizing education based on noble character integrated into daily life.",
+        "Producing students in noble interaction with the environment with leaderpreneurship principles",
+        "Forming student characters who excel in responding to global changes that occur based on Al Quran and Assunnah according to the understanding of ahlu sunnah scholars"
+      ]
+    },
+    "structure": {
+      "title": "Foundation Organizational Structure"
+    },
+    "values": {
+      "badge": "Al Wafi Values",
+      "title": "Al Wafi Values",
+      "desc": "Fundamental values that form the basis of education at Al Wafi",
+      "list": [
+        { "letter": "A", "word": "Amanah", "description": "Trustworthy in carrying out duties" },
+        { "letter": "L", "word": "Lilah", "description": "Expecting Allah's pleasure in every deed" },
+        { "letter": "W", "word": "Wafi", "description": "Keeping promises and commitments" },
+        { "letter": "A", "word": "Akhlaq", "description": "Noble character in life" },
+        { "letter": "F", "word": "Fathonah", "description": "Intelligent and wise in acting" },
+        { "letter": "I", "word": "International mindset", "description": "Global perspective with Islamic roots" }
+      ]
+    }
+  },
+  "dakwah": {
+    "header": {
+      "badge": "About Us",
+      "title": "Dakwah & Social",
+      "desc": "Al Wafi Dakwah Institute - Dissemination and teaching of Islamic teachings to improve religious understanding and practice in society"
+    },
+    "intro": {
+      "text": "Al Wafi Dakwah Institute is an organization focused on the dissemination and teaching of Islamic teachings, as well as the implementation of dakwah activities to improve religious understanding and practice among the community. This institute aims to introduce and strengthen Islamic teachings in accordance with the principles of the Qur'an and Sunnah, as well as answer various questions and challenges faced by Muslims and the general public."
+    },
+    "vision": {
+      "title": "Al Wafi IBS Dakwah Vision",
+      "desc": "Creating a knowledgeable society committed to pure Islamic teachings and equipped to face globalization."
+    },
+    "mission": {
+      "title": "Al Wafi IBS Dakwah Mission",
+      "list": [
+        "Organizing deepening of da'i knowledge and dakwah skills through training, advanced studies, and consultation with scholars",
+        "Creating a curriculum in dakwah that invites to the Quran and Sunnah according to the understanding of the salafushalih",
+        "Becoming a gathering place for da'is",
+        "Utilizing digital technology, social media, and online platforms to disseminate Islamic teachings widely and effectively",
+        "Establishing and supporting Islamic educational institutions, such as boarding schools, madrasas, and Islamic study centers, to ensure wider access to quality religious education"
+      ]
+    },
+    "internal": {
+      "title": "Al Wafi Internal Dakwah",
+      "desc_part1": "In the context of Al Wafi boarding school, the role of dakwah has a significant contribution to the spiritual and intellectual development of students and the surrounding community. One form of internal dakwah activity carried out is the",
+      "desc_highlight": "regular Thursday Bada Maghrib study",
+      "desc_part2": "with Ustadz Ali. Here is an explanation of the role and benefits of this activity:",
+      "knowledge": {
+        "title": "Strengthening Religious Knowledge",
+        "card1_title": "Routine Study",
+        "card1_desc": "The regular Thursday Bada Maghrib study activity is a special time to discuss religious topics in depth. This helps students deepen their knowledge of Islamic teachings, both in terms of aqidah, fiqh, morals, and tafsir.",
+        "card2_title": "Continuous Learning",
+        "card2_desc": "With routine studies, students and the community can continue to learn and update their understanding of Islamic teachings. This also strengthens their religious foundation."
+      },
+      "ethics": {
+        "title": "Cultivating Morals and Ethics",
+        "card1_title": "Delivery of Morals",
+        "card1_desc": "This study not only focuses on scientific aspects but also on the cultivation of Islamic morals and ethics. Ustadz Ali will provide an explanation of how to apply Islamic values in daily life.",
+        "card2_title": "Exemplary Model",
+        "card2_desc": "Ustadz Ali acts as a role model in practicing Islamic morals and ethics, so that students can imitate good attitudes and behavior."
+      }
+    },
+    "study": {
+      "badge": "Islamic Study",
+      "title": "Al Wafi Studies",
+      "desc_part1": "The studies carried out at Al Wafi boarding school cover fundamental topics in aqidah, religious principles, manhaj, and interaction etiquette. This discussion is carried out using credible and beneficial books, such as",
+      "book1": "\"4 Important Principles in Islam\"",
+      "book2": "\"3 Fundamental Principles\"",
+      "book3": "\"Ushul Sunnah\"",
+      "book3_author": "by Imam Ahmad",
+      "book4": "\"Al-Mandhumah Al-Mimiyyah\"",
+      "conjunction": "and",
+      "goals_title": "Study Objectives:",
+      "goals_list": [
+        "Strengthening students' understanding of Islamic teachings",
+        "Improving the quality of worship and morals of students towards parents, teachers and peers",
+        "Providing a solid foundation in religion"
+      ]
+    }
+  },
+  "upz": {
+    "header": {
+      "badge": "About Us",
+      "title": "Zakat Service Unit",
+      "desc": "Al Wafi UPZ - An Islamic philanthropic institution responsible for managing zakat under the supervision of BAZNAS Depok City"
+    },
+    "history": {
+      "title": "Brief History",
+      "p1_part1": "Al Wafi Zakat Service Unit",
+      "p1_part2": "is an institution responsible for managing zakat under the supervision of BAZNAS Depok City which was initiated in Muharram 1446 H / August 2024.",
+      "p2": "Al Wafi UPZ was born from the awareness of the great potential of ZISWAF owned by the Al Wafi Foundation family and its partners. Seeing this potential, K.H. Dr. Ali Saman Hasan, Lc., LL.B., MA., as the director of the Foundation initiated the establishment of Al Wafi UPZ as a form of commitment in managing and empowering the potential of zakat, infaq, alms, and waqf for the benefit of the ummah."
+    },
+    "programs": {
+      "title": "Program Pillars",
+      "desc": "Al Wafi UPZ is under the auspices of the Al-Sudais Indonesia Foundation, committed and focused on six program pillars designed to build community independence. These six program pillars include:",
+      "list": [
+        { "title": "Al Wafi Ta'awun", "description": "(Development - Waqf)" },
+        { "title": "Al Wafi Tasqif", "description": "(Education Program)" },
+        { "title": "Al Wafi Tafaquh", "description": "(Dakwah Program)" },
+        { "title": "Al Wafi Tabarru'", "description": "(Humanitarian Program)" },
+        { "title": "Al Wafi Ta'atuf", "description": "(Social Program)" },
+        { "title": "Al Wafi Tadawul", "description": "(Economic Program)" }
+      ]
+    },
+    "vision": {
+      "title": "Zakat Service Unit Vision",
+      "desc": "Realizing a professional and trusted international Islamic philanthropic institution in managing Islamic social funds for community empowerment."
+    },
+    "mission": {
+      "title": "Zakat Service Unit Mission",
+      "list": [
+        "Developing the potential benefits of ZIS and CSR maximally with strategic programs",
+        "Collaborating with domestic and foreign partners and playing an active role in improving the quality of zakat management institutions",
+        "Implementing zakat, infaq, alms, and CSR governance policies in accordance with Sharia rules and NKRI Regulations"
+      ]
+    },
+    "cta": {
+      "badge": "Zakat Service Unit",
+      "title": "Together Building Community Independence",
+      "desc": "Al Wafi UPZ is committed to managing and empowering the potential of zakat, infaq, alms, and waqf for the benefit of the ummah with transparency and professionalism."
+    }
+  },
+  "sdtq": {
+    "header": {
+      "badge": "Education Program",
+      "title": "SDTQ Al Wafi",
+      "desc": "Al Wafi Quran Tahfidz Elementary School - A-accredited Sunnah elementary school with a holistic curriculum and Islamic values reinforcement"
+    },
+    "intro": {
+      "p1": "SDTQ AL Wafi (Al Wafi Quran Tahfidz Elementary School) is a sunnah elementary school under the auspices of the Bina Wafi Indonesia Foundation. Located in Depok, this school has been accredited A by the Depok City Education Office.",
+      "p2": "SDTQ AL Wafi uses the Education Office, Diniyah, and Al Qur'an curriculum, and provides reinforcement in Arabic and English. The school also instills Islamic values in accordance with the teachings of Salafus Sholih, creating a holistic learning environment oriented towards Islamic values."
+    },
+    "excellence": {
+      "badge": "Excellence Program",
+      "title": "Featured Programs"
+    },
+    "teaching": {
+      "badge": "Learning Concept",
+      "title": "Teaching Concepts",
+      "labels": {
+        "approach": "Approach:",
+        "activities": "Activities:",
+        "goals": "Goals:"
+      },
+      "concepts": [
+        {
+          "title": "Collaboration and Communication",
+          "approach": "Building an environment that supports cooperation between students through group assignments, class discussions, and collaborative projects.",
+          "activities": "Conducting educational games that require cooperation, such as group puzzles, and quiz competitions. In addition, using technology such as online discussion forums",
+          "goals": "Developing effective social and communication skills, as well as teaching the importance of helping and supporting each other"
+        },
+        {
+          "title": "Morals and Independence",
+          "approach": "Instilling Islamic values and ethics through role models and direct learning",
+          "activities": "Carrying out daily activities such as congregational prayers, reading hadith, and exemplary stories of Prophet Muhammad PBUH. Giving small responsibilities to students, such as maintaining class cleanliness and picket duties",
+          "goals": "Forming student characters with noble character and independence, and able to be responsible for their actions"
+        },
+        {
+          "title": "Love of Learning",
+          "approach": "Creating a fun learning environment and fostering curiosity.",
+          "activities": "Using project-based learning methods and simple science experiments. Utilizing the school library and multimedia learning resources",
+          "goals": "Instilling a love of learning and knowledge exploration, and encouraging students to continue learning throughout their lives"
+        },
+        {
+          "title": "Every Child Has Different and Unique Intelligence",
+          "approach": "Using a learning approach that is in accordance with Howard Gardner's multiple intelligences",
+          "activities": "Identifying the dominant type of intelligence of each student and arranging varied activities, such as music, sports, art, and motor skills. Providing time for exploration of individual interests and talents",
+          "goals": "Respecting and developing the unique potential of each child, and maximizing their abilities in various fields"
+        },
+        {
+          "title": "ALICI (Active Learning and Islamic Character Integrated) Learning Method Approach",
+          "approach": "Combining active learning with strengthening Islamic character.",
+          "activities": "Implementing activity-based learning (active learning) that involves students directly in the learning process, such as role-playing, simulations, and interactive discussions. Applying the habituation of Islamic values through daily activities, such as prayer together before and after studying, and moral studies every week",
+          "goals": "Increasing student active participation in learning and forming a strong Islamic character"
+        }
+      ]
+    },
+    "tahfidz": {
+      "badge": "Tahfidz",
+      "title": "Quran Tahfidz",
+      "desc": "This program is the core of education at SDTQ AL Wafi, which aims to develop students' ability to read, memorize, and understand the Al-Qur'an properly and correctly. This program includes various structured activities to ensure optimal student tahfidz development. The method used is Iqro' Ustmani",
+      "programs": [
+        {
+          "title": "Tasmi'",
+          "description": "Tasmi' is an activity where students recite their Al-Qur'an memorization in front of a teacher or examiner. This activity is carried out regularly to monitor the progress of student memorization and ensure good memorization quality"
+        },
+        {
+          "title": "Quran Halaqoh",
+          "description": "Quran Halaqoh is a group study session where students are guided by ustadz or ustadzah in reading and memorizing the Al-Qur'an"
+        },
+        {
+          "title": "Joint Examination with Masayikh",
+          "description": "This exam is a tahfidz evaluation carried out with Masayikh (scholars or professors) to assess the extent of students' memorization and understanding of the Al-Qur'an"
+        },
+        {
+          "title": "Monthly Murojaah",
+          "description": "Monthly Murojaah is an Al-Qur'an memorization revision activity carried out every month. The goal is to ensure that the memorization that has been learned remains strong and is not forgotten"
+        },
+        {
+          "title": "Tahfidz Camp",
+          "description": "Tahfidz Camp is an intensive program held in the form of camping or outdoor activities that focus on improving Al-Qur'an memorization"
+        }
+      ]
+    }
+  },
+  "smp": {
+    "header": {
+      "badge": "Education Program",
+      "title": "SMP Al Wafi",
+      "desc": "Islamic Boarding School - Forming a superior Muslim generation with Islamic character and global insight"
+    },
+    "characteristics": {
+      "badge": "Characteristics",
+      "title": "SMP Characteristics",
+      "intro": {
+        "p1": "To form an ideal character, one must integrate various important values. Religiosity based on the Quran and Sunnah becomes a strong moral foundation, while honesty, tolerance, and discipline support harmonious relationships.",
+        "p2": "Hard work, independence, and creativity are needed to achieve goals, while democratic attitudes and love for the country reflect a sense of togetherness and patriotism. Communicative ability facilitates effective interaction, and concern for the environment and social responsibility shows responsibility towards society.",
+        "p3_part1": "Good literacy strengthens understanding, and the",
+        "p3_bold": "SMART (Specific, Measurable, Achievable, Relevant, Time-bound)",
+        "p3_part2": "approach ensures clear and measurable goal achievement."
+      },
+      "list": [
+        "Religiosity based on Al Quran and As Sunnah",
+        "Honesty and integrity in every action",
+        "Tolerance and respect for differences",
+        "Discipline and responsibility",
+        "Hard work and dedication",
+        "Independence and self-confidence",
+        "Creativity and innovation",
+        "Democratic attitude and deliberation",
+        "Love for the homeland and patriotism",
+        "Effective communicative ability",
+        "Concern for the environment",
+        "Literacy and deep understanding"
+      ]
+    },
+    "vision": {
+      "badge": "Vision",
+      "title": "Vision of Al Wafi Islamic Boarding School SMP",
+      "desc": "\"Forming a Muslim generation that has high religious awareness and has a positive attitude towards globalization by following Prophet Muhammad Shallallahu Alaihi Wa'sallam, companions, & Ahlusunnah Scholars\""
+    },
+    "mission": {
+      "badge": "Mission",
+      "title": "Mission of Al Wafi Islamic Boarding School SMP",
+      "list": [
+        "Organizing quality education with international standards (world class) based on Al-Qur'an and Sunnah according to the understanding of salafusshalih",
+        "Organizing education based on noble character integrated into daily life",
+        "Producing students in noble interaction with the environment with leaderpreneurship principles",
+        "Forming student characters who excel in responding to global changes that occur based on Al-Qur'an and As-Sunnah according to the understanding of Salafusshalih",
+        "Having broad insight, sensitive to changes that occur",
+        "Building a responsible leadership spirit, trustworthy and caring for nature and the environment",
+        "Skills in solving problems, independent, creative and developing technology",
+        "Creating good communication with stakeholders at home and abroad",
+        "Having qualified graduates with integrity in accordance with the demands of the 21st century"
+      ]
+    },
+    "curriculum": {
+      "badge": "Curriculum",
+      "title": "Merdeka Curriculum",
+      "desc": "The Merdeka Curriculum is a curriculum with diverse intracurricular learning where content will be more optimal so that students have enough time to delve into concepts and strengthen competencies. Teachers have the flexibility to choose various teaching tools so that learning can be adapted to students' learning needs and interests.",
+      "features": {
+        "optimal": {
+          "title": "Optimal Learning",
+          "desc": "Diverse and in-depth learning content"
+        },
+        "flexible": {
+          "title": "Teacher Flexibility",
+          "desc": "Freedom to choose teaching tools"
+        },
+        "needs": {
+          "title": "Needs-Based",
+          "desc": "Adapted to students' interests"
+        }
+      }
+    }
+  },
+  "sma": {
+    "header": {
+      "badge": "Education Program",
+      "title": "SMA Al Wafi",
+      "desc": "Islamic Boarding School - Forming a superior Muslim generation with Islamic character and global insight"
+    },
+    "profile": {
+      "badge": "Profile",
+      "title": "SMA Profile",
+      "p1": "SMA Al Wafi Islamic Boarding School is a sunnah boarding school with A accreditation and equivalence from the Islamic University of Madinah. Managed by the Al Sudais Indonesia Foundation, this school has graduated six batches of alumni who have been successfully accepted at various state universities in Indonesia and abroad.",
+      "p2": "With a curriculum that integrates national education (Merdeka curriculum) and diniyah, as well as supporting facilities and character development programs, SMA Al Wafi Islamic Boarding School prepares students to excel in the academic world and live a global life based on Islamic values."
+    },
+    "vision": {
+      "badge": "Vision",
+      "title": "Vision of SMA Al Wafi Islamic Boarding School",
+      "desc": "\"Forming a Muslim generation that has high religious awareness and has a positive attitude towards globalization by following Prophet Muhammad PBUH, companions, & Ahlusunnah Scholars\""
+    },
+    "mission": {
+      "badge": "Mission",
+      "title": "Mission of SMA Al Wafi Islamic Boarding School",
+      "list": [
+        "Organizing quality education with international standards (world class) based on the Quran and Sunnah according to the understanding of salafussholih",
+        "Organizing education based on noble character integrated into daily life",
+        "Producing students in noble interaction with the environment with leaderpreneurship principles",
+        "Forming student characters who excel in responding to global changes that occur based on the Quran and Sunnah according to the understanding of salafus sholih",
+        "Having broad insight, sensitive to changes",
+        "Building a responsible leadership spirit, trustworthy and caring for nature and the environment",
+        "Skills in solving problems, independent, creative and developing technology and globalization"
+      ]
+    },
+    "excellence": {
+      "badge": "Excellence",
+      "title": "Advantages of SMA Al Wafi Islamic Boarding School",
+      "desc": "Featured programs that make SMA Al Wafi the best choice for high quality education",
+      "list": [
+        "Accredited A (Excellent) & Equivalence from UIM",
+        "Adiwiyata School Provincial Level towards National",
+        "Student Character Quality Improvement Program through Adab & Morals Class",
+        "Student Quality Improvement through Extracurriculars both Mandatory (Scouts, PMR, Martial Arts, Gardening, Culinary & Fashion) and Optional Extracurriculars",
+        "Global Insight Improvement Program for Students through Overseas Programs both at the Islamic University of Madinah and other Overseas Universities",
+        "Student Quality Improvement Program Through quality teaching and learning activities, Student Diagnostic Assessment, Student Interest and Talent Test, Academic and non-Academic Achievement Improvement, Remedial Program, Enrichment, and Reaching My Future Program (for Grade 10), Joint Tutoring Program",
+        "Teacher Quality Improvement through Teacher Supervision Programs and Teacher Trainings both by Balitbang, ILLC, and Training Programs from the Government",
+        "Arabic and English Language Improvement Program through Mandatory Arabic & English, TOEFL Preparation with the Language Team (Lughoh)",
+        "Assistance for Students entering State Universities, Favorite Private Universities and Overseas Universities Together with the Al Wafi BEKAL Bureau and Counseling Bureau"
+      ],
+      "summary": {
+        "accreditation": {
+          "title": "A Accreditation",
+          "desc": "Accredited A and UIM Equivalence"
+        },
+        "overseas": {
+          "title": "Overseas Program",
+          "desc": "Global insight and overseas study opportunities"
+        },
+        "bekal": {
+          "title": "BEKAL Bureau",
+          "desc": "Assistance entering favorite universities"
+        }
+      }
+    }
+  },
+  "overseas_program": {
+    "header": {
+      "badge": "Global Education",
+      "title": "Al Wafi Overseas Program",
+      "desc": "Global education program to broaden students' horizons through direct learning in countries with strong Islamic education traditions"
+    },
+    "vision": {
+      "title": "Overseas Vision",
+      "desc": "To become a bureau that facilitates preparation for entering higher education, career development, management of scholarships supporting outstanding students, and building a strong alumni network, to realize Al Wafi IBS as an international quality educational institution."
+    },
+    "mission": {
+      "title": "Overseas Mission",
+      "list": [
+        "To be an educational center providing deep understanding of the importance of Al-Quran as a source of knowledge and Arabic as a tool to understand it, and its application in daily life.",
+        "To be an institution that motivates students to study and master Arabic and Al-Quran with high spirit and enthusiasm.",
+        "To be a leading institution in improving the quality and skills of Arabic and other foreign languages for students in various aspects, including understanding, conversation, and reading, through the use of cutting-edge facilities and effective methods.",
+        "To be a leading educational center in improving the quality of students' Al-Quran recitation, with direct guidance from certified shaykhs in the Prophet's Mosque and huffaz supervisors.",
+        "To be an institution that provides direct experience to students in interacting with native Arabic speakers in Madinah Al-Munawwarah, Saudi Arabia, to deepen understanding of language and culture.",
+        "To be an institution that prepares a Muslim generation competent in Arabic and English sciences as future scholar candidates, and produces rabbani and qur'ani generations capable of being solutions for the ummah worldwide.",
+        "To be an educational institution focused on forming students' character with noble morals, having global insight, and able to compete in the international arena, through collaboration and partnerships with educational institutions, organizations, and international communities, as well as foreign language skills development."
+      ]
+    },
+    "cards": {
+      "uim": {
+        "title": "Overseas University UIM & UMRAH",
+        "desc": "\"Overseas AL WAFI 2023\" includes Arabic Language Course at the Islamic University of Madinah (UIM), Al-Quran memorization circles, and retracing the prophetic biography and Islamic history in the city of Madinah Al-Munawwarah, Saudi Arabia.",
+        "highlight": "This activity is designed to deepen students' understanding of Arabic and Al-Quran, and provide direct experience with shaykhs in knowing the traces of Islamic history in the holy land."
+      },
+      "malaysia": {
+        "title": "Overseas Malaysia",
+        "desc": "The \"Malaysia Overseas\" program is a foreign language learning program held at world-class universities in Malaysia. This program focuses on improving English skills through activities such as EFL Vocab, IELTS/TOEFL Listening, IELTS/TOEFL Reading, and mastering other IELTS/TOEFL skills.",
+        "activities": [
+          "Public Speaking on Social Media",
+          "Kahoot Games (guess sentences)",
+          "Language Reverse Game (Mixed Signals)",
+          "Campus tour & city tour",
+          "Educational field trip"
+        ]
+      }
+    },
+    "cta": {
+      "badge": "Global Experience",
+      "title": "Realize Your Global Dreams",
+      "desc": "Join the Al Wafi overseas program for an unforgettable educational experience",
+      "stats": {
+        "countries": "Destination Countries",
+        "partners": "University Partners",
+        "alumni": "Overseas Alumni"
+      }
+    }
+  },
+  "biro_bekal": {
+    "header": {
+      "badge": "Alumni & Career Services",
+      "title": "Al Wafi BEKAL Bureau",
+      "desc": "Division handling higher education preparation and assistance, scholarship management, and alumni relations of Al Wafi Islamic Boarding School"
+    },
+    "intro": {
+      "title": "About BEKAL Bureau",
+      "p1": "The BEKAL Bureau is a division that handles matters related to preparation and assistance for entering higher education and scholarship management, as well as alumni relations of",
+      "school_name": "Al Wafi Islamic Boarding School",
+      "p2": "Structurally under the direct leadership of the Development Director of",
+      "p2_end": "namely Ustadz Ryan Hidayat, Lc.",
+      "p3": "With this division, it can be more optimal and focused and more professional in handling matters related to student higher education preparation and assistance and scholarship and alumni management,",
+      "p3_end": ", so that it can support this Boarding School Institution in realizing its vision and mission."
+    },
+    "vision": {
+      "title": "BEKAL Bureau Vision & Mission",
+      "desc": "To be a bureau that can facilitate preparation for entering higher education, career development, scholarship management supporting outstanding students, and building a strong alumni network, to realize Al Wafi IBS as an international quality educational institution."
+    },
+    "pillars": {
+      "mentoring": {
+        "title": "University Mentoring",
+        "list": [
+          "Identifying and Supporting Talent",
+          "Providing academic reinforcement",
+          "Developing Soft Skills and Self-Development Strategies",
+          "Facilitating Access and Information",
+          "Providing Career Consultation and Education Pathway Explanation",
+          "Building Partnerships with Educational Institutions and Professionals",
+          "Encouraging Mental Development and Emotional Health",
+          "Measuring and Evaluating Program Performance Periodically"
+        ]
+      },
+      "scholarship": {
+        "title": "Scholarship Program",
+        "list": [
+          "Maintaining transparency and Accountability",
+          "Developing and maintaining various scholarship programs",
+          "Managing scholarship administration efficiently",
+          "Monitoring scholarship recipient progress and evaluating",
+          "Updating scholarship programs to improve service effectiveness and reach"
+        ]
+      },
+      "alumni": {
+        "title": "Alumni Program",
+        "list": [
+          "Building and strengthening an active and connected alumni community through various platforms and activities.",
+          "Building and maintaining a solid alumni network to provide support, mentoring, and career opportunities for graduates.",
+          "Organizing alumni activities that facilitate the exchange of experiences and knowledge between graduates or students with professionals in their fields.",
+          "Organizing networking events, reunions, and regular meetings to facilitate interaction and collaboration between alumni"
+        ]
+      }
+    },
+    "global_program": {
+      "title": "Global Program Overview",
+      "desc": "The general overview of the Bekal bureau program is as follows",
+      "list": [
+        {
+          "title": "Career Orientation for Students",
+          "description": "In this program there are various agendas given to students aimed at providing orientation or an overview and inspiration about an existing profession as well as providing references for subject majors that will be taken relevant to the field to be pursued in the future. These programs also involve Al Wafi Parents and Alumni to participate in activities within this program"
+        },
+        {
+          "title": "Academic and Language Strengthening for Students",
+          "description": "In terms of academics, students are given academic ability and Language strengthening as preparation for entering higher education, such as tutoring (bimbel) for preparation for State Universities (PTN) and Universities in the Middle East and LIPIA. In terms of Language, English programs such as IELTS/TOEFL Preparation and Arabic Language Strengthening by Shaykhs with Doctoral degrees from Sudan are held"
+        },
+        {
+          "title": "Information on PTN, Overseas, and Middle East",
+          "description": "In this program students are facilitated and given very clear information regarding domestic Universities (Favorite State and Private Universities), Overseas Universities (Asia, Australia, Europe, America, Africa), and Universities in the Middle East by holding campus seminars at home and abroad. In addition, students are also invited to visit surrounding campuses, campuses in Malaysia and Saudi Arabia (in the Study Overseas program)."
+        },
+        {
+          "title": "Preparation and Handling of Registration Documents",
+          "description": "In this program or agenda, in addition to the main documents needed for preparation and registration for entering Universities both at home and abroad, supporting documents will be helped to prepare such as Tazkiah or Recommendation Letter, document suitability verification, Document Translation, as well as Account creation and Collective Registration"
+        },
+        {
+          "title": "Mapping of Student Interests and Talents",
+          "description": "In these programs students are mapped both in terms of interests, talents or academic and Language abilities, as well as future majors and University choices. Agendas in this program are also supported by the Psychology / Counseling Guidance division and the Al Wafi International Affair Division"
+        },
+        {
+          "title": "Partnership with Higher Education",
+          "description": "The importance of cooperation with higher education encourages Al Wafi to establish cooperation with many universities, including Syarif Hidayatullah State Islamic University Jakarta, Agrianita Bogor Agricultural Institute, National University of Malaysia, etc."
+        }
+      ]
+    },
+    "partners": {
+      "title": "University Partners",
+      "desc": "Strategic partnerships with leading domestic and foreign universities"
+    },
+    "cta": {
+      "badge": "Alumni Success",
+      "title": "Al Wafi Alumni Distribution",
+      "desc": "Alumni who successfully entered renowned universities at home and abroad",
+      "stats": {
+        "total": "Total Alumni",
+        "ptn": "Top State Unis",
+        "overseas": "Overseas Unis",
+        "scholarship": "Scholarship Programs"
+      }
+    }
+  }
+}

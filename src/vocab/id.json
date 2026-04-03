@@ -1,0 +1,785 @@
+{
+  "header": {
+    "topbar": {
+      "location": "Kampus A: Bogor | Kampus B: Depok",
+      "follow": "Ikuti Kami:"
+    },
+    "brand": {
+      "title": "Al Wafi International",
+      "subtitle": "Islamic Boarding School"
+    },
+    "menu": {
+      "home": "Beranda",
+      "about": {
+        "main": "Tentang",
+        "yayasan": "Yayasan",
+        "dakwah": "Dakwah & Sosial",
+        "upz": "UPZ",
+        "profil": "Profil Sekolah"
+      },
+      "program": {
+        "main": "Program",
+        "sdtq": "SDTQ Al Wafi",
+        "smp": "SMP Al Wafi",
+        "sma": "SMA Al Wafi",
+        "overseas": "Program Overseas",
+        "lainnya": "Program Lainnya"
+      },
+      "alumni": "Alumni",
+      "bekal": "BEKAL",
+      "contact": "Kontak"
+    },
+    "cta": "Daftar Sekarang"
+  },
+  "hero": {
+    "badge": "Pesantren Sunnah Internasional",
+    "title": "Al Wafi Islamic Boarding School",
+    "desc": {
+      "part1": "Pesantren Sunnah Internasional dengan",
+      "highlight": "Akreditasi Unggul",
+      "part2": "mengintegrasikan nilai Al-Quran dan Sunnah dengan teknologi modern untuk membentuk generasi unggul."
+    },
+    "cta": {
+      "register": "Daftar Santri Baru",
+      "learn": "Pelajari Lebih Lanjut"
+    },
+    "stats": {
+      "alumni": "Alumni Global",
+      "teachers": "Pengajar Expert",
+      "accreditation": "Akreditasi Unggul"
+    },
+    "cards": {
+      "uim_title": "Muadalah UIM",
+      "uim_sub": "Universitas Islam Madinah",
+      "campus_title": "2 Kampus",
+      "campus_sub": "Bogor & Depok"
+    }
+  },
+  "about": {
+    "header": {
+      "badge": "Tentang Kami",
+      "title": "Al Wafi Islamic Boarding School",
+      "desc": "Pesantren Sunnah Internasional yang memahami bahwa setiap anak adalah pandai dan memiliki potensi kecerdasan berbeda-beda"
+    },
+    "vision_title": "Visi",
+    "mission_title": "Misi",
+    "content": {
+      "vision": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah",
+      "mission": [
+        "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Al-Quran dan Sunnah sesuai dengan pemahaman Salafusshalih",
+        "Menyelenggarakan pendidkan berbasis akhlaqul kareemah yang terintegrasi dalam kehidupan sehari-hari",
+        "Mencetak santri dalam bermualamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
+        "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al-Quran dan Sunnah sesuai dengan pemahaman Salaful Ummah"
+      ]
+    },
+    "features_list": [
+      {
+        "title": "Pengajar Native",
+        "subtitle": "Mendampingi Program Bahasa Arab, Alquran Dan Diniyah",
+        "description": "Pengajar dari Timur Tengah dengan sanad dalam ilmu Al Quran dan Diniyah, mendampingi program bahasa Arab, Al Quran, dan Diniyah",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=masyaikh.png"
+      },
+      {
+        "title": "Alumni Terbaik",
+        "subtitle": "Alumni Yang Diterima Di PTN Dan Timur Tengah",
+        "description": "Sebaran alumni Pesantren Al Wafi Islamic Boarding School diterima di berbagai perguruan tinggi negeri, baik di dalam negeri maupun luar negeri",
+        "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
+      }
+    ],
+    "accreditation": {
+      "title": "Akreditasi & Pengakuan",
+      "subtitle": "Kualitas pendidikan terbaik dengan pengakuan resmi dari berbagai lembaga",
+      "label": "Akreditasi",
+      "smp": "SMP IBS",
+      "val_smp": "Unggul",
+      "sma": "SMA IBS",
+      "val_sma": "Unggul",
+      "muadalah": "Muadalah",
+      "val_muadalah": "Universitas Islam Madinah"
+    }
+  },
+  "programs": {
+    "header": {
+      "badge": "Program Pendidikan",
+      "title": "Program Pendidikan Unggulan",
+      "desc": "Pendidikan berkualitas dengan metode Active Learning & Islamic Character Integrated untuk membentuk generasi unggul"
+    },
+    "list": [
+      {
+        "id": "sdtq",
+        "name": "SDTQ Al Wafi Al Islamy",
+        "description": "Pengembangan metode Active Learning & Islamic Character Integrated dengan model pembelajaran Talaqqi, Berkisah, dan Diskusi Projek."
+      },
+      {
+        "id": "smp",
+        "name": "SMP Al Wafi",
+        "description": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi & memiliki sikap positif terhadap globalisasi",
+        "variants": [
+          "Putra",
+          "Putri"
+        ]
+      },
+      {
+        "id": "sma",
+        "name": "SMA Al Wafi",
+        "description": "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi & memiliki sikap positif terhadap globalisasi",
+        "variants": [
+          "Putra",
+          "Putri"
+        ]
+      },
+      {
+        "id": "overseas",
+        "name": "Study Overseas UIM + Umrah",
+        "description": "Program Peningkatan Wawasan Global Santri - belajar bersama masyaikh di Universitas Islam Madinah"
+      }
+    ],
+    "overseas": {
+      "badge": "Program Unggulan",
+      "title": "Study Overseas UIM + Umrah",
+      "subtitle": "Program Peningkatan Wawasan Global Santri",
+      "desc": "Belajar bersama masyaikh di Universitas Islam Madinah dengan pengalaman spiritual melalui program Umrah yang akan membentuk karakter santri yang unggul dan berkarakter global.",
+      "features": {
+        "uim": "Universitas Islam Madinah",
+        "umrah": "Program Umrah",
+        "guide": "Bimbingan Masyaikh"
+      }
+    },
+    "methods": {
+      "active": {
+        "title": "Active Learning",
+        "desc": "Metode pembelajaran aktif yang melibatkan siswa secara langsung dalam proses belajar mengajar"
+      },
+      "islamic": {
+        "title": "Islamic Character",
+        "desc": "Pembentukan karakter Islami yang terintegrasi dalam setiap aspek pembelajaran dan kehidupan"
+      },
+      "global": {
+        "title": "Global Perspective",
+        "desc": "Wawasan global dengan tetap berpegang teguh pada nilai-nilai Islam dan tradisi salafusshalih"
+      }
+    }
+  },
+  "alumni": {
+    "header": {
+      "badge": "Alumni Terbaik",
+      "title": "Prestasi Alumni Global",
+      "desc": "Alumni Pesantren Al Wafi Islamic Boarding School tersebar di berbagai perguruan tinggi ternama dunia, membuktikan kualitas pendidikan yang unggul dan berkarakter"
+    },
+    "stats": {
+      "global": "Alumni Global",
+      "university": "Universitas Ternama",
+      "country": "Negara Tujuan",
+      "acceptance": "Diterima PTN/PTS"
+    },
+    "domestic": {
+      "title": "Perguruan Tinggi Dalam Negeri",
+      "desc": "Alumni diterima di universitas terbaik Indonesia"
+    },
+    "international": {
+      "title": "Perguruan Tinggi Luar Negeri",
+      "desc": "Alumni melanjutkan studi di universitas internasional"
+    },
+    "success": {
+      "badge": "Prestasi Membanggakan",
+      "title": "Jejak Kesuksesan Alumni",
+      "desc": "Alumni Al Wafi tidak hanya unggul secara akademik, tetapi juga mempertahankan nilai-nilai Islam dalam setiap langkah karir dan kehidupan mereka.",
+      "rate_label": "Tingkat Penerimaan",
+      "list": [
+        "Alumni diterima di universitas top dunia dengan beasiswa penuh",
+        "Banyak alumni melanjutkan ke jenjang S2 dan S3 di luar negeri",
+        "Alumni tersebar di berbagai bidang profesi dan berwirausaha sukses",
+        "Tetap menjaga nilai-nilai Islam dalam karir dan kehidupan sehari-hari"
+      ]
+    }
+  },
+  "news": {
+    "header": {
+      "badge": "Berita Terbaru",
+      "title": "6 Berita Terbaru Al Wafi",
+      "desc": "Ikuti perkembangan terbaru kegiatan dan prestasi siswa Al Wafi Islamic Boarding School"
+    },
+    "status": {
+      "loading": "Memuat berita terbaru...",
+      "error_title": "Gagal Memuat Berita",
+      "error_desc": "Silakan coba lagi nanti atau kunjungi website resmi kami"
+    },
+    "card": {
+      "tag": "Berita",
+      "read_more": "Baca Selengkapnya"
+    },
+    "cta": "Lihat Semua Berita"
+  },
+  "contact": {
+    "header": {
+      "badge": "Hubungi Kami",
+      "title": "Mari Bergabung Bersama Kami",
+      "desc": "Siap bergabung dengan Al Wafi Islamic Boarding School? Hubungi kami untuk informasi lebih lanjut dan mulai perjalanan pendidikan yang berkualitas"
+    },
+    "cta": {
+      "badge": "Pendaftaran Dibuka",
+      "title_start": "Pendaftaran Tahun Ajaran",
+      "title_end": "Sudah Dibuka!",
+      "desc": "Daftarkan putra-putri kesayangan Anda sekarang juga dan berikan mereka pendidikan terbaik yang mengintegrasikan nilai-nilai Islam dengan standar internasional",
+      "btn_online": "Daftar Online Sekarang",
+      "btn_info": "Info Pendaftaran"
+    },
+    "campuses": [
+      {
+        "name": "Kampus A",
+        "address": "Jln. Raya Arco, Ragamukti Kelurahan Citayam, Tajurhalang, Bogor, 16320",
+        "mapUrl": "https://maps.app.goo.gl/ETgWiuDYseWUeARN7"
+      },
+      {
+        "name": "Kampus B",
+        "address": "Jln. Raya Pengasinan Kelurahan Pengasinan, Sawangan, Kota Depok, 16518",
+        "mapUrl": "https://maps.app.goo.gl/YBmMscAx3CgoQJZu6"
+      }
+    ],
+    "locations": {
+      "title": "Lokasi Kami",
+      "desc": "Temukan lokasi Al Wafi Islamic Boarding School",
+      "view_map": "Lihat di Google Maps",
+      "map_hint": "Klik peta untuk navigasi"
+    },
+    "methods": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "website": "Website"
+    },
+    "social": {
+      "title": "Ikuti Media Sosial Kami",
+      "desc": "Dapatkan update terbaru dan informasi menarik dari Al Wafi"
+    }
+  },
+  "foundation": {
+    "header": {
+      "badge": "Tentang Yayasan",
+      "title": "Yayasan Al Sudais Indonesia",
+      "desc": "Al Wafi Islamic Boarding School - Pesantren Sunnah Internasional dengan konsep Holistik, Harmoni, dan Exemplary"
+    },
+    "intro": {
+      "title": "Pendahuluan",
+      "p1": "Setiap anak adalah pandai dan memiliki potensi kecerdasan berbeda beda tergantung bagaimana lingkungan pendidikan bisa memunculkan kecerdasan setiap anak. Pesantren Al Wafi Islamic Boarding School didirikan untuk memberikan pendampingan kepada santri sesuai dengan minat, bakat dan kecerdasan santri yang dilandasi nilai nilai Al-Quran dan Sunnah.",
+      "p2": "Orang tua menginginkan pendidikan yang terbaik bagi putra-putrinya dan kami di Pesantren Al Wafi Islamic Boarding School merupakan pesantren sunnah bertaraf internasional siap untuk membentuk generasi yang memiliki akhlaqul karimah.",
+      "p3": "Pesantren Al Wafi hadir dengan harapan dapat memberikan pendidikan secara menyeluruh (holistic) dan selaras (harmoni) dan memberikan model atau contoh dengan mengintegrasikan berbagai kurikulum baik kurikulum diniah, kurikulum nasional Al Quran dan sunnah, sains dan teknologi serta muatan lifeskill.",
+      "p4": "Dengan sistem pesantren (islamic boarding) dan didukung staf pengajar yang professional, berdedikasi tinggi, pengajar asing (native), alumni dari Timur Tengah dan pengajar dari lulusan PTN akan mengantarkan santri santri untuk mendapatkan pendidikan di kampus yang diinginkan.",
+      "p5": "Kami di Pesantren Al Wafi IBS menyakini bahwa pendidikan terbaik tidak akan bisa terwujud tanpa dukungan orang tua dan keluarga santri. Oleh karena itu, jaringan komunikasi dan layanan informasi santri menjadi salah satu prioritas kami."
+    },
+    "history": {
+      "title": "Sejarah Pesantren Al Wafi",
+      "p1": "Pesantren Al Wafi hadir untuk memenuhi kebutuhan masyarakat yang menginginkan pendidikan islam modern bertaraf internasional. Pesantren Al Wafi dibangun di atas tanah seluas 3.405 M² dengan persil nomer 23.D.I Kohir No. 964, surat ukur tanah Gs. No. 1186/1977.",
+      "highlight_part1": "Peletakan batu pertama pembangunan SMP dan SMA Al Wafi Islamic Boarding School dilakukan oleh Gubernur Jawa Barat Bapak Ahmad Heryawan pada Hari Jumat tanggal",
+      "highlight_date": "03 Februari tahun 2017",
+      "p2": "Tanah tempat didirikannya Al Wafi ini adalah merupakan tanah wakaf yang diserahkan oleh Ibu Lusmiati Loebis yang lahir di Solo. 06 Januari 1939 dengan akta ikrar wakaf nomer KK.10.01/39/BA.03/82/XI/2011 di depan Kepala Kantor Urusan Agama Kecamatan Tajurhalang.",
+      "p3_part1": "SMP Al Wafi adalah lembaga pendidikan yang berada dibawah naungan",
+      "p3_part2": "yang didirikan pada tanggal",
+      "p3_date": "21 Desember tahun 2016",
+      "p3_part3": "dengan akta pendirian no.12 di depan Notaris Eva Junaida, Sarjana Hukum.",
+      "goals_title": "Tujuan Pendirian:",
+      "goals": [
+        "Mencerdaskan anak bangsa, menguatkan jiwa nasionalis dan patriotisme, dan dapat mengokohkan pondasi agama generasi muda sesuai dengan Al Qur'an dan Sunnah",
+        "Mengembangkan pendidikan bertaraf internasional dari segi kurikulum, tenaga pendidik professional dari dalam dan luar negeri & sarana prasarana modern",
+        "Memberikan dan berkontribusi kepada masyarakat sekitar, baik dalam kesejahteraan ekonomi maupun peningkatan kerohanian"
+      ],
+      "p4_part1": "Sambutan baik masyarakat dengan meningkatnya jumlah santri dan kebutuhan masyarakat tentang pendidikan berbasis pesantren modern, Yayasan Al Sudais Indonesia sampai saat ini menyelenggarakan pendidikan dari"
+    },
+    "vision": {
+      "title": "Visi Al Wafi",
+      "desc": "\"Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu alaihi wasallam, sahabat, dan Ulama ahlusunnah\""
+    },
+    "mission": {
+      "title": "Misi Al Wafi",
+      "list": [
+        "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Alquran dan sunnah sesuai dengan pemahaman ulama ahlu sunnah.",
+        "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari hari.",
+        "Mencetak peserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
+        "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al Quran dan Assunnah sesuai pemahaman ulama ahlu sunnah"
+      ]
+    },
+    "structure": {
+      "title": "Struktur Organisasi Yayasan"
+    },
+    "values": {
+      "badge": "Nilai-Nilai Al Wafi",
+      "title": "Value Al Wafi",
+      "desc": "Nilai-nilai fundamental yang menjadi landasan pendidikan di Al Wafi",
+      "list": [
+        { "letter": "A", "word": "Amanah", "description": "Dapat dipercaya dalam menjalankan tugas" },
+        { "letter": "L", "word": "Lilah", "description": "Mengharap ridha Allah dalam setiap amal" },
+        { "letter": "W", "word": "Wafi", "description": "Menepati janji dan komitmen" },
+        { "letter": "A", "word": "Akhlaq", "description": "Berakhlak mulia dalam kehidupan" },
+        { "letter": "F", "word": "Fathonah", "description": "Cerdas dan bijaksana dalam bertindak" },
+        { "letter": "I", "word": "International mindset", "description": "Berwawasan global dengan akar Islam" }
+      ]
+    }
+  },
+  "dakwah": {
+    "header": {
+      "badge": "Tentang Kami",
+      "title": "Dakwah & Sosial",
+      "desc": "Lembaga Dakwah Al Wafi - Penyebaran dan pengajaran ajaran Islam untuk meningkatkan pemahaman dan praktik agama di masyarakat"
+    },
+    "intro": {
+      "text": "Lembaga Dakwah Al Wafi adalah organisasi yang berfokus pada penyebaran dan pengajaran ajaran Islam, serta pelaksanaan kegiatan dakwah untuk meningkatkan pemahaman dan praktik agama di kalangan masyarakat. Lembaga ini bertujuan untuk memperkenalkan dan menguatkan ajaran Islam sesuai dengan prinsip-prinsip Al-Qur'an dan Sunnah, serta menjawab berbagai pertanyaan dan tantangan yang dihadapi oleh umat Islam dan masyarakat umum."
+    },
+    "vision": {
+      "title": "Visi Dakwah Al Wafi IBS",
+      "desc": "Mewujudkan masyarakat yang berpengetahuan, dan berkomitmen terhadap ajaran Islam yang murni serta berbekal dalam menghadapi globalisasi."
+    },
+    "mission": {
+      "title": "Misi Dakwah Al Wafi IBS",
+      "list": [
+        "Menyelenggarakan pendalaman ilmu da'i dan keterampilan dakwah melalui pelatihan, studi lanjutan, dan konsultasi dengan ulama",
+        "Membuat kurikulum dalam dakwah yang mengajak kepada Al Quran dan Sunnah sesuai pemahaman para salafushalih",
+        "Menjadi wadah berhimpunnya da'i",
+        "Memanfaatkan teknologi digital, media sosial, dan platform online untuk menyebarluaskan ajaran Islam secara luas dan efektif",
+        "Mendirikan dan mendukung lembaga-lembaga pendidikan Islam, seperti pesantren, madrasah, dan pusat studi Islam, untuk memastikan akses yang lebih luas terhadap pendidikan agama berkualitas"
+      ]
+    },
+    "internal": {
+      "title": "Dakwah Internal Al Wafi",
+      "desc_part1": "Dalam konteks pesantren Al Wafi, peran dakwah memiliki kontribusi signifikan terhadap pengembangan spiritual dan intelektual para santri serta masyarakat sekitar. Salah satu bentuk kegiatan dakwah internal yang dijalankan adalah",
+      "desc_highlight": "kajian rutin Kamis Bada Maghrib",
+      "desc_part2": "bersama Ustadz Ali. Berikut adalah penjelasan mengenai peran dan manfaat dari kegiatan ini:",
+      "knowledge": {
+        "title": "Penguatan Ilmu Agama",
+        "card1_title": "Kajian Rutin",
+        "card1_desc": "Kegiatan kajian rutin Kamis Bada Maghrib merupakan waktu khusus untuk membahas topik-topik agama secara mendalam. Ini membantu santri memperdalam pengetahuan mereka tentang ajaran Islam, baik dari segi aqidah, fiqh, akhlak, maupun tafsir.",
+        "card2_title": "Pembelajaran Berkelanjutan",
+        "card2_desc": "Dengan adanya kajian rutin, santri dan masyarakat dapat terus belajar dan memperbaharui pemahaman mereka tentang ajaran Islam. Ini juga memperkuat fondasi keagamaan mereka."
+      },
+      "ethics": {
+        "title": "Penanaman Akhlak dan Etika",
+        "card1_title": "Penyampaian Akhlak",
+        "card1_desc": "Kajian ini tidak hanya fokus pada aspek ilmiah tetapi juga pada penanaman akhlak dan etika Islam. Ustadz Ali akan memberikan penjelasan tentang bagaimana menerapkan nilai-nilai Islam dalam kehidupan sehari-hari.",
+        "card2_title": "Contoh Teladan",
+        "card2_desc": "Ustadz Ali berperan sebagai teladan dalam pengamalan akhlak dan etika Islam, sehingga santri dapat mencontoh sikap dan perilaku yang baik."
+      }
+    },
+    "study": {
+      "badge": "Islamic Study",
+      "title": "Kajian Al Wafi",
+      "desc_part1": "Kajian-kajian yang dilaksanakan di pesantren Al Wafi mencakup topik-topik fundamental dalam aqidah, asas beragama, manhaj, dan adab beinteraksi. Pembahasan ini dilakukan dengan menggunakan kitab-kitab yang kredibel dan bermanfaat, seperti",
+      "book1": "\"4 Qaidah Penting dalam Islam\"",
+      "book2": "\"3 Asas Beragama\"",
+      "book3": "\"Ushul Sunnah\"",
+      "book3_author": "oleh Imam Ahmad",
+      "book4": "\"Al-Mandhumah Al-Mimiyyah\"",
+      "conjunction": "dan",
+      "goals_title": "Tujuan Kajian:",
+      "goals_list": [
+        "Memperkuat pemahaman santri tentang ajaran Islam",
+        "Meningkatkan kualitas ibadah dan akhlak santri baik kepada orang tua, guru maupun rekan sebayanya",
+        "Memberikan dasar yang kokoh dalam beragama"
+      ]
+    }
+  },
+  "upz": {
+    "header": {
+      "badge": "Tentang Kami",
+      "title": "Unit Pelayanan Zakat",
+      "desc": "UPZ Al Wafi - Lembaga filantropi Islam yang mengemban tanggung jawab sebagai pengelola zakat di bawah pengawasan BAZNAS Kota Depok"
+    },
+    "history": {
+      "title": "Sejarah Singkat",
+      "p1_part1": "Unit Pelayanan Zakat Al Wafi",
+      "p1_part2": "adalah lembaga yang mengemban tanggung jawab sebagai pengelola zakat dibawah pengawasan BAZNAS Kota Depok yang dirintis pada bulan Muharram 1446 H / Agustus 2024.",
+      "p2": "UPZ Al Wafi lahir dari kesadaran akan besarnya potensi ZISWAF yang dimiliki oleh keluarga besar Yayasan Al Wafi beserta mitranya. Melihat potensi itu, K.H. Dr. Ali Saman Hasan, Lc., LL.B., MA., selaku direktur Yayasan memprakarsai berdirinya UPZ Al Wafi sebagai wujud komitmen dalam mengelola dan memberdayakan potensi zakat, infak, sedekah, dan wakaf untuk kemaslahatan umat."
+    },
+    "programs": {
+      "title": "Pilar Program",
+      "desc": "UPZ Al Wafi bernaung dibawah Yayasan Al-Sudais Indonesia, berkomitmen serta berfokus pada enam pilar program yang dirancang untuk membangun kemandirian umat. Ke-enam pilar program ini diantaranya:",
+      "list": [
+        { "title": "Al Wafi Ta'awun", "description": "(Pembangunan - Wakaf)" },
+        { "title": "Al Wafi Tasqif", "description": "(Program Pendidikan)" },
+        { "title": "Al Wafi Tafaquh", "description": "(Program Dakwah)" },
+        { "title": "Al Wafi Tabarru'", "description": "(Program Kemanusiaan)" },
+        { "title": "Al Wafi Ta'atuf", "description": "(Program Sosial)" },
+        { "title": "Al Wafi Tadawul", "description": "(Program Ekonomi)" }
+      ]
+    },
+    "vision": {
+      "title": "Visi Unit Pelayanan Zakat",
+      "desc": "Mewujudkan lembaga filantropi Islam internasional yang profesional dan terpercaya dalam mengelola dana sosial Islam untuk pemberdayaan masyarakat."
+    },
+    "mission": {
+      "title": "Misi Unit Pelayanan Zakat",
+      "list": [
+        "Mengembangkan potensi manfaat ZIS dan CSR secara maksimal dengan program strategis",
+        "Berkolaborasi bersama mitra dalam negri maupun luar negri dan berperan aktif dalam peningkatan kualitas lembaga pengelola zakat",
+        "Melaksanakan kebijakan tata kelola zakat, infak, sedekah, dan CSR sesuai kaidah Syariah dan Regulasi NKRI"
+      ]
+    },
+    "cta": {
+      "badge": "Unit Pelayanan Zakat",
+      "title": "Bersama Membangun Kemandirian Umat",
+      "desc": "UPZ Al Wafi berkomitmen mengelola dan memberdayakan potensi zakat, infak, sedekah, dan wakaf untuk kemaslahatan umat dengan transparansi dan profesionalisme."
+    }
+  },
+  "sdtq": {
+    "header": {
+      "badge": "Program Pendidikan",
+      "title": "SDTQ Al Wafi",
+      "desc": "Sekolah Dasar Tahfidz Qur'an Al Wafi - Sekolah dasar sunnah terakreditasi A dengan kurikulum holistik dan penguatan nilai-nilai Islam"
+    },
+    "intro": {
+      "p1": "SDTQ AL Wafi (Sekolah Dasar Tahfidz Qur'an Al Wafi) adalah sekolah dasar sunnah yang berada di bawah naungan Yayasan Bina Wafi Indonesia. Terletak di Depok, sekolah ini telah terakreditasi A oleh Dinas Pendidikan Kota Depok.",
+      "p2": "SDTQ AL Wafi menggunakan kurikulum Dinas Pendidikan, Diniyah, dan Al Qur'an, serta memberikan penguatan dalam bahasa Arab dan Inggris. Sekolah ini juga menanamkan nilai-nilai Islam sesuai dengan ajaran Salafus Sholih, menciptakan lingkungan belajar yang holistik dan berorientasi pada nilai-nilai Islami."
+    },
+    "excellence": {
+      "badge": "Excellence Program",
+      "title": "Program Unggulan"
+    },
+    "teaching": {
+      "badge": "Learning Concept",
+      "title": "Konsep Pengajaran",
+      "labels": {
+        "approach": "Pendekatan:",
+        "activities": "Aktivitas:",
+        "goals": "Tujuan:"
+      },
+      "concepts": [
+        {
+          "title": "Kolaborasi dan Komunikasi",
+          "approach": "Membangun lingkungan yang mendukung kerja sama antar siswa melalui tugas kelompok, diskusi kelas, dan proyek kolaboratif.",
+          "activities": "Mengadakan permainan edukatif yang memerlukan kerja sama, seperti puzzle kelompok, dan lomba cerdas cermat. Selain itu, menggunakan teknologi seperti forum diskusi online",
+          "goals": "Mengembangkan keterampilan sosial dan komunikasi yang efektif, serta mengajarkan pentingnya saling membantu dan mendukung"
+        },
+        {
+          "title": "Akhlaq dan Kemandirian",
+          "approach": "Menanamkan nilai-nilai Islami dan etika melalui teladan dan pembelajaran langsung",
+          "activities": "Melaksanakan kegiatan harian seperti salat berjamaah, membaca hadits, dan kisah teladan Nabi Muhammad Shallallahu 'Alaihi Wasallam. Memberikan tanggung jawab kecil kepada siswa, seperti menjaga kebersihan kelas dan tugas piket",
+          "goals": "Membentuk karakter siswa yang berakhlak mulia dan mandiri, serta mampu bertanggung jawab atas tindakan mereka"
+        },
+        {
+          "title": "Love of Learning",
+          "approach": "Menciptakan lingkungan belajar yang menyenangkan dan menumbuhkan rasa ingin tahu.",
+          "activities": "Menggunakan metode pembelajaran berbasis proyek dan eksperimen sains sederhana. Memanfaatkan perpustakaan sekolah dan sumber belajar multimedia",
+          "goals": "Menanamkan kecintaan pada belajar dan eksplorasi pengetahuan, serta mendorong siswa untuk terus belajar sepanjang hidup"
+        },
+        {
+          "title": "Setiap Anak Memiliki Kecerdasan Berbeda dan Unik",
+          "approach": "Menggunakan pendekatan pembelajaran yang sesuai dengan multiple intelligences (kecerdasan majemuk) Howard Gardner",
+          "activities": "Mengidentifikasi jenis kecerdasan dominan setiap siswa dan menyusun kegiatan yang bervariasi, seperti musik, olahraga, seni, dan keterampilan motorik. Menyediakan waktu untuk eksplorasi minat dan bakat individual",
+          "goals": "Menghargai dan mengembangkan potensi unik setiap anak, serta memaksimalkan kemampuan mereka dalam berbagai bidang"
+        },
+        {
+          "title": "Pendekatan Metode Belajar ALICI (Active Learning and Islamic Character Integrated)",
+          "approach": "Menggabungkan pembelajaran aktif dengan penguatan karakter Islami.",
+          "activities": "Mengimplementasikan pembelajaran berbasis aktivitas (active learning) yang melibatkan siswa secara langsung dalam proses belajar, seperti role-playing, simulasi, dan diskusi interaktif. Menerapkan pembiasaan nilai-nilai Islami melalui aktivitas harian, seperti doa bersama sebelum dan sesudah belajar, serta kajian akhlak setiap pekan",
+          "goals": "Meningkatkan partisipasi aktif siswa dalam pembelajaran dan membentuk karakter Islami yang kokoh"
+        }
+      ]
+    },
+    "tahfidz": {
+      "badge": "Tahfidz",
+      "title": "Tahfidz Quran",
+      "desc": "Program ini adalah inti dari pendidikan di SDTQ AL Wafi, yang bertujuan untuk mengembangkan kemampuan siswa dalam membaca, menghafal, dan memahami Al-Qur'an dengan baik dan benar. Program ini mencakup berbagai kegiatan yang terstruktur untuk memastikan perkembangan tahfidz siswa secara optimal. Metode yang digunakan Iqro' Ustmani",
+      "programs": [
+        {
+          "title": "Tasmi'",
+          "description": "Tasmi' adalah kegiatan di mana siswa menyetorkan hafalan Al-Qur'an mereka di depan guru atau penguji. Kegiatan ini dilakukan secara rutin untuk memantau kemajuan hafalan siswa dan memastikan kualitas hafalan yang baik"
+        },
+        {
+          "title": "Halaqoh Al-Qur'an",
+          "description": "Halaqoh Al-Qur'an adalah sesi belajar kelompok di mana siswa dibimbing oleh ustadz atau ustadzah dalam membaca dan menghafal Al-Qur'an"
+        },
+        {
+          "title": "Ujian Bersama Masayikh",
+          "description": "Ujian ini merupakan evaluasi tahfidz yang dilakukan bersama para Masayikh (ulama atau guru besar) untuk menilai sejauh mana kemampuan hafalan dan pemahaman siswa terhadap Al-Qur'an"
+        },
+        {
+          "title": "Murojaah Bulanan",
+          "description": "Murojaah bulanan adalah kegiatan revisi hafalan Al-Qur'an yang dilakukan setiap bulan. Tujuannya adalah untuk memastikan hafalan yang sudah dipelajari tetap kuat dan tidak terlupakan"
+        },
+        {
+          "title": "Tahfidz Camp",
+          "description": "Tahfidz Camp adalah program intensif yang diadakan dalam bentuk perkemahan atau kegiatan luar sekolah yang berfokus pada peningkatan hafalan Al-Qur'an"
+        }
+      ]
+    }
+  },
+  "smp": {
+    "header": {
+      "badge": "Program Pendidikan",
+      "title": "SMP Al Wafi",
+      "desc": "Islamic Boarding School - Membentuk generasi muslim yang unggul dengan karakter islami dan wawasan global"
+    },
+    "characteristics": {
+      "badge": "Characteristics",
+      "title": "Karakteristik SMP",
+      "intro": {
+        "p1": "Untuk membentuk karakter yang ideal, seseorang harus mengintegrasikan berbagai nilai penting. Religiusitas berdasarkan Al Quran dan As Sunnah menjadi dasar moral yang kuat, sementara kejujuran, toleransi, dan disiplin mendukung hubungan yang harmonis.",
+        "p2": "Kerja keras, kemandirian, dan kreativitas diperlukan untuk mencapai tujuan, sementara sikap demokratis dan cinta tanah air mencerminkan rasa kebersamaan dan patriotisme. Kemampuan komunikatif memfasilitasi interaksi efektif, dan kepedulian terhadap lingkungan serta sosial menunjukkan tanggung jawab terhadap masyarakat.",
+        "p3_part1": "Literasi yang baik memperkuat pemahaman, dan pendekatan",
+        "p3_bold": "SMART (Specific, Measurable, Achievable, Relevant, Time-bound)",
+        "p3_part2": "memastikan pencapaian tujuan yang jelas dan terukur."
+      },
+      "list": [
+        "Religiusitas berdasarkan Al Quran dan As Sunnah",
+        "Kejujuran dan integritas dalam setiap tindakan",
+        "Toleransi dan sikap menghargai perbedaan",
+        "Disiplin dan tanggung jawab",
+        "Kerja keras dan dedikasi",
+        "Kemandirian dan kepercayaan diri",
+        "Kreativitas dan inovasi",
+        "Sikap demokratis dan musyawarah",
+        "Cinta tanah air dan patriotisme",
+        "Kemampuan komunikatif yang efektif",
+        "Kepedulian terhadap lingkungan",
+        "Literasi dan pemahaman yang mendalam"
+      ]
+    },
+    "vision": {
+      "badge": "Vision",
+      "title": "Visi SMP Al Wafi Islamic Boarding School",
+      "desc": "\"Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah\""
+    },
+    "mission": {
+      "badge": "Mission",
+      "title": "Misi SMP Al Wafi Islamic Boarding School",
+      "list": [
+        "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Al-Qur'an dan Sunnah sesuai dengan pemahaman salafusshalih",
+        "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari-hari",
+        "Mencetak peserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneuship",
+        "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al-Qur'an dan As-Sunnah sesuai dengan pemahaman Salafusshalih",
+        "Memiliki wawasan yang luas, peka terhadap perubahan yang terjadi",
+        "Membangun jiwa kepemimpinan yang bertanggung jawab, amanah serta peduli terhadap alam dan lingkungan hidup",
+        "Kemahiran menyelesaikan masalah, mandiri, kreatif dan mengembangkan teknologi",
+        "Menciptakan komunikasi yang baik dengan stakeholder di dalam maupun luar negeri",
+        "Memiliki lulusan yang berkualitas dan berintegritas sesuai dengan tuntutan abad 21"
+      ]
+    },
+    "curriculum": {
+      "badge": "Curriculum",
+      "title": "Kurikulum Merdeka",
+      "desc": "Kurikulum Merdeka adalah kurikulum dengan pembelajaran intrakurikuler yang beragam di mana konten akan lebih optimal agar peserta didik memiliki cukup waktu untuk mendalami konsep dan menguatkan kompetensi. Guru memiliki keleluasaan untuk memilih berbagai perangkat ajar sehingga pembelajaran dapat disesuaikan dengan kebutuhan belajar dan minat peserta didik.",
+      "features": {
+        "optimal": {
+          "title": "Pembelajaran Optimal",
+          "desc": "Konten pembelajaran yang beragam dan mendalam"
+        },
+        "flexible": {
+          "title": "Fleksibilitas Guru",
+          "desc": "Kebebasan memilih perangkat ajar"
+        },
+        "needs": {
+          "title": "Sesuai Kebutuhan",
+          "desc": "Disesuaikan dengan minat peserta didik"
+        }
+      }
+    }
+  },
+  "sma": {
+    "header": {
+      "badge": "Program Pendidikan",
+      "title": "SMA Al Wafi",
+      "desc": "Islamic Boarding School - Pesantren sunnah terakreditasi A dengan muadalah dari Universitas Islam Madinah"
+    },
+    "profile": {
+      "badge": "Profile",
+      "title": "Profil SMA",
+      "p1": "SMA Al Wafi Islamic Boarding School adalah pesantren sunnah dengan akreditasi A dan muadalah dari Universitas Islam Madinah. Dikelola oleh Yayasan Al Sudais Indonesia, sekolah ini telah meluluskan enam angkatan alumni yang berhasil diterima di berbagai perguruan tinggi negeri dalam dan luar negeri.",
+      "p2": "Dengan kurikulum yang mengintegrasikan pendidikan nasional (kurikulum Merdeka) dan diniyah, serta fasilitas yang mendukung dan program pengembangan karakter, SMA Al Wafi Islamic Boarding School mempersiapkan siswa untuk unggul di dunia akademis dan menjalani kehidupan global yang berlandaskan nilai-nilai Islam."
+    },
+    "vision": {
+      "badge": "Vision",
+      "title": "Visi SMA Al Wafi Islamic Boarding School",
+      "desc": "\"Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah\""
+    },
+    "mission": {
+      "badge": "Mission",
+      "title": "Misi SMA Al Wafi Islamic Boarding School",
+      "list": [
+        "Menyelenggarakan pendidikan yang berkualitas dan berstandar Internasional (world class) dengan berdasarkan Alqur'an dan sunnah sesuai dengan pemahaman salafussholih",
+        "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari hari",
+        "Mencetak perserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
+        "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al Quran dan Assunnah sesuai pemahaman salafus sholih",
+        "Memiliki wawasan yang luas, peka terhadap perubahan",
+        "Membangun jiwa kepemimpinan yang bertanggung jawab, amanah serta peduli terhadap alam dan lingkungan",
+        "Kemahiran menyelesaikan masalah, mandiri, kreatif dan mengembangkan tekhnologi dan globalisasi"
+      ]
+    },
+    "excellence": {
+      "badge": "Excellence",
+      "title": "Keunggulan SMA Al Wafi Islamic Boarding School",
+      "desc": "Program-program unggulan yang menjadikan SMA Al Wafi sebagai pilihan terbaik untuk pendidikan berkualitas tinggi",
+      "list": [
+        "Terakreditasi A (unggul) & Muadalah dari UIM",
+        "Sekolah Adiwiyata TK Provinsi menuju nasional",
+        "Program Peningkatan Mutu Karakter Santri melalui Kelas Adab & Akhlak Santri",
+        "Peningkatan Mutu Santri melalui Ekstrakurikuler baik yang Wajib (Pramuka, PMR, Bela Diri, Gardening, Tata Boga & Tata Busana) Maupun ektrakurikuler Pilihan",
+        "Program Peningkatan wawasan Global Santri yaitu melalui Program Overseas Baik di Universitas Islam Madinah maupun Universitas Luar Negeri Lainnya",
+        "Program Peningkatan Mutu Kualitas Santri Melalui kegiatan KBM yang berkualitas, Adanya Assesment Diagnostik santri, Adanya Tes Minat bakat Santri, Peningkatan Prestasi akademik maupun non Akademik santri, Program remedial, Pengayaan, dan Program Reaching My Future (untuk Kelas 10), Program Bersama Bimbingan belajar",
+        "Peningkatan Mutu Guru melalui Program Supervisi Guru dan Pelatihan-Pelatihan Guru baik oleh Balitbang, ILLC, maupun Program pelatihan dari Pemerintah",
+        "Program Peningkatan Bahasa Arab, English melalui Wajib Berbahasa Arab & English, Persiapan TOEFL Bersama Team Bahasa (Lughoh)",
+        "Pendampingan Santri masuk Universitas Negeri, Swasta Favorit maupun Universitas Luar Negeri Bersama Biro BEKAL Al Wafi dan Biro Konseling"
+      ],
+      "summary": {
+        "accreditation": {
+          "title": "Akreditasi A",
+          "desc": "Terakreditasi A dan Muadalah UIM"
+        },
+        "overseas": {
+          "title": "Program Overseas",
+          "desc": "Wawasan global dan kesempatan studi luar negeri"
+        },
+        "bekal": {
+          "title": "Biro BEKAL",
+          "desc": "Pendampingan masuk universitas favorit"
+        }
+      }
+    }
+  },
+  "overseas_program": {
+    "header": {
+      "badge": "Global Education",
+      "title": "Program Overseas Al Wafi",
+      "desc": "Program pendidikan global untuk memperluas wawasan santri melalui pembelajaran langsung di negara-negara dengan tradisi pendidikan Islam yang kuat"
+    },
+    "vision": {
+      "title": "Visi Overseas",
+      "desc": "Menjadi biro yang dapat memfasilitasi persiapan masuk perguruan tinggi, pengembangan karir, pengelolaan beasiswa yang mendukung santri berprestasi, serta membangun jaringan kealumnian yang kuat, demi mewujudkan Al Wafi IBS sebagai lembaga pendidikan berkualitas internasional."
+    },
+    "mission": {
+      "title": "Mission Overseas",
+      "list": [
+        "Menjadi pusat pendidikan yang memberikan pemahaman mendalam mengenai pentingnya Al-Qur'an sebagai sumber ilmu pengetahuan dan Bahasa Arab sebagai alat untuk memahaminya, serta penerapannya dalam kehidupan sehari-hari.",
+        "Menjadi lembaga yang memotivasi siswa untuk mempelajari dan menguasai Bahasa Arab serta Al-Qur'an dengan semangat dan antusiasme yang tinggi.",
+        "Menjadi institusi unggulan dalam meningkatkan kualitas dan keterampilan berbahasa Arab serta bahasa asing lainnya bagi siswa dalam berbagai aspek, termasuk pemahaman, percakapan, dan membaca, melalui penggunaan sarana mutakhir dan metode yang efektif.",
+        "Menjadi pusat pendidikan terdepan dalam meningkatkan kualitas tilawah Al-Qur'an siswa, dengan bimbingan langsung dari para masyaikh bersanad di Masjid Nabawi dan para musyrif huffaz.",
+        "Menjadi lembaga yang memberikan pengalaman langsung kepada siswa dalam berinteraksi dengan penutur asli Bahasa Arab di Madinah Al-Munawwarah, Arab Saudi, untuk memperdalam pemahaman bahasa dan budaya.",
+        "Menjadi institusi yang mempersiapkan generasi muslim yang kompeten dalam ilmu Bahasa Arab dan Bahasa Inggris sebagai calon ulama masa depan, serta mencetak generasi rabbani dan qur'ani yang mampu menjadi solusi bagi umat di seluruh dunia.",
+        "Menjadi lembaga pendidikan yang berfokus pada pembentukan karakter santri yang berakhlakul karimah, memiliki wawasan global, dan mampu bersaing di kancah internasional, melalui kolaborasi dan kemitraan dengan lembaga pendidikan, organisasi, dan komunitas internasional, serta pengembangan keterampilan bahasa asing."
+      ]
+    },
+    "cards": {
+      "uim": {
+        "title": "Overseas University UIM & UMROH",
+        "desc": "\"Overseas AL WAFI 2023\" mencakup Dauroh Bahasa Arab di Universitas Islam Madinah (UIM), halaqoh tahfidz Al-Qur'an, serta napak tilas sirah nabawiyyah dan sejarah Islam di kota Madinah Al-Munawwarah, Arab Saudi.",
+        "highlight": "Kegiatan ini dirancang untuk memperdalam pemahaman siswa tentang bahasa Arab dan Al-Qur'an, serta memberikan pengalaman langsung dengan masyayikh dalam mengenal jejak sejarah Islam di tanah suci."
+      },
+      "malaysia": {
+        "title": "Overseas Malaysia",
+        "desc": "Program \"Malaysia Overseas\" adalah program pembelajaran bahasa asing yang diselenggarakan di universitas kelas dunia di Malaysia. Program ini berfokus pada peningkatan keterampilan bahasa Inggris melalui kegiatan seperti EFL Vocab, IELTS/TOEFL Listening, IELTS/TOEFL Reading, dan penguasaan keterampilan IELTS/TOEFL lainnya.",
+        "activities": [
+          "Public Speaking di Media Sosial",
+          "Kahoot Games (guess sentences)",
+          "Language Reverse Game (Mixed Signals)",
+          "Tur kampus & city tour",
+          "Field trip edukatif"
+        ]
+      }
+    },
+    "cta": {
+      "badge": "Global Experience",
+      "title": "Wujudkan Impian Global Anda",
+      "desc": "Bergabunglah dalam program overseas Al Wafi untuk pengalaman pendidikan yang tak terlupakan",
+      "stats": {
+        "countries": "Negara Tujuan",
+        "partners": "Universitas Partner",
+        "alumni": "Alumni Overseas"
+      }
+    }
+  },
+  "biro_bekal": {
+    "header": {
+      "badge": "Alumni & Career Services",
+      "title": "Biro BEKAL Al Wafi",
+      "desc": "Divisi yang mengurusi persiapan dan pendampingan masuk perguruan tinggi, pengelolaan beasiswa, serta kealumnian Al Wafi Islamic Boarding School"
+    },
+    "intro": {
+      "title": "Tentang Biro BEKAL",
+      "p1": "Biro BEKAL ini merupakan sebuah divisi yang mengurusi hal-hal terkait persiapan dan pendampingan masuk perguruan tinggi dan pengelolaan beasiswa, serta kealumnian",
+      "school_name": "Al Wafi Islamic Boarding School",
+      "p2": "Secara struktural berada di bawah pimpinan langsung Direktur Pengembangan",
+      "p2_end": "yakni Ustadz Ryan Hidayat, Lc.",
+      "p3": "Dengan adanya divisi ini dapat lebih maksimal dan fokus serta lebih professional lagi dalam mengurusi urusan terkait persiapan dan pendampingan masuk perguruan tinggi santri dan pengurusan beasiswa serta kealumnian,",
+      "p3_end": ", sehingga dapat mensuport Lembaga Pesantren ini dalam mewujudkan visi misinya."
+    },
+    "vision": {
+      "title": "Visi & Misi Biro BEKAL",
+      "desc": "Menjadi biro yang dapat memfasilitasi persiapan masuk perguruan tinggi, pengembangan karir, pengelolaan beasiswa yang mendukung santri berprestasi, serta membangun jaringan kealumnian yang kuat, demi mewujudkan Al Wafi IBS sebagai lembaga pendidikan berkualitas internasional."
+    },
+    "pillars": {
+      "mentoring": {
+        "title": "Mentoring Perguruan Tinggi",
+        "list": [
+          "Mengidentifikasi dan Mendukung Bakat",
+          "Memberikan penguatan akademik",
+          "Mengembangkan Keterampilan Soft Skills dan Strategi Pengembangan Diri",
+          "Memfasilitasi Akses dan Informasi",
+          "Menyediakan Konsultasi Karir dan Penjelasan Jalur Pendidikan",
+          "Membangun Kemitraan dengan Institusi Pendidikan dan Profesional",
+          "Mendorong Pengembangan Mental dan Kesehatan Emosional",
+          "Mengukur dan Mengevaluasi Kinerja Program Secara Berkala"
+        ]
+      },
+      "scholarship": {
+        "title": "Program Beasiswa",
+        "list": [
+          "Menjaga transparansi dan Akuntabilitas",
+          "Mengembangkan dan memelihara berbagai program beasiswa",
+          "Mengelola administrasi beasiswa secara efisien",
+          "Memantau perkembangan penerima beasiswa dan melakukan evaluasi",
+          "Memperbarui program beasiswa untuk meningkatkan efektivitas dan jangkauan layanan"
+        ]
+      },
+      "alumni": {
+        "title": "Program Kealumnian",
+        "list": [
+          "Membangun dan memperkuat komunitas alumni yang aktif dan terhubung melalui berbagai platform dan kegiatan.",
+          "Membangun dan memelihara jaringan alumni yang solid untuk memberikan dukungan, mentoring, dan peluang karir bagi lulusan.",
+          "Menyelenggarakan kegiatan kealumnian yang memfasilitasi pertukaran pengalaman dan pengetahuan antar lulusan atau para santri dengan profesional di bidangnya.",
+          "Menyelenggarakan acara networking, reuni, dan pertemuan reguler untuk memfasilitasi interaksi dan kolaborasi antar alumni"
+        ]
+      }
+    },
+    "global_program": {
+      "title": "Gambaran Global Program",
+      "desc": "Adapun gambaran program biro bekal secara umum adalah sebagai berikut",
+      "list": [
+        {
+          "title": "Orientasi Karir kepada Para Santri",
+          "description": "Dalam program ini ada berbagai agenda yang diberikan kepada santri-santri yang bertujuan untuk memberikan orientasi atau gambaran dan inspirasi tentang suatu profesi yang ada serta memberikan referensi untuk penjurusan mata pelajaran yang akan diambil yang relevan dengan bidang yang akan ditekuni kedepanya. Dalam program-program ini juga melibatkan Parents dan Alumni Al Wafi untuk berpartisipasi dalam kegiatan-kegiatan yang ada dalam program ini"
+        },
+        {
+          "title": "Penguatan Akademik dan Bahasa Para Santri",
+          "description": "Dalam hal akademik para santri diberikan penguatan kemampuan akademik dan Bahasa sebagai persiapan untuk masuk perguruan tinggi seperti dalam hal akademik di adakan bimbingan belajar (bimbel) untuk persiapan masuk Perguruan Tinggi Negeri (PTN) dan Perguruan Tinggi di Timur Tengah dan LIPIA. Dari segi Bahasa diadakan program Bahasa Inggris seperti IELTS/TOEFL Preparation dan Penguatan Bahasa Arab Oleh Para Masyayikh yang bergelar Doctor dari Sudan"
+        },
+        {
+          "title": "Informasi PTN, Luar Negeri, dan Timur Tengah",
+          "description": "Dalam program ini santri di fasilitasi dan di berikan informasi yang sangat jelas terkait informasi seputar Universitas-Universitas dalam negeri (PTN dan Swasta Favorit), Universitas Luar Negeri (Asia, Australia, Eropa, Amerika, Afrika), dan Universitas di Timur Tengah dengan di adakannya seminar-seminar kampus dalam negeri dan luar negeri. Selain itu juga para santri di ajak untuk kunjungan ke kampus-kampus sekitar, kampus-kampus di Malaysia dan Arab Saudi (dalam program Study Overseas)."
+        },
+        {
+          "title": "Persiapan dan Pengurusan Berkas Pendaftaran",
+          "description": "Pada program atau agenda ini selain berkas-berkas utama yang dibutuhkan untuk persiapan dan pendaftaran masuk Universitas baik dalam dan luar negeri berkas-berkas pendukung akan dibantu meyiapkan seperti Tazkiah atau juga Recommendation Letter, verifikasi kesesuaian berkas, Translate Dokumen, serta pembuatan Akun dan Pendaftaran Secara Kolektif"
+        },
+        {
+          "title": "Pemetaan Minat dan Bakat Para Santri",
+          "description": "Dalam program-program ini para santri dipetakan baik dari segi minat, bakat atau kemampuan akademik dan Bahasa, serta jurusan dan Universitas pilihan kedepannya. Dalam agenda-agenda pada program ini di support juga oleh divisi Psikologi / Bimbingan Konseling dan Divisi International Affair Al Wafi"
+        },
+        {
+          "title": "Kemitraan dengan Perguruan Tinggi",
+          "description": "Pentingnya Kerjasama dengan perguruan tinggi mendorong Al Wafi untuk menjalin Kerjasama banyak perguruan tinggi, diantaranya Universitas Islam Negeri Syarif Hidayatullah Jakarta, Agrianita Institut Pertanian Bogor, Universitas Kebangsaan Malaysia, dll."
+        }
+      ]
+    },
+    "partners": {
+      "title": "Mitra Perguruan Tinggi",
+      "desc": "Kemitraan strategis dengan perguruan tinggi terkemuka dalam dan luar negeri"
+    },
+    "cta": {
+      "badge": "Alumni Success",
+      "title": "Sebaran Alumni Al Wafi",
+      "desc": "Alumni yang berhasil masuk di Universitas-Universitas ternama dalam dan luar negeri",
+      "stats": {
+        "total": "Total Alumni",
+        "ptn": "PTN Ternama",
+        "overseas": "Universitas Luar Negeri",
+        "scholarship": "Program Beasiswa"
+      }
+    }
+  }
+}

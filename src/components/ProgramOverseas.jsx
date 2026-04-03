@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const ProgramOverseas = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -15,15 +18,9 @@ const ProgramOverseas = ({ data }) => {
     aboutIcon: 80
   };
 
-  const missionPoints = [
-    "Menjadi pusat pendidikan yang memberikan pemahaman mendalam mengenai pentingnya Al-Qur'an sebagai sumber ilmu pengetahuan dan Bahasa Arab sebagai alat untuk memahaminya, serta penerapannya dalam kehidupan sehari-hari.",
-    "Menjadi lembaga yang memotivasi siswa untuk mempelajari dan menguasai Bahasa Arab serta Al-Qur'an dengan semangat dan antusiasme yang tinggi.",
-    "Menjadi institusi unggulan dalam meningkatkan kualitas dan keterampilan berbahasa Arab serta bahasa asing lainnya bagi siswa dalam berbagai aspek, termasuk pemahaman, percakapan, dan membaca, melalui penggunaan sarana mutakhir dan metode yang efektif.",
-    "Menjadi pusat pendidikan terdepan dalam meningkatkan kualitas tilawah Al-Qur'an siswa, dengan bimbingan langsung dari para masyaikh bersanad di Masjid Nabawi dan para musyrif huffaz.",
-    "Menjadi lembaga yang memberikan pengalaman langsung kepada siswa dalam berinteraksi dengan penutur asli Bahasa Arab di Madinah Al-Munawwarah, Arab Saudi, untuk memperdalam pemahaman bahasa dan budaya.",
-    "Menjadi institusi yang mempersiapkan generasi muslim yang kompeten dalam ilmu Bahasa Arab dan Bahasa Inggris sebagai calon ulama masa depan, serta mencetak generasi rabbani dan qur'ani yang mampu menjadi solusi bagi umat di seluruh dunia.",
-    "Menjadi lembaga pendidikan yang berfokus pada pembentukan karakter santri yang berakhlakul karimah, memiliki wawasan global, dan mampu bersaing di kancah internasional, melalui kolaborasi dan kemitraan dengan lembaga pendidikan, organisasi, dan komunitas internasional, serta pengembangan keterampilan bahasa asing."
-  ];
+  // ngambil data dari json
+  const missionPoints = Array.isArray(t('overseas_program.mission.list')) ? t('overseas_program.mission.list') : [];
+  const malaysiaActivities = Array.isArray(t('overseas_program.cards.malaysia.activities')) ? t('overseas_program.cards.malaysia.activities') : [];
 
   return (
     <section 
@@ -112,7 +109,7 @@ const ProgramOverseas = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.accent.lightBlue }}
             >
-              Global Education
+              { t('overseas_program.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -125,10 +122,10 @@ const ProgramOverseas = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.primary.indigo} 50%, ${colors.secondary.cyan} 100%)`
             }}
           >
-            Program Overseas Al Wafi
+            { t('overseas_program.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Program pendidikan global untuk memperluas wawasan santri melalui pembelajaran langsung di negara-negara dengan tradisi pendidikan Islam yang kuat
+            { t('overseas_program.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -172,7 +169,7 @@ const ProgramOverseas = ({ data }) => {
                           backgroundImage: `linear-gradient(90deg, ${colors.gold.primary} 0%, ${colors.gold.light} 100%)`
                         }}
                       >
-                        Visi Overseas
+                        { t('overseas_program.vision.title') }
                       </h2>
                       <div 
                         className="w-12 h-0.5 mt-1 rounded-full"
@@ -181,7 +178,7 @@ const ProgramOverseas = ({ data }) => {
                     </div>
                   </div>
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    Menjadi biro yang dapat memfasilitasi persiapan masuk perguruan tinggi, pengembangan karir, pengelolaan beasiswa yang mendukung santri berprestasi, serta membangun jaringan kealumnian yang kuat, demi mewujudkan Al Wafi IBS sebagai lembaga pendidikan berkualitas internasional.
+                    { t('overseas_program.vision.desc') }
                   </p>
                 </div>
                 <div className="relative">
@@ -233,7 +230,7 @@ const ProgramOverseas = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.primary.indigo} 100%)`
                     }}
                   >
-                    Mission Overseas
+                    { t('overseas_program.mission.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -285,12 +282,12 @@ const ProgramOverseas = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.teal} 100%)`
                     }}
                   >
-                    Overseas University UIM & UMROH
+                    { t('overseas_program.cards.uim.title') }
                   </h3>
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed mb-6">
-                "Overseas AL WAFI 2023" mencakup Dauroh Bahasa Arab di Universitas Islam Madinah (UIM), halaqoh tahfidz Al-Qur'an, serta napak tilas sirah nabawiyyah dan sejarah Islam di kota Madinah Al-Munawwarah, Arab Saudi.
+                { t('overseas_program.cards.uim.desc') }
               </p>
               <div 
                 className="p-4 rounded-2xl border-l-4"
@@ -300,7 +297,7 @@ const ProgramOverseas = ({ data }) => {
                 }}
               >
                 <p className="text-gray-700 text-sm">
-                  Kegiatan ini dirancang untuk memperdalam pemahaman siswa tentang bahasa Arab dan Al-Qur'an, serta memberikan pengalaman langsung dengan masyayikh dalam mengenal jejak sejarah Islam di tanah suci.
+                  { t('overseas_program.cards.uim.highlight') }
                 </p>
               </div>
             </div>
@@ -331,23 +328,17 @@ const ProgramOverseas = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.primary.indigo} 100%)`
                     }}
                   >
-                    Overseas Malaysia
+                    { t('overseas_program.cards.malaysia.title') }
                   </h3>
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Program "Malaysia Overseas" adalah program pembelajaran bahasa asing yang diselenggarakan di universitas kelas dunia di Malaysia. Program ini berfokus pada peningkatan keterampilan bahasa Inggris melalui kegiatan seperti EFL Vocab, IELTS/TOEFL Listening, IELTS/TOEFL Reading, dan penguasaan keterampilan IELTS/TOEFL lainnya.
+                { t('overseas_program.cards.malaysia.desc') }
               </p>
               <div 
                 className="space-y-2"
               >
-                {[
-                  'Public Speaking di Media Sosial',
-                  'Kahoot Games (guess sentences)',
-                  'Language Reverse Game (Mixed Signals)',
-                  'Tur kampus & city tour',
-                  'Field trip edukatif'
-                ].map((activity, index) => (
+                {malaysiaActivities.map((activity, index) => (
                   <div key={index} className="flex items-center">
                     <div 
                       className="w-2 h-2 rounded-full mr-3"
@@ -387,24 +378,24 @@ const ProgramOverseas = ({ data }) => {
           <div className="relative z-10 text-white">
             <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
               <i className="fas fa-plane mr-2"></i>
-              Global Experience
+              { t('overseas_program.cta.badge') }
             </div>
-            <h2 className="text-4xl font-bold mb-4">Wujudkan Impian Global Anda</h2>
+            <h2 className="text-4xl font-bold mb-4">{ t('overseas_program.cta.title') }</h2>
             <p className="text-xl opacity-90 mb-8">
-              Bergabunglah dalam program overseas Al Wafi untuk pengalaman pendidikan yang tak terlupakan
+              { t('overseas_program.cta.desc') }
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold">2+</div>
-                <div className="text-sm opacity-80">Negara Tujuan</div>
+                <div className="text-sm opacity-80">{ t('overseas_program.cta.stats.countries') }</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">10+</div>
-                <div className="text-sm opacity-80">Universitas Partner</div>
+                <div className="text-sm opacity-80">{ t('overseas_program.cta.stats.partners') }</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold">100+</div>
-                <div className="text-sm opacity-80">Alumni Overseas</div>
+                <div className="text-sm opacity-80">{ t('overseas_program.cta.stats.alumni') }</div>
               </div>
             </div>
           </div>

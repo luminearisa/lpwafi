@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const SMP = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -15,32 +18,9 @@ const SMP = ({ data }) => {
     aboutIcon: 80
   };
 
-  const characteristics = [
-    "Religiusitas berdasarkan Al Quran dan As Sunnah",
-    "Kejujuran dan integritas dalam setiap tindakan",
-    "Toleransi dan sikap menghargai perbedaan",
-    "Disiplin dan tanggung jawab",
-    "Kerja keras dan dedikasi",
-    "Kemandirian dan kepercayaan diri",
-    "Kreativitas dan inovasi",
-    "Sikap demokratis dan musyawarah",
-    "Cinta tanah air dan patriotisme",
-    "Kemampuan komunikatif yang efektif",
-    "Kepedulian terhadap lingkungan",
-    "Literasi dan pemahaman yang mendalam"
-  ];
-
-  const missionPoints = [
-    "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Al-Qur'an dan Sunnah sesuai dengan pemahaman salafusshalih",
-    "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari-hari",
-    "Mencetak peserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneuship",
-    "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al-Qur'an dan As-Sunnah sesuai dengan pemahaman Salafusshalih",
-    "Memiliki wawasan yang luas, peka terhadap perubahan yang terjadi",
-    "Membangun jiwa kepemimpinan yang bertanggung jawab, amanah serta peduli terhadap alam dan lingkungan hidup",
-    "Kemahiran menyelesaikan masalah, mandiri, kreatif dan mengembangkan teknologi",
-    "Menciptakan komunikasi yang baik dengan stakeholder di dalam maupun luar negeri",
-    "Memiliki lulusan yang berkualitas dan berintegritas sesuai dengan tuntutan abad 21"
-  ];
+  // ambil data list dari json
+  const characteristics = Array.isArray(t('smp.characteristics.list')) ? t('smp.characteristics.list') : [];
+  const missionPoints = Array.isArray(t('smp.mission.list')) ? t('smp.mission.list') : [];
 
   return (
     <section 
@@ -96,7 +76,7 @@ const SMP = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.primary.blue }}
             >
-              Program Pendidikan
+              { t('smp.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -109,10 +89,10 @@ const SMP = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.accent.lightBlue} 50%, ${colors.primary.indigo} 100%)`
             }}
           >
-            SMP Al Wafi
+            { t('smp.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Islamic Boarding School - Membentuk generasi muslim yang unggul dengan karakter islami dan wawasan global
+            { t('smp.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -150,7 +130,7 @@ const SMP = ({ data }) => {
                 <div className="ml-4">
                   <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full text-sm font-semibold mb-2">
                     <i className="fas fa-star mr-2" style={{ color: colors.primary.blue }}></i>
-                    Characteristics
+                    { t('smp.characteristics.badge') }
                   </div>
                   <h2 
                     className="text-3xl font-bold bg-clip-text text-transparent"
@@ -158,7 +138,7 @@ const SMP = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.accent.lightBlue} 100%)`
                     }}
                   >
-                    Karakteristik SMP
+                    { t('smp.characteristics.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-2 rounded-full"
@@ -170,13 +150,14 @@ const SMP = ({ data }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
                 <div className="space-y-6 text-gray-700 leading-relaxed">
                   <p>
-                    Untuk membentuk karakter yang ideal, seseorang harus mengintegrasikan berbagai nilai penting. Religiusitas berdasarkan Al Quran dan As Sunnah menjadi dasar moral yang kuat, sementara kejujuran, toleransi, dan disiplin mendukung hubungan yang harmonis.
+                    { t('smp.characteristics.intro.p1') }
                   </p>
                   <p>
-                    Kerja keras, kemandirian, dan kreativitas diperlukan untuk mencapai tujuan, sementara sikap demokratis dan cinta tanah air mencerminkan rasa kebersamaan dan patriotisme. Kemampuan komunikatif memfasilitasi interaksi efektif, dan kepedulian terhadap lingkungan serta sosial menunjukkan tanggung jawab terhadap masyarakat.
+                    { t('smp.characteristics.intro.p2') }
                   </p>
                   <p>
-                    Literasi yang baik memperkuat pemahaman, dan pendekatan <strong>SMART (Specific, Measurable, Achievable, Relevant, Time-bound)</strong> memastikan pencapaian tujuan yang jelas dan terukur.
+                    {/* Translate teks bercampur bold */}
+                    { t('smp.characteristics.intro.p3_part1') } <strong>{ t('smp.characteristics.intro.p3_bold') }</strong> { t('smp.characteristics.intro.p3_part2') }
                   </p>
                 </div>
                 <div className="relative">
@@ -233,7 +214,7 @@ const SMP = ({ data }) => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full text-sm font-semibold mb-6">
                   <i className="fas fa-eye mr-2" style={{ color: colors.secondary.emerald }}></i>
-                  Vision
+                  { t('smp.vision.badge') }
                 </div>
                 <h2 
                   className="text-3xl font-bold mb-6 bg-clip-text text-transparent"
@@ -241,7 +222,7 @@ const SMP = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.teal} 100%)`
                   }}
                 >
-                  Visi SMP Al Wafi Islamic Boarding School
+                  { t('smp.vision.title') }
                 </h2>
               </div>
               
@@ -253,7 +234,7 @@ const SMP = ({ data }) => {
                 }}
               >
                 <p className="text-xl text-gray-700 leading-relaxed font-medium">
-                  "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu Alaihi Wa'sallam, sahabat, & Ulama Ahlusunnah"
+                  { t('smp.vision.desc') }
                 </p>
               </div>
             </div>
@@ -274,7 +255,7 @@ const SMP = ({ data }) => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-sm font-semibold mb-6">
                   <i className="fas fa-bullseye mr-2" style={{ color: colors.accent.lightBlue }}></i>
-                  Mission
+                  { t('smp.mission.badge') }
                 </div>
                 <h2 
                   className="text-3xl font-bold mb-6 bg-clip-text text-transparent"
@@ -282,7 +263,7 @@ const SMP = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
                   }}
                 >
-                  Misi SMP Al Wafi Islamic Boarding School
+                  { t('smp.mission.title') }
                 </h2>
               </div>
 
@@ -321,9 +302,9 @@ const SMP = ({ data }) => {
                   <g transform="translate(25, 25)" stroke="white" strokeWidth="0.3" fill="none" opacity="0.4">
                     {/* Book pattern representing curriculum */}
                     <rect x="-12" y="-8" width="24" height="16" rx="2" stroke="white" strokeWidth="0.2"/>
-                    <line x1="-8" y1="-4" x2="8" y2="-4" stroke="white" strokeWidth="0.15"/>
-                    <line x1="-8" y1="0" x2="8" y2="0" stroke="white" strokeWidth="0.15"/>
-                    <line x1="-8" y1="4" x2="8" y2="4" stroke="white" strokeWidth="0.15"/>
+                    <line x="-8" y="-4" x2="8" y2="-4" stroke="white" strokeWidth="0.15"/>
+                    <line x="-8" y="0" x2="8" y2="0" stroke="white" strokeWidth="0.15"/>
+                    <line x="-8" y="4" x2="8" y2="4" stroke="white" strokeWidth="0.15"/>
                     <circle cx="0" cy="0" r="2" fill="white" opacity="0.3"/>
                   </g>
                 </pattern>
@@ -336,16 +317,16 @@ const SMP = ({ data }) => {
             <div className="text-center mb-8">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
                 <i className="fas fa-graduation-cap mr-2"></i>
-                Curriculum
+                { t('smp.curriculum.badge') }
               </div>
-              <h2 className="text-4xl font-bold mb-6">Kurikulum Merdeka</h2>
+              <h2 className="text-4xl font-bold mb-6">{ t('smp.curriculum.title') }</h2>
             </div>
             
             <div 
               className="bg-white/15 backdrop-blur-sm p-8 rounded-2xl border border-white/20"
             >
               <p className="text-lg opacity-90 leading-relaxed text-center max-w-4xl mx-auto">
-                Kurikulum Merdeka adalah kurikulum dengan pembelajaran intrakurikuler yang beragam di mana konten akan lebih optimal agar peserta didik memiliki cukup waktu untuk mendalami konsep dan menguatkan kompetensi. Guru memiliki keleluasaan untuk memilih berbagai perangkat ajar sehingga pembelajaran dapat disesuaikan dengan kebutuhan belajar dan minat peserta didik.
+                { t('smp.curriculum.desc') }
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -353,24 +334,24 @@ const SMP = ({ data }) => {
                   <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                     <i className="fas fa-book text-2xl"></i>
                   </div>
-                  <h4 className="font-bold mb-2">Pembelajaran Optimal</h4>
-                  <p className="text-sm opacity-90">Konten pembelajaran yang beragam dan mendalam</p>
+                  <h4 className="font-bold mb-2">{ t('smp.curriculum.features.optimal.title') }</h4>
+                  <p className="text-sm opacity-90">{ t('smp.curriculum.features.optimal.desc') }</p>
                 </div>
                 
                 <div className="text-center">
                   <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                     <i className="fas fa-users text-2xl"></i>
                   </div>
-                  <h4 className="font-bold mb-2">Fleksibilitas Guru</h4>
-                  <p className="text-sm opacity-90">Kebebasan memilih perangkat ajar</p>
+                  <h4 className="font-bold mb-2">{ t('smp.curriculum.features.flexible.title') }</h4>
+                  <p className="text-sm opacity-90">{ t('smp.curriculum.features.flexible.desc') }</p>
                 </div>
                 
                 <div className="text-center">
                   <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
                     <i className="fas fa-target text-2xl"></i>
                   </div>
-                  <h4 className="font-bold mb-2">Sesuai Kebutuhan</h4>
-                  <p className="text-sm opacity-90">Disesuaikan dengan minat peserta didik</p>
+                  <h4 className="font-bold mb-2">{ t('smp.curriculum.features.needs.title') }</h4>
+                  <p className="text-sm opacity-90">{ t('smp.curriculum.features.needs.desc') }</p>
                 </div>
               </div>
             </div>

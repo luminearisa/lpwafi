@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const Foundation = ({ data }) => {
+  const { t } = useLanguage();
+
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
     primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
@@ -14,6 +17,11 @@ const Foundation = ({ data }) => {
     aboutCard: 95,
     aboutIcon: 80
   };
+
+  // Helper untuk list data
+  const goalsList = Array.isArray(t('foundation.history.goals')) ? t('foundation.history.goals') : [];
+  const missionList = Array.isArray(t('foundation.mission.list')) ? t('foundation.mission.list') : [];
+  const valuesList = Array.isArray(t('foundation.values.list')) ? t('foundation.values.list') : [];
 
   return (
     <section 
@@ -106,7 +114,7 @@ const Foundation = ({ data }) => {
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.primary.blue }}
             >
-              Tentang Yayasan
+              { t('foundation.header.badge') }
             </span>
             <div 
               className="w-1 h-8 rounded-full ml-4"
@@ -119,10 +127,10 @@ const Foundation = ({ data }) => {
               backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
             }}
           >
-            Yayasan Al Sudais Indonesia
+            { t('foundation.header.title') }
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Al Wafi Islamic Boarding School - Pesantren Sunnah Internasional dengan konsep Holistik, Harmoni, dan Exemplary
+            { t('foundation.header.desc') }
           </p>
           <div 
             className="w-24 h-1 mx-auto mt-6 rounded-full"
@@ -164,7 +172,7 @@ const Foundation = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 100%)`
                     }}
                   >
-                    Pendahuluan
+                    { t('foundation.intro.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -177,7 +185,7 @@ const Foundation = ({ data }) => {
                 <div className="space-y-4 text-gray-700 leading-relaxed">
                   <p><strong>Assalamu'alaikum Wr Wb.</strong></p>
                   <p>
-                    Setiap anak adalah pandai dan memiliki potensi kecerdasan berbeda beda tergantung bagaimana lingkungan pendidikan bisa memunculkan kecerdasan setiap anak. Pesantren Al Wafi Islamic Boarding School didirikan untuk memberikan pendampingan kepada santri sesuai dengan minat, bakat dan kecerdasan santri yang dilandasi nilai nilai Al-Quran dan Sunnah.
+                    { t('foundation.intro.p1') }
                   </p>
                 </div>
                 <div className="relative">
@@ -196,16 +204,16 @@ const Foundation = ({ data }) => {
 
               <div className="space-y-6 text-gray-700 leading-relaxed">
                 <p>
-                  Orang tua menginginkan pendidikan yang terbaik bagi putra-putrinya dan kami di Pesantren Al Wafi Islamic Boarding School merupakan pesantren sunnah bertaraf internasional siap untuk membentuk generasi yang memiliki akhlaqul karimah.
+                  { t('foundation.intro.p2') }
                 </p>
                 <p>
-                  Pesantren Al Wafi hadir dengan harapan dapat memberikan pendidikan secara menyeluruh (holistic) dan selaras (harmoni) dan memberikan model atau contoh dengan mengintegrasikan berbagai kurikulum baik kurikulum diniah, kurikulum nasional Al Quran dan sunnah, sains dan teknologi serta muatan lifeskill.
+                  { t('foundation.intro.p3') }
                 </p>
                 <p>
-                  Dengan sistem pesantren (islamic boarding) dan didukung staf pengajar yang professional, berdedikasi tinggi, pengajar asing (native), alumni dari Timur Tengah dan pengajar dari lulusan PTN akan mengantarkan santri santri untuk mendapatkan pendidikan di kampus yang diinginkan.
+                  { t('foundation.intro.p4') }
                 </p>
                 <p>
-                  Kami di Pesantren Al Wafi IBS menyakini bahwa pendidikan terbaik tidak akan bisa terwujud tanpa dukungan orang tua dan keluarga santri. Oleh karena itu, jaringan komunikasi dan layanan informasi santri menjadi salah satu prioritas kami.
+                  { t('foundation.intro.p5') }
                 </p>
                 <p><strong>Wassalamu'alaikum Wr Wb.</strong></p>
               </div>
@@ -245,7 +253,7 @@ const Foundation = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.secondary.emerald} 0%, ${colors.secondary.cyan} 100%)`
                     }}
                   >
-                    Sejarah Pesantren Al Wafi
+                    { t('foundation.history.title') }
                   </h2>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -256,7 +264,7 @@ const Foundation = ({ data }) => {
               
               <div className="space-y-6 text-gray-700 leading-relaxed">
                 <p>
-                  Pesantren Al Wafi hadir untuk memenuhi kebutuhan masyarakat yang menginginkan pendidikan islam modern bertaraf internasional. Pesantren Al Wafi dibangun di atas tanah seluas 3.405 M² dengan persil nomer 23.D.I Kohir No. 964, surat ukur tanah Gs. No. 1186/1977.
+                  { t('foundation.history.p1') }
                 </p>
                 
                 <div 
@@ -267,16 +275,18 @@ const Foundation = ({ data }) => {
                   }}
                 >
                   <p className="font-semibold text-gray-800">
-                    Peletakan batu pertama pembangunan SMP dan SMA Al Wafi Islamic Boarding School dilakukan oleh Gubernur Jawa Barat Bapak Ahmad Heryawan pada Hari Jumat tanggal <strong>03 Februari tahun 2017</strong>.
+                    {/* Translate bagian highlight */}
+                    { t('foundation.history.highlight_part1') } <strong>{ t('foundation.history.highlight_date') }</strong>.
                   </p>
                 </div>
 
                 <p>
-                  Tanah tempat didirikannya Al Wafi ini adalah merupakan tanah wakaf yang diserahkan oleh Ibu Lusmiati Loebis yang lahir di Solo. 06 Januari 1939 dengan akta ikrar wakaf nomer KK.10.01/39/BA.03/82/XI/2011 di depan Kepala Kantor Urusan Agama Kecamatan Tajurhalang.
+                  { t('foundation.history.p2') }
                 </p>
 
                 <p>
-                  SMP Al Wafi adalah lembaga pendidikan yang berada dibawah naungan <strong>Yayasan Al-Sudais Indonesia</strong> yang didirikan pada tanggal <strong>21 Desember tahun 2016</strong> dengan akta pendirian no.12 di depan Notaris Eva Junaida, Sarjana Hukum.
+                  {/* Translate teks bercampur bold */}
+                  { t('foundation.history.p3_part1') } <strong>Yayasan Al-Sudais Indonesia</strong> { t('foundation.history.p3_part2') } <strong>{ t('foundation.history.p3_date') }</strong> { t('foundation.history.p3_part3') }
                 </p>
 
                 <div 
@@ -285,16 +295,16 @@ const Foundation = ({ data }) => {
                     background: `linear-gradient(135deg, ${colors.primary.blue}10 0%, ${colors.primary.purple}10 100%)`
                   }}
                 >
-                  <h4 className="font-bold text-gray-800 mb-4">Tujuan Pendirian:</h4>
+                  <h4 className="font-bold text-gray-800 mb-4">{ t('foundation.history.goals_title') }</h4>
                   <ol className="list-decimal list-inside space-y-3">
-                    <li>Mencerdaskan anak bangsa, menguatkan jiwa nasionalis dan patriotisme, dan dapat mengokohkan pondasi agama generasi muda sesuai dengan Al Qur'an dan Sunnah</li>
-                    <li>Mengembangkan pendidikan bertaraf internasional dari segi kurikulum, tenaga pendidik professional dari dalam dan luar negeri & sarana prasarana modern</li>
-                    <li>Memberikan dan berkontribusi kepada masyarakat sekitar, baik dalam kesejahteraan ekonomi maupun peningkatan kerohanian</li>
+                    {goalsList.map((goal, idx) => (
+                      <li key={idx}>{goal}</li>
+                    ))}
                   </ol>
                 </div>
 
                 <p>
-                  Sambutan baik masyarakat dengan meningkatnya jumlah santri dan kebutuhan masyarakat tentang pendidikan berbasis pesantren modern, Yayasan Al Sudais Indonesia sampai saat ini menyelenggarakan pendidikan dari <strong>SDTQ, SMP Al Wafi IBS, SMA Al Wafi IBS dan Sekolah Tinggi Ilmu Tarbiah Al Wafi</strong>.
+                  { t('foundation.history.p4_part1') } <strong>SDTQ, SMP Al Wafi IBS, SMA Al Wafi IBS dan Sekolah Tinggi Ilmu Tarbiah Al Wafi</strong>.
                 </p>
               </div>
             </div>
@@ -334,7 +344,7 @@ const Foundation = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.gold.primary} 0%, ${colors.gold.light} 100%)`
                     }}
                   >
-                    Visi Al Wafi
+                    { t('foundation.vision.title') }
                   </h3>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -350,7 +360,7 @@ const Foundation = ({ data }) => {
                 }}
               >
                 <p className="text-gray-700 leading-relaxed font-medium">
-                  "Membentuk generasi muslim yang memiliki kesadaran agama yang tinggi dan memiliki sikap positif terhadap globalisasi dengan mengikuti Nabi Muhammad Shallallahu alaihi wasallam, sahabat, dan Ulama ahlusunnah"
+                  { t('foundation.vision.desc') }
                 </p>
               </div>
             </div>
@@ -387,7 +397,7 @@ const Foundation = ({ data }) => {
                       backgroundImage: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
                     }}
                   >
-                    Misi Al Wafi
+                    { t('foundation.mission.title') }
                   </h3>
                   <div 
                     className="w-12 h-0.5 mt-1 rounded-full"
@@ -396,12 +406,7 @@ const Foundation = ({ data }) => {
                 </div>
               </div>
               <ul className="space-y-4">
-                {[
-                  "Menyelenggarakan pendidikan yang berkualitas dan berstandar internasional (world class) dengan berdasarkan Alquran dan sunnah sesuai dengan pemahaman ulama ahlu sunnah.",
-                  "Menyelenggarakan pendidikan berbasis akhlaqul karimah yang terintegrasi dalam kehidupan sehari hari.",
-                  "Mencetak peserta didik dalam bermuamalah mulia dengan lingkungan dengan prinsip leaderpreneurship",
-                  "Membentuk karakter peserta didik yang unggul dalam menyikapi perubahan global yang terjadi berdasarkan Al Quran dan Assunnah sesuai pemahaman ulama ahlu sunnah"
-                ].map((item, index) => (
+                {missionList.map((item, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
                       className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 mr-4 group-hover:scale-110 transition-transform"
@@ -448,7 +453,7 @@ const Foundation = ({ data }) => {
                     backgroundImage: `linear-gradient(90deg, ${colors.primary.purple} 0%, ${colors.primary.indigo} 100%)`
                   }}
                 >
-                  Struktur Organisasi Yayasan
+                  { t('foundation.structure.title') }
                 </h2>
               </div>
               
@@ -501,21 +506,14 @@ const Foundation = ({ data }) => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
                 <i className="fas fa-star mr-2"></i>
-                Nilai-Nilai Al Wafi
+                { t('foundation.values.badge') }
               </div>
-              <h2 className="text-4xl font-bold mb-4">Value Al Wafi</h2>
-              <p className="text-xl opacity-90">Nilai-nilai fundamental yang menjadi landasan pendidikan di Al Wafi</p>
+              <h2 className="text-4xl font-bold mb-4">{ t('foundation.values.title') }</h2>
+              <p className="text-xl opacity-90">{ t('foundation.values.desc') }</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { letter: 'A', word: 'Amanah', description: 'Dapat dipercaya dalam menjalankan tugas' },
-                { letter: 'L', word: 'Lilah', description: 'Mengharap ridha Allah dalam setiap amal' },
-                { letter: 'W', word: 'Wafi', description: 'Menepati janji dan komitmen' },
-                { letter: 'A', word: 'Akhlaq', description: 'Berakhlak mulia dalam kehidupan' },
-                { letter: 'F', word: 'Fathonah', description: 'Cerdas dan bijaksana dalam bertindak' },
-                { letter: 'I', word: 'International mindset', description: 'Berwawasan global dengan akar Islam' }
-              ].map((value, index) => (
+              {valuesList.map((value, index) => (
                 <div 
                   key={index}
                   className="group bg-white/15 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/25 transition-all duration-300 border border-white/20"

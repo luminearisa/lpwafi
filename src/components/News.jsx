@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../LanguageContext';
 
 const News = ({ data }) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { t, language } = useLanguage();
 
   // Get color scheme from data or use defaults
   const colors = data?.colorScheme || {
@@ -25,18 +28,18 @@ const News = ({ data }) => {
         setLoading(true);
         // Fetch posts dengan featured media
         const response = await fetch('https://al-wafi.sch.id/news/wp-json/wp/v2/posts?per_page=6&_embed=wp:featuredmedia');
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch news');
         }
-        
+
         const newsData = await response.json();
-        
+
         // Process news data untuk include featured image URL
         const processedNews = await Promise.all(
           newsData.map(async (post) => {
             let featuredImageUrl = null;
-            
+
             // Coba ambil dari _embedded dulu
             if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
               featuredImageUrl = post._embedded['wp:featuredmedia'][0].source_url;
@@ -53,21 +56,21 @@ const News = ({ data }) => {
                 console.log('Error fetching media:', error);
               }
             }
-            
+
             return {
               ...post,
               featured_media_url: featuredImageUrl
             };
           })
         );
-        
-        console.log('Processed news with images:', processedNews.map(n => ({ 
-          id: n.id, 
-          title: n.title.rendered, 
+
+        console.log('Processed news with images:', processedNews.map(n => ({
+          id: n.id,
+          title: n.title.rendered,
           featured_media: n.featured_media,
-          featured_media_url: n.featured_media_url 
+          featured_media_url: n.featured_media_url
         })));
-        
+
         setNews(processedNews);
       } catch (err) {
         console.error('Error fetching news:', err);
@@ -81,13 +84,16 @@ const News = ({ data }) => {
   }, []);
 
   const formatDate = (dateString) => {
-    const options = { 
-      year: 'numeric', 
-      month: 'long', 
+    const options = {
+      year: 'numeric',
+      month: 'long',
       day: 'numeric',
       timeZone: 'Asia/Jakarta'
     };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
+
+    // re-format tanggal buat bahasa
+    const locale = language === 'en' ? 'en-US' : 'id-ID';
+    return new Date(dateString).toLocaleDateString(locale, options);
   };
 
   const stripHtml = (html) => {
@@ -102,12 +108,12 @@ const News = ({ data }) => {
   };
 
   return (
-    <section 
-      id="news" 
+    <section
+      id="news"
       className="py-24 relative overflow-hidden"
       style={{
-        background: data?.colorScheme?.gradient?.about || 
-                   `linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)`
+        background: data?.colorScheme?.gradient?.about ||
+          `linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)`
       }}
     >
       {/* Circuit Tech Pattern - halus */}
@@ -117,71 +123,71 @@ const News = ({ data }) => {
             {/* Circuit lines dan nodes */}
             <g stroke={colors.primary.blue} strokeWidth="0.08" fill="none" opacity="0.25">
               {/* Horizontal circuit lines */}
-              <line x1="0" y1="10" x2="15" y2="10"/>
-              <line x1="25" y1="10" x2="40" y2="10"/>
-              <line x1="0" y1="30" x2="10" y2="30"/>
-              <line x1="20" y1="30" x2="40" y2="30"/>
-              
+              <line x1="0" y1="10" x2="15" y2="10" />
+              <line x1="25" y1="10" x2="40" y2="10" />
+              <line x1="0" y1="30" x2="10" y2="30" />
+              <line x1="20" y1="30" x2="40" y2="30" />
+
               {/* Vertical circuit lines */}
-              <line x1="10" y1="0" x2="10" y2="15"/>
-              <line x1="10" y1="25" x2="10" y2="40"/>
-              <line x1="30" y1="0" x2="30" y2="10"/>
-              <line x1="30" y1="20" x2="30" y2="40"/>
-              
+              <line x1="10" y1="0" x2="10" y2="15" />
+              <line x1="10" y1="25" x2="10" y2="40" />
+              <line x1="30" y1="0" x2="30" y2="10" />
+              <line x1="30" y1="20" x2="30" y2="40" />
+
               {/* Diagonal connections */}
-              <line x1="15" y1="10" x2="20" y2="15"/>
-              <line x1="20" y1="25" x2="25" y2="30"/>
+              <line x1="15" y1="10" x2="20" y2="15" />
+              <line x1="20" y1="25" x2="25" y2="30" />
             </g>
-            
+
             {/* Circuit nodes/dots */}
             <g fill={colors.primary.blue} opacity="0.3">
-              <circle cx="10" cy="10" r="0.6"/>
-              <circle cx="30" cy="10" r="0.6"/>
-              <circle cx="10" cy="30" r="0.6"/>
-              <circle cx="30" cy="30" r="0.6"/>
+              <circle cx="10" cy="10" r="0.6" />
+              <circle cx="30" cy="10" r="0.6" />
+              <circle cx="10" cy="30" r="0.6" />
+              <circle cx="30" cy="30" r="0.6" />
             </g>
-            
+
             {/* Secondary circuit pattern */}
             <g stroke={colors.primary.purple} strokeWidth="0.06" fill="none" opacity="0.2">
               {/* L-shaped circuits */}
-              <path d="M5,5 L5,15 L15,15"/>
-              <path d="M25,25 L35,25 L35,35"/>
-              <path d="M35,5 L35,15 L25,15"/>
-              <path d="M15,25 L5,25 L5,35"/>
+              <path d="M5,5 L5,15 L15,15" />
+              <path d="M25,25 L35,25 L35,35" />
+              <path d="M35,5 L35,15 L25,15" />
+              <path d="M15,25 L5,25 L5,35" />
             </g>
-            
+
             {/* Small connector nodes */}
             <g fill={colors.primary.purple} opacity="0.2">
-              <circle cx="5" cy="5" r="0.3"/>
-              <circle cx="35" cy="35" r="0.3"/>
-              <circle cx="35" cy="5" r="0.3"/>
-              <circle cx="5" cy="35" r="0.3"/>
-              <circle cx="15" cy="15" r="0.3"/>
-              <circle cx="25" cy="25" r="0.3"/>
+              <circle cx="5" cy="5" r="0.3" />
+              <circle cx="35" cy="35" r="0.3" />
+              <circle cx="35" cy="5" r="0.3" />
+              <circle cx="5" cy="35" r="0.3" />
+              <circle cx="15" cy="15" r="0.3" />
+              <circle cx="25" cy="25" r="0.3" />
             </g>
           </pattern>
-          <rect width="100%" height="100%" fill="url(#newsPattern)"/>
+          <rect width="100%" height="100%" fill="url(#newsPattern)" />
         </svg>
       </div>
 
       {/* Floating Geometric Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div 
+        <div
           className="absolute top-20 left-10 w-20 h-20 rounded-full blur-xl"
-          style={{ 
-            background: `linear-gradient(135deg, ${colors.secondary.emerald}20, ${colors.secondary.cyan}20)` 
+          style={{
+            background: `linear-gradient(135deg, ${colors.secondary.emerald}20, ${colors.secondary.cyan}20)`
           }}
         ></div>
-        <div 
+        <div
           className="absolute top-40 right-20 w-16 h-16 rotate-45 blur-lg"
-          style={{ 
-            background: `linear-gradient(135deg, ${colors.accent.lightBlue}15, ${colors.accent.lightPurple}15)` 
+          style={{
+            background: `linear-gradient(135deg, ${colors.accent.lightBlue}15, ${colors.accent.lightPurple}15)`
           }}
         ></div>
-        <div 
+        <div
           className="absolute bottom-32 left-1/3 w-12 h-12 rounded-full blur-lg"
-          style={{ 
-            background: `linear-gradient(135deg, ${colors.secondary.teal}20, ${colors.secondary.emerald}20)` 
+          style={{
+            background: `linear-gradient(135deg, ${colors.secondary.teal}20, ${colors.secondary.emerald}20)`
           }}
         ></div>
       </div>
@@ -190,35 +196,38 @@ const News = ({ data }) => {
         {/* Modern Section Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center mb-6">
-            <div 
+            <div
               className="w-1 h-8 rounded-full mr-4"
               style={{ background: colors.primary.blue }}
             ></div>
-            <span 
+            <span
               className="text-sm font-bold uppercase tracking-wider"
               style={{ color: colors.primary.blue }}
             >
-              Berita Terbaru
+              {/* label badge */}
+              {t('news.header.badge')}
             </span>
-            <div 
+            <div
               className="w-1 h-8 rounded-full ml-4"
               style={{ background: colors.primary.blue }}
             ></div>
           </div>
-          <h2 
+          <h2
             className="text-5xl font-bold mb-6 bg-clip-text text-transparent"
-            style={{ 
+            style={{
               backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
             }}
           >
-            6 Berita Terbaru Al Wafi
+            {/* label buat news title */}
+            {t('news.header.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Ikuti perkembangan terbaru kegiatan dan prestasi siswa Al Wafi Islamic Boarding School
+            {/* label buat news deskripsi */}
+            {t('news.header.desc')}
           </p>
-          <div 
+          <div
             className="w-24 h-1 mx-auto mt-6 rounded-full"
-            style={{ 
+            style={{
               background: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
             }}
           ></div>
@@ -228,23 +237,32 @@ const News = ({ data }) => {
         {loading ? (
           <div className="text-center py-20">
             <div className="inline-flex items-center justify-center">
-              <div 
+              <div
                 className="animate-spin rounded-full h-12 w-12 border-b-2"
                 style={{ borderColor: colors.primary.blue }}
               ></div>
-              <span className="ml-4 text-lg text-gray-600">Memuat berita terbaru...</span>
+              <span className="ml-4 text-lg text-gray-600">
+                {/* label news loading text */}
+                {t('news.status.loading')}
+              </span>
             </div>
           </div>
         ) : error ? (
           <div className="text-center py-20">
-            <div 
+            <div
               className="inline-flex items-center justify-center p-6 rounded-2xl shadow-lg"
               style={{ background: `${colors.accent.lightBlue}10` }}
             >
               <i className="fas fa-exclamation-triangle text-yellow-500 text-2xl mr-4"></i>
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Gagal Memuat Berita</h3>
-                <p className="text-gray-600">Silakan coba lagi nanti atau kunjungi website resmi kami</p>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {/* label error news title */}
+                  {t('news.status.error_title')}
+                </h3>
+                <p className="text-gray-600">
+                  {/* label error news deskripsi */}
+                  {t('news.status.error_desc')}
+                </p>
               </div>
             </div>
           </div>
@@ -257,12 +275,12 @@ const News = ({ data }) => {
               };
 
               return (
-                <article 
-                  key={article.id} 
+                <article
+                  key={article.id}
                   className="group relative rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20 backdrop-blur-sm overflow-hidden"
                   style={{
-                    background: data?.colorScheme?.gradient?.aboutCard || 
-                               `linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)`,
+                    background: data?.colorScheme?.gradient?.aboutCard ||
+                      `linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)`,
                     opacity: opacity.aboutCard / 100
                   }}
                 >
@@ -272,22 +290,22 @@ const News = ({ data }) => {
                       {/* Mini circuit pattern */}
                       <g stroke={newsColor.primary} strokeWidth="0.06" fill="none" opacity="0.2">
                         {/* Corner circuit lines */}
-                        <path d="M15,15 L25,15 L25,25"/>
-                        <path d="M95,95 L105,95 L105,105"/>
-                        <path d="M105,15 L95,15 L95,25"/>
-                        <path d="M25,95 L15,95 L15,105"/>
+                        <path d="M15,15 L25,15 L25,25" />
+                        <path d="M95,95 L105,95 L105,105" />
+                        <path d="M105,15 L95,15 L95,25" />
+                        <path d="M25,95 L15,95 L15,105" />
                       </g>
                       {/* Circuit nodes */}
                       <g fill={newsColor.primary} opacity="0.25">
-                        <circle cx="15" cy="15" r="1"/>
-                        <circle cx="105" cy="105" r="1"/>
-                        <circle cx="105" cy="15" r="0.7"/>
-                        <circle cx="15" cy="105" r="0.7"/>
+                        <circle cx="15" cy="15" r="1" />
+                        <circle cx="105" cy="105" r="1" />
+                        <circle cx="105" cy="15" r="0.7" />
+                        <circle cx="15" cy="105" r="0.7" />
                       </g>
                       {/* Connecting lines */}
                       <g stroke={newsColor.secondary} strokeWidth="0.04" opacity="0.15">
-                        <line x1="25" y1="15" x2="95" y2="15"/>
-                        <line x1="15" y1="25" x2="15" y2="95"/>
+                        <line x1="25" y1="15" x2="95" y2="15" />
+                        <line x1="15" y1="25" x2="15" y2="95" />
                       </g>
                     </svg>
                   </div>
@@ -317,13 +335,14 @@ const News = ({ data }) => {
                   <div className="relative z-10 p-6">
                     {/* Date and Category */}
                     <div className="flex items-center justify-between mb-4">
-                      <span 
+                      <span
                         className="text-xs font-semibold px-3 py-1 rounded-full text-white"
-                        style={{ 
+                        style={{
                           background: `linear-gradient(90deg, ${newsColor.primary} 0%, ${newsColor.secondary} 100%)`
                         }}
                       >
-                        Berita
+                        {/* label tag */}
+                        {t('news.card.tag')}
                       </span>
                       <span className="text-sm text-gray-500">
                         {formatDate(article.date)}
@@ -331,9 +350,9 @@ const News = ({ data }) => {
                     </div>
 
                     {/* Title */}
-                    <h3 
+                    <h3
                       className="text-lg font-bold mb-3 bg-clip-text text-transparent leading-tight"
-                      style={{ 
+                      style={{
                         backgroundImage: `linear-gradient(90deg, ${newsColor.primary} 0%, ${newsColor.secondary} 100%)`
                       }}
                     >
@@ -353,14 +372,15 @@ const News = ({ data }) => {
                       className="inline-flex items-center text-sm font-semibold transition-all duration-300 group-hover:translate-x-1"
                       style={{ color: newsColor.primary }}
                     >
-                      Baca Selengkapnya
+                      {/* label buat read more */}
+                      {t('news.card.read_more')}
                       <i className="fas fa-arrow-right ml-2 text-xs"></i>
                     </a>
 
                     {/* Accent line */}
-                    <div 
+                    <div
                       className="w-16 h-1 mt-4 rounded-full group-hover:w-24 transition-all duration-300"
-                      style={{ 
+                      style={{
                         background: `linear-gradient(90deg, ${newsColor.primary} 0%, ${newsColor.secondary} 100%)`
                       }}
                     ></div>
@@ -385,7 +405,8 @@ const News = ({ data }) => {
               }}
             >
               <i className="fas fa-newspaper mr-3"></i>
-              Lihat Semua Berita
+              {/* label cta */}
+              {t('news.cta')}
               <i className="fas fa-external-link-alt ml-3 text-sm"></i>
             </a>
           </div>
