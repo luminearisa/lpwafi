@@ -1,10 +1,12 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import idPack from './vocab/id.json';
 import enPack from './vocab/en.json';
+import arPack from './vocab/ar.json';
 
 const dictionaries = {
   id: idPack,
-  en: enPack
+  en: enPack,
+  ar: arPack
 };
 
 const LanguageContext = createContext();
@@ -17,9 +19,17 @@ export const LanguageProvider = ({ children }) => {
     return savedLanguage || 'id';
   });
 
-  // update localstorage bahasa yang dipilih
+  // update localstorage bahasa yang dipilih dan tangani RTL
   useEffect(() => {
     localStorage.setItem('siteLang', language);
+    
+    // Setel atribut HTML lang dan dir
+    document.documentElement.lang = language;
+    if (language === 'ar') {
+      document.documentElement.dir = 'rtl';
+    } else {
+      document.documentElement.dir = 'ltr';
+    }
   }, [language]);
 
   // function LanguageContext

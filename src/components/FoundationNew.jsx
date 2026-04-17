@@ -75,19 +75,19 @@ const Foundation = ({ data }) => {
       {/* Floating Geometric Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div 
-          className="absolute top-20 left-10 w-20 h-20 rounded-full blur-xl"
+          className="absolute top-20 start-10 w-20 h-20 rounded-full blur-xl"
           style={{ 
             background: `linear-gradient(135deg, ${colors.secondary.emerald}20, ${colors.secondary.cyan}20)` 
           }}
         ></div>
         <div 
-          className="absolute top-40 right-20 w-16 h-16 rotate-45 blur-lg"
+          className="absolute top-40 end-20 w-16 h-16 rotate-45 blur-lg"
           style={{ 
             background: `linear-gradient(135deg, ${colors.accent.lightBlue}15, ${colors.accent.lightPurple}15)` 
           }}
         ></div>
         <div 
-          className="absolute bottom-32 left-1/3 w-12 h-12 rounded-full blur-lg"
+          className="absolute bottom-32 start-1/3 w-12 h-12 rounded-full blur-lg"
           style={{ 
             background: `linear-gradient(135deg, ${colors.secondary.teal}20, ${colors.secondary.emerald}20)` 
           }}
@@ -99,7 +99,7 @@ const Foundation = ({ data }) => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center mb-6">
             <div 
-              className="w-1 h-8 rounded-full mr-4"
+              className="w-1 h-8 rounded-full me-4"
               style={{ background: colors.primary.blue }}
             ></div>
             <span 
@@ -109,7 +109,7 @@ const Foundation = ({ data }) => {
               Tentang Yayasan
             </span>
             <div 
-              className="w-1 h-8 rounded-full ml-4"
+              className="w-1 h-8 rounded-full ms-4"
               style={{ background: colors.primary.blue }}
             ></div>
           </div>
@@ -157,7 +157,7 @@ const Foundation = ({ data }) => {
                     style={{ background: colors.primary.blue }}
                   ></div>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h2 
                     className="text-3xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -238,7 +238,7 @@ const Foundation = ({ data }) => {
                     style={{ background: colors.secondary.emerald }}
                   ></div>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h2 
                     className="text-3xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -260,7 +260,7 @@ const Foundation = ({ data }) => {
                 </p>
                 
                 <div 
-                  className="p-6 rounded-2xl border-l-4"
+                  className="p-6 rounded-2xl border-s-4"
                   style={{ 
                     backgroundColor: `${colors.accent.lightBlue}10`,
                     borderColor: colors.accent.lightBlue
@@ -327,7 +327,7 @@ const Foundation = ({ data }) => {
                     style={{ background: colors.gold.primary }}
                   ></div>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h3 
                     className="text-2xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -343,7 +343,7 @@ const Foundation = ({ data }) => {
                 </div>
               </div>
               <div 
-                className="p-6 rounded-2xl border-l-4"
+                className="p-6 rounded-2xl border-s-4"
                 style={{ 
                   backgroundColor: `${colors.gold.primary}10`,
                   borderColor: colors.gold.primary
@@ -380,7 +380,7 @@ const Foundation = ({ data }) => {
                     style={{ background: colors.accent.lightBlue }}
                   ></div>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h3 
                     className="text-2xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -404,7 +404,7 @@ const Foundation = ({ data }) => {
                 ].map((item, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
-                      className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 mr-4 group-hover:scale-110 transition-transform"
+                      className="w-6 h-6 rounded-full flex items-center justify-center mt-0.5 me-4 group-hover:scale-110 transition-transform"
                       style={{ background: colors.accent.lightBlue }}
                     >
                       <i className="fas fa-check text-white text-xs"></i>
@@ -430,7 +430,7 @@ const Foundation = ({ data }) => {
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-8">
                 <div 
-                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4"
+                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 me-4"
                   style={{ 
                     background: `linear-gradient(135deg, ${colors.primary.purple} 0%, ${colors.primary.indigo} 100%)`,
                     opacity: opacity.aboutIcon / 100
@@ -500,7 +500,7 @@ const Foundation = ({ data }) => {
           <div className="relative z-10 text-white">
             <div className="text-center mb-12">
               <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
-                <i className="fas fa-star mr-2"></i>
+                <i className="fas fa-star me-2"></i>
                 Nilai-Nilai Al Wafi
               </div>
               <h2 className="text-4xl font-bold mb-4">Value Al Wafi</h2>

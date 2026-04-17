@@ -103,19 +103,19 @@ const BiroBekal = ({ data }) => {
       {/* Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div 
-          className="absolute top-20 left-10 w-20 h-20 rounded-full blur-xl"
+          className="absolute top-20 start-10 w-20 h-20 rounded-full blur-xl"
           style={{ 
             background: `linear-gradient(135deg, ${extendedColors.accent.lightBlue}20, ${extendedColors.primary.purple}20)` 
           }}
         ></div>
         <div 
-          className="absolute top-40 right-20 w-16 h-16 rotate-45 blur-lg"
+          className="absolute top-40 end-20 w-16 h-16 rotate-45 blur-lg"
           style={{ 
             background: `linear-gradient(135deg, ${extendedColors.secondary.teal}15, ${extendedColors.accent.lightPurple}15)` 
           }}
         ></div>
         <div 
-          className="absolute bottom-32 left-1/3 w-12 h-12 rounded-full blur-lg"
+          className="absolute bottom-32 start-1/3 w-12 h-12 rounded-full blur-lg"
           style={{ 
             background: `linear-gradient(135deg, ${extendedColors.gold.primary}20, ${extendedColors.rose.primary}20)` 
           }}
@@ -127,7 +127,7 @@ const BiroBekal = ({ data }) => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center mb-6">
             <div 
-              className="w-1 h-8 rounded-full mr-4"
+              className="w-1 h-8 rounded-full me-4"
               style={{ background: extendedColors.accent.lightBlue }}
             ></div>
             <span 
@@ -137,7 +137,7 @@ const BiroBekal = ({ data }) => {
               { t('biro_bekal.header.badge') }
             </span>
             <div 
-              className="w-1 h-8 rounded-full ml-4"
+              className="w-1 h-8 rounded-full ms-4"
               style={{ background: extendedColors.accent.lightBlue }}
             ></div>
           </div>
@@ -185,7 +185,7 @@ const BiroBekal = ({ data }) => {
                     style={{ background: extendedColors.accent.lightBlue }}
                   ></div>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h2 
                     className="text-3xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -246,7 +246,7 @@ const BiroBekal = ({ data }) => {
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-8">
                 <div 
-                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4"
+                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 me-4"
                   style={{ 
                     background: `linear-gradient(135deg, ${extendedColors.gold.primary} 0%, ${extendedColors.gold.light} 100%)`,
                     opacity: opacity.aboutIcon / 100
@@ -269,7 +269,7 @@ const BiroBekal = ({ data }) => {
               </div>
               
               <div 
-                className="p-8 rounded-2xl border-l-4"
+                className="p-8 rounded-2xl border-s-4"
                 style={{ 
                   backgroundColor: `${extendedColors.gold.primary}10`,
                   borderColor: extendedColors.gold.primary
@@ -303,7 +303,7 @@ const BiroBekal = ({ data }) => {
                 >
                   <i className="fas fa-chalkboard-teacher text-white text-2xl"></i>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h3 
                     className="text-xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -318,7 +318,7 @@ const BiroBekal = ({ data }) => {
                 {mentoringPoints.map((point, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
-                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 mr-3 group-hover:scale-110 transition-transform"
+                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 me-3 group-hover:scale-110 transition-transform"
                       style={{ background: extendedColors.accent.lightBlue }}
                     >
                       <i className="fas fa-check text-white text-xs"></i>
@@ -348,7 +348,7 @@ const BiroBekal = ({ data }) => {
                 >
                   <i className="fas fa-award text-white text-2xl"></i>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h3 
                     className="text-xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -363,7 +363,7 @@ const BiroBekal = ({ data }) => {
                 {scholarshipPoints.map((point, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
-                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 mr-3 group-hover:scale-110 transition-transform"
+                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 me-3 group-hover:scale-110 transition-transform"
                       style={{ background: extendedColors.secondary.emerald }}
                     >
                       <i className="fas fa-check text-white text-xs"></i>
@@ -393,7 +393,7 @@ const BiroBekal = ({ data }) => {
                 >
                   <i className="fas fa-users text-white text-2xl"></i>
                 </div>
-                <div className="ml-4">
+                <div className="ms-4">
                   <h3 
                     className="text-xl font-bold bg-clip-text text-transparent"
                     style={{ 
@@ -408,7 +408,7 @@ const BiroBekal = ({ data }) => {
                 {alumniPoints.map((point, index) => (
                   <li key={index} className="flex items-start group">
                     <div 
-                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 mr-3 group-hover:scale-110 transition-transform"
+                      className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 me-3 group-hover:scale-110 transition-transform"
                       style={{ background: extendedColors.primary.purple }}
                     >
                       <i className="fas fa-check text-white text-xs"></i>
@@ -434,7 +434,7 @@ const BiroBekal = ({ data }) => {
             <div className="relative z-10 text-center">
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4"
+                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 me-4"
                   style={{ 
                     background: `linear-gradient(135deg, ${extendedColors.rose.primary} 0%, ${extendedColors.rose.light} 100%)`,
                     opacity: opacity.aboutIcon / 100
@@ -487,7 +487,7 @@ const BiroBekal = ({ data }) => {
                         style={{ background: extendedColors.secondary.emerald }}
                       ></div>
                     </div>
-                    <div className="ml-4">
+                    <div className="ms-4">
                       <h3 
                         className="text-lg font-bold bg-clip-text text-transparent capitalize"
                         style={{ 
@@ -520,7 +520,7 @@ const BiroBekal = ({ data }) => {
             <div className="relative z-10 text-center">
               <div className="flex items-center justify-center mb-6">
                 <div 
-                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4"
+                  className="relative p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 me-4"
                   style={{ 
                     background: `linear-gradient(135deg, ${extendedColors.secondary.emerald} 0%, ${extendedColors.secondary.cyan} 100%)`,
                     opacity: opacity.aboutIcon / 100
@@ -800,7 +800,7 @@ const BiroBekal = ({ data }) => {
           
           <div className="relative z-10 text-white">
             <div className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-sm font-semibold mb-6">
-              <i className="fas fa-users mr-2"></i>
+              <i className="fas fa-users me-2"></i>
               { t('biro_bekal.cta.badge') }
             </div>
             <h2 className="text-4xl font-bold mb-4">{ t('biro_bekal.cta.title') }</h2>

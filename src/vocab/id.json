@@ -187,7 +187,7 @@
       "rate_label": "Tingkat Penerimaan",
       "list": [
         "Alumni diterima di universitas top dunia dengan beasiswa penuh",
-        "Banyak alumni melanjutkan ke jenjang S2 dan S3 di luar negeri",
+        "Banyak alumni melanjutkan ke jenjang S1 di luar negeri",
         "Alumni tersebar di berbagai bidang profesi dan berwirausaha sukses",
         "Tetap menjaga nilai-nilai Islam dalam karir dan kehidupan sehari-hari"
       ]
@@ -305,12 +305,36 @@
       "title": "Value Al Wafi",
       "desc": "Nilai-nilai fundamental yang menjadi landasan pendidikan di Al Wafi",
       "list": [
-        { "letter": "A", "word": "Amanah", "description": "Dapat dipercaya dalam menjalankan tugas" },
-        { "letter": "L", "word": "Lilah", "description": "Mengharap ridha Allah dalam setiap amal" },
-        { "letter": "W", "word": "Wafi", "description": "Menepati janji dan komitmen" },
-        { "letter": "A", "word": "Akhlaq", "description": "Berakhlak mulia dalam kehidupan" },
-        { "letter": "F", "word": "Fathonah", "description": "Cerdas dan bijaksana dalam bertindak" },
-        { "letter": "I", "word": "International mindset", "description": "Berwawasan global dengan akar Islam" }
+        {
+          "letter": "A",
+          "word": "Amanah",
+          "description": "Dapat dipercaya dalam menjalankan tugas"
+        },
+        {
+          "letter": "L",
+          "word": "Lilah",
+          "description": "Mengharap ridha Allah dalam setiap amal"
+        },
+        {
+          "letter": "W",
+          "word": "Wafi",
+          "description": "Menepati janji dan komitmen"
+        },
+        {
+          "letter": "A",
+          "word": "Akhlaq",
+          "description": "Berakhlak mulia dalam kehidupan"
+        },
+        {
+          "letter": "F",
+          "word": "Fathonah",
+          "description": "Cerdas dan bijaksana dalam bertindak"
+        },
+        {
+          "letter": "I",
+          "word": "International mindset",
+          "description": "Berwawasan global dengan akar Islam"
+        }
       ]
     }
   },
@@ -391,12 +415,30 @@
       "title": "Pilar Program",
       "desc": "UPZ Al Wafi bernaung dibawah Yayasan Al-Sudais Indonesia, berkomitmen serta berfokus pada enam pilar program yang dirancang untuk membangun kemandirian umat. Ke-enam pilar program ini diantaranya:",
       "list": [
-        { "title": "Al Wafi Ta'awun", "description": "(Pembangunan - Wakaf)" },
-        { "title": "Al Wafi Tasqif", "description": "(Program Pendidikan)" },
-        { "title": "Al Wafi Tafaquh", "description": "(Program Dakwah)" },
-        { "title": "Al Wafi Tabarru'", "description": "(Program Kemanusiaan)" },
-        { "title": "Al Wafi Ta'atuf", "description": "(Program Sosial)" },
-        { "title": "Al Wafi Tadawul", "description": "(Program Ekonomi)" }
+        {
+          "title": "Al Wafi Ta'awun",
+          "description": "(Pembangunan - Wakaf)"
+        },
+        {
+          "title": "Al Wafi Tasqif",
+          "description": "(Program Pendidikan)"
+        },
+        {
+          "title": "Al Wafi Tafaquh",
+          "description": "(Program Dakwah)"
+        },
+        {
+          "title": "Al Wafi Tabarru'",
+          "description": "(Program Kemanusiaan)"
+        },
+        {
+          "title": "Al Wafi Ta'atuf",
+          "description": "(Program Sosial)"
+        },
+        {
+          "title": "Al Wafi Tadawul",
+          "description": "(Program Ekonomi)"
+        }
       ]
     },
     "vision": {

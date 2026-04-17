@@ -9,17 +9,12 @@ const Header = ({ data }) => {
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const location = useLocation();
 
-  // Untuk menu bahasa
   const [isLangOpen, setIsLangOpen] = useState(false);
   const { t, setLanguage, language } = useLanguage();
 
-  // Get color scheme from data or use defaults
-  const colors = data?.colorScheme || {
-    primary: { blue: "#1e3a8a", purple: "#7c3aed", indigo: "#4338ca" },
-    secondary: { emerald: "#059669", cyan: "#0891b2", teal: "#0d9488" },
-    accent: { lightBlue: "#3b82f6", lightPurple: "#9333ea", lightIndigo: "#6366f1" },
-    gold: { primary: "#f59e0b", light: "#fbbf24", dark: "#d97706" }
-  };
+  // Warna brand dari logo
+  const brandTeal = "#29A6B6";
+  const brandGreen = "#349B48";
 
   const handleNavigation = (item) => {
     if (item.type === 'scroll') {
@@ -32,6 +27,8 @@ const Header = ({ data }) => {
         }
       }
     }
+    // Tutup menu mobile setelah navigasi
+    setIsMenuOpen(false);
   };
 
   const handleDropdownEnter = (itemName) => {
@@ -49,17 +46,6 @@ const Header = ({ data }) => {
     setDropdownTimeout(timeout);
   };
 
-  const handleDropdownMenuEnter = () => {
-    if (dropdownTimeout) {
-      clearTimeout(dropdownTimeout);
-      setDropdownTimeout(null);
-    }
-  };
-
-  const handleDropdownMenuLeave = () => {
-    setActiveDropdown(null);
-  };
-
   const menuItems = [
     { name: t('header.menu.home'), href: '/', icon: 'fas fa-home', type: 'link' },
     {
@@ -67,10 +53,10 @@ const Header = ({ data }) => {
       href: '#about',
       icon: 'fas fa-info-circle',
       submenu: [
-        { name: t('header.menu.about.yayasan'), href: '/yayasan', icon: 'fas fa-building', type: 'link' },
-        { name: t('header.menu.about.dakwah'), href: '/dakwah-sosial', icon: 'fas fa-mosque', type: 'link' },
-        { name: t('header.menu.about.upz'), href: '/upz', icon: 'fas fa-hand-holding-heart', type: 'link' },
-        { name: t('header.menu.about.profil'), href: '#about', icon: 'fas fa-school', type: 'scroll' }
+        { name: t('header.menu.about.yayasan'), href: '/yayasan', type: 'link' },
+        { name: t('header.menu.about.dakwah'), href: '/dakwah-sosial', type: 'link' },
+        { name: t('header.menu.about.upz'), href: '/upz', type: 'link' },
+        { name: t('header.menu.about.profil'), href: '#about', type: 'scroll' }
       ]
     },
     {
@@ -78,11 +64,11 @@ const Header = ({ data }) => {
       href: '#programs',
       icon: 'fas fa-graduation-cap',
       submenu: [
-        { name: t('header.menu.program.sdtq'), href: '/sdtq', icon: 'fas fa-book-open', type: 'link' },
-        { name: t('header.menu.program.smp'), href: '/smp', icon: 'fas fa-school', type: 'link' },
-        { name: t('header.menu.program.sma'), href: '/sma', icon: 'fas fa-graduation-cap', type: 'link' },
-        { name: t('header.menu.program.overseas'), href: '/program-overseas', icon: 'fas fa-globe', type: 'link' },
-        { name: t('header.menu.program.lainnya'), href: '#programs', icon: 'fas fa-list', type: 'scroll' }
+        { name: t('header.menu.program.sdtq'), href: '/sdtq', type: 'link' },
+        { name: t('header.menu.program.smp'), href: '/smp', type: 'link' },
+        { name: t('header.menu.program.sma'), href: '/sma', type: 'link' },
+        { name: t('header.menu.program.overseas'), href: '/program-overseas', type: 'link' },
+        { name: t('header.menu.program.lainnya'), href: '#programs', type: 'scroll' }
       ]
     },
     { name: t('header.menu.alumni'), href: '#alumni', icon: 'fas fa-users', type: 'scroll' },
@@ -90,6 +76,7 @@ const Header = ({ data }) => {
     { name: t('header.menu.contact'), href: '#contact', icon: 'fas fa-envelope', type: 'scroll' }
   ];
 
+  // Efek Scroll & Klik di luar area
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -99,7 +86,6 @@ const Header = ({ data }) => {
       if (!event.target.closest('.dropdown-container')) {
         setActiveDropdown(null);
       }
-      // nutup dropdown kalo klik scrim
       if (!event.target.closest('.lang-dropdown-wrapper')) {
         setIsLangOpen(false);
       }
@@ -111,150 +97,96 @@ const Header = ({ data }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleClickOutside);
-      if (dropdownTimeout) {
-        clearTimeout(dropdownTimeout);
-      }
+      if (dropdownTimeout) clearTimeout(dropdownTimeout);
     };
   }, [dropdownTimeout]);
 
+  // Efek Lock Body Scroll saat Mobile Menu Terbuka
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-emerald-200/30'
-        : 'bg-white/90 backdrop-blur-lg shadow-xl'
-      }`}>
-      {/* Islamic Pattern Background */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <svg className="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="headerPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-              <g fill="none" stroke="url(#headerGradient)" strokeWidth="0.3">
-                <g transform="translate(30, 30)">
-                  <path d="M0,-15 L8,-8 L15,0 L8,8 L0,15 L-8,8 L-15,0 L-8,-8 Z" fill="rgba(59,130,246,0.05)" />
-                  <circle cx="0" cy="0" r="8" strokeWidth="0.2" />
-                  <circle cx="0" cy="0" r="3" fill="rgba(147,51,234,0.1)" />
-                </g>
-                <circle cx="10" cy="10" r="1" fill="rgba(59,130,246,0.15)" />
-                <circle cx="50" cy="10" r="1" fill="rgba(147,51,234,0.15)" />
-                <circle cx="10" cy="50" r="1" fill="rgba(99,102,241,0.15)" />
-                <circle cx="50" cy="50" r="1" fill="rgba(59,130,246,0.15)" />
-              </g>
-              <defs>
-                <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor={colors.accent.lightBlue} />
-                  <stop offset="50%" stopColor={colors.accent.lightPurple} />
-                  <stop offset="100%" stopColor={colors.accent.lightIndigo} />
-                </linearGradient>
-              </defs>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#headerPattern)" />
-        </svg>
-      </div>
+    <header className="fixed w-full top-0 z-[100] flex flex-col font-sans">
 
-      {/* --- TOP BAR - Enhanced --- */}
-      <div
-        className="text-white relative z-50"
-        style={{
-          background: data?.colorScheme?.gradient?.header ||
-            `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
-        }}
-      >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 opacity-10">
-            <svg className="w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-              <defs>
-                <pattern id="topPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <circle cx="10" cy="10" r="1" fill="white" opacity="0.3" />
-                  <circle cx="5" cy="5" r="0.5" fill="white" opacity="0.2" />
-                  <circle cx="15" cy="15" r="0.5" fill="white" opacity="0.2" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#topPattern)" />
-            </svg>
-          </div>
-        </div>
+      {/* --- TOP BAR: Deep Dark, Minimalist --- */}
+      {/* Diubah menjadi z-[60] agar overlay dropdown aman di atas navigasi utama */}
+      <div className="hidden lg:block bg-[#0a0a0a] text-[#a1a1aa] relative z-[60] border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center py-1.5 text-[9px] tracking-widest uppercase font-medium">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-center py-2 text-sm">
-            <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-6">
-              <div className="flex items-center group">
-                <div className="w-4 h-4 bg-emerald-400/20 rounded-full flex items-center justify-center mr-2 group-hover:bg-emerald-400/30 transition-colors">
-                  <i className="fas fa-map-marker-alt text-emerald-300 text-xs"></i>
-                </div>
-                <span className="text-blue-100 group-hover:text-white transition-colors text-xs">
-                  {/* === bagian top bar lokasi === */}
+            {/* Left: Info */}
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center group cursor-default">
+                <i className="fas fa-map-marker-alt me-2 text-white/40 group-hover:text-[#29A6B6] transition-colors duration-300"></i>
+                <span className="group-hover:text-white transition-colors duration-300">
                   {t('header.topbar.location')}
                 </span>
               </div>
-              <div className="flex items-center group">
-                <div className="w-4 h-4 bg-purple-400/20 rounded-full flex items-center justify-center mr-2 group-hover:bg-purple-400/30 transition-colors">
-                  <i className="fas fa-envelope text-purple-300 text-xs"></i>
-                </div>
-                <span className="text-purple-100 group-hover:text-white transition-colors text-xs">info@al-wafi.sch.id</span>
+              <div className="flex items-center group cursor-default">
+                <i className="fas fa-envelope me-2 text-white/40 group-hover:text-[#29A6B6] transition-colors duration-300"></i>
+                <span className="group-hover:text-white transition-colors duration-300">
+                  info@al-wafi.sch.id
+                </span>
               </div>
             </div>
 
-            <div className="flex items-center space-x-4 mt-1 md:mt-0">
-              {/* === dropdown bahasa === */}
+            {/* Right: Language & Socials */}
+            <div className="flex items-center space-x-6 relative">
+              {/* Language Switcher */}
               <div className="relative lang-dropdown-wrapper">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsLangOpen(!isLangOpen);
                   }}
-                  className="flex items-center space-x-1 px-2 py-1 rounded bg-white/10 hover:bg-white/20 transition-all text-xs font-bold border border-white/20 cursor-pointer"
+                  className="flex items-center space-x-2 text-[#a1a1aa] hover:text-[#29A6B6] transition-colors duration-300 cursor-pointer py-1"
                 >
-                  <span>{language.toUpperCase()}</span>
-                  <i className={`fas fa-chevron-down text-[10px] ml-1 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`}></i>
+                  <span>{language === 'id' ? 'ID' : language === 'en' ? 'EN' : 'AR'}</span>
+                  <i className={`fas fa-chevron-down text-[8px] transition-transform duration-500 ${isLangOpen ? 'rotate-180' : ''}`}></i>
                 </button>
 
-                {isLangOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-20 bg-white rounded shadow-xl border border-gray-200 overflow-hidden z-[60]">
-                    <button
-                      onClick={() => { setLanguage('id'); setIsLangOpen(false); }}
-                      className={`w-full text-left px-3 py-2 text-xs hover:bg-blue-50 transition-colors ${language === 'id' ? 'font-bold text-blue-600' : 'text-gray-600'}`}
-                    >
-                      ID
-                    </button>
-                    <button
-                      onClick={() => { setLanguage('en'); setIsLangOpen(false); }}
-                      className={`w-full text-left px-3 py-2 text-xs hover:bg-blue-50 transition-colors ${language === 'en' ? 'font-bold text-blue-600' : 'text-gray-600'}`}
-                    >
-                      EN
-                    </button>
-                  </div>
-                )}
+                {/* Dropdown Bahasa */}
+                <div className={`absolute top-full end-0 mt-2 w-24 bg-white border border-gray-100 shadow-2xl transition-all duration-300 origin-top-right ${isLangOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
+                  <button
+                    onClick={() => { setLanguage('id'); setIsLangOpen(false); }}
+                    className={`w-full text-start px-4 py-3 text-[10px] tracking-widest uppercase transition-colors duration-300 ${language === 'id' ? 'bg-[#f0f9fa] text-[#29A6B6] font-semibold' : 'text-gray-500 hover:bg-[#f0f9fa] hover:text-[#29A6B6]'}`}
+                  >
+                    Bahasa
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('en'); setIsLangOpen(false); }}
+                    className={`w-full text-start px-4 py-3 text-[10px] tracking-widest uppercase transition-colors duration-300 border-t border-gray-50 ${language === 'en' ? 'bg-[#f0f9fa] text-[#29A6B6] font-semibold' : 'text-gray-500 hover:bg-[#f0f9fa] hover:text-[#29A6B6]'}`}
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => { setLanguage('ar'); setIsLangOpen(false); }}
+                    className={`w-full text-start px-4 py-3 text-[10px] tracking-widest uppercase transition-colors duration-300 border-t border-gray-50 ${language === 'ar' ? 'bg-[#f0f9fa] text-[#29A6B6] font-semibold' : 'text-gray-500 hover:bg-[#f0f9fa] hover:text-[#29A6B6]'}`}
+                  >
+                    العربية
+                  </button>
+                </div>
               </div>
-              {/* === end dropdown bahasa === */}
 
-              <div className="flex items-center space-x-2">
-                <span className="text-blue-200 text-xs font-medium mr-1">
-                  {/* === text: ikuti kami === */}
-                  {t('header.topbar.follow')}
-                </span>
-                <a
-                  href={`https://instagram.com/${data?.contact?.socialMedia?.instagram?.[0]?.replace('@', '') || 'alwafiwibs.official'}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-emerald-300 hover:text-white hover:bg-emerald-500 transition-all duration-300 hover:scale-110"
-                >
-                  <i className="fab fa-instagram text-xs"></i>
+              {/* Socials */}
+              <div className="flex items-center space-x-4">
+                <span className="text-white/40 me-1 hidden lg:inline-block">{t('header.topbar.follow')}</span>
+                <a href={`https://instagram.com/${data?.contact?.socialMedia?.instagram?.[0]?.replace('@', '') || 'alwafiwibs.official'}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#29A6B6] transition-colors duration-300">
+                  <i className="fab fa-instagram"></i>
                 </a>
-                <a
-                  href="https://youtube.com/@pesantrenwibs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-red-300 hover:text-white hover:bg-red-500 transition-all duration-300 hover:scale-110"
-                >
-                  <i className="fab fa-youtube text-xs"></i>
+                <a href="https://youtube.com/@pesantrenwibs" target="_blank" rel="noopener noreferrer" className="hover:text-[#29A6B6] transition-colors duration-300">
+                  <i className="fab fa-youtube"></i>
                 </a>
-                <a
-                  href={`https://facebook.com/${data?.contact?.socialMedia?.facebook || 'alwafiwibs'}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-blue-300 hover:text-white hover:bg-blue-500 transition-all duration-300 hover:scale-110"
-                >
-                  <i className="fab fa-facebook text-xs"></i>
+                <a href={`https://facebook.com/${data?.contact?.socialMedia?.facebook || 'alwafiwibs'}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#29A6B6] transition-colors duration-300">
+                  <i className="fab fa-facebook-f"></i>
                 </a>
               </div>
             </div>
@@ -262,452 +194,256 @@ const Header = ({ data }) => {
         </div>
       </div>
 
-      {/* Main Header - Completely Redesigned */}
-      <div className="relative z-40">
+      {/* --- MAIN HEADER --- */}
+      {/* Diubah menjadi z-40 agar selalu berada di bawah stacking context Top Bar */}
+      <div
+        className={`relative z-40 transition-all duration-500 bg-white ${isScrolled || isMenuOpen
+          ? 'shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3'
+          : 'shadow-none py-4 md:py-5 border-b border-gray-100'
+          }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo - Enhanced */}
-            <Link to="/" className="flex items-center group">
-              <div className="relative">
-                <div
-                  className="absolute inset-0 rounded-xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity"
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`
-                  }}
-                ></div>
-                <div
-                  className="relative bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
-                  style={{ borderColor: `${colors.accent.lightBlue}30` }}
-                >
-                  {data?.images?.logo ? (
-                    <img
-                      src={data.images.logo}
-                      alt="Al Wafi Logo"
-                      className="w-10 h-10 object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'block';
-                      }}
-                    />
-                  ) : null}
-                  <i className="fas fa-mosque text-2xl text-blue-600 hidden"></i>
-                  <div className="absolute inset-0 opacity-10">
-                    <svg className="w-full h-full" viewBox="0 0 50 50">
-                      <circle cx="25" cy="25" r="15" fill="none" stroke="url(#logoGradient)" strokeWidth="0.5" />
-                      <circle cx="25" cy="25" r="8" fill="none" stroke="url(#logoGradient)" strokeWidth="0.3" />
-                      <circle cx="25" cy="25" r="3" fill="url(#logoGradient)" opacity="0.3" />
-                      <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor={colors.accent.lightBlue} />
-                          <stop offset="100%" stopColor={colors.accent.lightPurple} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
+          <div className="flex justify-between items-center">
+
+            {/* Logo */}
+            <Link to="/" className="flex items-center group relative z-50" onClick={() => setIsMenuOpen(false)}>
+              {data?.images?.logo ? (
+                <img
+                  src={data.images.logo}
+                  alt="Al Wafi Logo"
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-[#29A6B6] text-white flex items-center justify-center rounded-sm">
+                  <i className="fas fa-mosque"></i>
                 </div>
-              </div>
-              <div className="ml-4">
-                <h1
-                  className="text-2xl font-bold bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage: `linear-gradient(90deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 50%, ${colors.primary.indigo} 100%)`
-                  }}
-                >
-                  {/* === bagian logo title === */}
+              )}
+              <div className="ms-3 md:ms-4 flex flex-col justify-center">
+                <h1 className="text-base md:text-lg font-bold text-[#29A6B6] tracking-widest uppercase leading-tight">
                   {t('header.brand.title')}
                 </h1>
-                <p
-                  className="text-xs font-semibold tracking-wide"
-                  style={{ color: colors.accent.lightBlue }}
-                >
-                  {/* === bagian logo subtitle === */}
+                <p className="text-[7px] md:text-[8px] text-[#349B48] font-medium tracking-[0.2em] uppercase mt-0.5">
                   {t('header.brand.subtitle')}
                 </p>
-                <div
-                  className="w-12 h-0.5 mt-1 group-hover:w-20 transition-all duration-300"
-                  style={{
-                    background: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 50%, ${colors.accent.lightIndigo} 100%)`
-                  }}
-                ></div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
-              {menuItems.map((item, index) => (
+            <nav className="hidden lg:flex items-center space-x-8">
+              {menuItems.map((item) => (
                 <div
                   key={item.name}
-                  className="relative group dropdown-container"
+                  className="relative group dropdown-container h-full flex items-center"
                   onMouseEnter={() => item.submenu && handleDropdownEnter(item.name)}
                   onMouseLeave={() => item.submenu && handleDropdownLeave()}
                 >
                   {item.type === 'link' ? (
                     <Link
                       to={item.href}
-                      className="group relative px-4 py-2 text-gray-700 font-semibold text-sm tracking-wide transition-all duration-300 rounded-lg flex items-center space-x-2"
-                      style={{
-                        '--hover-color': colors.accent.lightBlue,
-                        '--hover-bg': `${colors.accent.lightBlue}10`
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.color = colors.accent.lightBlue;
-                        e.target.style.backgroundColor = `${colors.accent.lightBlue}10`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.color = '#374151';
-                        e.target.style.backgroundColor = 'transparent';
-                      }}
+                      className="text-[11px] font-semibold text-gray-600 uppercase tracking-[0.15em] hover:text-[#29A6B6] transition-colors duration-300 py-4 flex items-center gap-1.5"
                     >
-                      <i className={`${item.icon} text-xs group-hover:scale-110 transition-transform`}></i>
                       <span>{item.name}</span>
-                      {item.submenu && (
-                        <i className="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                      )}
-                      <div
-                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 group-hover:w-6 transition-all duration-300"
-                        style={{
-                          background: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 50%, ${colors.accent.lightIndigo} 100%)`
-                        }}
-                      ></div>
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity">
-                        <svg className="w-full h-full" viewBox="0 0 40 20">
-                          <circle cx="20" cy="10" r="1" fill="currentColor" />
-                          <circle cx="15" cy="8" r="0.5" fill="currentColor" />
-                          <circle cx="25" cy="12" r="0.5" fill="currentColor" />
-                        </svg>
-                      </div>
+                      {item.submenu && <i className="fas fa-chevron-down text-[8px] opacity-50"></i>}
                     </Link>
                   ) : (
                     <button
                       onClick={() => handleNavigation(item)}
-                      className="group relative px-4 py-2 text-gray-700 font-semibold text-sm tracking-wide transition-all duration-300 rounded-lg flex items-center space-x-2"
-                      style={{
-                        '--hover-color': colors.accent.lightBlue,
-                        '--hover-bg': `${colors.accent.lightBlue}10`
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.color = colors.accent.lightBlue;
-                        e.target.style.backgroundColor = `${colors.accent.lightBlue}10`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.color = '#374151';
-                        e.target.style.backgroundColor = 'transparent';
-                      }}
+                      className="text-[11px] font-semibold text-gray-600 uppercase tracking-[0.15em] hover:text-[#29A6B6] transition-colors duration-300 py-4 flex items-center gap-1.5"
                     >
-                      <i className={`${item.icon} text-xs group-hover:scale-110 transition-transform`}></i>
                       <span>{item.name}</span>
-                      {item.submenu && (
-                        <i className="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                      )}
-                      <div
-                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 group-hover:w-6 transition-all duration-300"
-                        style={{
-                          background: `linear-gradient(90deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 50%, ${colors.accent.lightIndigo} 100%)`
-                        }}
-                      ></div>
+                      {item.submenu && <i className="fas fa-chevron-down text-[8px] opacity-50"></i>}
                     </button>
                   )}
 
-                  {/* Dropdown Menu */}
-                  {item.submenu && activeDropdown === item.name && (
+                  {/* Dropdown Menu Desktop */}
+                  {item.submenu && (
                     <div
-                      className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl border border-white/20 backdrop-blur-sm z-50 overflow-hidden"
-                      style={{
-                        background: `linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%)`
-                      }}
-                      onMouseEnter={handleDropdownMenuEnter}
-                      onMouseLeave={handleDropdownMenuLeave}
+                      className={`absolute top-[100%] start-0 min-w-[240px] bg-white border border-gray-100 shadow-[0_20px_40px_rgba(0,0,0,0.04)] transition-all duration-300 origin-top ${activeDropdown === item.name
+                        ? 'opacity-100 translate-y-0 visible pointer-events-auto'
+                        : 'opacity-0 translate-y-4 invisible pointer-events-none'
+                        }`}
+                      onMouseEnter={() => handleDropdownEnter(item.name)}
+                      onMouseLeave={handleDropdownLeave}
                     >
-                      {item.submenu.map((subItem, subIndex) => (
-                        subItem.type === 'link' ? (
-                          <Link
-                            key={subItem.name}
-                            to={subItem.href}
-                            className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:text-white transition-all duration-300 border-b border-gray-100 last:border-b-0"
-                            onMouseEnter={(e) => {
-                              e.target.style.background = `linear-gradient(135deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`;
-                              e.target.style.color = 'white';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.target.style.background = 'transparent';
-                              e.target.style.color = '#374151';
-                            }}
-                          >
-                            <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center"
-                              style={{
-                                background: `linear-gradient(135deg, ${colors.accent.lightBlue}20 0%, ${colors.accent.lightPurple}20 100%)`
-                              }}
+                      <div className="py-2">
+                        {item.submenu.map((subItem) => (
+                          subItem.type === 'link' ? (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              className="block px-6 py-3.5 text-[11px] font-medium text-gray-500 uppercase tracking-[0.1em] hover:text-[#29A6B6] hover:bg-[#f0f9fa] hover:ps-8 transition-all duration-300"
                             >
-                              <i
-                                className={`${subItem.icon} text-sm`}
-                                style={{ color: colors.accent.lightBlue }}
-                              ></i>
-                            </div>
-                            <span className="font-medium">{subItem.name}</span>
-                          </Link>
-                        ) : (
-                          <button
-                            key={subItem.name}
-                            onClick={() => handleNavigation(subItem)}
-                            className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:text-white transition-all duration-300 border-b border-gray-100 last:border-b-0 w-full text-left"
-                            onMouseEnter={(e) => {
-                              e.target.style.background = `linear-gradient(135deg, ${colors.accent.lightBlue} 0%, ${colors.accent.lightPurple} 100%)`;
-                              e.target.style.color = 'white';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.target.style.background = 'transparent';
-                              e.target.style.color = '#374151';
-                            }}
-                          >
-                            <div
-                              className="w-8 h-8 rounded-lg flex items-center justify-center"
-                              style={{
-                                background: `linear-gradient(135deg, ${colors.accent.lightBlue}20 0%, ${colors.accent.lightPurple}20 100%)`
-                              }}
+                              {subItem.name}
+                            </Link>
+                          ) : (
+                            <button
+                              key={subItem.name}
+                              onClick={() => handleNavigation(subItem)}
+                              className="block w-full text-start px-6 py-3.5 text-[11px] font-medium text-gray-500 uppercase tracking-[0.1em] hover:text-[#29A6B6] hover:bg-[#f0f9fa] hover:ps-8 transition-all duration-300"
                             >
-                              <i
-                                className={`${subItem.icon} text-sm`}
-                                style={{ color: colors.accent.lightBlue }}
-                              ></i>
-                            </div>
-                            <span className="font-medium">{subItem.name}</span>
-                          </button>
-                        )
-                      ))}
+                              {subItem.name}
+                            </button>
+                          )
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
               ))}
             </nav>
 
-            {/* CTA Button & Mobile Menu */}
-            <div className="flex items-center space-x-3">
+            {/* CTA & Hamburger Mobile */}
+            <div className="flex items-center space-x-5 relative z-50">
               <a
                 href={data?.contact?.registration?.url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex group relative text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 items-center overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.gold?.primary || '#f59e0b'} 0%, ${colors.gold?.light || '#fbbf24'} 50%, ${colors.gold?.dark || '#d97706'} 100%)`,
-                  '--hover-shadow': `0 20px 25px -5px ${colors.gold?.primary || '#f59e0b'}30`
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = `linear-gradient(135deg, ${colors.gold?.dark || '#d97706'} 0%, ${colors.gold?.primary || '#f59e0b'} 50%, ${colors.gold?.light || '#fbbf24'} 100%)`;
-                  e.target.style.transform = 'translateY(-2px) scale(1.02)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = `linear-gradient(135deg, ${colors.gold?.primary || '#f59e0b'} 0%, ${colors.gold?.light || '#fbbf24'} 50%, ${colors.gold?.dark || '#d97706'} 100%)`;
-                  e.target.style.transform = 'translateY(0) scale(1)';
-                }}
+                className="hidden lg:inline-flex items-center justify-center px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white bg-[#29A6B6] border border-[#29A6B6] hover:bg-transparent hover:text-[#29A6B6] transition-all duration-500"
               >
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" viewBox="0 0 100 40">
-                    <circle cx="20" cy="20" r="2" fill="white" opacity="0.3" />
-                    <circle cx="80" cy="20" r="2" fill="white" opacity="0.3" />
-                    <circle cx="50" cy="10" r="1" fill="white" opacity="0.2" />
-                    <circle cx="50" cy="30" r="1" fill="white" opacity="0.2" />
-                  </svg>
-                </div>
-                <i className="fas fa-user-plus mr-2 group-hover:scale-110 transition-transform relative z-10"></i>
-                {/* === label button header === */}
-                <span className="relative z-10">{t('header.cta')}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span>{t('header.cta')}</span>
+                <i className="fas fa-arrow-right ms-3 text-[10px]"></i>
               </a>
 
+              {/* Hamburger Menu - Brand Colors */}
               <button
-                className="lg:hidden relative w-10 h-10 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.primary.blue} 0%, ${colors.primary.purple} 100%)`
-                }}
+                className="lg:hidden w-10 h-10 flex flex-col justify-center items-end gap-1.5 focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle Menu"
               >
-                <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-sm transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`}></i>
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" viewBox="0 0 40 40">
-                    <circle cx="20" cy="20" r="6" fill="none" stroke="white" strokeWidth="0.5" />
-                    <circle cx="20" cy="20" r="2" fill="white" opacity="0.3" />
-                  </svg>
+                <span className={`block h-[2px] bg-[#29A6B6] transition-all duration-300 ${isMenuOpen ? 'w-6 rotate-45 translate-y-[8px]' : 'w-6'}`}></span>
+                <span className={`block h-[2px] bg-[#29A6B6] transition-all duration-300 ${isMenuOpen ? 'w-0 opacity-0' : 'w-5'}`}></span>
+                <span className={`block h-[2px] bg-[#29A6B6] transition-all duration-300 ${isMenuOpen ? 'w-6 -rotate-45 -translate-y-[8px]' : 'w-4'}`}></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* --- MOBILE NAVIGATION (FULL SCREEN OVERLAY) --- */}
+      <div
+        className={`lg:hidden fixed inset-0 z-40 bg-white transition-all duration-500 ease-in-out flex flex-col pt-[72px] md:pt-[84px] ${isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'
+          }`}
+      >
+        {/* Scrollable Menu Items */}
+        <div className="flex-1 overflow-y-auto px-6 py-8 pb-32">
+          <div className="flex flex-col space-y-2">
+            {menuItems.map((item) => (
+              <div key={item.name} className="border-b border-gray-100">
+                <div className="flex justify-between items-center py-4">
+                  {item.type === 'link' ? (
+                    <Link
+                      to={item.href}
+                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors"
+                      onClick={() => !item.submenu && setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleNavigation(item);
+                        if (!item.submenu) setIsMenuOpen(false);
+                      }}
+                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors text-start"
+                    >
+                      {item.name}
+                    </button>
+                  )}
+
+                  {item.submenu && (
+                    <button
+                      className="w-10 h-10 flex items-center justify-end text-[#29A6B6]"
+                      onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                    >
+                      <i className={`fas fa-chevron-down transition-transform duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`}></i>
+                    </button>
+                  )}
                 </div>
+
+                {/* Mobile Submenu (Accordion) */}
+                {item.submenu && (
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${activeDropdown === item.name ? 'max-h-[400px] opacity-100 mb-4' : 'max-h-0 opacity-0'
+                      }`}
+                  >
+                    <div className="flex flex-col space-y-4 ps-4 border-l border-[#29A6B6]/30 py-2">
+                      {item.submenu.map((subItem) => (
+                        subItem.type === 'link' ? (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.href}
+                            className="text-[10px] font-bold tracking-widest uppercase text-gray-500 hover:text-[#29A6B6]"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ) : (
+                          <button
+                            key={subItem.name}
+                            onClick={() => {
+                              handleNavigation(subItem);
+                              setIsMenuOpen(false);
+                            }}
+                            className="text-start text-[10px] font-bold tracking-widest uppercase text-gray-500 hover:text-[#29A6B6]"
+                          >
+                            {subItem.name}
+                          </button>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Fixed Bottom CTA & Utilities in Mobile Menu */}
+        <div className="absolute bottom-0 start-0 w-full bg-gray-50 border-t border-gray-200 p-6 flex flex-col gap-5">
+          {/* Mobile Language Switcher */}
+          <div className="flex justify-between items-center">
+            <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Pilih Bahasa</span>
+            <div className="flex space-x-2">
+              <button
+                onClick={() => setLanguage('id')}
+                className={`px-3 py-1 text-[10px] uppercase tracking-widest font-bold transition-colors ${language === 'id' ? 'bg-[#29A6B6] text-white' : 'bg-white border border-gray-200 text-gray-500'}`}
+              >
+                ID
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 text-[10px] uppercase tracking-widest font-bold transition-colors ${language === 'en' ? 'bg-[#29A6B6] text-white' : 'bg-white border border-gray-200 text-gray-500'}`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ar')}
+                className={`px-3 py-1 text-[10px] uppercase tracking-widest font-bold transition-colors ${language === 'ar' ? 'bg-[#29A6B6] text-white' : 'bg-white border border-gray-200 text-gray-500'}`}
+              >
+                AR
               </button>
             </div>
           </div>
 
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden relative">
-              <div
-                className="absolute inset-0 rounded-xl opacity-90"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.accent.lightBlue}15 0%, ${colors.accent.lightPurple}15 50%, ${colors.accent.lightIndigo}15 100%)`
-                }}
-              ></div>
-              <div
-                className="relative px-4 pt-4 pb-6 space-y-1 rounded-xl mb-4 shadow-lg backdrop-blur-sm"
-                style={{
-                  borderColor: `${colors.accent.lightBlue}50`
-                }}
-              >
-                {menuItems.map((item, index) => (
-                  <div key={item.name}>
-                    {item.type === 'link' ? (
-                      <Link
-                        to={item.href}
-                        className="group flex items-center justify-between px-4 py-3 text-gray-700 font-semibold rounded-lg transition-all duration-300 border border-transparent"
-                        style={{
-                          '--hover-color': colors.accent.lightBlue,
-                          '--hover-bg': 'white70',
-                          '--hover-border': `${colors.accent.lightBlue}50`,
-                          animationDelay: `${index * 100}ms`
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.color = colors.accent.lightBlue;
-                          e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-                          e.target.style.borderColor = `${colors.accent.lightBlue}80`;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.color = '#374151';
-                          e.target.style.backgroundColor = 'transparent';
-                          e.target.style.borderColor = 'transparent';
-                        }}
-                        onClick={() => {
-                          if (!item.submenu) {
-                            setIsMenuOpen(false);
-                          }
-                        }}
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all"
-                            style={{
-                              background: `linear-gradient(135deg, ${colors.accent.lightBlue}20 0%, ${colors.accent.lightPurple}20 100%)`
-                            }}
-                          >
-                            <i
-                              className={`${item.icon} text-sm group-hover:scale-110 transition-transform`}
-                              style={{ color: colors.accent.lightBlue }}
-                            ></i>
-                          </div>
-                          <span>{item.name}</span>
-                        </div>
-                        {item.submenu && (
-                          <i
-                            className={`fas fa-chevron-down text-sm transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''
-                              }`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setActiveDropdown(activeDropdown === item.name ? null : item.name);
-                            }}
-                          ></i>
-                        )}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          handleNavigation(item);
-                          if (!item.submenu) {
-                            setIsMenuOpen(false);
-                          }
-                        }}
-                        className="group flex items-center justify-between px-4 py-3 text-gray-700 font-semibold rounded-lg transition-all duration-300 border border-transparent w-full text-left"
-                        style={{
-                          '--hover-color': colors.accent.lightBlue,
-                          '--hover-bg': 'white70',
-                          '--hover-border': `${colors.accent.lightBlue}50`,
-                          animationDelay: `${index * 100}ms`
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.color = colors.accent.lightBlue;
-                          e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-                          e.target.style.borderColor = `${colors.accent.lightBlue}80`;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.color = '#374151';
-                          e.target.style.backgroundColor = 'transparent';
-                          e.target.style.borderColor = 'transparent';
-                        }}
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all"
-                            style={{
-                              background: `linear-gradient(135deg, ${colors.accent.lightBlue}20 0%, ${colors.accent.lightPurple}20 100%)`
-                            }}
-                          >
-                            <i
-                              className={`${item.icon} text-sm group-hover:scale-110 transition-transform`}
-                              style={{ color: colors.accent.lightBlue }}
-                            ></i>
-                          </div>
-                          <span>{item.name}</span>
-                        </div>
-                        {item.submenu && (
-                          <i
-                            className={`fas fa-chevron-down text-sm transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''
-                              }`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setActiveDropdown(activeDropdown === item.name ? null : item.name);
-                            }}
-                          ></i>
-                        )}
-                      </button>
-                    )}
-
-                    {item.submenu && activeDropdown === item.name && (
-                      <div className="ml-4 mt-2 space-y-1">
-                        {item.submenu.map((subItem) => (
-                          subItem.type === 'link' ? (
-                            <Link
-                              key={subItem.name}
-                              to={subItem.href}
-                              className="flex items-center space-x-3 px-4 py-2 text-gray-600 rounded-lg transition-all duration-300"
-                              style={{
-                                background: `${colors.accent.lightBlue}05`
-                              }}
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              <i className={`${subItem.icon} text-xs`}></i>
-                              <span className="text-sm">{subItem.name}</span>
-                            </Link>
-                          ) : (
-                            <button
-                              key={subItem.name}
-                              onClick={() => {
-                                handleNavigation(subItem);
-                                setIsMenuOpen(false);
-                              }}
-                              className="flex items-center space-x-3 px-4 py-2 text-gray-600 rounded-lg transition-all duration-300 w-full text-left"
-                              style={{
-                                background: `${colors.accent.lightBlue}05`
-                              }}
-                            >
-                              <i className={`${subItem.icon} text-xs`}></i>
-                              <span className="text-sm">{subItem.name}</span>
-                            </button>
-                          )
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <a
-                  href={data?.contact?.registration?.url || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 px-4 py-3 text-white rounded-lg font-bold text-center mt-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.gold?.primary || '#f59e0b'} 0%, ${colors.gold?.light || '#fbbf24'} 50%, ${colors.gold?.dark || '#d97706'} 100%)`
-                  }}
-                >
-                  <i className="fas fa-user-plus"></i>
-                  {/* === label button header - mobile === */}
-                  <span>{t('header.cta')}</span>
-                </a>
-              </div>
+          {/* Socials & CTA */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <a href={`https://instagram.com/${data?.contact?.socialMedia?.instagram?.[0]?.replace('@', '') || 'alwafiwibs.official'}`} className="text-gray-400 hover:text-[#29A6B6] text-lg"><i className="fab fa-instagram"></i></a>
+              <a href="https://youtube.com/@pesantrenwibs" className="text-gray-400 hover:text-[#29A6B6] text-lg"><i className="fab fa-youtube"></i></a>
+              <a href={`https://facebook.com/${data?.contact?.socialMedia?.facebook || 'alwafiwibs'}`} className="text-gray-400 hover:text-[#29A6B6] text-lg"><i className="fab fa-facebook-f"></i></a>
             </div>
-          )}
+
+            <a
+              href={data?.contact?.registration?.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white bg-[#29A6B6]"
+            >
+              <span>{t('header.cta')}</span>
+            </a>
+          </div>
         </div>
+
       </div>
     </header>
   );

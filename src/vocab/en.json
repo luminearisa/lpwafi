@@ -187,7 +187,6 @@
       "rate_label": "Success Rate",
       "list": [
         "Alumni accepted in top world universities with full scholarships",
-        "Many alumni continue to Master's and Doctoral levels abroad",
         "Alumni distributed in various professions and successful entrepreneurship",
         "Maintaining Islamic values in career and daily life"
       ]
@@ -305,12 +304,36 @@
       "title": "Al Wafi Values",
       "desc": "Fundamental values that form the basis of education at Al Wafi",
       "list": [
-        { "letter": "A", "word": "Amanah", "description": "Trustworthy in carrying out duties" },
-        { "letter": "L", "word": "Lilah", "description": "Expecting Allah's pleasure in every deed" },
-        { "letter": "W", "word": "Wafi", "description": "Keeping promises and commitments" },
-        { "letter": "A", "word": "Akhlaq", "description": "Noble character in life" },
-        { "letter": "F", "word": "Fathonah", "description": "Intelligent and wise in acting" },
-        { "letter": "I", "word": "International mindset", "description": "Global perspective with Islamic roots" }
+        {
+          "letter": "A",
+          "word": "Amanah",
+          "description": "Trustworthy in carrying out duties"
+        },
+        {
+          "letter": "L",
+          "word": "Lilah",
+          "description": "Expecting Allah's pleasure in every deed"
+        },
+        {
+          "letter": "W",
+          "word": "Wafi",
+          "description": "Keeping promises and commitments"
+        },
+        {
+          "letter": "A",
+          "word": "Akhlaq",
+          "description": "Noble character in life"
+        },
+        {
+          "letter": "F",
+          "word": "Fathonah",
+          "description": "Intelligent and wise in acting"
+        },
+        {
+          "letter": "I",
+          "word": "International mindset",
+          "description": "Global perspective with Islamic roots"
+        }
       ]
     }
   },
@@ -391,12 +414,30 @@
       "title": "Program Pillars",
       "desc": "Al Wafi UPZ is under the auspices of the Al-Sudais Indonesia Foundation, committed and focused on six program pillars designed to build community independence. These six program pillars include:",
       "list": [
-        { "title": "Al Wafi Ta'awun", "description": "(Development - Waqf)" },
-        { "title": "Al Wafi Tasqif", "description": "(Education Program)" },
-        { "title": "Al Wafi Tafaquh", "description": "(Dakwah Program)" },
-        { "title": "Al Wafi Tabarru'", "description": "(Humanitarian Program)" },
-        { "title": "Al Wafi Ta'atuf", "description": "(Social Program)" },
-        { "title": "Al Wafi Tadawul", "description": "(Economic Program)" }
+        {
+          "title": "Al Wafi Ta'awun",
+          "description": "(Development - Waqf)"
+        },
+        {
+          "title": "Al Wafi Tasqif",
+          "description": "(Education Program)"
+        },
+        {
+          "title": "Al Wafi Tafaquh",
+          "description": "(Dakwah Program)"
+        },
+        {
+          "title": "Al Wafi Tabarru'",
+          "description": "(Humanitarian Program)"
+        },
+        {
+          "title": "Al Wafi Ta'atuf",
+          "description": "(Social Program)"
+        },
+        {
+          "title": "Al Wafi Tadawul",
+          "description": "(Economic Program)"
+        }
       ]
     },
     "vision": {
