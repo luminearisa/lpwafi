@@ -1,248 +1,265 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+const overseasImages = Array.from({ length: 67 }, (_, i) => `/images_overseas/umroh-study-overseas-${i + 1}.jpg`);
+
 const ProgramOverseas = () => {
+  const [bgIndex, setBgIndex] = useState(0);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % overseasImages.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fcfdfd] pt-24 pb-32 font-sans selection:bg-[#29A6B6]/20">
+    <div className="min-h-screen bg-[#F4F7F6] font-sans selection:bg-[#29A6B6]/20 pb-32">
       
-      {/* Hero Section */}
-      <div className="relative w-full h-[60vh] min-h-[500px] bg-gray-900 overflow-hidden">
+      {/* Premium Hero Section */}
+      <div className="relative w-full h-[80vh] min-h-[600px] bg-gray-900 overflow-hidden">
+        {/* Dynamic Background */}
         <div className="absolute inset-0">
           <img 
-            src="/images_overseas/umroh-study-overseas-1.jpg" 
+            src={overseasImages[bgIndex]} 
             alt="Umroh Study Overseas Al Wafi" 
-            className="w-full h-full object-cover opacity-60 scale-105 hover:scale-100 transition-transform duration-1000"
+            className="w-full h-full object-cover opacity-50 scale-105 hover:scale-100 transition-all duration-[2000ms] ease-in-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/40 to-[#F4F7F6]"></div>
         </div>
-        <div className="absolute inset-0 flex flex-col justify-end pb-20 px-6 max-w-7xl mx-auto">
-          <span className="inline-block px-4 py-1.5 bg-[#29A6B6]/90 text-white text-xs font-bold tracking-[0.2em] uppercase rounded-sm mb-6 w-max backdrop-blur-sm">
-            Program Unggulan
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight max-w-4xl tracking-tight drop-shadow-lg">
-            Umroh Study Overseas
+
+        {/* Hero Content */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 max-w-5xl mx-auto mt-20">
+          <div className="inline-flex items-center px-5 py-2 bg-white/10 border border-white/20 backdrop-blur-md text-white text-[10px] font-bold tracking-[0.3em] uppercase rounded-full mb-8 shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-[#29A6B6] mr-3 animate-pulse"></span>
+            Program Unggulan Internasional
+          </div>
+          <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter drop-shadow-2xl mb-8">
+            UMROH STUDY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#29A6B6] to-[#349B48]">OVERSEAS</span>
           </h1>
-          <p className="text-lg md:text-2xl text-gray-200 mt-6 max-w-3xl font-light leading-relaxed">
-            Perjalanan spiritual mendalam yang dipadukan dengan pengayaan akademik bertaraf internasional di Makkah dan Madinah.
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl font-light leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10">
+            Perjalanan spiritual mendalam yang dipadukan secara eksklusif dengan pengayaan akademik bertaraf global di Makkah dan Madinah.
           </p>
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      {/* Bento Grid Content Section */}
+      <div className="max-w-7xl mx-auto px-6 -mt-32 relative z-20">
         
-        {/* Left Column: Text Article */}
-        <div className="lg:col-span-8 space-y-12">
+        {/* Top Feature Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="md:col-span-2 bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col justify-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Pendidikan & Spiritual Terintegrasi</h2>
+            <p className="text-gray-600 leading-relaxed text-lg font-light">
+              Melaksanakan ibadah umroh sembari menimba ilmu di kampus-kampus terkemuka di Timur Tengah kini menjadi sebuah pengalaman komprehensif. Program ini memadukan perjalanan spiritual mendalam dengan pengayaan akademik bertaraf internasional di dua kota suci.
+            </p>
+          </div>
+          <div className="bg-[#29A6B6] rounded-3xl p-10 md:p-12 shadow-[0_20px_50px_rgba(41,166,182,0.3)] text-white flex flex-col justify-center relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-150 transition-transform duration-700">
+              <i className="fas fa-globe text-9xl"></i>
+            </div>
+            <h3 className="text-6xl font-black mb-2">2018</h3>
+            <p className="text-white/80 font-bold tracking-widest uppercase text-xs">Konsisten Sejak Tahun</p>
+            <div className="mt-8">
+              <p className="text-white/90 font-light leading-relaxed">
+                Telah terbukti menjembatani para peserta untuk merasakan langsung ekosistem pendidikan di Timur Tengah.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Pillars Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           
-          <div className="prose prose-lg max-w-none text-gray-600 leading-[2.2]">
-            <p className="text-xl md:text-2xl font-light text-gray-800 leading-relaxed mb-10 border-l-4 border-[#29A6B6] pl-6">
-              Melaksanakan ibadah umroh sembari menimba ilmu di kampus-kampus terkemuka di Timur Tengah kini menjadi sebuah pengalaman komprehensif yang ditawarkan melalui program <strong className="text-[#29A6B6]">"Umroh Study Overseas Universitas Islam Madinah"</strong>. Bersama Al Wafi, program ini hadir sebagai terobosan edukasi yang secara khusus memadukan perjalanan spiritual mendalam dengan pengayaan akademik bertaraf internasional di dua kota suci, yakni Makkah dan Madinah.
-            </p>
-
-            <p>
-              Secara garis besar, program overseas ini dirancang bukan sekadar sebagai perjalanan wisata religi biasa, melainkan sebuah orientasi pendidikan dan sejarah yang intensif. Inisiatif ini menitikberatkan pada tiga pilar utama: <strong>optimalisasi ibadah, literasi sejarah peradaban Islam, dan orientasi langsung ke ekosistem pendidikan tinggi di Arab Saudi.</strong>
-            </p>
-
-            <div className="my-12 relative">
-              <img src="/images_overseas/umroh-study-overseas-2.jpg" alt="Dauroh Bahasa Arab UIM" className="w-full rounded-2xl shadow-xl object-cover h-[400px]" />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#349B48]/10 rounded-full blur-2xl -z-10"></div>
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition-transform duration-300 group">
+            <div className="w-16 h-16 bg-[#f0f9fa] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#29A6B6] transition-colors duration-300">
+              <i className="fas fa-graduation-cap text-2xl text-[#29A6B6] group-hover:text-white"></i>
             </div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6 flex items-center">
-              <i className="fas fa-graduation-cap text-[#29A6B6] mr-4 text-3xl"></i> Aspek Akademik
-            </h3>
-            <p>
-              Dari segi akademik, program ini memfasilitasi para pesertanya untuk merasakan langsung perkuliahan di Timur Tengah. Peserta tidak hanya bertindak sebagai pengamat, tetapi akan terlibat aktif menjadi pelajar melalui program <strong>Dauroh Bahasa Arab</strong> yang diselenggarakan secara intensif di Learning Arabic Universitas Islam Madinah (UIM). 
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Aspek Akademik</h3>
+            <p className="text-gray-500 font-light leading-relaxed text-sm">
+              Peserta terlibat aktif menjadi pelajar melalui program Dauroh Bahasa Arab intensif di Learning Arabic Universitas Islam Madinah (UIM) yang ditutup dengan prosesi wisuda formal.
             </p>
-            <p>
-              Rangkaian pendidikan singkat ini bahkan ditutup secara formal melalui prosesi wisuda kelulusan dauroh. Guna memperluas wawasan pendidikan, program ini juga membekali peserta dengan agenda study tour ke kampus-kampus prestisius lainnya, seperti Universitas Ummul Quro di Makkah dan Universitas Islam Madinah serta Universitas Taibah di Madinah, SAUDI ARABIA.
-            </p>
+          </div>
 
-            <div className="my-12 relative">
-              <img src="/images_overseas/umroh-study-overseas-3.jpg" alt="Ziarah dan Sejarah" className="w-full rounded-2xl shadow-xl object-cover h-[400px]" />
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#29A6B6]/10 rounded-full blur-2xl -z-10"></div>
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition-transform duration-300 group">
+            <div className="w-16 h-16 bg-[#f2fbf4] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#349B48] transition-colors duration-300">
+              <i className="fas fa-kaaba text-2xl text-[#349B48] group-hover:text-white"></i>
             </div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6 flex items-center">
-              <i className="fas fa-kaaba text-[#29A6B6] mr-4 text-3xl"></i> Aspek Spiritual & Historis
-            </h3>
-            <p>
-              Sementara itu, pada aspek spiritual dan historis, gambaran program ini menawarkan agenda yang sangat terstruktur. Selain pelaksanaan umroh, ibadah harian di Masjidil Haram, dan rutinitas <strong>Halaqah Al-Qur'an di Masjid Nabawi</strong>, program ini memadukan napak tilas sejarah secara langsung ke berbagai situs penting peradaban Islam. 
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Aspek Spiritual</h3>
+            <p className="text-gray-500 font-light leading-relaxed text-sm">
+              Pelaksanaan umroh, ibadah harian di Masjidil Haram, dan rutinitas Halaqah Al-Qur'an di Masjid Nabawi secara terstruktur dan terbimbing.
             </p>
-            <p>
-              Peserta akan diajak mengeksplorasi Museum Wahyu, Museum Al Quran, mengenal sejarah di Kota Thaif, menyusuri jejak sejarah seperti di Saqifah Bani Saidah, Masjid Quba, Quba street hingga menikmati keajaiban arkeologi peninggalan masa lalu di kota kuno Al Ula.
-            </p>
+          </div>
 
-            <div className="p-8 bg-[#f0f9fa] rounded-2xl my-10 border border-[#29A6B6]/20">
-              <p className="text-[#0a0a0a] font-medium m-0">
-                Melalui kolaborasi kegiatan yang padat selama kurang lebih tiga pekan ini, program Umroh Study Overseas diproyeksikan mampu memberikan wawasan global serta pemahaman lintas budaya bagi pesertanya, sekaligus memperkuat nilai-nilai spiritualitas di Tanah Suci.
-              </p>
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition-transform duration-300 group">
+            <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gray-900 transition-colors duration-300">
+              <i className="fas fa-landmark text-2xl text-gray-700 group-hover:text-white"></i>
             </div>
-
-            <h3 className="text-2xl font-bold text-gray-900 mt-12 mb-6">Konsistensi Sejak 2018</h3>
-            <p>
-              Sebagai informasi, program Umroh Study Overseas ini bukanlah agenda baru, melainkan sebuah program yang memiliki rekam jejak panjang karena telah sukses dilaksanakan semenjak tahun 2018. Sepanjang perjalanannya selama bertahun-tahun, program ini terbukti konsisten menjembatani para peserta untuk merasakan langsung ekosistem pendidikan di Timur Tengah sekaligus mengoptimalkan ibadah di Tanah Suci.
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Eksplorasi Historis</h3>
+            <p className="text-gray-500 font-light leading-relaxed text-sm">
+              Napak tilas sejarah peradaban Islam ke Museum Wahyu, Museum Al Quran, Kota Thaif, Masjid Quba, hingga keajaiban arkeologi di Al Ula.
             </p>
-            <p>
-              Melanjutkan kesuksesan dari tahun-tahun sebelumnya, pelaksanaan program di tahun lalu diawali dengan rangkaian kegiatan latihan manasik umroh yang dilaksanakan di Masjid Nidaul Islam, Pesantren Al Wafi.
-            </p>
+          </div>
 
-            <hr className="my-12 border-gray-200" />
+        </div>
 
-            {/* Agenda Makkah */}
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 mb-10 hover:border-[#29A6B6]/30 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#29A6B6]/10 to-transparent rounded-bl-full"></div>
-              <h2 className="text-3xl font-bold text-[#29A6B6] mb-8 relative z-10">Kegiatan dan Agenda di Makkah</h2>
-              <p className="mb-8 relative z-10">
-                Di Kota Makkah, aktivitas berfokus pada pelaksanaan ibadah inti umroh yang dipadukan dengan pengenalan sejarah Islam serta kunjungan akademik awal:
-              </p>
+        {/* Premium Agenda Section */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black text-gray-900 tracking-tight">Rangkaian Perjalanan</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#29A6B6] to-[#349B48] mx-auto mt-6 rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            
+            {/* Makkah Card */}
+            <div className="group bg-white rounded-[2rem] p-10 border border-gray-100 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#29A6B6]/10 to-transparent rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
               
-              <ul className="space-y-6 relative z-10 list-none p-0">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f0f9fa] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-check text-[#29A6B6]"></i>
+              <div className="inline-block px-4 py-1.5 bg-[#f0f9fa] text-[#29A6B6] text-xs font-bold uppercase tracking-widest rounded-full mb-6">
+                Fase Pertama
+              </div>
+              <h3 className="text-4xl font-extrabold text-gray-900 mb-8">Kota Makkah</h3>
+              
+              <ul className="space-y-8 relative z-10">
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-[#29A6B6] text-white flex items-center justify-center shrink-0 shadow-lg shadow-[#29A6B6]/30">
+                    <i className="fas fa-pray"></i>
                   </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Ibadah Inti Umroh:</strong>
-                    Setibanya Mekkah pada hari Jumat, peserta langsung melaksanakan salat Jumat di Masjidil Haram dan menunaikan ibadah inti Umroh. Setelah itu, peserta diberikan waktu khusus untuk beristirahat pada hari Sabtu.
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f0f9fa] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-landmark text-[#29A6B6]"></i>
-                  </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Eksplorasi Sejarah dan Edukasi:</strong>
-                    Rangkaian dilanjutkan dengan Tour Kota Makkah serta kunjungan ke Museum Wahyu pada hari Ahad. Peserta juga melakukan perjalanan sejarah melalui Tour Thaif pada hari Senin.
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Ibadah Inti Umroh</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Salat Jumat di Masjidil Haram dilanjutkan dengan ibadah inti Umroh pada hari kedatangan.</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f0f9fa] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-university text-[#29A6B6]"></i>
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 text-[#29A6B6] flex items-center justify-center shrink-0 shadow-sm">
+                    <i className="fas fa-map-marked-alt"></i>
                   </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Kunjungan Akademik:</strong>
-                    Fase di Makkah ditutup dengan kegiatan akademik berupa Study Tour ke Universitas Umm Al-Qura pada hari Selasa.
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Eksplorasi Edukasi</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Tour Kota Makkah, kunjungan ke Museum Wahyu, dan perjalanan menelusuri sejarah Kota Thaif.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 text-[#29A6B6] flex items-center justify-center shrink-0 shadow-sm">
+                    <i className="fas fa-university"></i>
+                  </div>
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Kunjungan Akademik</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Study Tour eksklusif ke Universitas Umm Al-Qura sebagai pengenalan ekosistem kampus Arab Saudi.</p>
                   </div>
                 </li>
               </ul>
             </div>
 
-            {/* Agenda Madinah */}
-            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 hover:border-[#349B48]/30 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#349B48]/10 to-transparent rounded-bl-full"></div>
-              <h2 className="text-3xl font-bold text-[#349B48] mb-8 relative z-10">Kegiatan dan Agenda di Madinah</h2>
-              <p className="mb-8 relative z-10">
-                Setelah berpindah ke Madinah, fokus utama kegiatan rombongan bergeser pada pendalaman materi keagamaan, penguatan kompetensi berbahasa, dan agenda akademik intensif.
-              </p>
+            {/* Madinah Card */}
+            <div className="group bg-white rounded-[2rem] p-10 border border-gray-100 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#349B48]/10 to-transparent rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
               
-              <ul className="space-y-6 relative z-10 list-none p-0">
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f2fbf4] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-book-open text-[#349B48]"></i>
+              <div className="inline-block px-4 py-1.5 bg-[#f2fbf4] text-[#349B48] text-xs font-bold uppercase tracking-widest rounded-full mb-6">
+                Fase Kedua
+              </div>
+              <h3 className="text-4xl font-extrabold text-gray-900 mb-8">Kota Madinah</h3>
+              
+              <ul className="space-y-8 relative z-10">
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-[#349B48] text-white flex items-center justify-center shrink-0 shadow-lg shadow-[#349B48]/30">
+                    <i className="fas fa-language"></i>
                   </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Pembelajaran Bahasa Arab dan Al-Qur'an:</strong>
-                    Peserta mengikuti program Dauroh Bahasa Arab secara intensif di Learning Arabic UIM (Universitas Islam Madinah) serta Halaqah Al-Qur'an di Masjid Nabawi. Pembelajaran ini terjadwal pada tanggal 30 Oktober, 1 November, serta periode 9 dan 11 November.
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f2fbf4] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-map-marked-alt text-[#349B48]"></i>
-                  </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Aktivitas Spiritual dan Ziarah Pembelajaran:</strong>
-                    Selain pembelajaran di kelas, peserta melakukan ziarah ke makam Baqi, Saqifah Bani Saidah, dan mengikuti program Quba Safari Night. Agenda ziarah ke Raudhah di Masjid Nabawi juga dilakukan dengan pengaturan khusus yang terpisah antara jamaah Ikhwan dan Akhwat.
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Dauroh Akademik</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Dauroh Bahasa Arab intensif di Learning Arabic UIM dan Halaqah Al-Qur'an di Masjid Nabawi.</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#f2fbf4] flex items-center justify-center shrink-0 mt-1">
-                    <i className="fas fa-award text-[#349B48]"></i>
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 text-[#349B48] flex items-center justify-center shrink-0 shadow-sm">
+                    <i className="fas fa-mosque"></i>
                   </div>
-                  <div>
-                    <strong className="block text-gray-900 text-lg mb-1">Puncak Prosesi Akademik:</strong>
-                    Seluruh rangkaian pembelajaran bahasa tersebut diakhiri dengan prosesi resmi Wisuda Dauroh Bahasa Arab yang dilaksanakan bersamaan dengan Study Tour ke Universitas Taiba.
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Ziarah & Spiritual</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Ziarah Baqi, Saqifah Bani Saidah, Quba Safari Night, dan jadwal khusus Raudhah.</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 text-[#349B48] flex items-center justify-center shrink-0 shadow-sm">
+                    <i className="fas fa-user-graduate"></i>
+                  </div>
+                  <div className="ml-6">
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Prosesi Kelulusan</h4>
+                    <p className="text-gray-500 font-light leading-relaxed">Diakhiri dengan Wisuda Dauroh Bahasa Arab yang megah dan Study Tour ke Universitas Taiba.</p>
                   </div>
                 </li>
               </ul>
-            </div>
-
-            <div className="mt-12 p-8 bg-gray-900 text-white rounded-3xl text-center shadow-xl">
-              <i className="fas fa-quote-left text-4xl text-[#29A6B6] mb-6 opacity-50"></i>
-              <p className="text-xl font-light leading-relaxed">
-                Menutup lembaran kesan dari para peserta, program Umroh Study Overseas Universitas Islam Madinah bersama Al Wafi, membuktikan bahwa lebih dari sekadar perjalanan biasa. Melalui konsistensi yang terjaga sejak tahun 2018, program ini terus berkomitmen menjadi jembatan tepercaya bagi generasi muda dalam memadukan ibadah di Tanah Suci dan keluasan ilmu di Timur Tengah. Semoga pembelajaran dan pengalaman yang telah didapatkan senantiasa membekas dan menjadi bekal berharga bagi masa depan para peserta.
-              </p>
             </div>
 
           </div>
         </div>
 
-        {/* Right Column: Sticky Gallery Grid */}
-        <div className="lg:col-span-4">
-          <div className="sticky top-[120px] space-y-6">
-            <h3 className="text-xl font-bold uppercase tracking-widest text-gray-900 mb-6 flex items-center gap-3">
-              <i className="fas fa-camera text-[#29A6B6]"></i> Galeri Kegiatan
-            </h3>
-            
-            <div className="grid grid-cols-2 gap-4">
-              {[4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
-                <div key={num} className="group overflow-hidden rounded-xl bg-gray-100 aspect-square cursor-pointer relative shadow-sm hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={`/images_overseas/umroh-study-overseas-${num}.jpg`} 
-                    alt={`Galeri Overseas ${num}`} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-[#29A6B6]/0 group-hover:bg-[#29A6B6]/20 transition-all duration-300 mix-blend-overlay"></div>
-                </div>
-              ))}
+        {/* Gallery Masonry */}
+        <div className="mb-20">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">Potret Perjalanan</h2>
+              <p className="text-gray-500 mt-2">Momen berharga selama Umroh Study Overseas</p>
             </div>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="mt-6 md:mt-0 px-8 py-3 bg-gray-900 text-white rounded-full font-bold hover:bg-[#29A6B6] transition-colors shadow-lg">
+              Daftar Sekarang <i className="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
 
-            <div className="mt-8 rounded-2xl bg-[#f8fcfc] p-6 border border-gray-100 shadow-sm text-center">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-[#29A6B6] text-2xl">
-                <i className="fab fa-whatsapp"></i>
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Tertarik Mengikuti Program Ini?</h4>
-              <p className="text-sm text-gray-500 mb-6">Dapatkan informasi pendaftaran dan jadwal keberangkatan berikutnya.</p>
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="inline-block w-full py-3 bg-[#29A6B6] text-white rounded-xl font-bold hover:bg-[#238c9a] transition-colors shadow-md">
-                Hubungi Kami
-              </a>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group h-[400px]">
+              <img src="/images_overseas/umroh-study-overseas-5.jpg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Gallery" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
-            
+            <div className="rounded-3xl overflow-hidden group h-[190px]">
+              <img src="/images_overseas/umroh-study-overseas-6.jpg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery" />
+            </div>
+            <div className="rounded-3xl overflow-hidden group h-[190px]">
+              <img src="/images_overseas/umroh-study-overseas-7.jpg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery" />
+            </div>
+            <div className="rounded-3xl overflow-hidden group h-[190px]">
+              <img src="/images_overseas/umroh-study-overseas-8.jpg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery" />
+            </div>
+            <div className="rounded-3xl overflow-hidden group h-[190px]">
+              <img src="/images_overseas/umroh-study-overseas-9.jpg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Gallery" />
+            </div>
           </div>
         </div>
 
       </div>
 
-      {/* Full Width Gallery Bottom */}
-      <div className="mt-20 overflow-hidden relative">
+      {/* Infinite Scroll Strip */}
+      <div className="mt-10 overflow-hidden bg-gray-900 py-10 relative">
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
+        
         <div className="flex w-max animate-[scroll_40s_linear_infinite] hover:[animation-play-state:paused]">
           {[12, 13, 14, 15, 16, 17, 18, 19, 20, 21].map((num) => (
-            <div key={num} className="w-64 md:w-80 h-48 md:h-64 mx-2 rounded-2xl overflow-hidden shrink-0 shadow-md">
+            <div key={num} className="w-72 h-56 mx-3 rounded-2xl overflow-hidden shrink-0 group border border-white/10">
               <img 
                 src={`/images_overseas/umroh-study-overseas-${num}.jpg`} 
                 alt={`Kegiatan ${num}`} 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
               />
             </div>
           ))}
-          {/* Duplicate for infinite scroll effect */}
+          {/* Duplicate for infinite scroll */}
           {[12, 13, 14, 15, 16, 17, 18, 19, 20, 21].map((num) => (
-            <div key={`dup-${num}`} className="w-64 md:w-80 h-48 md:h-64 mx-2 rounded-2xl overflow-hidden shrink-0 shadow-md">
+            <div key={`dup-${num}`} className="w-72 h-56 mx-3 rounded-2xl overflow-hidden shrink-0 group border border-white/10">
               <img 
                 src={`/images_overseas/umroh-study-overseas-${num}.jpg`} 
                 alt={`Kegiatan ${num}`} 
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
               />
             </div>
           ))}
         </div>
       </div>
       
-      {/* Keyframes for the scrolling animation - inline style block */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scroll {
           0% { transform: translateX(0); }

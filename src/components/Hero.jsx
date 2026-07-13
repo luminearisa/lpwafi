@@ -65,7 +65,7 @@ const Hero = ({ data }) => {
 
             {/* Main Title */}
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-extrabold text-gray-900 leading-[1.2] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 <span className="block drop-shadow-sm">
                   {t('hero.title')}
                 </span>
@@ -123,7 +123,7 @@ const Hero = ({ data }) => {
               <div className="relative bg-white p-3 border border-gray-100 shadow-[0_20px_50px_rgba(41,166,182,0.1)]">
                 <img
                   src={data?.images?.hero || "/placeholder-building.jpg"}
-                  alt="Al Wafi International Islamic Boarding School"
+                  alt="Al Wafi Islamic Boarding School"
                   className="w-full h-[400px] lg:h-[500px] object-cover transition-all duration-700 hover:scale-[1.02]"
                   onError={(e) => {
                     e.target.src = "https://via.placeholder.com/600x800/eeeeee/aaaaaa?text=Al+Wafi+Campus";
