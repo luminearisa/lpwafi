@@ -26,6 +26,8 @@ const Header = ({ data }) => {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
+    } else if (item.type === 'external') {
+      window.open(item.href, '_blank', 'noopener,noreferrer');
     }
     // Tutup menu mobile setelah navigasi
     setIsMenuOpen(false);
@@ -52,6 +54,7 @@ const Header = ({ data }) => {
       name: t('header.menu.about.main'),
       href: '#about',
       icon: 'fas fa-info-circle',
+      type: 'scroll',
       submenu: [
         { name: t('header.menu.about.yayasan'), href: '/yayasan', type: 'link' },
         { name: t('header.menu.about.dakwah'), href: '/dakwah-sosial', type: 'link' },
@@ -63,6 +66,7 @@ const Header = ({ data }) => {
       name: t('header.menu.program.main'),
       href: '#programs',
       icon: 'fas fa-graduation-cap',
+      type: 'scroll',
       submenu: [
         { name: t('header.menu.program.sdtq'), href: '/sdtq', type: 'link' },
         { name: t('header.menu.program.smp'), href: '/smp', type: 'link' },
@@ -71,9 +75,21 @@ const Header = ({ data }) => {
         { name: t('header.menu.program.lainnya'), href: '#programs', type: 'scroll' }
       ]
     },
+    {
+      name: "Islam",
+      href: '/quran',
+      icon: 'fas fa-book-quran',
+      type: 'link',
+      submenu: [
+        { name: t('header.menu.quran'), href: '/quran', type: 'link' },
+        { name: t('header.menu.hadith'), href: '/hadith', type: 'link' },
+        { name: t('header.menu.kutub'), href: '/kutub', type: 'link' },
+        { name: t('header.menu.wafi_ai'), href: 'https://chat.al-wafi.sch.id', type: 'external' }
+      ]
+    },
     { name: t('header.menu.alumni'), href: '#alumni', icon: 'fas fa-users', type: 'scroll' },
     { name: t('header.menu.bekal'), href: '/biro-bekal', icon: 'fas fa-briefcase', type: 'link' },
-    { name: t('header.menu.contact'), href: '#contact', icon: 'fas fa-envelope', type: 'scroll' }
+
   ];
 
   // Efek Scroll & Klik di luar area
@@ -195,9 +211,9 @@ const Header = ({ data }) => {
       </div>
 
       {/* --- MAIN HEADER --- */}
-      {/* Diubah menjadi z-40 agar selalu berada di bawah stacking context Top Bar */}
+      {/* Diubah menjadi z-50 agar tombol hamburger selalu ada di atas overlay menu mobile yang z-40 */}
       <div
-        className={`relative z-40 transition-all duration-500 bg-white ${isScrolled || isMenuOpen
+        className={`relative z-50 transition-all duration-500 bg-white ${isScrolled || isMenuOpen
           ? 'shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3'
           : 'shadow-none py-4 md:py-5 border-b border-gray-100'
           }`}
@@ -328,13 +344,24 @@ const Header = ({ data }) => {
         <div className="flex-1 overflow-y-auto px-6 py-8 pb-32">
           <div className="flex flex-col space-y-2">
             {menuItems.map((item) => (
-              <div key={item.name} className="border-b border-gray-100">
-                <div className="flex justify-between items-center py-4">
-                  {item.type === 'link' ? (
+              <div key={item.name} className="border-b border-gray-100 dropdown-container">
+                <div 
+                  className="flex justify-between items-center py-4 cursor-pointer"
+                  onClick={() => {
+                    if (item.submenu) {
+                      setActiveDropdown(activeDropdown === item.name ? null : item.name);
+                    }
+                  }}
+                >
+                  {item.submenu ? (
+                    <div className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors text-start flex-1">
+                      {item.name}
+                    </div>
+                  ) : item.type === 'link' ? (
                     <Link
                       to={item.href}
-                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors"
-                      onClick={() => !item.submenu && setIsMenuOpen(false)}
+                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors flex-1"
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
@@ -342,21 +369,18 @@ const Header = ({ data }) => {
                     <button
                       onClick={() => {
                         handleNavigation(item);
-                        if (!item.submenu) setIsMenuOpen(false);
+                        setIsMenuOpen(false);
                       }}
-                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors text-start"
+                      className="text-xs font-bold tracking-widest uppercase text-gray-900 hover:text-[#29A6B6] transition-colors text-start flex-1"
                     >
                       {item.name}
                     </button>
                   )}
 
                   {item.submenu && (
-                    <button
-                      className="w-10 h-10 flex items-center justify-end text-[#29A6B6]"
-                      onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                    >
+                    <div className="w-10 h-10 flex items-center justify-end text-[#29A6B6]">
                       <i className={`fas fa-chevron-down transition-transform duration-300 ${activeDropdown === item.name ? 'rotate-180' : ''}`}></i>
-                    </button>
+                    </div>
                   )}
                 </div>
 

@@ -27,13 +27,17 @@
       },
       "alumni": "Alumni",
       "bekal": "BEKAL",
-      "contact": "Kontak"
+      "contact": "Kontak",
+      "quran": "Al-Quran",
+      "hadith": "Hadits",
+      "kutub": "Kutub (Kitab)",
+      "wafi_ai": "Wafi AI"
     },
     "cta": "Daftar Sekarang"
   },
   "hero": {
     "badge": "Pesantren Sunnah Internasional",
-    "title": "Al Wafi Islamic Boarding School",
+    "title": "Al Wafi International Islamic Boarding School",
     "desc": {
       "part1": "Pesantren Sunnah Internasional dengan",
       "highlight": "Akreditasi Unggul",
@@ -58,7 +62,7 @@
   "about": {
     "header": {
       "badge": "Tentang Kami",
-      "title": "Al Wafi Islamic Boarding School",
+      "title": "Al Wafi International Islamic Boarding School",
       "desc": "Pesantren Sunnah Internasional yang memahami bahwa setiap anak adalah pandai dan memiliki potensi kecerdasan berbeda-beda"
     },
     "vision_title": "Visi",
@@ -90,10 +94,12 @@
       "title": "Akreditasi & Pengakuan",
       "subtitle": "Kualitas pendidikan terbaik dengan pengakuan resmi dari berbagai lembaga",
       "label": "Akreditasi",
+      "sdtq": "SDTQ Al Wafi",
+      "val_sdtq": "A (Unggul)",
       "smp": "SMP IBS",
-      "val_smp": "Unggul",
+      "val_smp": "A (Unggul)",
       "sma": "SMA IBS",
-      "val_sma": "Unggul",
+      "val_sma": "A (Unggul)",
       "muadalah": "Muadalah",
       "val_muadalah": "Universitas Islam Madinah"
     }
@@ -823,5 +829,16 @@
         "scholarship": "Program Beasiswa"
       }
     }
+  },
+  "quran": {
+    "menu": "Al-Quran",
+    "title": "Al-Quran Digital",
+    "search": "Cari Surah...",
+    "play": "Putar",
+    "pause": "Jeda",
+    "mushaf_mode": "Mode Mushaf",
+    "list_mode": "Mode List",
+    "translation": "Terjemahan",
+    "reciter": "Pilih Qori"
   }
 }

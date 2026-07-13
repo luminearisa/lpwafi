@@ -27,13 +27,17 @@
       },
       "alumni": "Alumni",
       "bekal": "BEKAL",
-      "contact": "Contact"
+      "contact": "Contact",
+      "quran": "Al-Quran",
+      "hadith": "Hadith",
+      "kutub": "Kutub (Books)",
+      "wafi_ai": "Wafi AI"
     },
     "cta": "Register Now"
   },
   "hero": {
     "badge": "International Sunnah Boarding School",
-    "title": "Al Wafi Islamic Boarding School",
+    "title": "Al Wafi International Islamic Boarding School",
     "desc": {
       "part1": "International Sunnah Boarding School with",
       "highlight": "Excellent Accreditation",
@@ -58,7 +62,7 @@
   "about": {
     "header": {
       "badge": "About Us",
-      "title": "Al Wafi Islamic Boarding School",
+      "title": "Al Wafi International Islamic Boarding School",
       "desc": "International Sunnah Boarding School understanding that every child is smart and has different potential intelligences"
     },
     "vision_title": "Vision",
@@ -90,10 +94,12 @@
       "title": "Accreditation & Recognition",
       "subtitle": "Best quality education with official recognition from various institutions",
       "label": "Accreditation",
+      "sdtq": "SDTQ Al Wafi",
+      "val_sdtq": "A (Excellent)",
       "smp": "SMP IBS",
-      "val_smp": "Excellent",
+      "val_smp": "A (Excellent)",
       "sma": "SMA IBS",
-      "val_sma": "Excellent",
+      "val_sma": "A (Excellent)",
       "muadalah": "Muadalah",
       "val_muadalah": "Islamic University of Madinah"
     }
@@ -822,5 +828,16 @@
         "scholarship": "Scholarship Programs"
       }
     }
+  },
+  "quran": {
+    "menu": "Al-Quran",
+    "title": "Digital Al-Quran",
+    "search": "Search Surah...",
+    "play": "Play",
+    "pause": "Pause",
+    "mushaf_mode": "Mushaf Mode",
+    "list_mode": "List Mode",
+    "translation": "Translation",
+    "reciter": "Choose Reciter"
   }
 }

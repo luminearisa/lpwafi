@@ -1,5 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../LanguageContext';
+import AlumniMap from './AlumniMap';
+import AlumniMap2026 from './AlumniMap2026';
 
 const Alumni = ({ data }) => {
   const { t } = useLanguage();
@@ -15,7 +17,7 @@ const Alumni = ({ data }) => {
   ) || [];
 
   const internationalUniversities = data?.universities?.filter(uni =>
-    ['Universitas Malaysia', 'Universiti Teknologi Malaysia', 'Multimedia University', 'International Islamic University Malaysia'].includes(uni.name)
+    ['Universitas Malaysia', 'Universiti Teknologi Malaysia', 'Multimedia University', 'International Islamic University Malaysia', 'Islamic University of Madinah', 'Taibah University', 'Prince Sattam bin Abdulaziz University', 'Qassim University', 'King Saud University', 'King Abdulaziz University', 'Princess Nourah bint Abdulrahman University', 'Al-Azhar University', 'Asia Pacific University'].includes(uni.name)
   ) || [];
 
   // helper buat ambil list
@@ -79,6 +81,23 @@ const Alumni = ({ data }) => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* --- ALUMNI MAP --- */}
+        <div className="mb-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-gray-200 pb-6">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Peta Sebaran Alumni
+              </h3>
+              <p className="text-sm text-gray-500 font-light">
+                Jaringan luas alumni yang melanjutkan studi ke berbagai penjuru dunia
+              </p>
+            </div>
+          </div>
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+            <AlumniMap universities={[...domesticUniversities, ...internationalUniversities]} />
+          </div>
         </div>
 
         {/* --- UNIVERSITY LOGOS: Professional Agency Layout --- */}
@@ -160,6 +179,9 @@ const Alumni = ({ data }) => {
             </div>
           </div>
         </div>
+
+        {/* --- 2026 ALUMNI DATA MAP --- */}
+        <AlumniMap2026 />
 
         {/* --- SUCCESS STORY: High Contrast Premium Banner --- */}
         <div className="bg-[#0f1718] border border-[#29A6B6]/20 shadow-[0_30px_60px_rgba(0,0,0,0.15)] flex flex-col lg:flex-row">

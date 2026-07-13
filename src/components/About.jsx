@@ -151,11 +151,24 @@ const About = ({ data }) => {
                 {t('about.accreditation.title')}
               </h3>
               <p className="text-white/80 max-w-2xl mx-auto font-light leading-relaxed text-lg">
-                {t('about.accreditation.desc')}
+                {t('about.accreditation.subtitle')}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+              {/* SDTQ */}
+              <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-white flex items-center justify-center mx-auto mb-6 group-hover:-translate-y-2 transition-transform duration-500">
+                  <i className="fas fa-star text-2xl text-[#349B48]"></i>
+                </div>
+                <h4 className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3">
+                  {t('about.accreditation.sdtq')}
+                </h4>
+                <p className="text-white/80 font-light text-sm">
+                  {t('about.accreditation.label')} <span className="font-bold text-white text-lg ms-1">{t('about.accreditation.val_sdtq')}</span>
+                </p>
+              </div>
 
               {/* SMP */}
               <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">

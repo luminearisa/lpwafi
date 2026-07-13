@@ -18,6 +18,14 @@ import News from './components/News';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppBubble from './components/WhatsAppBubble';
+import QuranDashboard from './components/Quran/QuranDashboard';
+import SurahDetail from './components/Quran/SurahDetail';
+import QuranCTA from './components/Quran/QuranCTA';
+import HadithDashboard from './components/Hadith/HadithDashboard';
+import HadithDetail from './components/Hadith/HadithDetail';
+import KutubDashboard from './components/Kutub/KutubDashboard';
+import KutubDetail from './components/Kutub/KutubDetail';
+import OverseasCTA from './components/OverseasCTA';
 
 function App() {
   const [data, setData] = useState(null);
@@ -56,7 +64,9 @@ function App() {
     <>
       <Hero data={data} />
       <About data={data} />
+      <QuranCTA data={data} />
       <Programs data={data} />
+      <OverseasCTA />
       <Alumni data={data} />
       <News data={data} />
       <Contact data={data} />
@@ -133,6 +143,12 @@ function App() {
           <Route path="/sma" element={<SMAPage />} />
           <Route path="/program-overseas" element={<ProgramOverseasPage />} />
           <Route path="/biro-bekal" element={<BiroBekalPage />} />
+          <Route path="/quran" element={<QuranDashboard data={data} />} />
+          <Route path="/quran/:surahId" element={<SurahDetail data={data} />} />
+          <Route path="/hadith" element={<HadithDashboard data={data} />} />
+          <Route path="/hadith/:bookId" element={<HadithDetail data={data} />} />
+          <Route path="/kutub" element={<KutubDashboard data={data} />} />
+          <Route path="/kutub/:bookId" element={<KutubDetail data={data} />} />
         </Routes>
         <Footer data={data} />
         <WhatsAppBubble data={data} />
