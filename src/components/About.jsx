@@ -153,7 +153,93 @@ const About = ({ data }) => {
           );
         })()}
 
+        {/* --- FASILITAS CTA: Banin & Banat --- */}
+        <div className="mb-32 mt-8">
+          <div className="text-center mb-10">
+            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#29A6B6] mb-4 bg-white px-4 py-2 border border-[#29A6B6]/10 shadow-sm">
+              {t('about.fasilitas_cta.badge')}
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+              {t('about.fasilitas_cta.title')}
+            </h3>
+            <div className="w-16 h-1 bg-[#349B48] mx-auto mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {/* Fasilitas Banin Card */}
+            <a
+              href="/fasilitas-banin"
+              className="group relative overflow-hidden bg-white border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,166,182,0.12)] transition-all duration-500 flex flex-col"
+            >
+              <div className="relative h-52 overflow-hidden bg-gray-100">
+                <img
+                  src="/fasilitas_banin/West View AL Wafi.jpg"
+                  alt="Fasilitas Banin"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[15%] group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4 bg-[#29A6B6] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5">
+                  <i className="fas fa-male me-1.5" />
+                  Banin
+                </div>
+              </div>
+              <div className="p-8 flex-grow flex flex-col justify-between">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#29A6B6] transition-colors duration-300">
+                    {t('about.fasilitas_cta.banin.title')}
+                  </h4>
+                  <p className="text-gray-500 text-sm leading-relaxed font-light">
+                    {t('about.fasilitas_cta.banin.desc')}
+                  </p>
+                </div>
+                <div className="flex items-center mt-6 text-[#29A6B6] text-xs font-bold uppercase tracking-widest group-hover:gap-3 gap-2 transition-all duration-300">
+                  <span>{t('about.fasilitas_cta.see_more')}</span>
+                  <i className="fas fa-arrow-right text-[10px]" />
+                </div>
+              </div>
+              <div className="h-1 w-0 group-hover:w-full bg-[#29A6B6] transition-all duration-700 ease-out" />
+            </a>
+
+            {/* Fasilitas Banat Card */}
+            <a
+              href="/fasilitas-banat"
+              className="group relative overflow-hidden bg-white border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(52,155,72,0.12)] transition-all duration-500 flex flex-col"
+            >
+              <div className="relative h-52 overflow-hidden bg-gray-100">
+                <img
+                  src="/fasilitas_banin/Kamar.png"
+                  alt="Fasilitas Banat"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[15%] group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4 bg-[#349B48] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5">
+                  <i className="fas fa-female me-1.5" />
+                  Banat
+                </div>
+              </div>
+              <div className="p-8 flex-grow flex flex-col justify-between">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#349B48] transition-colors duration-300">
+                    {t('about.fasilitas_cta.banat.title')}
+                  </h4>
+                  <p className="text-gray-500 text-sm leading-relaxed font-light">
+                    {t('about.fasilitas_cta.banat.desc')}
+                  </p>
+                </div>
+                <div className="flex items-center mt-6 text-[#349B48] text-xs font-bold uppercase tracking-widest group-hover:gap-3 gap-2 transition-all duration-300">
+                  <span>{t('about.fasilitas_cta.see_more')}</span>
+                  <i className="fas fa-arrow-right text-[10px]" />
+                </div>
+              </div>
+              <div className="h-1 w-0 group-hover:w-full bg-[#349B48] transition-all duration-700 ease-out" />
+            </a>
+
+          </div>
+        </div>
+
         {/* --- ALUMNI FEATURE CARD --- */}
+
         {featuresList[1] && (() => {
           const alumni = featuresList[1];
           return (

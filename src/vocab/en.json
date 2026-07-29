@@ -15,7 +15,9 @@
         "yayasan": "Foundation",
         "dakwah": "Dawah & Social",
         "upz": "UPZ",
-        "profil": "School Profile"
+        "profil": "School Profile",
+        "fasilitas_banin": "Banin Facilities",
+        "fasilitas_banat": "Banat Facilities"
       },
       "program": {
         "main": "Programs",
@@ -109,6 +111,19 @@
       "val_sma": "A (Excellent)",
       "muadalah": "Muadalah",
       "val_muadalah": "Islamic University of Madinah"
+    },
+    "fasilitas_cta": {
+      "badge": "Boarding Facilities",
+      "title": "Complete Facilities for Students",
+      "see_more": "See More",
+      "banin": {
+        "title": "Banin Facilities (Male)",
+        "desc": "Modern and complete dormitory environment for male students — from bedrooms, dining halls, sports fields, to conducive study areas"
+      },
+      "banat": {
+        "title": "Banat Facilities (Female)",
+        "desc": "Comfortable and safe dormitory facilities for female students with a conducive learning environment that supports optimal development"
+      }
     }
   },
   "programs": {
@@ -845,5 +860,57 @@
     "list_mode": "List Mode",
     "translation": "Translation",
     "reciter": "Choose Reciter"
+  },
+  "fasilitas_banin": {
+    "header": {
+      "badge": "Student Facilities",
+      "title": "Banin Facilities",
+      "desc": "A comfortable and modern learning environment to support the growth of male students at Al Wafi International Islamic Boarding School"
+    },
+    "stats": {
+      "fasilitas": "Types of Facilities",
+      "kampus": "Campuses",
+      "modern": "Modern Facilities"
+    },
+    "featured": "Featured",
+    "items": {
+      "west_view": {
+        "title": "Al Wafi Main Building",
+        "desc": "The west view of the magnificent Al Wafi main building as the center of teaching and learning activities"
+      },
+      "kamar": {
+        "title": "Student Dormitory Room",
+        "desc": "Clean, comfortable, and conducive dormitory rooms for students to rest after a full day of activities"
+      },
+      "ruang_makan": {
+        "title": "Dining Hall",
+        "desc": "A spacious dining hall capable of accommodating all students with nutritionally balanced menus every day"
+      },
+      "gp": {
+        "title": "Gazebo & Public Area",
+        "desc": "Shaded and comfortable relaxation and discussion areas for outdoor activities"
+      },
+      "mini_soccer": {
+        "title": "Mini Soccer Field",
+        "desc": "A mini soccer field to support sports activities and physical fitness of male students"
+      },
+      "basket": {
+        "title": "Basketball Court",
+        "desc": "An indoor/outdoor basketball court ready to support the development of students' sports talents"
+      },
+      "area_belajar": {
+        "title": "Study Area",
+        "desc": "A modern study area equipped with complete facilities to support the student learning process"
+      }
+    },
+    "list_section": {
+      "badge": "Facility Details",
+      "title": "Complete Facilities We Provide"
+    },
+    "cta": {
+      "title": "Enroll Your Son at Al Wafi",
+      "desc": "Join thousands of students who have experienced the benefits of Al Wafi's modern facilities",
+      "btn": "Register Now"
+    }
   }
 }

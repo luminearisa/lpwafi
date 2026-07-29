@@ -26,6 +26,7 @@ import HadithDetail from './components/Hadith/HadithDetail';
 import KutubDashboard from './components/Kutub/KutubDashboard';
 import KutubDetail from './components/Kutub/KutubDetail';
 import OverseasCTA from './components/OverseasCTA';
+import FasilitasBanin from './components/FasilitasBanin';
 
 function App() {
   const [data, setData] = useState(null);
@@ -129,6 +130,13 @@ function App() {
     </>
   );
 
+  // Fasilitas Banin Page Component
+  const FasilitasBaninPage = () => (
+    <>
+      <FasilitasBanin data={data} />
+    </>
+  );
+
   return (
     <Router>
       <div className="App">
@@ -143,6 +151,7 @@ function App() {
           <Route path="/sma" element={<SMAPage />} />
           <Route path="/program-overseas" element={<ProgramOverseasPage />} />
           <Route path="/biro-bekal" element={<BiroBekalPage />} />
+          <Route path="/fasilitas-banin" element={<FasilitasBaninPage />} />
           <Route path="/quran" element={<QuranDashboard data={data} />} />
           <Route path="/quran/:surahId" element={<SurahDetail data={data} />} />
           <Route path="/hadith" element={<HadithDashboard data={data} />} />

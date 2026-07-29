@@ -15,7 +15,9 @@
         "yayasan": "Yayasan",
         "dakwah": "Dakwah & Sosial",
         "upz": "UPZ",
-        "profil": "Profil Sekolah"
+        "profil": "Profil Sekolah",
+        "fasilitas_banin": "Fasilitas Banin",
+        "fasilitas_banat": "Fasilitas Banat"
       },
       "program": {
         "main": "Program",
@@ -109,6 +111,19 @@
       "val_sma": "A (Unggul)",
       "muadalah": "Muadalah",
       "val_muadalah": "Universitas Islam Madinah"
+    },
+    "fasilitas_cta": {
+      "badge": "Fasilitas Pesantren",
+      "title": "Fasilitas Lengkap untuk Santri",
+      "see_more": "Lihat Selengkapnya",
+      "banin": {
+        "title": "Fasilitas Banin (Putra)",
+        "desc": "Lingkungan asrama modern dan lengkap untuk santri putra — dari kamar tidur, ruang makan, lapangan olahraga, hingga area belajar yang kondusif"
+      },
+      "banat": {
+        "title": "Fasilitas Banat (Putri)",
+        "desc": "Fasilitas asrama yang nyaman dan aman untuk santri putri dengan lingkungan belajar yang kondusif dan mendukung perkembangan optimal"
+      }
     }
   },
   "programs": {
@@ -846,5 +861,57 @@
     "list_mode": "Mode List",
     "translation": "Terjemahan",
     "reciter": "Pilih Qori"
+  },
+  "fasilitas_banin": {
+    "header": {
+      "badge": "Fasilitas Santri",
+      "title": "Fasilitas Banin",
+      "desc": "Lingkungan belajar yang nyaman dan modern untuk mendukung pertumbuhan santri putra Al Wafi International Islamic Boarding School"
+    },
+    "stats": {
+      "fasilitas": "Jenis Fasilitas",
+      "kampus": "Kampus",
+      "modern": "Fasilitas Modern"
+    },
+    "featured": "Unggulan",
+    "items": {
+      "west_view": {
+        "title": "Gedung Utama Al Wafi",
+        "desc": "Tampak barat gedung utama Al Wafi yang megah dan representatif sebagai pusat kegiatan belajar mengajar"
+      },
+      "kamar": {
+        "title": "Kamar Tidur Santri",
+        "desc": "Kamar tidur yang bersih, nyaman, dan kondusif untuk istirahat santri setelah beraktivitas seharian"
+      },
+      "ruang_makan": {
+        "title": "Ruang Makan",
+        "desc": "Ruang makan luas yang mampu menampung seluruh santri dengan menu bergizi seimbang setiap harinya"
+      },
+      "gp": {
+        "title": "Gazebo & Area Publik",
+        "desc": "Area santai dan diskusi santri yang rindang dan nyaman untuk kegiatan di luar kelas"
+      },
+      "mini_soccer": {
+        "title": "Lapangan Mini Soccer",
+        "desc": "Lapangan mini soccer untuk mendukung aktivitas olahraga dan kebugaran santri putra"
+      },
+      "basket": {
+        "title": "Lapangan Basket",
+        "desc": "Lapangan basket indoor/outdoor yang siap mendukung pengembangan bakat olahraga santri"
+      },
+      "area_belajar": {
+        "title": "Area Belajar",
+        "desc": "Ruang belajar modern yang dilengkapi fasilitas lengkap untuk mendukung proses pembelajaran santri"
+      }
+    },
+    "list_section": {
+      "badge": "Detail Fasilitas",
+      "title": "Selengkap Fasilitas yang Kami Sediakan"
+    },
+    "cta": {
+      "title": "Daftarkan Putra Anda di Al Wafi",
+      "desc": "Bergabunglah bersama ribuan santri yang telah merasakan manfaat fasilitas modern Al Wafi",
+      "btn": "Daftar Sekarang"
+    }
   }
 }

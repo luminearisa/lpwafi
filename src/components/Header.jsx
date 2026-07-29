@@ -59,7 +59,9 @@ const Header = ({ data }) => {
         { name: t('header.menu.about.yayasan'), href: '/yayasan', type: 'link' },
         { name: t('header.menu.about.dakwah'), href: '/dakwah-sosial', type: 'link' },
         { name: t('header.menu.about.upz'), href: '/upz', type: 'link' },
-        { name: t('header.menu.about.profil'), href: '#about', type: 'scroll' }
+        { name: t('header.menu.about.profil'), href: '#about', type: 'scroll' },
+        { name: t('header.menu.about.fasilitas_banin'), href: '/fasilitas-banin', type: 'link' },
+        { name: t('header.menu.about.fasilitas_banat'), href: '/fasilitas-banat', type: 'link' }
       ]
     },
     {
