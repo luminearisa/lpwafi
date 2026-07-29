@@ -54,6 +54,13 @@
       "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
     }
   ],
+  "native_speakers": [
+    { "name": "Syaikh Abdul Qosim", "photo": "syaikh abdul qosim.jpeg" },
+    { "name": "Syaikh Magdi Yahya Ahmed - Madinah", "photo": "syaikh magdi yahya ahmed - madinah.jpeg" },
+    { "name": "Syaikh Muhammad", "photo": "syaikh muhammad.jpeg" },
+    { "name": "Syaikh Mujahid", "photo": "syaikh mujahid.jpeg" },
+    { "name": "Syaikh Zakariya", "photo": "Syaikh Zakariya.jpeg" }
+  ],
   "universities": [
     {
       "name": "Universitas Andalas",

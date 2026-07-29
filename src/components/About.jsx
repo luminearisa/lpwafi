@@ -56,6 +56,21 @@ const About = ({ data }) => {
           <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-light">
             {t('about.header.desc')}
           </p>
+
+          <div className="mt-8 max-w-4xl mx-auto">
+            <div className="aspect-video w-full overflow-hidden rounded-xl border border-gray-200 shadow-md bg-black">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/fyApB6EqMvA"
+                title="YouTube video player"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
           <div className="w-16 h-1 bg-[#29A6B6] mx-auto mt-10"></div>
         </div>
 
@@ -97,41 +112,80 @@ const About = ({ data }) => {
 
         </div>
 
-        {/* --- FEATURES GRID: High-End Magazine Style --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
-          {featuresList.map((feature, index) => (
+        {/* --- NATIVE TEACHERS: Profile Cards --- */}
+        {featuresList[0] && (() => {
+          const native = featuresList[0];
+          const teachers = Array.isArray(t('about.native_speakers')) ? t('about.native_speakers') : [];
+          return (
+            <div className="mb-32">
+              <div className="text-center mb-16">
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {native.title}
+                </h3>
+                <p className="text-gray-500 text-lg max-w-2xl mx-auto font-light">
+                  {native.description}
+                </p>
+                <div className="w-16 h-1 bg-[#29A6B6] mx-auto mt-8"></div>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                {teachers.map((teacher, i) => (
+                  <div
+                    key={i}
+                    className="group bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 text-center p-6 md:p-8"
+                  >
+                    <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-5 rounded-full overflow-hidden border-2 border-gray-100 group-hover:border-[#29A6B6] transition-colors duration-500">
+                      <img
+                        src={`/natives/${encodeURIComponent(teacher.photo)}`}
+                        alt={teacher.name}
+                        className={`w-full h-full object-cover ${['syaikh abdul qosim.jpeg', 'syaikh magdi yahya ahmed - madinah.jpeg', 'syaikh mujahid.jpeg'].includes(teacher.photo) ? 'object-top' : ''}`}
+                        onError={(e) => {
+                          e.target.src = `https://via.placeholder.com/200/eeeeee/999999?text=${encodeURIComponent(teacher.name)}`;
+                        }}
+                      />
+                    </div>
+                    <h4 className="font-bold text-gray-900 text-sm md:text-base leading-tight">
+                      {teacher.name}
+                    </h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* --- ALUMNI FEATURE CARD --- */}
+        {featuresList[1] && (() => {
+          const alumni = featuresList[1];
+          return (
             <div
-              key={index}
-              className="group bg-white border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col"
+              onClick={() => document.getElementById('alumni')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group bg-white border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col cursor-pointer mb-32"
             >
-              {/* Image Frame - Grayscale to Color on Hover */}
               <div className="relative h-64 md:h-80 overflow-hidden bg-gray-100 p-2">
                 <img
-                  src={feature.image}
-                  alt={feature.title}
+                  src={alumni.image}
+                  alt={alumni.title}
                   className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
                   onError={(e) => {
-                    e.target.src = `https://via.placeholder.com/600x400/eeeeee/999999?text=${encodeURIComponent(feature.title)}`;
+                    e.target.src = `https://via.placeholder.com/600x400/eeeeee/999999?text=${encodeURIComponent(alumni.title)}`;
                   }}
                 />
                 <div className="absolute inset-0 border border-white/20 pointer-events-none mix-blend-overlay m-2"></div>
               </div>
-
-              {/* Content Box */}
               <div className="p-10 md:p-12 flex-grow flex flex-col justify-center">
                 <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                  {feature.title}
+                  {alumni.title}
                 </h4>
                 <h5 className="text-[10px] font-bold text-[#29A6B6] uppercase tracking-[0.2em] mb-6">
-                  {feature.subtitle}
+                  {alumni.subtitle}
                 </h5>
                 <p className="text-gray-500 leading-relaxed font-light">
-                  {feature.description}
+                  {alumni.description}
                 </p>
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })()}
 
         {/* --- ACCREDITATION BANNER: Bold Brand Colors --- */}
         <div className="relative bg-[#29A6B6] shadow-2xl overflow-hidden">

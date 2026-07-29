@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
+
+const heroImages = Array.from({ length: 12 }, (_, i) => `/images_hero/hero-${i + 1}.jpg`);
 
 const Hero = ({ data }) => {
   const { t } = useLanguage();
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % heroImages.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Warna brand dari logo
   const brandTeal = "#29A6B6";
@@ -16,31 +27,13 @@ const Hero = ({ data }) => {
       {/* --- BACKGROUND CAROUSEL --- */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full bg-white">
-          {data?.images?.carousel?.length > 0 ? (
-            data.images.carousel.map((image, index) => (
-              <div key={index} className="absolute inset-0">
-                <img
-                  src={image.url}
-                  alt={image.alt}
-                  className="w-full h-full object-cover animate-fadeInOut"
-                  style={{
-                    animationDelay: image.delay,
-                    animationDuration: '32s',
-                    opacity: 0,
-                    maxOpacity: 0.85
-                  }}
-                />
-              </div>
-            ))
-          ) : (
-            <div className="absolute inset-0">
-              <img
-                src="https://al-wafi.sch.id/src/images/wp/wafi-img-data=gedung_default.png"
-                alt="Gedung Al Wafi"
-                className="w-full h-full object-cover opacity-80"
-              />
-            </div>
-          )}
+          <div className="absolute inset-0">
+            <img
+              src={heroImages[bgIndex]}
+              alt="Gedung Al Wafi"
+              className="w-full h-full object-cover opacity-40 transition-opacity duration-[1000ms] ease-in-out"
+            />
+          </div>
         </div>
 
         {/* Light Gradient Overlay - Memastikan teks tetap terbaca tanpa membuat gelap */}
@@ -65,9 +58,10 @@ const Hero = ({ data }) => {
 
             {/* Main Title */}
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                 <span className="block drop-shadow-sm">
-                  {t('hero.title')}
+                  {t('header.brand.title')} <br /> 
+                  <span className="text-gray-900">{t('header.brand.subtitle')}</span>
                 </span>
               </h1>
 

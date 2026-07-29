@@ -272,10 +272,6 @@ const Foundation = ({ data }) => {
                 </div>
 
                 <p>
-                  Tanah tempat didirikannya Al Wafi ini adalah merupakan tanah wakaf yang diserahkan oleh Ibu Lusmiati Loebis yang lahir di Solo. 06 Januari 1939 dengan akta ikrar wakaf nomer KK.10.01/39/BA.03/82/XI/2011 di depan Kepala Kantor Urusan Agama Kecamatan Tajurhalang.
-                </p>
-
-                <p>
                   SMP Al Wafi adalah lembaga pendidikan yang berada dibawah naungan <strong>Yayasan Al-Sudais Indonesia</strong> yang didirikan pada tanggal <strong>21 Desember tahun 2016</strong> dengan akta pendirian no.12 di depan Notaris Eva Junaida, Sarjana Hukum.
                 </p>
 
@@ -452,17 +448,57 @@ const Foundation = ({ data }) => {
                 </h2>
               </div>
               
-              <div className="text-center">
-                <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-4 shadow-2xl">
-                  <img 
-                    src="https://al-wafi.sch.id/src/images/wp/wafi-img-data=struktur_yayasan.png"
-                    alt="Struktur Organisasi Yayasan Al Sudais Indonesia"
-                    className="w-full max-w-4xl mx-auto rounded-2xl"
-                    onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/800x600/e2e8f0/64748b?text=Struktur+Organisasi+Yayasan";
-                    }}
-                  />
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    role: "Ketua Pengurus Yayasan",
+                    name: "Dr. Marullah Marzuq, M.A., LL.M.",
+                    desc: "Memimpin pengurusan yayasan dan memastikan kebijakan Pembina diterjemahkan menjadi program, anggaran, dan kinerja yang terukur."
+                  },
+                  {
+                    role: "Wakil Ketua Pengurus Yayasan",
+                    name: "Kartiko Adi Pramono, M.Pd.",
+                    desc: "Membantu Ketua mengoordinasikan pelaksanaan kebijakan dan memastikan sinergi antardirektorat serta lembaga pendidikan."
+                  },
+                  {
+                    role: "Sekretaris Yayasan I",
+                    name: "Abdurahman, B.A., M.E.",
+                    desc: "Memimpin tata kelola administrasi, kesekretariatan, dokumentasi hukum, rapat, dan korespondensi resmi yayasan."
+                  },
+                  {
+                    role: "Sekretaris Yayasan II",
+                    name: "Dedi Haryadi",
+                    desc: "Mendukung kesekretariatan melalui pengelolaan surat, arsip digital, database, rapat, dan administrasi unit."
+                  },
+                  {
+                    role: "Bendahara Yayasan I",
+                    name: "Sahrul, Lc., M.E.",
+                    desc: "Memimpin perencanaan, pengendalian, pencatatan, dan pertanggungjawaban keuangan yayasan secara tertib dan akuntabel."
+                  },
+                  {
+                    role: "Bendahara Yayasan II",
+                    name: "Kiki Kusmayadi, M.Ak.",
+                    desc: "Mendukung Bendahara I melalui verifikasi transaksi, pencatatan, rekonsiliasi, administrasi aset, dan dokumentasi pembayaran."
+                  }
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 text-left group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#29A6B6] to-[#349B48] flex items-center justify-center mb-5 text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                      {i + 1}
+                    </div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#29A6B6] mb-2">
+                      {item.role}
+                    </h4>
+                    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">
+                      {item.name}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

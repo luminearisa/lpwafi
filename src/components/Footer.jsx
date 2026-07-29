@@ -1,4 +1,5 @@
 import React from 'react';
+import VisitorCounter from './VisitorCounter';
 
 const Footer = ({ data }) => {
   const currentYear = new Date().getFullYear();
@@ -184,9 +185,12 @@ const Footer = ({ data }) => {
         {/* --- BOTTOM BAR --- */}
         <div className="border-t border-white/10 mt-16 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-500 text-[11px] font-light tracking-wide">
-              © {currentYear} <span className="text-white font-medium">Al Wafi Islamic Boarding School</span>. All rights reserved.
-            </p>
+            <div className="flex items-center space-x-6">
+              <p className="text-gray-500 text-[11px] font-light tracking-wide">
+                © {currentYear} <span className="text-white font-medium">Al Wafi Islamic Boarding School</span>. All rights reserved.
+              </p>
+              <VisitorCounter />
+            </div>
             <div className="flex space-x-8">
               <a href="#" className="text-gray-500 hover:text-white text-[11px] uppercase tracking-widest transition-colors duration-300">
                 Privacy Policy

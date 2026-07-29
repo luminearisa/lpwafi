@@ -36,10 +36,10 @@
     "cta": "Register Now"
   },
   "hero": {
-    "badge": "International Sunnah Boarding School",
+    "badge": "International Boarding School",
     "title": "Al Wafi International Islamic Boarding School",
     "desc": {
-      "part1": "International Sunnah Boarding School with",
+      "part1": "International Boarding School with",
       "highlight": "Excellent Accreditation",
       "part2": "integrating Al-Quran and Sunnah values with modern technology to form a superior generation."
     },
@@ -89,6 +89,13 @@
         "description": "Distribution of Al Wafi Islamic Boarding School alumni accepted in various state universities, both domestic and abroad",
         "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
       }
+    ],
+    "native_speakers": [
+      { "name": "Syaikh Abdul Qosim", "photo": "syaikh abdul qosim.jpeg" },
+      { "name": "Syaikh Magdi Yahya Ahmed - Madinah", "photo": "syaikh magdi yahya ahmed - madinah.jpeg" },
+      { "name": "Syaikh Muhammad", "photo": "syaikh muhammad.jpeg" },
+      { "name": "Syaikh Mujahid", "photo": "syaikh mujahid.jpeg" },
+      { "name": "Syaikh Zakariya", "photo": "Syaikh Zakariya.jpeg" }
     ],
     "accreditation": {
       "title": "Accreditation & Recognition",
@@ -276,7 +283,6 @@
       "p1": "Al Wafi Boarding School is here to meet the needs of the community who want modern international standard Islamic education. Al Wafi Boarding School was built on a land area of 3,405 M² with parcel number 23.D.I Kohir No. 964, land survey letter Gs. No. 1186/1977.",
       "highlight_part1": "The groundbreaking for the construction of SMP and SMA Al Wafi Islamic Boarding School was carried out by the Governor of West Java Mr. Ahmad Heryawan on Friday,",
       "highlight_date": "February 3, 2017",
-      "p2": "The land where Al Wafi was founded is waqf land handed over by Mrs. Lusmiati Loebis who was born in Solo, January 6, 1939 with waqf pledge deed number KK.10.01/39/BA.03/82/XI/2011 before the Head of the Tajurhalang District Religious Affairs Office.",
       "p3_part1": "SMP Al Wafi is an educational institution under the auspices of",
       "p3_part2": "which was established on",
       "p3_date": "December 21, 2016",
@@ -471,7 +477,7 @@
       "desc": "Al Wafi Quran Tahfidz Elementary School - A-accredited Sunnah elementary school with a holistic curriculum and Islamic values reinforcement"
     },
     "intro": {
-      "p1": "SDTQ AL Wafi (Al Wafi Quran Tahfidz Elementary School) is a sunnah elementary school under the auspices of the Bina Wafi Indonesia Foundation. Located in Depok, this school has been accredited A by the Depok City Education Office.",
+      "p1": "SDTQ AL Wafi (Al Wafi Quran Tahfidz Elementary School) is a sunnah elementary school under the auspices of the Al Sudais Indonesia Foundation. Located in Depok, this school has been accredited A by the Depok City Education Office.",
       "p2": "SDTQ AL Wafi uses the Education Office, Diniyah, and Al Qur'an curriculum, and provides reinforcement in Arabic and English. The school also instills Islamic values in accordance with the teachings of Salafus Sholih, creating a holistic learning environment oriented towards Islamic values."
     },
     "excellence": {

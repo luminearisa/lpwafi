@@ -36,10 +36,10 @@
     "cta": "Daftar Sekarang"
   },
   "hero": {
-    "badge": "Pesantren Sunnah Internasional",
+    "badge": "Pesantren Internasional",
     "title": "Al Wafi International Islamic Boarding School",
     "desc": {
-      "part1": "Pesantren Sunnah Internasional dengan",
+      "part1": "Pesantren Internasional dengan",
       "highlight": "Akreditasi Unggul",
       "part2": "mengintegrasikan nilai Al-Quran dan Sunnah dengan teknologi modern untuk membentuk generasi unggul."
     },
@@ -89,6 +89,13 @@
         "description": "Sebaran alumni Pesantren Al Wafi Islamic Boarding School diterima di berbagai perguruan tinggi negeri, baik di dalam negeri maupun luar negeri",
         "image": "https://al-wafi.sch.id/src/images/wp/wafi-img-data=peta_alumni.png"
       }
+    ],
+    "native_speakers": [
+      { "name": "Syaikh Abdul Qosim", "photo": "syaikh abdul qosim.jpeg" },
+      { "name": "Syaikh Magdi Yahya Ahmed - Madinah", "photo": "syaikh magdi yahya ahmed - madinah.jpeg" },
+      { "name": "Syaikh Muhammad", "photo": "syaikh muhammad.jpeg" },
+      { "name": "Syaikh Mujahid", "photo": "syaikh mujahid.jpeg" },
+      { "name": "Syaikh Zakariya", "photo": "Syaikh Zakariya.jpeg" }
     ],
     "accreditation": {
       "title": "Akreditasi & Pengakuan",
@@ -277,7 +284,6 @@
       "p1": "Pesantren Al Wafi hadir untuk memenuhi kebutuhan masyarakat yang menginginkan pendidikan islam modern bertaraf internasional. Pesantren Al Wafi dibangun di atas tanah seluas 3.405 M² dengan persil nomer 23.D.I Kohir No. 964, surat ukur tanah Gs. No. 1186/1977.",
       "highlight_part1": "Peletakan batu pertama pembangunan SMP dan SMA Al Wafi Islamic Boarding School dilakukan oleh Gubernur Jawa Barat Bapak Ahmad Heryawan pada Hari Jumat tanggal",
       "highlight_date": "03 Februari tahun 2017",
-      "p2": "Tanah tempat didirikannya Al Wafi ini adalah merupakan tanah wakaf yang diserahkan oleh Ibu Lusmiati Loebis yang lahir di Solo. 06 Januari 1939 dengan akta ikrar wakaf nomer KK.10.01/39/BA.03/82/XI/2011 di depan Kepala Kantor Urusan Agama Kecamatan Tajurhalang.",
       "p3_part1": "SMP Al Wafi adalah lembaga pendidikan yang berada dibawah naungan",
       "p3_part2": "yang didirikan pada tanggal",
       "p3_date": "21 Desember tahun 2016",
@@ -472,7 +478,7 @@
       "desc": "Sekolah Dasar Tahfidz Qur'an Al Wafi - Sekolah dasar sunnah terakreditasi A dengan kurikulum holistik dan penguatan nilai-nilai Islam"
     },
     "intro": {
-      "p1": "SDTQ AL Wafi (Sekolah Dasar Tahfidz Qur'an Al Wafi) adalah sekolah dasar sunnah yang berada di bawah naungan Yayasan Bina Wafi Indonesia. Terletak di Depok, sekolah ini telah terakreditasi A oleh Dinas Pendidikan Kota Depok.",
+      "p1": "SDTQ AL Wafi (Sekolah Dasar Tahfidz Qur'an Al Wafi) adalah sekolah dasar sunnah yang berada di bawah naungan Yayasan Al Sudais Indonesia. Terletak di Depok, sekolah ini telah terakreditasi A oleh Dinas Pendidikan Kota Depok.",
       "p2": "SDTQ AL Wafi menggunakan kurikulum Dinas Pendidikan, Diniyah, dan Al Qur'an, serta memberikan penguatan dalam bahasa Arab dan Inggris. Sekolah ini juga menanamkan nilai-nilai Islam sesuai dengan ajaran Salafus Sholih, menciptakan lingkungan belajar yang holistik dan berorientasi pada nilai-nilai Islami."
     },
     "excellence": {

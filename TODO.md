@@ -1,0 +1,6 @@
+- [x] Update section STRUCTURE di src/components/Foundation.jsx menjadi bagan hierarki seperti referensi
+- [x] Tambahkan node Pembina Yayasan
+- [x] Tambahkan kolom Pengawas Yayasan + Satuan Pengawasan Internal
+- [x] Tambahkan kolom Pengurus Yayasan dalam format tabel jabatan/nama
+- [x] Tambahkan garis konektor antar node agar menyerupai struktur organisasi
+- [x] Review ulang JSX (indentasi, duplikasi, konsistensi class)

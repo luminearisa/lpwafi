@@ -115,8 +115,6 @@ const Foundation = ({ data }) => {
                 </p>
               </div>
 
-              <p>{t('foundation.history.p2')}</p>
-
               <p>
                 {t('foundation.history.p3_part1')} <strong className="text-gray-900">Yayasan Al-Sudais Indonesia</strong> {t('foundation.history.p3_part2')} <strong className="text-gray-900">{t('foundation.history.p3_date')}</strong> {t('foundation.history.p3_part3')}
               </p>
@@ -189,15 +187,78 @@ const Foundation = ({ data }) => {
               <div className="w-12 h-1 bg-gray-900 mt-6"></div>
             </div>
 
-            <div className="relative bg-gray-50 border border-gray-100 p-4 shadow-sm">
-              <img
-                src="https://al-wafi.sch.id/src/images/wp/wafi-img-data=struktur_yayasan.png"
-                alt="Struktur Organisasi Yayasan Al Sudais Indonesia"
-                className="w-full max-w-4xl mx-auto mix-blend-multiply hover:scale-[1.02] transition-transform duration-700"
-                onError={(e) => {
-                  e.target.src = "https://via.placeholder.com/800x600/eeeeee/999999?text=Struktur+Organisasi+Yayasan";
-                }}
-              />
+            <div className="max-w-6xl mx-auto">
+              {/* Pembina Yayasan */}
+              <div className="flex justify-center">
+                <div className="w-full md:w-[620px] rounded-2xl border border-[#0f4f73]/20 shadow-lg overflow-hidden bg-white">
+                  <div className="bg-[#0f4f73] text-white text-center py-3 px-6">
+                    <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-wide">Pembina Yayasan</h3>
+                    <p className="text-sm md:text-base font-medium mt-1 text-white/90">Dr. Ali Saman Hasan, Lc., M.A., LL.B., LL.M.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Connector */}
+              <div className="h-8 flex justify-center">
+                <div className="w-px h-full bg-[#0f4f73]/70"></div>
+              </div>
+
+              {/* Split connector line */}
+              <div className="hidden md:block max-w-5xl mx-auto border-t-2 border-[#0f4f73]/70"></div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                {/* Pengawas Yayasan */}
+                <div className="rounded-2xl border border-[#0f4f73]/20 shadow-md overflow-hidden bg-white">
+                  <div className="bg-[#006b7f] text-white py-3 px-6">
+                    <h4 className="text-base md:text-lg font-extrabold uppercase tracking-wide text-center">Pengawas Yayasan</h4>
+                  </div>
+                  <div className="p-6 md:p-8 bg-[#f7fcff]">
+                    <ol className="list-decimal list-inside text-gray-800 space-y-2 font-medium">
+                      <li>Yusuf Baisa, Lc.</li>
+                      <li>Zainal Abidin, Lc., M.A.</li>
+                      <li>R. Moh. Taufik</li>
+                    </ol>
+                  </div>
+
+                  <div className="h-8 flex justify-center">
+                    <div className="w-px h-full bg-[#0f4f73]/60"></div>
+                  </div>
+
+                  <div className="px-6 pb-6">
+                    <div className="bg-[#006b7f] text-white text-center py-3 px-4 rounded-xl font-extrabold uppercase tracking-wide text-sm md:text-base">
+                      Satuan Pengawasan Internal
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pengurus Yayasan */}
+                <div className="rounded-2xl border border-[#0f4f73]/20 shadow-md overflow-hidden bg-white">
+                  <div className="bg-[#0f4f73] text-white py-3 px-6">
+                    <h4 className="text-base md:text-lg font-extrabold uppercase tracking-wide text-center">Pengurus Yayasan</h4>
+                  </div>
+                  <div className="p-4 md:p-6 bg-[#f7fcff]">
+                    <div className="divide-y divide-[#0f4f73]/10 border border-[#0f4f73]/10 rounded-lg overflow-hidden">
+                      {[
+                        ["Ketua", "Dr. Marullah Marzuq, M.A., LL.M."],
+                        ["Wakil Ketua", "Kartiko Adi Pramono, M.Pd."],
+                        ["Sekretaris I", "Abdurahman, B.A., M.E."],
+                        ["Sekretaris II", "Dedi Haryadi"],
+                        ["Bendahara I", "Sahrul, Lc., M.E."],
+                        ["Bendahara II", "Kiki Kusmayadi, M.Ak."]
+                      ].map(([role, name], idx) => (
+                        <div key={idx} className="grid grid-cols-12 bg-white">
+                          <div className="col-span-4 md:col-span-3 px-4 py-3 font-bold text-[#0f4f73] text-sm md:text-base">
+                            {role}
+                          </div>
+                          <div className="col-span-8 md:col-span-9 px-4 py-3 text-gray-900 font-medium text-sm md:text-base border-s border-[#0f4f73]/10">
+                            {name}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

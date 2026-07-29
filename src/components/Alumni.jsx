@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../LanguageContext';
-import AlumniMap from './AlumniMap';
+import AlumniMapGlobal from './AlumniMapGlobal';
 import AlumniMap2026 from './AlumniMap2026';
 
 const Alumni = ({ data }) => {
@@ -96,7 +96,7 @@ const Alumni = ({ data }) => {
             </div>
           </div>
           <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-            <AlumniMap universities={[...domesticUniversities, ...internationalUniversities]} />
+            <AlumniMapGlobal />
           </div>
         </div>
 
