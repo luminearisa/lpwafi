@@ -852,14 +852,45 @@
   },
   "quran": {
     "menu": "Al-Quran",
+    "badge": "Collection of 114 Surahs",
     "title": "Digital Al-Quran",
-    "search": "Search Surah...",
+    "subtitle": "\"The best of you are those who learn the Quran and teach it.\"",
+    "hadith_source": "HR. Bukhari",
+    "search": "Search surah...",
     "play": "Play",
     "pause": "Pause",
     "mushaf_mode": "Mushaf Mode",
     "list_mode": "List Mode",
     "translation": "Translation",
-    "reciter": "Choose Reciter"
+    "reciter": "Choose Reciter",
+    "stats": {
+      "surahs": "Surahs",
+      "juz": "Juz",
+      "verses": "Verses"
+    },
+    "tabs": {
+      "all": "All",
+      "makkiyah": "Makkiyah",
+      "madaniyah": "Madaniyah",
+      "by_juz": "Juz"
+    },
+    "last_read": "Last Read",
+    "continue_reading": "Continue Reading",
+    "tap_to_continue": "Tap to continue",
+    "saved_surahs": "saved surahs",
+    "of": "of",
+    "surahs": "surahs",
+    "verses": "verses",
+    "clear_all": "Clear all",
+    "loading": "Loading...",
+    "no_favorites": "No favorite surahs yet",
+    "add_favorites_hint": "Add favorite surahs by clicking the star icon",
+    "not_found": "Surah not found",
+    "try_different": "Try a different search keyword",
+    "clear_search": "Clear Search",
+    "favorites": "Favorites",
+    "tip_title": "Reading Tips",
+    "tip_text": "Click the star icon to save favorite surahs. Favorite surahs will be stored in your browser and can be accessed anytime without internet connection."
   },
   "fasilitas_banin": {
     "header": {

@@ -853,14 +853,45 @@
   },
   "quran": {
     "menu": "Al-Quran",
+    "badge": "Koleksi 114 Surah",
     "title": "Al-Quran Digital",
-    "search": "Cari Surah...",
+    "subtitle": "\"Sebaik-baik kalian adalah yang mempelajari Al-Quran dan mengajarkannya.\"",
+    "hadith_source": "HR. Bukhari",
+    "search": "Cari surah...",
     "play": "Putar",
     "pause": "Jeda",
     "mushaf_mode": "Mode Mushaf",
     "list_mode": "Mode List",
     "translation": "Terjemahan",
-    "reciter": "Pilih Qori"
+    "reciter": "Pilih Qori",
+    "stats": {
+      "surahs": "Surah",
+      "juz": "Juz",
+      "verses": "Ayat"
+    },
+    "tabs": {
+      "all": "Semua",
+      "makkiyah": "Makiyah",
+      "madaniyah": "Madaniyah",
+      "by_juz": "Juz"
+    },
+    "last_read": "Terakhir Dibaca",
+    "continue_reading": "Lanjutkan Membaca",
+    "tap_to_continue": "Ketuk untuk melanjutkan",
+    "saved_surahs": "surah tersimpan",
+    "of": "dari",
+    "surahs": "surah",
+    "verses": "ayat",
+    "clear_all": "Hapus semua",
+    "loading": "Memuat...",
+    "no_favorites": "Belum ada surah favorit",
+    "add_favorites_hint": "Tambahkan surah favorit dengan mengklik ikon bintang",
+    "not_found": "Surah tidak ditemukan",
+    "try_different": "Coba kata kunci pencarian yang berbeda",
+    "clear_search": "Hapus Pencarian",
+    "favorites": "Favorit",
+    "tip_title": "Tips Membaca",
+    "tip_text": "Klik ikon bintang untuk menyimpan surah favorit. Surah favorit akan tersimpan di browser Anda dan dapat diakses kapan saja tanpa koneksi internet."
   },
   "fasilitas_banin": {
     "header": {
