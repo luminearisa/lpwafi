@@ -6,157 +6,551 @@ const heroImages = Array.from({ length: 12 }, (_, i) => `/images_hero/hero-${i +
 const Hero = ({ data }) => {
   const { t } = useLanguage();
   const [bgIndex, setBgIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
 
+  const primary = "#0048A0";
+  const secondary = "#1E40AF";
+  const accent = "#FBBF24";
+
+  // Inject Futuristic Fonts
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2500);
-
-    return () => clearInterval(interval);
+    const linkId = 'futuristic-fonts';
+    if (!document.getElementById(linkId)) {
+      const link = document.createElement('link');
+      link.id = linkId;
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap';
+      document.head.appendChild(link);
+    }
   }, []);
 
-  // Warna brand dari logo
-  const brandTeal = "#29A6B6";
-  const brandGreen = "#349B48";
+  // Carousel + Progress Bar
+  useEffect(() => {
+    const duration = 5000;
+    const step = 50;
+    const increment = (step / duration) * 100;
+
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) return 0;
+        return prev + increment;
+      });
+    }, step);
+
+    const imageInterval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % heroImages.length);
+      setProgress(0);
+    }, duration);
+
+    return () => {
+      clearInterval(progressInterval);
+      clearInterval(imageInterval);
+    };
+  }, []);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative overflow-hidden bg-[#fcfdfd]"
+      className="min-h-screen flex items-center relative overflow-hidden bg-[#fafbfd]"
+      style={{ fontFamily: "'Space Grotesk', 'Inter', sans-serif" }}
     >
-      {/* --- BACKGROUND CAROUSEL --- */}
+      {/* ============ BACKGROUND CAROUSEL ============ */}
       <div className="absolute inset-0 z-0">
-        <div className="relative w-full h-full bg-white">
-          <div className="absolute inset-0">
+        {heroImages.map((img, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              idx === bgIndex ? 'opacity-40' : 'opacity-0'
+            }`}
+          >
             <img
-              src={heroImages[bgIndex]}
-              alt="Gedung Al Wafi"
-              className="w-full h-full object-cover opacity-40 transition-opacity duration-[1000ms] ease-in-out"
+              src={img}
+              alt={`Hero ${idx + 1}`}
+              className="w-full h-full object-cover scale-105"
             />
           </div>
-        </div>
+        ))}
 
-        {/* Light Gradient Overlay - Memastikan teks tetap terbaca tanpa membuat gelap */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/70 to-transparent z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10"></div>
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 md:via-white/75 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white z-10"></div>
 
-        {/* Subtle Grid Pattern Overlay untuk tekstur arsitektural */}
-        <div className="absolute inset-0 z-10 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(41, 166, 182, 0.1) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+        {/* Futuristic Grid Pattern */}
+        <div
+          className="absolute inset-0 z-10 opacity-[0.35]"
+          style={{
+            backgroundImage: `linear-gradient(${primary}10 1px, transparent 1px), linear-gradient(90deg, ${primary}10 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+            maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)'
+          }}
+        ></div>
+
+        {/* Animated Radial Glow - Primary */}
+        <div
+          className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] z-10 opacity-20 animate-pulse"
+          style={{ background: primary }}
+        ></div>
+
+        {/* Animated Radial Glow - Accent */}
+        <div
+          className="absolute bottom-1/4 right-10 w-[400px] h-[400px] rounded-full blur-[100px] z-10 opacity-15 animate-pulse"
+          style={{ background: accent, animationDelay: '1s' }}
+        ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pt-24 pb-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-8rem)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pt-28 pb-16 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* --- LEFT CONTENT --- */}
-          <div className="space-y-10 lg:pe-8">
+          {/* ============ LEFT CONTENT ============ */}
+          <div className="space-y-8 lg:pe-6">
 
-            {/* Minimalist Badge - Bright Theme */}
-            <div className="inline-flex items-center px-4 py-2 border border-[#29A6B6]/20 bg-white/60 backdrop-blur-md text-[9px] text-[#29A6B6] uppercase tracking-[0.2em] font-bold shadow-sm">
-              <div className="w-1.5 h-1.5 bg-[#349B48] rounded-full me-3 animate-pulse"></div>
-              {t('hero.badge')}
+            {/* Futuristic Badge */}
+            <div className="inline-flex items-center group">
+              <div
+                className="flex items-center px-4 py-2 backdrop-blur-xl border shadow-sm relative overflow-hidden"
+                style={{
+                  background: 'rgba(255,255,255,0.7)',
+                  borderColor: `${primary}20`,
+                  borderRadius: '2px'
+                }}
+              >
+                {/* Animated shimmer */}
+                <div
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                  style={{ background: `linear-gradient(90deg, transparent, ${accent}15, transparent)` }}
+                ></div>
+
+                {/* Live indicator */}
+                <div className="relative flex items-center">
+                  <span
+                    className="absolute w-2 h-2 rounded-full animate-ping"
+                    style={{ background: accent, opacity: 0.6 }}
+                  ></span>
+                  <span
+                    className="relative w-1.5 h-1.5 rounded-full me-3"
+                    style={{ background: accent }}
+                  ></span>
+                </div>
+
+                <span
+                  className="text-[9px] uppercase tracking-[0.3em] font-semibold relative"
+                  style={{ color: primary }}
+                >
+                  {t('hero.badge')}
+                </span>
+              </div>
+
+              {/* Horizontal tech line */}
+              <div
+                className="h-px flex-1 ms-4 max-w-[120px] hidden sm:block"
+                style={{
+                  background: `linear-gradient(90deg, ${primary}40, transparent)`
+                }}
+              ></div>
             </div>
 
             {/* Main Title */}
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
-                <span className="block drop-shadow-sm">
-                  {t('header.brand.title')} <br /> 
-                  <span className="text-gray-900">{t('header.brand.subtitle')}</span>
+            <div className="space-y-5">
+              <h1
+                className="text-[2.75rem] sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
+              >
+                <span className="block text-gray-900">
+                  {t('header.brand.title')}
+                </span>
+                <span
+                  className="block mt-2 bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: `linear-gradient(135deg, ${primary} 0%, ${secondary} 50%, ${accent} 100%)`
+                  }}
+                >
+                  {t('header.brand.subtitle')}
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-gray-600 font-medium max-w-xl leading-relaxed tracking-wide">
+              {/* Divider with accent */}
+              <div className="flex items-center gap-3">
+                <div className="h-[2px] w-16" style={{ background: primary }}></div>
+                <div className="h-[2px] w-6" style={{ background: accent }}></div>
+              </div>
+
+              <p
+                className="text-[15px] md:text-base text-gray-600 max-w-xl leading-[1.75] tracking-wide font-light"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
                 {t('hero.desc.part1')}
-                <span className="text-[#29A6B6] font-bold"> {t('hero.desc.highlight')}</span>,
+                <span
+                  className="font-semibold px-1 mx-0.5 rounded-sm"
+                  style={{
+                    color: primary,
+                    background: `${accent}20`
+                  }}
+                >
+                  {t('hero.desc.highlight')}
+                </span>
                 {t('hero.desc.part2')}
               </p>
             </div>
 
-            {/* Postmodern CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-5 pt-4">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              {/* Primary CTA */}
               <a
                 href={data?.contact?.registration?.url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center px-8 py-4 bg-[#29A6B6] text-white text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 hover:bg-[#1f828f] shadow-[0_10px_30px_rgba(41,166,182,0.3)] hover:shadow-[0_15px_35px_rgba(41,166,182,0.4)] hover:-translate-y-1"
+                className="group relative inline-flex items-center justify-center px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.25em] text-white overflow-hidden transition-all duration-500 hover:-translate-y-0.5"
+                style={{
+                  background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
+                  boxShadow: `0 10px 30px -5px ${primary}50`,
+                  borderRadius: '2px'
+                }}
               >
-                <span>{t('hero.cta.register')}</span>
-                <i className="fas fa-arrow-right ms-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                {/* Shimmer */}
+                <span
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
+                  style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)' }}
+                ></span>
+
+                {/* Corner accents */}
+                <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 opacity-60"
+                      style={{ borderColor: accent }}></span>
+                <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 opacity-60"
+                      style={{ borderColor: accent }}></span>
+
+                <span className="relative flex items-center">
+                  {t('hero.cta.register')}
+                  <i className="fas fa-arrow-right ms-3 text-[10px] group-hover:translate-x-1 transition-transform duration-300"></i>
+                </span>
               </a>
 
+              {/* Secondary CTA */}
               <a
                 href="#about"
-                className="group flex items-center justify-center px-8 py-4 bg-white text-[#349B48] text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 border border-[#349B48]/30 hover:border-[#349B48] hover:bg-[#f2fbf4] hover:-translate-y-1 shadow-sm"
+                className="group relative inline-flex items-center justify-center px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.25em] bg-white/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 border"
+                style={{
+                  color: primary,
+                  borderColor: `${primary}30`,
+                  borderRadius: '2px'
+                }}
               >
-                <span>{t('hero.cta.learn')}</span>
+                <span className="flex items-center">
+                  <span
+                    className="w-1 h-1 rounded-full me-3"
+                    style={{ background: accent }}
+                  ></span>
+                  {t('hero.cta.learn')}
+                </span>
+                <span
+                  className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-500"
+                  style={{ background: primary }}
+                ></span>
               </a>
             </div>
 
-            {/* Minimalist Stats - Light Theme */}
-            <div className="grid grid-cols-3 gap-8 pt-10 border-t border-gray-200">
-              <div>
-                <div className="text-3xl lg:text-4xl font-light text-[#29A6B6] mb-1">1100<span className="text-[#349B48] font-bold">+</span></div>
-                <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">{t('hero.stats.alumni')}</div>
-              </div>
-              <div>
-                <div className="text-3xl lg:text-4xl font-light text-[#29A6B6] mb-1">150<span className="text-[#349B48] font-bold">+</span></div>
-                <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">{t('hero.stats.teachers')}</div>
-              </div>
-              <div>
-                <div className="text-3xl lg:text-4xl font-light text-[#29A6B6] mb-1">A</div>
-                <div className="text-[9px] text-gray-500 uppercase tracking-widest font-bold">{t('hero.stats.accreditation')}</div>
-              </div>
+            {/* Futuristic Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8 relative">
+              {/* Top border with gradient */}
+              <div
+                className="absolute top-0 left-0 w-full h-[1px]"
+                style={{
+                  background: `linear-gradient(90deg, ${primary}, ${secondary} 50%, transparent 100%)`
+                }}
+              ></div>
+
+              {[
+                { value: '1100', suffix: '+', label: t('hero.stats.alumni') },
+                { value: '150', suffix: '+', label: t('hero.stats.teachers') },
+                { value: 'A', suffix: '+', label: t('hero.stats.accreditation') }
+              ].map((stat, i) => (
+                <div key={i} className="pt-5 group">
+                  <div
+                    className="text-[2rem] lg:text-[2.5rem] font-bold mb-2 leading-none tracking-tight"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: primary
+                    }}
+                  >
+                    {stat.value}
+                    <span style={{ color: accent }}>{stat.suffix}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="h-px w-4 transition-all duration-300 group-hover:w-8"
+                      style={{ background: accent }}
+                    ></div>
+                    <div
+                      className="text-[9px] uppercase tracking-[0.25em] font-medium text-gray-500"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      {stat.label}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* --- RIGHT CONTENT: Editorial Style Image & Cards --- */}
-          <div className="relative lg:ps-8 mt-12 lg:mt-0 hidden md:block">
-
+          {/* ============ RIGHT CONTENT ============ */}
+          <div className="relative mt-12 lg:mt-0 hidden md:block">
             <div className="relative">
-              {/* Image Frame - Clean White with soft luxury shadow */}
-              <div className="relative bg-white p-3 border border-gray-100 shadow-[0_20px_50px_rgba(41,166,182,0.1)]">
-                <img
-                  src={data?.images?.hero || "/placeholder-building.jpg"}
-                  alt="Al Wafi Islamic Boarding School"
-                  className="w-full h-[400px] lg:h-[500px] object-cover transition-all duration-700 hover:scale-[1.02]"
-                  onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/600x800/eeeeee/aaaaaa?text=Al+Wafi+Campus";
-                  }}
-                />
+              {/* Decorative elements behind */}
+              <div
+                className="absolute -top-6 -right-6 w-full h-full border-2 z-0"
+                style={{
+                  borderColor: `${primary}15`,
+                  borderRadius: '4px'
+                }}
+              ></div>
+              <div
+                className="absolute -top-3 -right-3 w-full h-full border z-0"
+                style={{
+                  borderColor: `${accent}30`,
+                  borderRadius: '4px'
+                }}
+              ></div>
 
-                {/* Overlay Inner Border for luxury feel */}
-                <div className="absolute inset-3 border border-white/40 pointer-events-none mix-blend-overlay"></div>
-              </div>
-
-              {/* Floating Info Card 1 - UIM (Teal Accent) */}
-              <div className="absolute -bottom-6 -start-10 bg-white p-5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] max-w-[260px] border border-gray-100 group hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 flex-shrink-0 bg-[#f0f9fa] flex items-center justify-center border border-[#29A6B6]/20 group-hover:bg-[#29A6B6] transition-colors duration-500">
-                    <i className="fas fa-certificate text-[#29A6B6] text-sm group-hover:text-white transition-colors duration-500"></i>
+              {/* Main Image Frame */}
+              <div
+                className="relative z-10 p-2 bg-white border shadow-2xl"
+                style={{
+                  borderColor: `${primary}10`,
+                  boxShadow: `0 30px 60px -20px ${primary}25, 0 20px 40px -10px ${secondary}15`,
+                  borderRadius: '4px'
+                }}
+              >
+                {/* Top tech bar */}
+                <div className="flex items-center justify-between px-3 py-1.5 border-b"
+                     style={{ borderColor: `${primary}10` }}>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: accent }}></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
                   </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('hero.cards.uim_title')}</div>
-                    <div className="text-[10px] text-gray-500 leading-relaxed">{t('hero.cards.uim_sub')}</div>
+                  <span
+                    className="text-[8px] uppercase tracking-[0.3em] font-mono text-gray-400"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    CAMPUS.01 / LIVE
+                  </span>
+                </div>
+
+                <div className="relative overflow-hidden" style={{ borderRadius: '2px' }}>
+                  <img
+                    src={data?.images?.hero || "/placeholder-building.jpg"}
+                    alt="Al Wafi Islamic Boarding School"
+                    className="w-full h-[420px] lg:h-[520px] object-cover transition-all duration-[2000ms] hover:scale-[1.03]"
+                    onError={(e) => {
+                      e.target.src = "https://via.placeholder.com/600x800/0048A0/ffffff?text=Al+Wafi+Campus";
+                    }}
+                  />
+
+                  {/* Tech overlay scan lines */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-20"
+                    style={{
+                      backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,72,160,0.15) 0px, rgba(0,72,160,0.15) 1px, transparent 1px, transparent 4px)'
+                    }}
+                  ></div>
+
+                  {/* Bottom gradient with data */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <div
+                          className="text-[9px] uppercase tracking-[0.3em] text-white/60 mb-1 font-mono"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          // ESTABLISHED
+                        </div>
+                        <div className="text-white text-sm font-semibold">
+                          Al Wafi Islamic Boarding School
+                        </div>
+                      </div>
+                      <div
+                        className="flex items-center gap-2 px-2 py-1 bg-white/10 backdrop-blur-md border border-white/20"
+                        style={{ borderRadius: '2px' }}
+                      >
+                        <div
+                          className="w-1.5 h-1.5 rounded-full animate-pulse"
+                          style={{ background: accent }}
+                        ></div>
+                        <span
+                          className="text-[9px] uppercase tracking-widest text-white font-mono"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          ACTIVE
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Corner HUD */}
+                  <div className="absolute top-3 right-3 flex flex-col gap-1">
+                    {[1,2,3].map(i => (
+                      <div
+                        key={i}
+                        className="h-px bg-white/60"
+                        style={{ width: `${20 + i * 5}px` }}
+                      ></div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Floating Info Card 2 - Campus (Green Accent) */}
-              <div className="absolute -top-6 -end-6 bg-white p-5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] max-w-[260px] border border-gray-100 group hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 flex-shrink-0 bg-[#f2fbf4] flex items-center justify-center border border-[#349B48]/20 group-hover:bg-[#349B48] transition-colors duration-500">
-                    <i className="fas fa-map-marker-alt text-[#349B48] text-sm group-hover:text-white transition-colors duration-500"></i>
+              {/* Floating Card 1 — UIM (Primary accent) */}
+              <div
+                className="absolute -bottom-6 -start-6 lg:-start-10 backdrop-blur-xl p-4 max-w-[240px] z-20 border transition-all duration-500 hover:-translate-y-1 group"
+                style={{
+                  background: 'rgba(255,255,255,0.92)',
+                  borderColor: `${primary}20`,
+                  boxShadow: `0 20px 40px -10px ${primary}30`,
+                  borderRadius: '4px'
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div
+                    className="w-11 h-11 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:rotate-6"
+                    style={{
+                      background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
+                      borderRadius: '3px'
+                    }}
+                  >
+                    <i className="fas fa-certificate text-white text-sm relative z-10"></i>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/20"></div>
                   </div>
-                  <div>
-                    <div className="font-bold text-gray-900 text-xs uppercase tracking-wider mb-1">{t('hero.cards.campus_title')}</div>
-                    <div className="text-[10px] text-gray-500 leading-relaxed">{t('hero.cards.campus_sub')}</div>
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className="font-bold text-gray-900 text-[11px] uppercase tracking-wider mb-1 leading-tight"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      {t('hero.cards.uim_title')}
+                    </div>
+                    <div
+                      className="text-[10px] text-gray-500 leading-relaxed"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {t('hero.cards.uim_sub')}
+                    </div>
                   </div>
                 </div>
+                {/* Bottom accent line */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[2px]"
+                  style={{ background: `linear-gradient(90deg, ${primary}, transparent)` }}
+                ></div>
               </div>
 
+              {/* Floating Card 2 — Campus (Accent amber) */}
+              <div
+                className="absolute -top-6 -end-6 lg:-end-10 backdrop-blur-xl p-4 max-w-[240px] z-20 border transition-all duration-500 hover:-translate-y-1 group"
+                style={{
+                  background: 'rgba(255,255,255,0.92)',
+                  borderColor: `${accent}30`,
+                  boxShadow: `0 20px 40px -10px ${accent}30`,
+                  borderRadius: '4px'
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div
+                    className="w-11 h-11 flex-shrink-0 flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:rotate-6"
+                    style={{
+                      background: accent,
+                      borderRadius: '3px'
+                    }}
+                  >
+                    <i className="fas fa-map-marker-alt text-white text-sm relative z-10"></i>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/30"></div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div
+                      className="font-bold text-gray-900 text-[11px] uppercase tracking-wider mb-1 leading-tight"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      {t('hero.cards.campus_title')}
+                    </div>
+                    <div
+                      className="text-[10px] text-gray-500 leading-relaxed"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {t('hero.cards.campus_sub')}
+                    </div>
+                  </div>
+                </div>
+                {/* Bottom accent line */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-[2px]"
+                  style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }}
+                ></div>
+              </div>
+
+              {/* Corner tech indicator */}
+              <div
+                className="absolute -bottom-4 -right-4 px-2 py-1 text-[8px] font-mono uppercase tracking-widest z-30 border"
+                style={{
+                  background: primary,
+                  color: 'white',
+                  borderColor: primary,
+                  borderRadius: '2px',
+                  fontFamily: "'JetBrains Mono', monospace"
+                }}
+              >
+                <i className="fas fa-signal me-1 text-[8px]" style={{ color: accent }}></i>
+                {String(bgIndex + 1).padStart(2, '0')}/{String(heroImages.length).padStart(2, '0')}
+              </div>
             </div>
           </div>
+        </div>
 
+        {/* ============ CAROUSEL PROGRESS INDICATOR ============ */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-2 backdrop-blur-xl border z-30"
+             style={{
+               background: 'rgba(255,255,255,0.8)',
+               borderColor: `${primary}15`,
+               borderRadius: '2px'
+             }}>
+          <span
+            className="text-[9px] uppercase tracking-[0.25em] font-medium text-gray-500"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            Slide
+          </span>
+          <div className="flex gap-1">
+            {heroImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setBgIndex(idx);
+                  setProgress(0);
+                }}
+                className="relative h-1 transition-all duration-500 overflow-hidden"
+                style={{
+                  width: idx === bgIndex ? '32px' : '12px',
+                  background: idx === bgIndex ? `${primary}20` : `${primary}15`,
+                  borderRadius: '2px'
+                }}
+                aria-label={`Slide ${idx + 1}`}
+              >
+                {idx === bgIndex && (
+                  <div
+                    className="absolute inset-0 transition-all duration-100 ease-linear"
+                    style={{
+                      width: `${progress}%`,
+                      background: `linear-gradient(90deg, ${primary}, ${accent})`,
+                      borderRadius: '2px'
+                    }}
+                  ></div>
+                )}
+              </button>
+            ))}
+          </div>
+          <span
+            className="text-[9px] font-mono font-semibold"
+            style={{ color: primary, fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            {String(bgIndex + 1).padStart(2, '0')}
+          </span>
         </div>
       </div>
     </section>

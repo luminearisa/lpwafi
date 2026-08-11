@@ -4,61 +4,180 @@ import { useLanguage } from '../LanguageContext';
 const About = ({ data }) => {
   const { t } = useLanguage();
 
-  // Warna brand dari logo
-  const brandTeal = "#29A6B6";
-  const brandGreen = "#349B48";
+  const primary = "#0048A0";
+  const secondary = "#1E40AF";
+  const accent = "#FBBF24";
 
-  // Helper untuk data array
   const missionList = Array.isArray(t('about.content.mission')) ? t('about.content.mission') : [];
   const featuresList = Array.isArray(t('about.features_list')) ? t('about.features_list') : [];
 
   return (
     <section
       id="about"
-      className="py-32 relative overflow-hidden bg-[#f4f8f9]"
+      className="py-32 relative overflow-hidden bg-[#fafbfd]"
+      style={{ fontFamily: "'Space Grotesk', 'Inter', sans-serif" }}
     >
-      {/* --- ELEGANT ISLAMIC GEOMETRIC PATTERN BACKGROUND --- */}
+      {/* ============ FUTURISTIC BACKGROUND ============ */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="luxury-islamic-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <g stroke="#29A6B6" strokeWidth="0.5" fill="none" opacity="0.07">
-                {/* 8-Pointed Star (Khatam) */}
-                <path d="M40,10 L45,35 L70,40 L45,45 L40,70 L35,45 L10,40 L35,35 Z" />
-                {/* Connecting Squares */}
-                <rect x="25" y="25" width="30" height="30" strokeWidth="0.3" transform="rotate(45 40 40)" />
-                <rect x="25" y="25" width="30" height="30" strokeWidth="0.3" />
-                {/* Connecting Lines */}
-                <line x1="0" y1="40" x2="10" y2="40" strokeWidth="0.3" />
-                <line x1="70" y1="40" x2="80" y2="40" strokeWidth="0.3" />
-                <line x1="40" y1="0" x2="40" y2="10" strokeWidth="0.3" />
-                <line x1="40" y1="70" x2="40" y2="80" strokeWidth="0.3" />
-              </g>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#luxury-islamic-pattern)" />
-        </svg>
+        {/* Hex/Circuit Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: `linear-gradient(${primary}15 1px, transparent 1px), linear-gradient(90deg, ${primary}15 1px, transparent 1px)`,
+            backgroundSize: '50px 50px',
+            maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 85%)'
+          }}
+        ></div>
 
-        {/* Soft fade gradients di atas dan bawah agar pattern menyatu halus dengan section lain */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f4f8f9] via-transparent to-[#f4f8f9] opacity-90"></div>
+        {/* Dot Matrix Overlay */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${secondary}30 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}
+        ></div>
+
+        {/* Radial Glows */}
+        <div
+          className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[150px] opacity-15"
+          style={{ background: primary }}
+        ></div>
+        <div
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-10"
+          style={{ background: accent }}
+        ></div>
+
+        {/* Diagonal scan lines */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(45deg, #000 0px, #000 1px, transparent 1px, transparent 10px)'
+          }}
+        ></div>
+
+        {/* Fade gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#fafbfd] via-transparent to-[#fafbfd] opacity-80"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* --- EDITORIAL HEADER --- */}
+        {/* ============ EDITORIAL HEADER — HUD STYLE ============ */}
         <div className="text-center mb-24">
-          <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#349B48] mb-6 bg-white px-4 py-2 border border-[#349B48]/10 shadow-sm">
-            {t('about.header.badge')}
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 tracking-tight">
-            {t('about.header.title')}
+          {/* HUD Badge */}
+          <div className="inline-flex items-center justify-center mb-8 group">
+            <div className="flex items-center">
+              <div className="w-3 h-3 border-l-2 border-t-2" style={{ borderColor: accent }}></div>
+              <div className="h-px w-6" style={{ background: `${accent}60` }}></div>
+            </div>
+
+            <div
+              className="px-5 py-2.5 backdrop-blur-xl border relative"
+              style={{
+                background: 'rgba(255,255,255,0.6)',
+                borderColor: `${primary}25`,
+                borderRadius: '2px'
+              }}
+            >
+              <div className="flex items-center gap-2.5">
+                <span
+                  className="relative flex items-center"
+                >
+                  <span
+                    className="absolute w-2 h-2 rounded-full animate-ping"
+                    style={{ background: accent, opacity: 0.5 }}
+                  ></span>
+                  <span
+                    className="relative w-1.5 h-1.5 rounded-full"
+                    style={{ background: accent }}
+                  ></span>
+                </span>
+                <span
+                  className="text-[9px] font-bold uppercase tracking-[0.3em]"
+                  style={{
+                    color: primary,
+                    fontFamily: "'JetBrains Mono', monospace"
+                  }}
+                >
+                  [SYS.01] {t('about.header.badge')}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <div className="h-px w-6" style={{ background: `${accent}60` }}></div>
+              <div className="w-3 h-3 border-r-2 border-t-2" style={{ borderColor: accent }}></div>
+            </div>
+          </div>
+
+          {/* Title with gradient */}
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight leading-[1.1]"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            <span className="block text-gray-900">{t('about.header.title')}</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-light">
+
+          {/* Decorative tech divider */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-16" style={{ background: `linear-gradient(90deg, transparent, ${primary})` }}></div>
+            <div className="w-2 h-2 rotate-45" style={{ background: accent }}></div>
+            <div className="h-px w-16" style={{ background: `linear-gradient(90deg, ${primary}, transparent)` }}></div>
+          </div>
+
+          <p
+            className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-light"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
             {t('about.header.desc')}
           </p>
 
-          <div className="mt-8 max-w-4xl mx-auto">
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-gray-200 shadow-md bg-black">
+          {/* YouTube Video — HUD Frame */}
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div
+              className="relative aspect-video w-full overflow-hidden border group"
+              style={{
+                borderColor: `${primary}20`,
+                borderRadius: '4px',
+                boxShadow: `0 30px 80px -20px ${primary}25`
+              }}
+            >
+              {/* Top tech bar */}
+              <div
+                className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2 backdrop-blur-xl border-b"
+                style={{
+                  background: 'rgba(0,72,160,0.85)',
+                  borderColor: `${primary}40`
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: accent }}></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                  </div>
+                  <span
+                    className="text-[9px] uppercase tracking-[0.3em] text-white font-medium"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    CAMPUS.TOUR / 4K
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full animate-pulse"
+                    style={{ background: accent }}
+                  ></span>
+                  <span
+                    className="text-[9px] uppercase tracking-widest text-white"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    LIVE
+                  </span>
+                </div>
+              </div>
+
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/fyApB6EqMvA"
@@ -68,84 +187,324 @@ const About = ({ data }) => {
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               ></iframe>
+
+              {/* Corner brackets */}
+              <div className="absolute top-8 left-2 w-4 h-4 border-l-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+              <div className="absolute top-8 right-2 w-4 h-4 border-r-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
             </div>
           </div>
-
-          <div className="w-16 h-1 bg-[#29A6B6] mx-auto mt-10"></div>
         </div>
 
-        {/* --- VISION & MISSION: Editorial Cards --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
+        {/* ============ VISION & MISSION — TECH CARDS ============ */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32">
 
           {/* Vision Card */}
-          <div className="group bg-white p-12 md:p-16 border border-gray-100 shadow-[0_20px_50px_rgba(41,166,182,0.05)] hover:shadow-[0_30px_60px_rgba(41,166,182,0.12)] transition-all duration-500">
-            <div className="w-14 h-14 bg-[#f0f9fa] flex items-center justify-center mb-10 border border-[#29A6B6]/20 group-hover:bg-[#29A6B6] transition-colors duration-500">
-              <i className="fas fa-eye text-[#29A6B6] text-xl group-hover:text-white transition-colors duration-500"></i>
+          <div
+            className="group relative bg-white/80 backdrop-blur-xl p-10 md:p-14 border transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+            style={{
+              borderColor: `${primary}15`,
+              boxShadow: `0 20px 50px -10px ${primary}15`,
+              borderRadius: '4px'
+            }}
+          >
+            {/* Corner brackets */}
+            <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 opacity-40" style={{ borderColor: primary }}></div>
+            <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 opacity-40" style={{ borderColor: primary }}></div>
+            <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 opacity-40" style={{ borderColor: primary }}></div>
+            <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 opacity-40" style={{ borderColor: primary }}></div>
+
+            {/* Top accent line */}
+            <div
+              className="absolute top-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-700 ease-out"
+              style={{ background: `linear-gradient(90deg, ${primary}, ${accent})` }}
+            ></div>
+
+            {/* Section number */}
+            <div
+              className="absolute top-4 right-6 text-[10px] font-mono opacity-40 group-hover:opacity-80 transition-opacity"
+              style={{
+                color: primary,
+                fontFamily: "'JetBrains Mono', monospace"
+              }}
+            >
+              // 01
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-wider">
+
+            {/* Icon with rotating ring */}
+            <div className="relative w-16 h-16 mb-8">
+              <div
+                className="absolute inset-0 rounded-full opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"
+                style={{ background: primary, filter: 'blur(10px)' }}
+              ></div>
+              <div
+                className="relative w-16 h-16 flex items-center justify-center rounded-lg transition-all duration-500 group-hover:rotate-6"
+                style={{
+                  background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
+                  boxShadow: `0 10px 25px -5px ${primary}50`
+                }}
+              >
+                <i className="fas fa-eye text-white text-xl"></i>
+              </div>
+              {/* Accent dot */}
+              <div
+                className="absolute -top-1 -right-1 w-3 h-3 rounded-full animate-pulse"
+                style={{ background: accent }}
+              ></div>
+            </div>
+
+            <h3
+              className="text-2xl md:text-[1.75rem] font-bold mb-6 uppercase tracking-wider"
+              style={{
+                color: primary,
+                fontFamily: "'Space Grotesk', sans-serif"
+              }}
+            >
               {t('about.vision_title')}
             </h3>
-            <p className="text-gray-600 leading-relaxed text-base md:text-lg font-light">
+
+            <div className="h-px w-12 mb-6" style={{ background: accent }}></div>
+
+            <p
+              className="text-gray-600 leading-[1.85] text-base md:text-[1.05rem] font-light"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
               {t('about.content.vision')}
             </p>
+
+            {/* Bottom tech label */}
+            <div
+              className="mt-8 flex items-center gap-2 text-[9px] font-mono uppercase tracking-widest"
+              style={{ color: `${primary}80`, fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              <span className="w-4 h-px" style={{ background: primary }}></span>
+              VISION.DECLARATION
+            </div>
           </div>
 
           {/* Mission Card */}
-          <div className="group bg-white p-12 md:p-16 border border-gray-100 shadow-[0_20px_50px_rgba(52,155,72,0.05)] hover:shadow-[0_30px_60px_rgba(52,155,72,0.12)] transition-all duration-500">
-            <div className="w-14 h-14 bg-[#f2fbf4] flex items-center justify-center mb-10 border border-[#349B48]/20 group-hover:bg-[#349B48] transition-colors duration-500">
-              <i className="fas fa-bullseye text-[#349B48] text-xl group-hover:text-white transition-colors duration-500"></i>
+          <div
+            className="group relative bg-white/80 backdrop-blur-xl p-10 md:p-14 border transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+            style={{
+              borderColor: `${secondary}15`,
+              boxShadow: `0 20px 50px -10px ${secondary}15`,
+              borderRadius: '4px'
+            }}
+          >
+            {/* Corner brackets */}
+            <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 opacity-40" style={{ borderColor: secondary }}></div>
+            <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 opacity-40" style={{ borderColor: secondary }}></div>
+            <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 opacity-40" style={{ borderColor: secondary }}></div>
+            <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 opacity-40" style={{ borderColor: secondary }}></div>
+
+            {/* Top accent line */}
+            <div
+              className="absolute top-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-700 ease-out"
+              style={{ background: `linear-gradient(90deg, ${secondary}, ${accent})` }}
+            ></div>
+
+            {/* Section number */}
+            <div
+              className="absolute top-4 right-6 text-[10px] font-mono opacity-40 group-hover:opacity-80 transition-opacity"
+              style={{
+                color: secondary,
+                fontFamily: "'JetBrains Mono', monospace"
+              }}
+            >
+              // 02
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 uppercase tracking-wider">
+
+            {/* Icon */}
+            <div className="relative w-16 h-16 mb-8">
+              <div
+                className="absolute inset-0 rounded-full opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"
+                style={{ background: secondary, filter: 'blur(10px)' }}
+              ></div>
+              <div
+                className="relative w-16 h-16 flex items-center justify-center rounded-lg transition-all duration-500 group-hover:-rotate-6"
+                style={{
+                  background: `linear-gradient(135deg, ${secondary} 0%, ${primary} 100%)`,
+                  boxShadow: `0 10px 25px -5px ${secondary}50`
+                }}
+              >
+                <i className="fas fa-bullseye text-white text-xl"></i>
+              </div>
+              <div
+                className="absolute -top-1 -right-1 w-3 h-3 rounded-full animate-pulse"
+                style={{ background: accent, animationDelay: '0.5s' }}
+              ></div>
+            </div>
+
+            <h3
+              className="text-2xl md:text-[1.75rem] font-bold mb-8 uppercase tracking-wider"
+              style={{
+                color: secondary,
+                fontFamily: "'Space Grotesk', sans-serif"
+              }}
+            >
               {t('about.mission_title')}
             </h3>
-            <ul className="space-y-5">
+
+            <ul className="space-y-4">
               {missionList.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="w-6 h-6 shrink-0 bg-[#f2fbf4] border border-[#349B48]/30 flex items-center justify-center mt-1 me-5">
-                    <i className="fas fa-check text-[#349B48] text-[10px]"></i>
+                <li key={index} className="flex items-start group/item">
+                  <div className="flex items-center gap-3 shrink-0 mt-1 me-4">
+                    <div
+                      className="w-7 h-7 flex items-center justify-center relative"
+                      style={{
+                        background: `${accent}15`,
+                        borderRadius: '2px'
+                      }}
+                    >
+                      <span
+                        className="text-[9px] font-bold"
+                        style={{
+                          color: accent,
+                          fontFamily: "'JetBrains Mono', monospace"
+                        }}
+                      >
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <div className="w-4 h-px" style={{ background: `${accent}60` }}></div>
                   </div>
-                  <span className="text-gray-600 leading-relaxed font-light">{item}</span>
+                  <span
+                    className="text-gray-600 leading-[1.75] font-light group-hover/item:text-gray-900 transition-colors"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
-          </div>
 
+            <div
+              className="mt-8 flex items-center gap-2 text-[9px] font-mono uppercase tracking-widest"
+              style={{ color: `${secondary}80`, fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              <span className="w-4 h-px" style={{ background: secondary }}></span>
+              MISSION.PROTOCOL
+            </div>
+          </div>
         </div>
 
-        {/* --- NATIVE TEACHERS: Profile Cards --- */}
+        {/* ============ NATIVE TEACHERS — HUD GRID ============ */}
         {featuresList[0] && (() => {
           const native = featuresList[0];
           const teachers = Array.isArray(t('about.native_speakers')) ? t('about.native_speakers') : [];
           return (
             <div className="mb-32">
+              {/* Header */}
               <div className="text-center mb-16">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div className="h-px w-8" style={{ background: `${accent}60` }}></div>
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-[0.3em]"
+                    style={{
+                      color: accent,
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    [MODULE.03]
+                  </span>
+                  <div className="h-px w-8" style={{ background: `${accent}60` }}></div>
+                </div>
+
+                <h3
+                  className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-gray-900"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
                   {native.title}
                 </h3>
-                <p className="text-gray-500 text-lg max-w-2xl mx-auto font-light">
+
+                <p
+                  className="text-gray-500 text-lg max-w-2xl mx-auto font-light"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
                   {native.description}
                 </p>
-                <div className="w-16 h-1 bg-[#29A6B6] mx-auto mt-8"></div>
+
+                <div className="flex items-center justify-center gap-3 mt-6">
+                  <div className="h-px w-12" style={{ background: primary }}></div>
+                  <div className="w-1.5 h-1.5 rotate-45" style={{ background: accent }}></div>
+                  <div className="h-px w-12" style={{ background: primary }}></div>
+                </div>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+
+              {/* Teacher Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
                 {teachers.map((teacher, i) => (
                   <div
                     key={i}
-                    className="group bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 text-center p-6 md:p-8"
+                    className="group relative bg-white/70 backdrop-blur-sm border p-4 md:p-5 text-center transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                    style={{
+                      borderColor: `${primary}15`,
+                      borderRadius: '4px',
+                      boxShadow: `0 10px 30px -5px ${primary}10`
+                    }}
                   >
-                    <div className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-5 rounded-full overflow-hidden border-2 border-gray-100 group-hover:border-[#29A6B6] transition-colors duration-500">
-                      <img
-                        src={`/natives/${encodeURIComponent(teacher.photo)}`}
-                        alt={teacher.name}
-                        className={`w-full h-full object-cover ${['syaikh abdul qosim.jpeg', 'syaikh magdi yahya ahmed - madinah.jpeg', 'syaikh mujahid.jpeg'].includes(teacher.photo) ? 'object-top' : ''}`}
-                        onError={(e) => {
-                          e.target.src = `https://via.placeholder.com/200/eeeeee/999999?text=${encodeURIComponent(teacher.name)}`;
-                        }}
-                      />
+                    {/* Top accent */}
+                    <div
+                      className="absolute top-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-500"
+                      style={{ background: `linear-gradient(90deg, ${primary}, ${accent})` }}
+                    ></div>
+
+                    {/* Corner brackets */}
+                    <div className="absolute top-2 left-2 w-2 h-2 border-l border-t opacity-0 group-hover:opacity-100 transition-opacity" style={{ borderColor: accent }}></div>
+                    <div className="absolute top-2 right-2 w-2 h-2 border-r border-t opacity-0 group-hover:opacity-100 transition-opacity" style={{ borderColor: accent }}></div>
+                    <div className="absolute bottom-2 left-2 w-2 h-2 border-l border-b opacity-0 group-hover:opacity-100 transition-opacity" style={{ borderColor: accent }}></div>
+                    <div className="absolute bottom-2 right-2 w-2 h-2 border-r border-b opacity-0 group-hover:opacity-100 transition-opacity" style={{ borderColor: accent }}></div>
+
+                    {/* Number label */}
+                    <div
+                      className="absolute top-2 right-3 text-[8px] font-mono opacity-30"
+                      style={{
+                        color: primary,
+                        fontFamily: "'JetBrains Mono', monospace"
+                      }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
                     </div>
-                    <h4 className="font-bold text-gray-900 text-sm md:text-base leading-tight">
+
+                    <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto mb-4">
+                      {/* Rotating ring */}
+                      <div
+                        className="absolute inset-0 rounded-full border-2 border-dashed opacity-30 group-hover:opacity-80 group-hover:rotate-180 transition-all duration-1000"
+                        style={{ borderColor: primary }}
+                      ></div>
+                      <div
+                        className="absolute inset-1 rounded-full overflow-hidden border-2 border-white group-hover:border-[#0048A0] transition-colors duration-500"
+                        style={{ boxShadow: `0 8px 20px -5px ${primary}30` }}
+                      >
+                        <img
+                          src={`/natives/${encodeURIComponent(teacher.photo)}`}
+                          alt={teacher.name}
+                          className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${['syaikh abdul qosim.jpeg', 'syaikh magdi yahya ahmed - madinah.jpeg', 'syaikh mujahid.jpeg'].includes(teacher.photo) ? 'object-top' : ''}`}
+                          onError={(e) => {
+                            e.target.src = `https://via.placeholder.com/200/${primary.replace('#', '')}/ffffff?text=${encodeURIComponent(teacher.name)}`;
+                          }}
+                        />
+                      </div>
+                      {/* Accent dot */}
+                      <div
+                        className="absolute bottom-0 right-1 w-2.5 h-2.5 rounded-full border-2 border-white"
+                        style={{ background: accent }}
+                      ></div>
+                    </div>
+
+                    <h4
+                      className="font-bold text-gray-900 text-[11px] md:text-xs uppercase tracking-wider leading-tight group-hover:text-[#0048A0] transition-colors duration-300"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
                       {teacher.name}
                     </h4>
+
+                    {/* Bottom accent line */}
+                    <div
+                      className="mt-3 mx-auto h-px w-0 group-hover:w-10 transition-all duration-500"
+                      style={{ background: accent }}
+                    ></div>
                   </div>
                 ))}
               </div>
@@ -153,16 +512,33 @@ const About = ({ data }) => {
           );
         })()}
 
-        {/* --- FASILITAS CTA: Banin & Banat --- */}
+        {/* ============ FASILITAS CTA — BANIN & BANAT ============ */}
         <div className="mb-32 mt-8">
           <div className="text-center mb-10">
-            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-[#29A6B6] mb-4 bg-white px-4 py-2 border border-[#29A6B6]/10 shadow-sm">
-              {t('about.fasilitas_cta.badge')}
-            </span>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="h-px w-8" style={{ background: `${primary}60` }}></div>
+              <span
+                className="text-[9px] font-bold uppercase tracking-[0.3em]"
+                style={{
+                  color: primary,
+                  fontFamily: "'JetBrains Mono', monospace"
+                }}
+              >
+                [MODULE.04]
+              </span>
+              <div className="h-px w-8" style={{ background: `${primary}60` }}></div>
+            </div>
+            <h3
+              className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
               {t('about.fasilitas_cta.title')}
             </h3>
-            <div className="w-16 h-1 bg-[#349B48] mx-auto mt-6" />
+            <div className="flex items-center justify-center gap-3 mt-6">
+              <div className="h-px w-12" style={{ background: primary }}></div>
+              <div className="w-1.5 h-1.5 rotate-45" style={{ background: accent }}></div>
+              <div className="h-px w-12" style={{ background: primary }}></div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -170,184 +546,478 @@ const About = ({ data }) => {
             {/* Fasilitas Banin Card */}
             <a
               href="/fasilitas-banin"
-              className="group relative overflow-hidden bg-white border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,166,182,0.12)] transition-all duration-500 flex flex-col"
+              className="group relative overflow-hidden bg-white border transition-all duration-500 flex flex-col hover:-translate-y-1"
+              style={{
+                borderColor: `${primary}15`,
+                borderRadius: '4px',
+                boxShadow: `0 15px 40px -10px ${primary}15`
+              }}
             >
-              <div className="relative h-52 overflow-hidden bg-gray-100">
+              <div className="relative h-56 overflow-hidden bg-gray-100">
                 <img
                   src="/fasilitas_banin/West View AL Wafi.jpg"
                   alt="Fasilitas Banin"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[15%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] grayscale-[20%] group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-[#29A6B6] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5">
-                  <i className="fas fa-male me-1.5" />
-                  Banin
+
+                {/* Tech overlay */}
+                <div
+                  className="absolute inset-0 opacity-30 pointer-events-none"
+                  style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,72,160,0.1) 0px, rgba(0,72,160,0.1) 1px, transparent 1px, transparent 4px)'
+                  }}
+                ></div>
+
+                {/* Top gradient with HUD */}
+                <div
+                  className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2.5 backdrop-blur-xl"
+                  style={{ background: 'rgba(0,72,160,0.85)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-male text-white text-[10px]"></i>
+                    <span
+                      className="text-[9px] uppercase tracking-[0.25em] font-bold text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      BANIN.01
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{ background: accent }}
+                    ></span>
+                    <span
+                      className="text-[8px] uppercase tracking-widest text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      ACTIVE
+                    </span>
+                  </div>
                 </div>
+
+                {/* Bottom gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                {/* Corner brackets */}
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+                <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
               </div>
-              <div className="p-8 flex-grow flex flex-col justify-between">
+
+              <div className="p-7 flex-grow flex flex-col justify-between">
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#29A6B6] transition-colors duration-300">
+                  <h4
+                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0048A0] transition-colors duration-300"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
                     {t('about.fasilitas_cta.banin.title')}
                   </h4>
-                  <p className="text-gray-500 text-sm leading-relaxed font-light">
+                  <p
+                    className="text-gray-500 text-sm leading-relaxed font-light"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
                     {t('about.fasilitas_cta.banin.desc')}
                   </p>
                 </div>
-                <div className="flex items-center mt-6 text-[#29A6B6] text-xs font-bold uppercase tracking-widest group-hover:gap-3 gap-2 transition-all duration-300">
+
+                <div
+                  className="flex items-center mt-6 text-[10px] font-bold uppercase tracking-[0.25em] group-hover:gap-4 gap-2 transition-all duration-300"
+                  style={{ color: primary }}
+                >
                   <span>{t('about.fasilitas_cta.see_more')}</span>
-                  <i className="fas fa-arrow-right text-[10px]" />
+                  <div className="flex items-center gap-1">
+                    <div className="h-px w-0 group-hover:w-6 transition-all duration-500" style={{ background: accent }}></div>
+                    <i className="fas fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                  </div>
                 </div>
               </div>
-              <div className="h-1 w-0 group-hover:w-full bg-[#29A6B6] transition-all duration-700 ease-out" />
+
+              {/* Bottom progress bar */}
+              <div className="relative h-[2px] w-full bg-gray-100 overflow-hidden">
+                <div
+                  className="absolute inset-0 w-0 group-hover:w-full transition-all duration-700"
+                  style={{ background: `linear-gradient(90deg, ${primary}, ${accent})` }}
+                ></div>
+              </div>
             </a>
 
             {/* Fasilitas Banat Card */}
             <a
               href="/fasilitas-banat"
-              className="group relative overflow-hidden bg-white border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(52,155,72,0.12)] transition-all duration-500 flex flex-col"
+              className="group relative overflow-hidden bg-white border transition-all duration-500 flex flex-col hover:-translate-y-1"
+              style={{
+                borderColor: `${secondary}15`,
+                borderRadius: '4px',
+                boxShadow: `0 15px 40px -10px ${secondary}15`
+              }}
             >
-              <div className="relative h-52 overflow-hidden bg-gray-100">
+              <div className="relative h-56 overflow-hidden bg-gray-100">
                 <img
                   src="/fasilitas_banin/Kamar.png"
                   alt="Fasilitas Banat"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[15%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] grayscale-[20%] group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 bg-[#349B48] text-white text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5">
-                  <i className="fas fa-female me-1.5" />
-                  Banat
+
+                <div
+                  className="absolute inset-0 opacity-30 pointer-events-none"
+                  style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, rgba(30,64,175,0.1) 0px, rgba(30,64,175,0.1) 1px, transparent 1px, transparent 4px)'
+                  }}
+                ></div>
+
+                <div
+                  className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2.5 backdrop-blur-xl"
+                  style={{ background: 'rgba(30,64,175,0.85)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-female text-white text-[10px]"></i>
+                    <span
+                      className="text-[9px] uppercase tracking-[0.25em] font-bold text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      BANAT.02
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{ background: accent }}
+                    ></span>
+                    <span
+                      className="text-[8px] uppercase tracking-widest text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      ACTIVE
+                    </span>
+                  </div>
                 </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+                <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
               </div>
-              <div className="p-8 flex-grow flex flex-col justify-between">
+
+              <div className="p-7 flex-grow flex flex-col justify-between">
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#349B48] transition-colors duration-300">
+                  <h4
+                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#1E40AF] transition-colors duration-300"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
                     {t('about.fasilitas_cta.banat.title')}
                   </h4>
-                  <p className="text-gray-500 text-sm leading-relaxed font-light">
+                  <p
+                    className="text-gray-500 text-sm leading-relaxed font-light"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
                     {t('about.fasilitas_cta.banat.desc')}
                   </p>
                 </div>
-                <div className="flex items-center mt-6 text-[#349B48] text-xs font-bold uppercase tracking-widest group-hover:gap-3 gap-2 transition-all duration-300">
+
+                <div
+                  className="flex items-center mt-6 text-[10px] font-bold uppercase tracking-[0.25em] group-hover:gap-4 gap-2 transition-all duration-300"
+                  style={{ color: secondary }}
+                >
                   <span>{t('about.fasilitas_cta.see_more')}</span>
-                  <i className="fas fa-arrow-right text-[10px]" />
+                  <div className="flex items-center gap-1">
+                    <div className="h-px w-0 group-hover:w-6 transition-all duration-500" style={{ background: accent }}></div>
+                    <i className="fas fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                  </div>
                 </div>
               </div>
-              <div className="h-1 w-0 group-hover:w-full bg-[#349B48] transition-all duration-700 ease-out" />
-            </a>
 
+              <div className="relative h-[2px] w-full bg-gray-100 overflow-hidden">
+                <div
+                  className="absolute inset-0 w-0 group-hover:w-full transition-all duration-700"
+                  style={{ background: `linear-gradient(90deg, ${secondary}, ${accent})` }}
+                ></div>
+              </div>
+            </a>
           </div>
         </div>
 
-        {/* --- ALUMNI FEATURE CARD --- */}
-
+        {/* ============ ALUMNI FEATURE CARD ============ */}
         {featuresList[1] && (() => {
           const alumni = featuresList[1];
           return (
             <div
               onClick={() => document.getElementById('alumni')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group bg-white border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col cursor-pointer mb-32"
+              className="group relative bg-white border transition-all duration-500 flex flex-col md:flex-row cursor-pointer mb-32 overflow-hidden hover:-translate-y-1"
+              style={{
+                borderColor: `${primary}15`,
+                borderRadius: '4px',
+                boxShadow: `0 20px 50px -10px ${primary}20`
+              }}
             >
-              <div className="relative h-64 md:h-80 overflow-hidden bg-gray-100 p-2">
+              {/* Image side */}
+              <div className="relative h-64 md:h-auto md:w-1/2 overflow-hidden bg-gray-100">
                 <img
                   src={alumni.image}
                   alt={alumni.title}
-                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1200ms]"
                   onError={(e) => {
-                    e.target.src = `https://via.placeholder.com/600x400/eeeeee/999999?text=${encodeURIComponent(alumni.title)}`;
+                    e.target.src = `https://via.placeholder.com/600x400/${primary.replace('#', '')}/ffffff?text=${encodeURIComponent(alumni.title)}`;
                   }}
                 />
-                <div className="absolute inset-0 border border-white/20 pointer-events-none mix-blend-overlay m-2"></div>
+
+                {/* Tech scan lines */}
+                <div
+                  className="absolute inset-0 opacity-25 pointer-events-none"
+                  style={{
+                    backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,72,160,0.15) 0px, rgba(0,72,160,0.15) 1px, transparent 1px, transparent 4px)'
+                  }}
+                ></div>
+
+                {/* Top bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-2 backdrop-blur-xl"
+                  style={{ background: 'rgba(0,72,160,0.85)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    <i className="fas fa-graduation-cap text-white text-[10px]"></i>
+                    <span
+                      className="text-[9px] uppercase tracking-[0.25em] font-bold text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      ALUMNI.NETWORK
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{ background: accent }}
+                    ></span>
+                    <span
+                      className="text-[8px] uppercase tracking-widest text-white"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      LIVE.DATA
+                    </span>
+                  </div>
+                </div>
+
+                {/* Corner brackets */}
+                <div className="absolute top-10 left-3 w-5 h-5 border-l-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+                <div className="absolute top-10 right-3 w-5 h-5 border-r-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+                <div className="absolute bottom-3 left-3 w-5 h-5 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+                <div className="absolute bottom-3 right-3 w-5 h-5 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
               </div>
-              <div className="p-10 md:p-12 flex-grow flex flex-col justify-center">
-                <h4 className="text-2xl font-bold text-gray-900 mb-2">
+
+              {/* Content side */}
+              <div className="p-10 md:p-12 flex-grow flex flex-col justify-center md:w-1/2 relative">
+                {/* Decorative */}
+                <div
+                  className="absolute top-0 left-0 w-[2px] h-0 group-hover:h-full transition-all duration-700"
+                  style={{ background: `linear-gradient(180deg, ${primary}, ${accent})` }}
+                ></div>
+
+                <div
+                  className="text-[9px] font-bold uppercase tracking-[0.3em] mb-3"
+                  style={{
+                    color: accent,
+                    fontFamily: "'JetBrains Mono', monospace"
+                  }}
+                >
+                  [MODULE.05] // {alumni.subtitle}
+                </div>
+
+                <h4
+                  className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
                   {alumni.title}
                 </h4>
-                <h5 className="text-[10px] font-bold text-[#29A6B6] uppercase tracking-[0.2em] mb-6">
-                  {alumni.subtitle}
-                </h5>
-                <p className="text-gray-500 leading-relaxed font-light">
+
+                <div className="h-px w-12 mb-5" style={{ background: accent }}></div>
+
+                <p
+                  className="text-gray-500 leading-relaxed font-light mb-6"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
                   {alumni.description}
                 </p>
+
+                <div
+                  className="flex items-center text-[10px] font-bold uppercase tracking-[0.25em] group-hover:gap-4 gap-2 transition-all duration-300"
+                  style={{ color: primary }}
+                >
+                  <span>Explore Network</span>
+                  <div className="flex items-center gap-1">
+                    <div className="h-px w-0 group-hover:w-6 transition-all duration-500" style={{ background: accent }}></div>
+                    <i className="fas fa-arrow-right text-[9px] group-hover:translate-x-2 transition-transform"></i>
+                  </div>
+                </div>
               </div>
             </div>
           );
         })()}
 
-        {/* --- ACCREDITATION BANNER: Bold Brand Colors --- */}
-        <div className="relative bg-[#29A6B6] shadow-2xl overflow-hidden">
+        {/* ============ ACCREDITATION BANNER — FUTURISTIC STATS ============ */}
+        <div
+          className="relative overflow-hidden"
+          style={{
+            background: `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`,
+            borderRadius: '4px',
+            boxShadow: `0 30px 80px -20px ${primary}50`
+          }}
+        >
+          {/* Circuit pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.15] pointer-events-none"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          ></div>
 
-          {/* Subtle Geometric Lines in Background */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M0,0 L100,100 M100,0 L0,100" stroke="white" strokeWidth="0.5" fill="none" />
-              <rect x="25" y="25" width="50" height="50" stroke="white" strokeWidth="0.5" fill="none" />
-            </svg>
-          </div>
+          {/* Radial glows */}
+          <div
+            className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-[100px] opacity-30"
+            style={{ background: accent }}
+          ></div>
+          <div
+            className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full blur-[120px] opacity-20"
+            style={{ background: '#fff' }}
+          ></div>
+
+          {/* Diagonal scan lines */}
+          <div
+            className="absolute inset-0 opacity-[0.08] pointer-events-none"
+            style={{
+              backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 8px)'
+            }}
+          ></div>
+
+          {/* Corner brackets */}
+          <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 opacity-60" style={{ borderColor: accent }}></div>
+          <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 opacity-60" style={{ borderColor: accent }}></div>
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 opacity-60" style={{ borderColor: accent }}></div>
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 opacity-60" style={{ borderColor: accent }}></div>
 
           <div className="relative z-10 px-8 py-16 md:p-20 text-center">
 
             <div className="mb-16">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wider">
+              <div className="inline-flex items-center gap-3 mb-5">
+                <div className="h-px w-10 bg-white/40"></div>
+                <span
+                  className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/80"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  [SYS.CERTIFIED]
+                </span>
+                <div className="h-px w-10 bg-white/40"></div>
+              </div>
+
+              <h3
+                className="text-3xl md:text-4xl font-bold text-white mb-5 uppercase tracking-wide"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              >
                 {t('about.accreditation.title')}
               </h3>
-              <p className="text-white/80 max-w-2xl mx-auto font-light leading-relaxed text-lg">
+
+              <p
+                className="text-white/70 max-w-2xl mx-auto font-light leading-relaxed text-lg"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
                 {t('about.accreditation.subtitle')}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
-              {/* SDTQ */}
-              <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-white flex items-center justify-center mx-auto mb-6 group-hover:-translate-y-2 transition-transform duration-500">
-                  <i className="fas fa-star text-2xl text-[#349B48]"></i>
-                </div>
-                <h4 className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3">
-                  {t('about.accreditation.sdtq')}
-                </h4>
-                <p className="text-white/80 font-light text-sm">
-                  {t('about.accreditation.label')} <span className="font-bold text-white text-lg ms-1">{t('about.accreditation.val_sdtq')}</span>
-                </p>
-              </div>
+              {[
+                { icon: 'fas fa-star', title: t('about.accreditation.sdtq'), label: t('about.accreditation.label'), value: t('about.accreditation.val_sdtq'), type: 'grade' },
+                { icon: 'fas fa-medal', title: t('about.accreditation.smp'), label: t('about.accreditation.label'), value: t('about.accreditation.val_smp'), type: 'grade' },
+                { icon: 'fas fa-trophy', title: t('about.accreditation.sma'), label: t('about.accreditation.label'), value: t('about.accreditation.val_sma'), type: 'grade' },
+                { icon: 'fas fa-university', title: t('about.accreditation.muadalah'), label: null, value: t('about.accreditation.val_muadalah'), type: 'special' },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group relative backdrop-blur-xl p-8 border transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                  style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    borderColor: 'rgba(255,255,255,0.15)',
+                    borderRadius: '4px'
+                  }}
+                >
+                  {/* Hover gradient fill */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(251,191,36,0.15), transparent)`
+                    }}
+                  ></div>
 
-              {/* SMP */}
-              <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-white flex items-center justify-center mx-auto mb-6 group-hover:-translate-y-2 transition-transform duration-500">
-                  <i className="fas fa-medal text-2xl text-[#349B48]"></i>
-                </div>
-                <h4 className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3">
-                  {t('about.accreditation.smp')}
-                </h4>
-                <p className="text-white/80 font-light text-sm">
-                  {t('about.accreditation.label')} <span className="font-bold text-white text-lg ms-1">{t('about.accreditation.val_smp')}</span>
-                </p>
-              </div>
+                  {/* Corner brackets */}
+                  <div className="absolute top-2 left-2 w-3 h-3 border-l border-t border-white/40"></div>
+                  <div className="absolute top-2 right-2 w-3 h-3 border-r border-t border-white/40"></div>
+                  <div className="absolute bottom-2 left-2 w-3 h-3 border-l border-b border-white/40"></div>
+                  <div className="absolute bottom-2 right-2 w-3 h-3 border-r border-b border-white/40"></div>
 
-              {/* SMA */}
-              <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-white flex items-center justify-center mx-auto mb-6 group-hover:-translate-y-2 transition-transform duration-500">
-                  <i className="fas fa-trophy text-2xl text-[#349B48]"></i>
-                </div>
-                <h4 className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3">
-                  {t('about.accreditation.sma')}
-                </h4>
-                <p className="text-white/80 font-light text-sm">
-                  {t('about.accreditation.label')} <span className="font-bold text-white text-lg ms-1">{t('about.accreditation.val_sma')}</span>
-                </p>
-              </div>
+                  {/* Number label */}
+                  <div
+                    className="absolute top-3 right-4 text-[9px] font-mono text-white/40"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
 
-              {/* Muadalah */}
-              <div className="bg-white/10 backdrop-blur-md p-10 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-white flex items-center justify-center mx-auto mb-6 group-hover:-translate-y-2 transition-transform duration-500">
-                  <i className="fas fa-university text-2xl text-[#349B48]"></i>
+                  {/* Icon with glow */}
+                  <div className="relative w-16 h-16 mx-auto mb-5">
+                    <div
+                      className="absolute inset-0 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"
+                      style={{ background: accent }}
+                    ></div>
+                    <div
+                      className="relative w-16 h-16 bg-white flex items-center justify-center rounded-lg group-hover:-translate-y-1 transition-all duration-500"
+                      style={{ boxShadow: `0 10px 30px -5px rgba(0,0,0,0.3)` }}
+                    >
+                      <i
+                        className={`${item.icon} text-2xl`}
+                        style={{ color: primary }}
+                      ></i>
+                    </div>
+                  </div>
+
+                  <h4
+                    className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {item.title}
+                  </h4>
+
+                  {item.type === 'grade' ? (
+                    <p className="text-white/80 font-light text-sm">
+                      {item.label}
+                      <span
+                        className="font-bold text-2xl ms-2 inline-block"
+                        style={{
+                          color: accent,
+                          fontFamily: "'JetBrains Mono', monospace"
+                        }}
+                      >
+                        {item.value}
+                      </span>
+                    </p>
+                  ) : (
+                    <p
+                      className="font-bold text-xl tracking-wide mt-2"
+                      style={{
+                        color: accent,
+                        fontFamily: "'JetBrains Mono', monospace"
+                      }}
+                    >
+                      {item.value}
+                    </p>
+                  )}
+
+                  {/* Bottom accent line */}
+                  <div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] group-hover:w-12 transition-all duration-500"
+                    style={{ background: accent }}
+                  ></div>
                 </div>
-                <h4 className="font-bold text-white text-sm uppercase tracking-[0.15em] mb-3">
-                  {t('about.accreditation.muadalah')}
-                </h4>
-                <p className="font-bold text-white text-lg tracking-wide mt-2">
-                  {t('about.accreditation.val_muadalah')}
-                </p>
-              </div>
+              ))}
 
             </div>
           </div>
