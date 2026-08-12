@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ComposableMap,
   Geographies,
   Geography,
   Marker,
-  ZoomableGroup
+  ZoomableGroup,
+  Graticule
 } from 'react-simple-maps';
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
+import { createPortal } from 'react-dom';
 
 const geoUrl = '/features.json';
 
@@ -41,7 +41,7 @@ const alumniData = [
   { name: "MUHAMMAD FARREL KAYZAN", acceptances: [ { university: "Institut Pertanian Bogor", major: "Bisnis", path: "IUP" } ]},
   { name: "AURUNNISA MARTHA UTAMI", acceptances: [
       { university: "Institut Teknologi Sepuluh Nopember", major: "Teknologi Kedokteran", path: "Mandiri" },
-      { university: "Universitas Jendral Achmad Yani", major: "Pendidiktan Dokter", path: "Mandiri" }
+      { university: "Universitas Jendral Achmad Yani", major: "Pendidikan Dokter", path: "Mandiri" }
   ]},
   { name: "MUHAMMAD DAVAN RAQILL BASTIAN", acceptances: [ { university: "Institut Teknologi Sepuluh Nopember", major: "Teknik Industri", path: "IUP" } ]},
   { name: "MUHAMMAD AZAM AL-FAUZI", acceptances: [
@@ -107,7 +107,6 @@ const alumniData = [
   { name: "RASYA ARYA DARMANSYAH", acceptances: [ { university: "STDI Imam Syafi'i Jember", major: "Hadits", path: "Tes" } ]}
 ];
 
-// Dictionary of University Coordinates
 const uniCoords = {
   "Universitas Indonesia": [106.8271, -6.3621],
   "Long Island University": [-73.5932, 40.8252],
@@ -155,20 +154,16 @@ const uniCoords = {
   "STDI Imam Syafi'i Jember": [113.7228, -8.1728]
 };
 
-// Group students by university
+// Group universities
 const universityMap = {};
 alumniData.forEach(student => {
   student.acceptances.forEach(acc => {
     const uniName = acc.university;
     if (!universityMap[uniName]) {
-      // Create slight jitter for overlapping coordinates so dots aren't perfectly on top of each other
-      let coords = uniCoords[uniName] || [106.8, -6.2]; // Default to Jakarta if missing
-      
-      // Jitter for popular regions (e.g. Jakarta/Bandung) to prevent total occlusion
-      const jitterX = (Math.random() - 0.5) * 1.5; 
+      let coords = uniCoords[uniName] || [106.8, -6.2];
+      const jitterX = (Math.random() - 0.5) * 1.5;
       const jitterY = (Math.random() - 0.5) * 1.5;
       coords = [coords[0] + jitterX, coords[1] + jitterY];
-
       universityMap[uniName] = {
         name: uniName,
         coords: coords,
@@ -185,42 +180,297 @@ alumniData.forEach(student => {
 
 const groupedUniversities = Object.values(universityMap);
 
+// Calculate stats
+const uniqueStudents = new Set(alumniData.map(s => s.name)).size;
+const totalAcceptances = alumniData.reduce((sum, s) => sum + s.acceptances.length, 0);
+const totalUniversities = groupedUniversities.length;
+
+// Pathway color mapping
+const getPathStyle = (path) => {
+  const p = (path || '').toLowerCase();
+  if (p.includes('snbp')) return { bg: '#FBBF24', text: '#050810', label: 'SNBP' };
+  if (p.includes('snbt')) return { bg: '#0048A0', text: '#fff', label: 'SNBT' };
+  if (p.includes('beasiswa')) return { bg: '#1E40AF', text: '#fff', label: 'BEASISWA' };
+  if (p.includes('mandiri')) return { bg: '#7c3aed', text: '#fff', label: 'MANDIRI' };
+  if (p.includes('iup')) return { bg: '#0891b2', text: '#fff', label: 'IUP' };
+  if (p.includes('talent') || p.includes('star') || p.includes('ppkb') || p.includes('simak')) return { bg: '#ec4899', text: '#fff', label: path.toUpperCase() };
+  if (p.includes('rapor') || p.includes('prestasi')) return { bg: '#475569', text: '#fff', label: path.toUpperCase() };
+  return { bg: '#64748b', text: '#fff', label: path.toUpperCase() };
+};
+
 const AlumniMap2026 = () => {
-  const brandTeal = '#29A6B6';
-  const brandGreen = '#349B48';
-  const [tooltipContent, setTooltipContent] = useState("");
-  const [tooltipData, setTooltipData] = useState(null);
+  const primary = "#0048A0";
+  const secondary = "#1E40AF";
+  const accent = "#FBBF24";
+
+  const [hoveredUni, setHoveredUni] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [searchQuery, setSearchQuery] = useState('');
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const linkId = 'alumni-map-futuristic-fonts';
+    if (!document.getElementById(linkId)) {
+      const link = document.createElement('link');
+      link.id = linkId;
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap';
+      document.head.appendChild(link);
+    }
+  }, []);
+
+  // Track mouse globally for tooltip positioning
+  useEffect(() => {
+    const handleMouse = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouse);
+    return () => window.removeEventListener('mousemove', handleMouse);
+  }, []);
+
+  const filteredUniversities = groupedUniversities.filter(uni =>
+    uni.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="w-full relative bg-[#F8FAFC] rounded-3xl border border-gray-100 shadow-inner overflow-hidden flex flex-col items-center mb-20">
-      
-      <div className="p-8 w-full border-b border-gray-200 bg-white z-10 relative shadow-sm">
-        <h3 className="text-2xl font-bold text-gray-900">Peta Sebaran 2026</h3>
-        <p className="text-sm text-gray-500 font-light mt-1">Arahkan kursor (hover) pada titik-titik di peta untuk melihat detail siswa yang diterima di seluruh dunia.</p>
+    <div
+      className="w-full relative overflow-hidden mb-20"
+      style={{
+        background: '#050810',
+        fontFamily: "'Space Grotesk', 'Inter', sans-serif",
+        borderRadius: '4px',
+        boxShadow: `0 30px 80px -20px ${primary}50`
+      }}
+      ref={containerRef}
+    >
+      {/* ============ BACKGROUND ============ */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Circuit Grid */}
+        <div
+          className="absolute inset-0 opacity-15"
+          style={{
+            backgroundImage: `linear-gradient(${primary}40 1px, transparent 1px), linear-gradient(90deg, ${primary}40 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+        ></div>
+
+        {/* Radial glows */}
+        <div
+          className="absolute top-0 -left-20 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20"
+          style={{ background: primary }}
+        ></div>
+        <div
+          className="absolute bottom-0 -right-20 w-[500px] h-[500px] rounded-full blur-[140px] opacity-15"
+          style={{ background: secondary }}
+        ></div>
+
+        {/* Scan lines */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 4px)'
+          }}
+        ></div>
       </div>
 
-      <div style={{ width: "100%", height: "500px" }} data-tooltip-id="map-tooltip">
+      {/* Corner brackets */}
+      <div className="absolute top-3 left-3 w-5 h-5 border-l-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+      <div className="absolute top-3 right-3 w-5 h-5 border-r-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+      <div className="absolute bottom-3 left-3 w-5 h-5 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+      <div className="absolute bottom-3 right-3 w-5 h-5 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+
+      {/* ============ TOP HUD BAR ============ */}
+      <div
+        className="relative z-20 flex items-center justify-between px-5 py-3 backdrop-blur-xl border-b"
+        style={{
+          background: `linear-gradient(90deg, ${primary}40, ${secondary}30)`,
+          borderColor: `${primary}50`
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full" style={{ background: accent }}></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+          </div>
+          <span
+            className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white/90 font-medium"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            ALUMNI.TRACKING / 2026.COHORT
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span
+            className="w-1.5 h-1.5 rounded-full animate-pulse"
+            style={{ background: accent }}
+          ></span>
+          <span
+            className="text-[9px] md:text-[10px] uppercase tracking-widest text-white/90 hidden sm:inline"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            LIVE.DATABASE
+          </span>
+        </div>
+      </div>
+
+      {/* ============ HEADER SECTION ============ */}
+      <div className="relative z-10 p-6 md:p-8 border-b"
+           style={{ borderColor: `${primary}20` }}>
+
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-6">
+          <div>
+            <div className="inline-flex items-center gap-3 mb-3">
+              <div className="h-px w-6" style={{ background: `${accent}60` }}></div>
+              <span
+                className="text-[9px] font-bold uppercase tracking-[0.3em]"
+                style={{
+                  color: accent,
+                  fontFamily: "'JetBrains Mono', monospace"
+                }}
+              >
+                [MODULE.ALUMNI]
+              </span>
+              <div className="h-px w-6" style={{ background: `${accent}60` }}></div>
+            </div>
+            <h3
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 tracking-tight"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              Peta Sebaran <span style={{ color: accent }}>2026</span>
+            </h3>
+            <p
+              className="text-sm text-white/60 font-light max-w-xl"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              Hover pada titik radar untuk melihat detail alumni yang diterima di seluruh dunia.
+            </p>
+          </div>
+
+          {/* Search bar */}
+          <div
+            className="relative max-w-xs w-full"
+          >
+            <i
+              className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[10px]"
+              style={{ color: accent }}
+            ></i>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari universitas..."
+              className="w-full bg-white/5 backdrop-blur-sm border text-white placeholder-white/40 text-xs px-4 py-2.5 pl-9 outline-none focus:border-[#FBBF24] transition-colors"
+              style={{
+                borderColor: `${primary}40`,
+                borderRadius: '2px',
+                fontFamily: "'JetBrains Mono', monospace"
+              }}
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+              >
+                <i className="fas fa-times text-[10px]"></i>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Stats Row */}
+        <div className="grid grid-cols-3 gap-3 md:gap-4">
+          {[
+            { value: uniqueStudents, label: 'TOTAL ALUMNI', icon: 'fa-users' },
+            { value: totalUniversities, label: 'UNIVERSITAS', icon: 'fa-graduation-cap' },
+            { value: totalAcceptances, label: 'ACCEPTANCES', icon: 'fa-check-circle' }
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="relative backdrop-blur-sm border p-3 md:p-4 overflow-hidden group"
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                borderColor: `${primary}30`,
+                borderRadius: '2px'
+              }}
+            >
+              {/* Hover gradient */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `linear-gradient(135deg, ${accent}10, transparent)`
+                }}
+              ></div>
+
+              {/* Corner tick */}
+              <div className="absolute top-1.5 right-1.5 w-2 h-2 border-t border-r" style={{ borderColor: accent }}></div>
+
+              <div className="relative flex items-center justify-between">
+                <div>
+                  <div
+                    className="text-[8px] uppercase tracking-[0.25em] text-white/50 mb-1.5"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    {stat.label}
+                  </div>
+                  <div
+                    className="text-2xl md:text-3xl font-bold leading-none"
+                    style={{
+                      color: accent,
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    {String(stat.value).padStart(2, '0')}
+                  </div>
+                </div>
+                <i
+                  className={`fas ${stat.icon} text-lg opacity-40`}
+                  style={{ color: primary }}
+                ></i>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ============ MAP ============ */}
+      <div className="relative" style={{ width: "100%", height: "520px" }}>
+
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
             scale: 250,
-            center: [30, 20] 
+            center: [30, 20]
           }}
-          style={{ width: "100%", height: "100%", backgroundColor: '#e2f0f9' }}
+          style={{ width: "100%", height: "100%", background: '#050810' }}
         >
-          <ZoomableGroup zoom={1} maxZoom={5} center={[50, 20]}>
+          <ZoomableGroup zoom={1} maxZoom={6} center={[50, 20]}>
+
+            {/* Graticule - radar lines */}
+            <Graticule
+              stroke={secondary}
+              strokeWidth={0.3}
+              strokeOpacity={0.3}
+            />
+
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill="#d1d9e6"
-                    stroke="#ffffff"
-                    strokeWidth={0.5}
+                    fill="#0c1a33"
+                    stroke={secondary}
+                    strokeWidth={0.4}
+                    strokeOpacity={0.5}
                     style={{
                       default: { outline: "none" },
-                      hover: { fill: "#c1cad9", outline: "none" },
+                      hover: {
+                        fill: "#16305e",
+                        outline: "none",
+                        cursor: "grab",
+                        transition: "fill 300ms"
+                      },
                       pressed: { outline: "none" },
                     }}
                   />
@@ -228,61 +478,398 @@ const AlumniMap2026 = () => {
               }
             </Geographies>
 
-            {groupedUniversities.map((uni, idx) => (
-              <Marker 
-                key={idx} 
-                coordinates={uni.coords}
-                onMouseEnter={() => {
-                  setTooltipData(uni);
-                }}
-                onMouseLeave={() => {
-                  setTooltipData(null);
-                }}
-              >
-                <circle 
-                  r={5} 
-                  fill={brandTeal} 
-                  stroke="#FFFFFF" 
-                  strokeWidth={1.5} 
-                  className="cursor-pointer transition-all duration-300 hover:fill-[#349B48]"
-                  style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.3))" }}
-                />
-              </Marker>
-            ))}
+            {/* Markers - pulsing radar nodes */}
+            {filteredUniversities.map((uni, idx) => {
+              const isHovered = hoveredUni?.name === uni.name;
+              const hasMultiple = uni.students.length > 1;
+
+              return (
+                <Marker
+                  key={idx}
+                  coordinates={uni.coords}
+                  onMouseEnter={() => setHoveredUni(uni)}
+                  onMouseLeave={() => setHoveredUni(null)}
+                >
+                  <g style={{ cursor: 'pointer' }}>
+                    {/* Pulse rings (only on hover or for multi-student) */}
+                    <circle
+                      r={isHovered ? "6" : hasMultiple ? "4" : "3"}
+                      fill="none"
+                      stroke={accent}
+                      strokeWidth="1"
+                      className="alumni-pulse-ring"
+                      style={{ opacity: isHovered ? 0.8 : hasMultiple ? 0.5 : 0.3 }}
+                    />
+                    <circle
+                      r={isHovered ? "6" : hasMultiple ? "4" : "3"}
+                      fill="none"
+                      stroke={accent}
+                      strokeWidth="1"
+                      className="alumni-pulse-ring"
+                      style={{
+                        animationDelay: '1s',
+                        opacity: isHovered ? 0.8 : hasMultiple ? 0.5 : 0.3
+                      }}
+                    />
+
+                    {/* Core dot */}
+                    <circle
+                      r={isHovered ? "4.5" : "3.5"}
+                      fill={accent}
+                      stroke="#050810"
+                      strokeWidth="1.5"
+                      style={{
+                        transition: 'r 300ms ease',
+                        filter: isHovered ? `drop-shadow(0 0 6px ${accent})` : 'none'
+                      }}
+                    />
+
+                    {/* Crosshair ticks */}
+                    {(isHovered || hasMultiple) && (
+                      <g style={{ opacity: isHovered ? 1 : 0.6 }}>
+                        <line x1="-7" y1="0" x2="-5" y2="0" stroke={accent} strokeWidth="1" />
+                        <line x1="5" y1="0" x2="7" y2="0" stroke={accent} strokeWidth="1" />
+                        <line x1="0" y1="-7" x2="0" y2="-5" stroke={accent} strokeWidth="1" />
+                        <line x1="0" y1="5" x2="0" y2="7" stroke={accent} strokeWidth="1" />
+                      </g>
+                    )}
+
+                    {/* Count badge for multi-student */}
+                    {hasMultiple && (
+                      <g transform="translate(6, -6)">
+                        <rect
+                          x="-7" y="-7" width="14" height="14"
+                          fill={accent}
+                          rx="2"
+                          stroke="#050810"
+                          strokeWidth="1"
+                        />
+                        <text
+                          x="0" y="1"
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fontSize="8px"
+                          fontWeight="bold"
+                          fill="#050810"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          {uni.students.length}
+                        </text>
+                      </g>
+                    )}
+
+                    {/* Invisible hover area */}
+                    <circle r="14" fill="transparent" />
+                  </g>
+                </Marker>
+              );
+            })}
           </ZoomableGroup>
         </ComposableMap>
+
+        {/* Bottom controls hint */}
+        <div
+          className="absolute bottom-3 right-3 z-20 px-3 py-1.5 backdrop-blur-xl border hidden md:flex items-center gap-3"
+          style={{
+            background: 'rgba(5,8,16,0.8)',
+            borderColor: `${primary}40`,
+            borderRadius: '2px'
+          }}
+        >
+          <div className="flex items-center gap-1.5">
+            <i className="fas fa-search-plus text-[9px]" style={{ color: accent }}></i>
+            <span
+              className="text-[8px] uppercase tracking-widest text-white/70"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              SCROLL
+            </span>
+          </div>
+          <div className="w-px h-3 bg-white/20"></div>
+          <div className="flex items-center gap-1.5">
+            <i className="fas fa-arrows-alt text-[9px]" style={{ color: accent }}></i>
+            <span
+              className="text-[8px] uppercase tracking-widest text-white/70"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              DRAG
+            </span>
+          </div>
+        </div>
+
+        {/* Active node indicator (bottom left) */}
+        <div
+          className="absolute bottom-3 left-3 z-20 px-4 py-2 backdrop-blur-xl border"
+          style={{
+            background: 'rgba(5,8,16,0.8)',
+            borderColor: `${primary}40`,
+            borderRadius: '2px'
+          }}
+        >
+          <div
+            className="text-[8px] uppercase tracking-[0.25em] text-white/50 mb-1"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            // TARGET
+          </div>
+          {hoveredUni ? (
+            <div
+              className="text-[11px] font-bold text-white truncate max-w-[200px]"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {hoveredUni.name}
+            </div>
+          ) : (
+            <div
+              className="text-[10px] uppercase tracking-widest text-white/60"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              HOVER.NODE
+            </div>
+          )}
+        </div>
       </div>
 
-      <Tooltip 
-        id="map-tooltip" 
-        isOpen={!!tooltipData}
-        className="z-50 !p-0 !bg-transparent !opacity-100"
+      {/* ============ LEGEND FOOTER ============ */}
+      <div
+        className="relative z-10 flex flex-wrap items-center gap-3 md:gap-5 px-5 py-3 border-t backdrop-blur-xl"
+        style={{
+          background: 'rgba(0,72,160,0.1)',
+          borderColor: `${primary}30`
+        }}
       >
-        {tooltipData && (
-          <div className="flex flex-col bg-white rounded-xl shadow-2xl overflow-hidden w-[280px] border border-gray-100">
-            <div className="bg-[#29A6B6] text-white px-4 py-3">
-              <h4 className="font-bold text-sm leading-tight text-white">{tooltipData.name}</h4>
-              <p className="text-[10px] uppercase tracking-wider text-white/80 mt-1">{tooltipData.students.length} Siswa Diterima</p>
+        <span
+          className="text-[8px] uppercase tracking-[0.25em] text-white/50 font-bold"
+          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+        >
+          JALUR.MASUK
+        </span>
+
+        {[
+          { label: 'SNBP', color: '#FBBF24', textColor: '#050810' },
+          { label: 'SNBT', color: '#0048A0', textColor: '#fff' },
+          { label: 'BEASISWA', color: '#1E40AF', textColor: '#fff' },
+          { label: 'MANDIRI', color: '#7c3aed', textColor: '#fff' },
+          { label: 'IUP', color: '#0891b2', textColor: '#fff' }
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-1.5">
+            <div
+              className="w-2 h-2 rounded-sm"
+              style={{ background: item.color }}
+            ></div>
+            <span
+              className="text-[9px] uppercase tracking-widest text-white/70"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {item.label}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* ============ PORTAL TOOLTIP ============ */}
+      {hoveredUni && createPortal(
+        <div
+          style={{
+            position: 'fixed',
+            top: mousePos.y + 16,
+            left: mousePos.x + 16,
+            zIndex: 9999,
+            pointerEvents: 'none',
+            transform: 'translate(0, 0)',
+            maxWidth: '340px',
+            fontFamily: "'Space Grotesk', 'Inter', sans-serif"
+          }}
+          className="animate-fadeIn"
+        >
+          <div
+            className="relative overflow-hidden"
+            style={{
+              background: 'rgba(5,8,16,0.95)',
+              backdropFilter: 'blur(20px)',
+              border: `1px solid ${primary}50`,
+              borderRadius: '4px',
+              boxShadow: `0 25px 60px -15px rgba(0,72,160,0.6), 0 0 0 1px rgba(251,191,36,0.1)`,
+              minWidth: '300px'
+            }}
+          >
+            {/* Corner brackets */}
+            <div className="absolute top-1.5 left-1.5 w-3 h-3 border-l-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+            <div className="absolute top-1.5 right-1.5 w-3 h-3 border-r-2 border-t-2 z-20" style={{ borderColor: accent }}></div>
+            <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-l-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+            <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-r-2 border-b-2 z-20" style={{ borderColor: accent }}></div>
+
+            {/* Header */}
+            <div
+              className="px-4 py-3 border-b"
+              style={{
+                background: `linear-gradient(90deg, ${primary}50, ${secondary}40)`,
+                borderColor: `${primary}30`
+              }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex-1 min-w-0">
+                  <div
+                    className="text-[8px] uppercase tracking-[0.25em] text-white/50 mb-1"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    // UNIVERSITY.NODE
+                  </div>
+                  <h4
+                    className="font-bold text-white text-sm leading-tight"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {hoveredUni.name}
+                  </h4>
+                </div>
+                <div
+                  className="px-2 py-1 flex items-center gap-1 shrink-0"
+                  style={{
+                    background: `${accent}20`,
+                    border: `1px solid ${accent}50`,
+                    borderRadius: '2px'
+                  }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rounded-full animate-pulse"
+                    style={{ background: accent }}
+                  ></span>
+                  <span
+                    className="text-[10px] font-bold"
+                    style={{
+                      color: accent,
+                      fontFamily: "'JetBrains Mono', monospace"
+                    }}
+                  >
+                    {hoveredUni.students.length}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="p-4 max-h-[200px] overflow-y-auto custom-scrollbar bg-white">
-              <ul className="space-y-4">
-                {tooltipData.students.map((stu, i) => (
-                  <li key={i} className="border-b border-gray-50 pb-3 last:border-0 last:pb-0">
-                    <p className="font-bold text-xs text-gray-800">{stu.name}</p>
-                    <div className="flex items-center text-[10px] text-gray-500 mt-1">
-                      <i className="fas fa-graduation-cap mr-1.5 text-[#349B48]"></i>
-                      {stu.major}
-                    </div>
-                    <span className="inline-block mt-1.5 px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[9px] font-bold uppercase tracking-wider">
-                      {stu.path}
-                    </span>
-                  </li>
-                ))}
+
+            {/* Students list */}
+            <div
+              className="p-3 overflow-y-auto"
+              style={{ maxHeight: '280px' }}
+            >
+              <ul className="space-y-2.5">
+                {hoveredUni.students.map((stu, i) => {
+                  const pathStyle = getPathStyle(stu.path);
+                  return (
+                    <li
+                      key={i}
+                      className="border-b pb-2.5 last:border-0 last:pb-0"
+                      style={{ borderColor: `${primary}20` }}
+                    >
+                      <div className="flex items-start gap-2">
+                        {/* Index */}
+                        <span
+                          className="text-[9px] font-mono opacity-50 shrink-0 mt-0.5"
+                          style={{
+                            color: accent,
+                            fontFamily: "'JetBrains Mono', monospace"
+                          }}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+
+                        <div className="flex-1 min-w-0">
+                          <div
+                            className="font-bold text-xs text-white leading-tight mb-1 truncate"
+                            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                          >
+                            {stu.name}
+                          </div>
+                          <div className="flex items-center text-[10px] text-white/70 mb-1.5 gap-1.5">
+                            <i
+                              className="fas fa-book-open text-[8px] shrink-0"
+                              style={{ color: accent }}
+                            ></i>
+                            <span
+                              className="truncate"
+                              style={{ fontFamily: "'Inter', sans-serif" }}
+                            >
+                              {stu.major}
+                            </span>
+                          </div>
+                          <span
+                            className="inline-block px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider"
+                            style={{
+                              background: pathStyle.bg,
+                              color: pathStyle.textColor,
+                              borderRadius: '2px',
+                              fontFamily: "'JetBrains Mono', monospace"
+                            }}
+                          >
+                            {pathStyle.label}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
+
+            {/* Footer */}
+            <div
+              className="flex items-center justify-between px-4 py-2 border-t"
+              style={{
+                background: 'rgba(0,72,160,0.2)',
+                borderColor: `${primary}30`
+              }}
+            >
+              <span
+                className="text-[8px] uppercase tracking-widest text-white/50"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                // {hoveredUni.students.length} RECORDS
+              </span>
+              <div className="flex items-center gap-1.5">
+                <div className="w-1 h-1 rounded-full" style={{ background: accent }}></div>
+                <span
+                  className="text-[8px] uppercase tracking-widest text-white/60"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  VERIFIED
+                </span>
+              </div>
+            </div>
           </div>
-        )}
-      </Tooltip>
+        </div>,
+        document.body
+      )}
+
+      {/* ============ ANIMATIONS ============ */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes alumniPulse {
+          0% { r: 4; opacity: 0.9; }
+          100% { r: 18; opacity: 0; }
+        }
+        .alumni-pulse-ring {
+          animation: alumniPulse 2s ease-out infinite;
+          transform-origin: center;
+          transform-box: fill-box;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-4px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 150ms ease-out;
+        }
+        /* Custom scrollbar for tooltip */
+        .alumni-tooltip-scroll::-webkit-scrollbar {
+          width: 4px;
+        }
+        .alumni-tooltip-scroll::-webkit-scrollbar-track {
+          background: rgba(255,255,255,0.05);
+        }
+        .alumni-tooltip-scroll::-webkit-scrollbar-thumb {
+          background: #FBBF24;
+          border-radius: 2px;
+        }
+      `}} />
     </div>
   );
 };
