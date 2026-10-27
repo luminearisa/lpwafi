@@ -57,7 +57,7 @@ const Footer = ({ data }) => {
       url: `https://instagram.com/${data?.contact?.socialMedia?.instagram?.[0]?.replace('@', '') || 'alwafiwibs.official'}`,
       brandColor: '#E4405F',
       name: 'Instagram',
-      handle: '@alwafiwibs'
+      handle: '@alwafiwiibs.official'
     },
     {
       icon: 'fab fa-youtube',
